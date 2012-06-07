@@ -1,0 +1,15 @@
+h1. *A simple example : alarm radio system*
+
+A simple example is available from the Example menu. This example shows you the capabilities of the different representations included in the SysML Designer.
+
+To retrieve the example, click on __File > New > Example...__ 
+
+!./../../images/alarmradioexample/SysML_NewExample.png(New Example...)!
+
+Select the example called __Simple AlarmRadio System Example__  in the __SysML__  category.
+
+!./../../images/alarmradioexample/SysML_NewExample_2.png(Select alarm radio example in the SysML category)!
+
+Now, the example is in your workspace. Expand the __AlarmRadio.aird__  file and select the representations already created !
+
+!./../../images/alarmradioexample/SysML_NewExample_3.png(A project called org.obeonetwork.dsl.sysml.alarmradio.example is now in your workspace)!

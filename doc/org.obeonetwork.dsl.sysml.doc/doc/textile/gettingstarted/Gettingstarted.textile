@@ -1,0 +1,242 @@
+h1. *Getting started*
+
+The following definitions are from "http://www.omg.org/spec/SysML/1.2/":http://www.omg.org/spec/SysML/1.2/.
+
+SysML supports the specification, analysis, design, and verification and validation of a broad range of complex systems.
+These systems may include hardware, software, information, processes, personnel, and facilities. SysML is designed to provide simple but powerful constructs for modeling a wide range of systems engineering problems. It is particularly effective in specifying requirements, structure, behavior, and allocations and constraints on system properties to support engineering analysis.
+
+The SysML Designer offers you five representations :
+
+* The Block Definition Diagram (BDD) representation defines features of blocks and relationships between blocks such as associations, generalizations, and dependencies. It captures the definition of blocks in terms of properties and operations, and relationships such as a system hierarchy or a system classification tree.
+
+* The Internal Block Diagram (IBD) representation captures the internal structure of a block in terms of properties and connectors between properties. A block can include properties to specify its values, parts, and references to other blocks.
+
+* The Parametric Diagram (PAR) representation includes usages of constraint blocks to constrain the properties of another block. Constraint blocks provide a mechanism for integrating engineering analysis such as performance and reliability models
+with other SysML models.
+
+* The Requirements Table allows you to define the requirements of your system.
+
+* The Requirements CrossTable (Matrix) allows you to relate the requirements to other modeling elements.
+
+This section describes how to start using the UML designer either from existing UML models or by creating a new one.
+
+h2. Starting from the AlarmRadio example
+
+To retrieve the example, click on __File > New > Example...__ 
+
+!./../../images/alarmradioexample/SysML_NewExample.png(New Example...)!
+
+Select the example called __Simple AlarmRadio System Example__  in the __SysML__  category.
+
+!./../../images/alarmradioexample/SysML_NewExample_2.png(Select alarm radio example in the SysML category)!
+
+Now, the example is in your workspace. Expand the __AlarmRadio.aird__  file and select the representations already created !
+
+!./../../images/alarmradioexample/SysML_NewExample_3.png(A project called org.obeonetwork.dsl.sysml.alarmradio.example is now in your workspace)!
+
+h2. Create a new SysML project
+
+To create a new SysML project, enable the Modeling Perspective, and click on __File > New > SysML Project...__ 
+
+!./../../images/gettingstarted/SysML_NewProject.png!
+
+You can also choose the SysML Project by clicking on click on __File > New > Example...__ and then select the SysML Project in the Viewpoint > Modeler category.
+
+!./../../images/gettingstarted/SysML_NewProject1.png!
+
+You can choose specific name for the project and the root element for the project on the next pages.
+
+!./../../images/gettingstarted/SysML_NewProject2.png!
+!./../../images/gettingstarted/SysML_NewProject3.png!
+
+When you press the __Finish__ button, the projects gets created and automatically enabled the SysML viewpoint.
+
+Now you can right click on the displayed package to create all the available diagrams that fits to your needs.
+
+h2. Display & edit an existing SysML(and UML) model
+
+To create a new SysML design on existing SysML and UML models, simply drag & drop the models in the Project or use the __Add Model__ action available on the __Project Dependencies__ item.
+
+!./../../images/gettingstarted/SysML_AddModel.png!
+
+h2. *New representation*
+
+The BDD, Requirements Table and Requirements CrossTable representations can be defined on a __Package__ element.
+Just right-click on a __Package__ element and select the representation you want :
+
+!./../../images/gettingstarted/SysML_NewRepresentation.png(New Representation)!
+
+The IBD representation can be defined on a __Block__ element.
+Just right-click on a __Block__ element and select the representation you want :
+
+!./../../images/gettingstarted/SysML_NewRepresentation2.png(New Representation)!
+
+The PAR representation can be defined on a __Block__ element.
+Just right-click on a __Block__ element and select the representation you want :
+
+!./../../images/gettingstarted/SysML_NewRepresentation2.png(New Representation)!
+
+The Requirements Table and CrossTable are already existing when you use the Obeo SysML Designer.
+
+h2. *Block Definition Diagram (BDD) representation*
+
+Blocks are modular units of system description. Each block defines a collection of features to describe a system or other
+element of interest. These may include both structural and behavioral features, such as properties and operations, to
+represent the state of the system and behavior that the system may exhibit.
+
+!./../../images/gettingstarted/SysML_BDD.png(SysML BDD Diagram Representation)!
+
+h3. *Create a Block*
+
+To create a Block, just select the __Block__ element in the __Palette__, and click anywhere in the Diagram. 
+
+!./../../images/gettingstarted/SysML_BDD_CreateBlock.png(Create Block)!
+
+h3. *Edit a Block*
+
+To edit a Block, just type __F2__ on a __Block__ element or click one time on the name.
+
+h3. *Delete a Block*
+
+To delete a Block, just type __Suppr__ on a __Block__ element.
+
+h3. *Other elements*
+
+The way is the same for other elements in the __Palette__. 
+
+h3. *Create/Navigate to an Internal Block Diagram or a Parametric Diagram*
+
+You can navigate to the internal block diagram representation of a __Block__ element from two ways.
+The first way is to double-click on a __Block__ element. If the IBD representation does not exist for the selected __Block__, a pop-up will appear to ask you the name of the future IBD.
+
+!./../../images/gettingstarted/SysML_BDD_to_IBD.png(Navigate from BDD to IBD)!
+
+The second way is to right-click on the __Block__ element and select the __Navigate__ menu.
+
+!./../../images/gettingstarted/SysML_BDD_to_IBD_2.png(Navigate from BDD to IBD)!
+
+With the second way, you can also choose to navigate or create a Parametric Diagram.
+
+h3. *Requirements Layer*
+
+You can display the requirements satisfied or verified by the blocks contained in your diagram.
+
+!./../../images/gettingstarted/SysML_Bdd_RequirementsLayer.png(Requirements Layer)!
+
+h3. *Constraints Layer*
+
+You can display the constraints blocks and the properties of blocks constrained by constraints blocks contained in your diagram.
+
+!./../../images/gettingstarted/SysML_Bdd_ConstraintsLayer.png(Constraints Layer)!
+
+The Constraints layer add two tools to the __Palette__ in the Constraints Section. One tool to create a Constraint Block and one tool to add a comment in a Constraint Block.
+
+h2. *Internal Block Diagram (IBD) representation*
+
+A block can include properties to specify its values, parts, and references to other blocks.
+
+!./../../images/gettingstarted/SysML_IBD.png(SysML IBD Diagram Representation)!
+
+h3. *Create a Part*
+
+To create a Part, just select the __Part__ element in the __Palette__, and click anywhere in the Diagram. 
+
+h3. *Edit a Part*
+
+To edit a Part, just type __F2__  on a __Part__ element or click one time on the name.
+
+h3. *Delete a Part*
+
+To delete a Part, just type __Suppr__  on a __Part__ element.
+
+h3. *Other elements*
+
+The way is the same for other elements in the __Palette__. 
+
+h3. *Create/Navigate to the Block Definition Diagram*
+
+You can navigate to the block definition diagram representation of a __Block__ element by right-click on the __Block__ element and select the __Navigate__ menu. You can also create/navigate to the parametric diagram representation of a __Block__ element by right-click on the __Block__ element and select the __Navigate__ menu.
+
+!./../../images/gettingstarted/SysML_IBD_to_PAR.png(Navigate from IBD to BDD or PAR)!
+
+h2. *Parametric Diagram (PAR) representation*
+
+Parametric diagrams include usages of constraint blocks to constrain the properties of another block. Constraint blocks provide a mechanism for integrating engineering analysis such as performance and reliability models.
+
+!./../../images/gettingstarted/SysML_PAR.png(SysML PAR Diagram Representation)!
+
+h3. *Create a Constraint*
+
+To create a Constraint, just select the __New Constraint__ element in the __Palette__, and click in the Block container part of the Diagram. 
+
+h3. *Add an existing Constraint*
+
+To add an existing Constraint, just select the __Add existing Constraint__ element in the __Palette__, and click in the Block container part of the Diagram.
+
+h3. *Create a Parameter*
+
+To create a Parameter, just select the __Parameter__ element in the __Palette__, and click in a Constraint. 
+
+h3. *Edit a Constraint or a Parameter*
+
+To edit a Constraint or a Parameter, just type __F2__  on a __Constraint__ or __Parameter__ element or click one time on the name.
+
+h3. *Delete a Constraint or a Parameter*
+
+To delete a Constraint or a Parameter, just type __Suppr__  on a __Constraint__ or __Parameter__ element.
+
+h3. *Navigate to the Internal Block Diagram*
+
+You can navigate to the internal block diagram representation of a __Block__ element by right-click on the __Block__ element and select the __Navigate__ menu.
+
+!./../../images/gettingstarted/SysML_PAR_to_IBD.png(Navigate from PAR to IBD)!
+
+h3. *Value Binding Layer*
+
+You can display the Value Binding Layer in order to instanciate the constraints created by binding values (owned by Blocks of your model) to parameters.
+
+!./../../images/gettingstarted/SysML_PAR_ValueBindingLayer.png(ValueBinding Layer)!
+
+h2. *Requirements Table representation*
+
+The Requirements Table allows you to define the requirements of your system.
+
+!./../../images/gettingstarted/SysML_RequirementsTable.png(SysML Requirements Table Representation)!
+
+h3. *Create a Requirement*
+
+You can create a Requirement by click on the appropriate button on the tool bar locate above the table.
+To create a SubRequirement, click on the appropriate __Requirement__ , then right-click and select __"Create SubRequirement"__  in the menu.
+
+!./../../images/gettingstarted/SysML_RequirementsTable_Tools.png(SysML Requirements Table Tools)!
+
+h3. *Edit a Requirement*
+
+To edit a requirement, just type __F2__ or double-click on the cell you want to edit.
+
+h3. *Delete a Requirement*
+
+To delete a requirement, right-click on the requirement you want to delete and select __Delete Requirement__.
+
+h2. *Requirements CrossTable representation*
+
+The Requirements CrossTable allows you to relate the requirements to other modeling elements.
+
+!./../../images/gettingstarted/SysML_RequirementsCrossTable.png(SysML Requirements CrossTable Representation)!
+
+h3. *Add/Delete a relation between a requirement and an element*
+
+To add a relation just type the appropriate character on a cell.
+To delete a relation just delete the character typed previously on a cell.
+
+There are four relations available :
+* S : to indicates that a requirement is satisfied by a block.
+* R : to refine a requirement.
+* D : to derive a requirement.
+* V : to indicates that a requirement is verified by a block.
+
+!./../../images/gettingstarted/SysML_RequirementsCrossTable_Tools.png(SysML Requirements CrossTable Tools)!
+
+After adding a satisfaction/verification relation you can show it in the BDD. (see BDD representation > Requirements Layer)
+
+!./../../images/gettingstarted/SysML_BDD_RequirementsLayer.png(Requirements Layer)!

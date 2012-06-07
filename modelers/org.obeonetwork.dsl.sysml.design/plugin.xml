@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+Copyright (c) 2009, 2011, 2012 Obeo.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+    Obeo - initial API and implementation
+-->
+<plugin>
+  <extension point="fr.obeo.dsl.viewpoint.componentization">
+    <component class="org.obeonetwork.dsl.sysml.design.Activator"
+               id="org.obeonetwork.dsl.sysml.design"
+	       name="sysml">
+    </component>
+  </extension>
+  <extension
+        point="org.eclipse.ui.newWizards">
+     <wizard
+           category="fr.obeo.dsl.viewpoint.category/fr.obeo.dsl.viewpoint.modelers.category"
+           class="org.obeonetwork.dsl.sysml.design.ui.wizards.newmodel.SysMLProjectWizard"
+           finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+           icon="icons/NewUmlModel.gif"
+           id="org.obeonetwork.dsl.sysml.design.newSysMLProject"
+           name="SysML Project"
+           preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+           project="true">
+     </wizard>
+  </extension>
+   <extension
+          point="org.eclipse.ui.perspectiveExtensions">
+       <perspectiveExtension
+             targetID="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling">
+          <newWizardShortcut
+                id="org.obeonetwork.dsl.sysml.design.newSysMLProject">
+          </newWizardShortcut>
+       </perspectiveExtension>
+    </extension>
+</plugin>

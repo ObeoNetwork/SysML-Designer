@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SysML Designer AlarmRadio Example
+Bundle-SymbolicName: org.obeonetwork.dsl.sysml.examples;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Obeo
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.ui.ide,
+ org.obeonetwork.dsl.sysml.design;bundle-version="0.7.1"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: org.obeonetwork.dsl.sysml.examples.Activator
