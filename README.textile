@@ -1,0 +1,15 @@
+h1. Welcome to SysML Modeling by Obeo Network
+
+This modeler provides a set of common diagrams to work with SysML models.
+
+These plugins are released under the EPL Open-Souce License.
+
+More details about features, screenshots, release notes, dependencies here:
+
+ * http://marketplace.obeonetwork.com/module/sysml
+ * http://docs.obeonetwork.com/uml
+ * http://www.obeodesigner.com
+
+
+To build the module you'll need Maven3 and type @mvn clean verify checkstyle:checkstyle@
+
