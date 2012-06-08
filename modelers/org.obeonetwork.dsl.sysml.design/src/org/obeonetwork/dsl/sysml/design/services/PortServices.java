@@ -13,7 +13,6 @@ package org.obeonetwork.dsl.sysml.design.services;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.papyrus.sysml.portandflows.FlowPort;
-import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Port;
 
 public class PortServices {

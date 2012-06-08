@@ -383,28 +383,47 @@ public class SysMLServices {
 	}
 
 	/**
+	 * Delete the requirement and his stereotype.
 	 * 
 	 * @param e
+	 *            the Requirement to delete.
 	 */
 	public void deleteRequirement(NamedElement e) {
 		deleteAssociatedStereotype(e, "SysML::Requirements::Requirement");
 		EObject root = getRootContainer(e);
-		for (Iterator<EObject> iterator = root.eAllContents(); iterator.hasNext();) {
-			EObject object =  iterator.next();
+		for (Iterator<EObject> iterator = root.eAllContents(); iterator
+				.hasNext();) {
+			EObject object = iterator.next();
 			if (object instanceof Abstraction) {
-				Element supplier = ((Abstraction) object).getSupplier(e.getName());
+				Element supplier = ((Abstraction) object).getSupplier(e
+						.getName());
 				if (supplier != null) {
-					Stereotype s = ((Abstraction) object).getAppliedStereotype("SysML::Requirements::Satisfy");
+					Stereotype s = ((Abstraction) object)
+							.getAppliedStereotype("SysML::Requirements::Satisfy");
 					if (s != null) {
-						deleteAssociatedStereotype(((Abstraction) object), "SysML::Requirements::Satisfy");
+						deleteAssociatedStereotype(((Abstraction) object),
+								"SysML::Requirements::Satisfy");
 					} else {
-						s = ((Abstraction) object).getAppliedStereotype("SysML::Requirements::DeriveReqt");
+						s = ((Abstraction) object)
+								.getAppliedStereotype("SysML::Requirements::DeriveReqt");
 						if (s != null) {
-							deleteAssociatedStereotype(((Abstraction) object), "SysML::Requirements::DeriveReqt");
+							deleteAssociatedStereotype(((Abstraction) object),
+									"SysML::Requirements::DeriveReqt");
 						} else {
-							s = ((Abstraction) object).getAppliedStereotype("Standard::Refine");
+							s = ((Abstraction) object)
+									.getAppliedStereotype("Standard::Refine");
 							if (s != null) {
-								deleteAssociatedStereotype(((Abstraction) object), "Standard::Refine");
+								deleteAssociatedStereotype(
+										((Abstraction) object),
+										"Standard::Refine");
+							} else {
+								s = ((Abstraction) object)
+										.getAppliedStereotype("SysML::Requirements::Verify");
+								if (s != null) {
+									deleteAssociatedStereotype(
+											((Abstraction) object),
+											"SysML::Requirements::Verify");
+								}
 							}
 						}
 					}
@@ -415,5 +434,3 @@ public class SysMLServices {
 		EcoreUtil.delete(e);
 	}
 }
-
-
