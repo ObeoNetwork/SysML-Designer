@@ -11,14 +11,13 @@ The SysML Designer offers you five representations :
 
 * The Internal Block Diagram (IBD) representation captures the internal structure of a block in terms of properties and connectors between properties. A block can include properties to specify its values, parts, and references to other blocks.
 
-* The Parametric Diagram (PAR) representation includes usages of constraint blocks to constrain the properties of another block. Constraint blocks provide a mechanism for integrating engineering analysis such as performance and reliability models
-with other SysML models.
+* The Parametric Diagram (PAR) representation includes usages of constraint blocks to constrain the properties of another block. Constraint blocks provide a mechanism for integrating engineering analysis such as performance and reliability models with other SysML models.
 
 * The Requirements Table allows you to define the requirements of your system.
 
 * The Requirements CrossTable (Matrix) allows you to relate the requirements to other modeling elements.
 
-This section describes how to start using the UML designer either from existing UML models or by creating a new one.
+This section describes how to start using the SysML designer either from existing SysML models or by creating a new one.
 
 h2. Starting from the AlarmRadio example
 
