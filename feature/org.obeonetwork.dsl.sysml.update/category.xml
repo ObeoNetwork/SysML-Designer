@@ -4,11 +4,11 @@
       Viewpoint
    </description>
    <feature url="features/org.obeonetwork.dsl.sysml.feature_0.0.0.qualifier.jar" id="org.obeonetwork.dsl.sysml.feature" version="0.0.0">
-      <category name="SysML Designer"/>
+      <category name="Obeo Network"/>
    </feature>
-   <category-def name="SysML Designer" label="SysML Designer">
+   <category-def name="Obeo Network" label="Obeo Network">
       <description>
-         The SysML Designer.
+         The Obeo Network.
       </description>
    </category-def>
 </site>
