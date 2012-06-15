@@ -196,12 +196,15 @@ public class SysMLProjectWizard extends BasicNewResourceWizard {
 	private EObject createInitialModel() {
 		EClassifier found = UMLPackage.eINSTANCE.getEClassifier(modelPage
 				.getInitialObjectName());
+		EObject model;
 		if (found instanceof EClass) {
-			return UMLFactory.eINSTANCE.create((EClass) found);
+			model = UMLFactory.eINSTANCE.create((EClass) found);
 		} else {
-			Model model = UMLFactory.eINSTANCE.createModel();
-			return model;
+			model = UMLFactory.eINSTANCE.createModel();
 		}
+		if (model instanceof Model)
+			((Model) model).setName(newProjectPage.getProjectName());
+		return model;
 	}
 
 }
