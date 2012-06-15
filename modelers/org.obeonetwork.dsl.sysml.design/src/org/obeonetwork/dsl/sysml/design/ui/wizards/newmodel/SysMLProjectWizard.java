@@ -150,34 +150,6 @@ public class SysMLProjectWizard extends BasicNewResourceWizard {
 				} catch (IOException e) {
 					/* do nothing it should always work */
 				}
-				session.getTransactionalEditingDomain()
-						.getCommandStack()
-						.execute(
-								new RecordingCommand(session
-										.getTransactionalEditingDomain()) {
-									@Override
-									protected void doExecute() {
-										ViewpointSelectionCallback callback = new ViewpointSelectionCallback();
-
-										for (Viewpoint vp : ViewpointRegistry
-												.getInstance().getViewpoints()) {
-											if ("UML Structural Modeling"
-													.equals(vp.getName())) {
-												callback.selectViewpoint(vp,
-														session);
-											} else if ("UML Behavioral Modeling"
-													.equals(vp.getName())) {
-												callback.selectViewpoint(vp,
-														session);
-											} else if ("SysML".equals(vp
-													.getName())) {
-												callback.selectViewpoint(vp,
-														session);
-											}
-
-										}
-									}
-								});
 			}
 		};
 		try {
@@ -188,7 +160,30 @@ public class SysMLProjectWizard extends BasicNewResourceWizard {
 		} catch (InterruptedException e) {
 			/* do nothing it should always work */
 		}
+		session.getTransactionalEditingDomain()
+				.getCommandStack()
+				.execute(
+						new RecordingCommand(session
+								.getTransactionalEditingDomain()) {
+							@Override
+							protected void doExecute() {
+								ViewpointSelectionCallback callback = new ViewpointSelectionCallback();
 
+								for (Viewpoint vp : ViewpointRegistry
+										.getInstance().getViewpoints()) {
+									if ("UML Structural Modeling".equals(vp
+											.getName())) {
+										callback.selectViewpoint(vp, session);
+									} else if ("UML Behavioral Modeling"
+											.equals(vp.getName())) {
+										callback.selectViewpoint(vp, session);
+									} else if ("SysML".equals(vp.getName())) {
+										callback.selectViewpoint(vp, session);
+									}
+
+								}
+							}
+						});
 		return Options.newSome(ResourcesPlugin.getWorkspace().getRoot()
 				.getFile(new Path(platformPath)));
 	}
