@@ -74,9 +74,11 @@ public class SysMLProjectWizard extends BasicNewResourceWizard {
 		newProjectPage.setDescription("Enter a project name"); //$NON-NLS-1$
 		addPage(newProjectPage);
 
-		modelPage = new UmlModelWizardInitModelPage(Messages.SysMLModelWizard_UI_InitModelPageId);
+		modelPage = new UmlModelWizardInitModelPage(
+				Messages.SysMLModelWizard_UI_InitModelPageId);
 		modelPage.setTitle(Messages.SysMLModelWizard_UI_InitModelPageTitle);
-		modelPage.setDescription(Messages.SysMLModelWizard_UI_InitModelPageDescription);
+		modelPage
+				.setDescription(Messages.SysMLModelWizard_UI_InitModelPageDescription);
 		addPage(modelPage);
 	}
 
@@ -84,8 +86,9 @@ public class SysMLProjectWizard extends BasicNewResourceWizard {
 	public boolean performFinish() {
 
 		try {
-			IProject project = ModelingProjectManager.INSTANCE.createNewModelingProject(
-					newProjectPage.getProjectName(), newProjectPage.getLocationPath(), true);
+			IProject project = ModelingProjectManager.INSTANCE
+					.createNewModelingProject(newProjectPage.getProjectName(),
+							newProjectPage.getLocationPath(), true);
 			Option<IFile> optionalNewfile = createEcoreResource(project);
 			if (optionalNewfile.some() && optionalNewfile.get().exists()) {
 				selectAndReveal(optionalNewfile.get());
@@ -95,7 +98,8 @@ public class SysMLProjectWizard extends BasicNewResourceWizard {
 			return true;
 
 		} catch (CoreException e) {
-			Activator.log(IStatus.ERROR, Messages.SysMLModelWizard_UI_Error_CreatingSysMLModel, e);
+			Activator.log(IStatus.ERROR,
+					Messages.SysMLModelWizard_UI_Error_CreatingSysMLModel, e);
 		}
 		return false;
 
@@ -103,7 +107,8 @@ public class SysMLProjectWizard extends BasicNewResourceWizard {
 
 	private Option<IFile> createEcoreResource(IProject project) {
 		final Session session;
-		Option<ModelingProject> modelingProject = ModelingProject.asModelingProject(project);
+		Option<ModelingProject> modelingProject = ModelingProject
+				.asModelingProject(project);
 		if (modelingProject.some()) {
 			session = modelingProject.get().getSession();
 		} else {
@@ -115,14 +120,16 @@ public class SysMLProjectWizard extends BasicNewResourceWizard {
 		}
 
 		/*
-		 * Create a resource for this file. Don't specify acontent type, as it could be Ecore or EMOF.Create
-		 * in a other resourceset and let the workspace monitor for modeling project add it as semantic
-		 * resource.
+		 * Create a resource for this file. Don't specify acontent type, as it
+		 * could be Ecore or EMOF.Create in a other resourceset and let the
+		 * workspace monitor for modeling project add it as semantic resource.
 		 */
 		final ResourceSet rs = new ResourceSetImpl();
-		String platformPath = '/' + project.getName() + '/' + modelPage.getInitialObjectName().toLowerCase()
-				+ DOT + MODEL_FILE_EXTENSION;
-		final URI semanticModelURI = URI.createPlatformResourceURI(platformPath, true);
+		String platformPath = '/' + project.getName() + '/'
+				+ modelPage.getInitialObjectName().toLowerCase() + DOT
+				+ MODEL_FILE_EXTENSION;
+		final URI semanticModelURI = URI.createPlatformResourceURI(
+				platformPath, true);
 		final Resource resource = rs.createResource(semanticModelURI);
 
 		/* Add the initial model object to the contents. */
@@ -135,43 +142,50 @@ public class SysMLProjectWizard extends BasicNewResourceWizard {
 		WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
 
 			@Override
-			protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException,
+			protected void execute(IProgressMonitor monitor)
+					throws CoreException, InvocationTargetException,
 					InterruptedException {
 				try {
 					resource.save(new HashMap<Object, Object>());
 				} catch (IOException e) {
 					/* do nothing it should always work */
 				}
-				session.getTransactionalEditingDomain().getCommandStack()
-				.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-					@Override
-					protected void doExecute() {
-						ViewpointSelectionCallback callback = new ViewpointSelectionCallback();
-						
-						for (Viewpoint vp : ViewpointRegistry.getInstance().getViewpoints()) {
-							if ("UML Structural Modeling".equals(vp.getName())) {
-								callback.selectViewpoint(vp, session);
-							} else if ("UML Behavioral Modeling".equals(vp.getName())) {
-								callback.selectViewpoint(vp, session);
-							} else if ("SysML".equals(vp.getName())) {
-								callback.selectViewpoint(vp, session);
-							}
-							
-						}
-					}
-				});
 			}
 		};
 		try {
-			new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell()).run(true,
-					false, operation);
+			new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay()
+					.getActiveShell()).run(true, false, operation);
 		} catch (InvocationTargetException e) {
 			/* do nothing it should always work */
 		} catch (InterruptedException e) {
 			/* do nothing it should always work */
 		}
+		session.getTransactionalEditingDomain()
+				.getCommandStack()
+				.execute(
+						new RecordingCommand(session
+								.getTransactionalEditingDomain()) {
+							@Override
+							protected void doExecute() {
+								ViewpointSelectionCallback callback = new ViewpointSelectionCallback();
 
-		return Options.newSome(ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformPath)));
+								for (Viewpoint vp : ViewpointRegistry
+										.getInstance().getViewpoints()) {
+									if ("UML Structural Modeling".equals(vp
+											.getName())) {
+										callback.selectViewpoint(vp, session);
+									} else if ("UML Behavioral Modeling"
+											.equals(vp.getName())) {
+										callback.selectViewpoint(vp, session);
+									} else if ("SysML".equals(vp.getName())) {
+										callback.selectViewpoint(vp, session);
+									}
+
+								}
+							}
+						});
+		return Options.newSome(ResourcesPlugin.getWorkspace().getRoot()
+				.getFile(new Path(platformPath)));
 	}
 
 	/**
@@ -180,15 +194,17 @@ public class SysMLProjectWizard extends BasicNewResourceWizard {
 	 * @return the semantic root {@link EObject}
 	 */
 	private EObject createInitialModel() {
-		EClassifier found = UMLPackage.eINSTANCE.getEClassifier(modelPage.getInitialObjectName());
+		EClassifier found = UMLPackage.eINSTANCE.getEClassifier(modelPage
+				.getInitialObjectName());
+		EObject model;
 		if (found instanceof EClass) {
-			found.setName("SysML");
-			return UMLFactory.eINSTANCE.create((EClass)found);
+			model = UMLFactory.eINSTANCE.create((EClass) found);
 		} else {
-			Model model = UMLFactory.eINSTANCE.createModel();
-			model.setName("SysML");
-			return model;
+			model = UMLFactory.eINSTANCE.createModel();
 		}
+		if (model instanceof Model)
+			((Model) model).setName(newProjectPage.getProjectName());
+		return model;
 	}
 
 }
