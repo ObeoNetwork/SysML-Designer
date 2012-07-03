@@ -15,6 +15,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.papyrus.sysml.portandflows.FlowPort;
 import org.eclipse.uml2.uml.Port;
 
+/**
+ * Port services.
+ * 
+ * @author Axel Richard <a href="mailto:axel.richard@obeo.fr">axel.richard@obeo.fr</a>
+ */
 public class PortServices {
 
 	/**
@@ -52,7 +57,7 @@ public class PortServices {
 	 *            the source port
 	 * @param target
 	 *            the target port
-	 * @param isDualDirection
+	 * @param isOppositeDirection
 	 *            test the opposite direction if true, the same direction otherwise
 	 * @return true if the type are equals and the directions allowed
 	 */
@@ -69,8 +74,8 @@ public class PortServices {
 		}
 
 		if (result) {
-			FlowPort sourcePort = getFlowPortApplication(source);
-			FlowPort targetPort = getFlowPortApplication(target);
+			final FlowPort sourcePort = getFlowPortApplication(source);
+			final FlowPort targetPort = getFlowPortApplication(target);
 
 			if (sourcePort == null && targetPort == null)
 				return true;
@@ -87,7 +92,7 @@ public class PortServices {
 	}
 
 	/**
-	 * Return the first flow port stereotype application
+	 * Return the first flow port stereotype application.
 	 * 
 	 * @param port
 	 *            the port

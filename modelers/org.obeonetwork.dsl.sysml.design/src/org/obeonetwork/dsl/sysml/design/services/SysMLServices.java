@@ -44,14 +44,18 @@ import fr.obeo.dsl.viewpoint.description.Layer;
 /**
  * Utility services for SysML.
  * 
- * @author Axel RICHARD <a
- *         href="mailto:axel.richard@obeo.fr">axel.richard@obeo.fr</a>
+ * @author Axel Richard <a href="mailto:axel.richard@obeo.fr">axel.richard@obeo.fr</a>
  */
 public class SysMLServices {
 
 	/**
-	 * Checks if the given profile is already applied on the given _package. It
-	 * checks both the local appliance and the ancestors appliance.
+	 * Sysml requirement stereotype.
+	 */
+	private static final String SYSML_REQUIREMENT = "SysML::Requirements::Requirement";
+
+	/**
+	 * Checks if the given profile is already applied on the given _package. It checks both the local
+	 * appliance and the ancestors appliance.
 	 * 
 	 * @param currentPackage
 	 *            : the local package.
@@ -59,26 +63,20 @@ public class SysMLServices {
 	 *            : the profile applied.
 	 * @return true if the profile is actually applied, false otherwise.
 	 */
-	private static Boolean isProfileApplied(Package currentPackage,
-			Profile profile) {
-		final EList<Profile> allProfiles = currentPackage
-				.getAllAppliedProfiles();
+	private static Boolean isProfileApplied(Package currentPackage, Profile profile) {
+		final EList<Profile> allProfiles = currentPackage.getAllAppliedProfiles();
 		final Iterator<Profile> it = allProfiles.iterator();
 		while (it.hasNext()) {
-			if (it.next().getQualifiedName()
-					.equalsIgnoreCase(profile.getQualifiedName()))
+			if (it.next().getQualifiedName().equalsIgnoreCase(profile.getQualifiedName()))
 				return true;
 		}
 		return false;
 	}
 
 	/**
-	 * Apply each profiles to the given Package. The first parameter is the
-	 * package. The second is the profile to apply.
-	 * 
-	 * In case of error when the profile is applied, a message is logged in the
-	 * activator logger. In case of multiple application of the profile, a
-	 * message is logged in the activator logger.
+	 * Apply each profiles to the given Package. The first parameter is the package. The second is the profile
+	 * to apply. In case of error when the profile is applied, a message is logged in the activator logger. In
+	 * case of multiple application of the profile, a message is logged in the activator logger.
 	 * 
 	 * @param p
 	 *            : the given Package
@@ -90,12 +88,10 @@ public class SysMLServices {
 		Resource profileResource = null;
 
 		if (profileQualifiedName.startsWith("SysML")) {
-			profileResource = TransactionUtil.getEditingDomain(p)
-					.getResourceSet()
+			profileResource = TransactionUtil.getEditingDomain(p).getResourceSet()
 					.getResource(Activator.getSysMLProfileURI(), true);
 		} else if (profileQualifiedName.startsWith("Standard")) {
-			profileResource = TransactionUtil.getEditingDomain(p)
-					.getResourceSet()
+			profileResource = TransactionUtil.getEditingDomain(p).getResourceSet()
 					.getResource(Activator.getStandardProfileURI(), true);
 		}
 
@@ -107,7 +103,7 @@ public class SysMLServices {
 		if (profileResource != null && profileResource.getContents().size() > 0) {
 			final EObject libRoot = profileResource.getContents().get(0);
 			if (libRoot instanceof Package && libRoot.eContainer() == null) {
-				profilePackage = (Package) libRoot;
+				profilePackage = (Package)libRoot;
 			}
 		}
 
@@ -117,16 +113,15 @@ public class SysMLServices {
 			profilePackage = profilePackage.getNestedPackage(profiles[index]);
 		}
 
-		Profile profile = (Profile) profilePackage;
+		Profile profile = (Profile)profilePackage;
 
 		if (profileQualifiedName.startsWith("SysML")) {
-			profile = (Profile) profilePackage
-					.getNestedPackage(profiles[profiles.length - 1]);
+			profile = (Profile)profilePackage.getNestedPackage(profiles[profiles.length - 1]);
 		}
 
 		if (profile == null) {
-			final String message = "Can't apply the profile "
-					+ profileQualifiedName + " on " + p.getQualifiedName();
+			final String message = "Can't apply the profile " + profileQualifiedName + " on "
+					+ p.getQualifiedName();
 			Activator.log(Status.WARNING, message, null);
 		} else if (isProfileApplied(p, profile)) {
 			// final String message = "The profile "
@@ -145,60 +140,49 @@ public class SysMLServices {
 	 * Create the Associated Stereotype with the given element.
 	 * 
 	 * @param e
-	 *            : the given element for which you want to apply the
-	 *            stereotype.
+	 *            : the given element for which you want to apply the stereotype.
 	 * @param profileQualifiedName
-	 *            : the qualified name of the stereotype's profile you want to
-	 *            apply (ex. : SysML::Blocks for a Block).
+	 *            : the qualified name of the stereotype's profile you want to apply (ex. : SysML::Blocks for
+	 *            a Block).
 	 * @param stereotypeName
 	 *            : the name of the stereotype you want to apply.
 	 */
-	public void createAssociatedStereotype(Element e,
-			String profileQualifiedName, String stereotypeName) {
+	public void createAssociatedStereotype(Element e, String profileQualifiedName, String stereotypeName) {
 
 		applySysMLProfile(e.getModel(), profileQualifiedName);
 
 		final Element element = e;
-		final String stereotypeQualifiedName = profileQualifiedName + "::"
-				+ stereotypeName;
+		final String stereotypeQualifiedName = profileQualifiedName + "::" + stereotypeName;
 
-		final Stereotype stereotype = element
-				.getApplicableStereotype(stereotypeQualifiedName);
-		final EList<Stereotype> appliedStereotypes = element
-				.getAppliedStereotypes();
+		final Stereotype stereotype = element.getApplicableStereotype(stereotypeQualifiedName);
+		final EList<Stereotype> appliedStereotypes = element.getAppliedStereotypes();
 
 		if (stereotype == null) {
-			final String message = "Can't apply the setereotype "
-					+ stereotypeQualifiedName + " on " + element.toString();
-			Activator.log(Status.WARNING, message, null);
-		} else if (appliedStereotypes != null
-				&& appliedStereotypes.contains(stereotype)) {
-			final String message = "The stereotype "
-					+ stereotype.getQualifiedName() + " is already applied on "
+			final String message = "Can't apply the setereotype " + stereotypeQualifiedName + " on "
 					+ element.toString();
+			Activator.log(Status.WARNING, message, null);
+		} else if (appliedStereotypes != null && appliedStereotypes.contains(stereotype)) {
+			final String message = "The stereotype " + stereotype.getQualifiedName()
+					+ " is already applied on " + element.toString();
 			Activator.log(Status.INFO, message, null);
 		} else {
 			element.applyStereotype(stereotype);
 		}
-
 	}
 
 	/**
 	 * Delete the Associated Stereotype with the given element.
 	 * 
 	 * @param e
-	 *            : the given element for which you want to delete the
-	 *            stereotype.
+	 *            : the given element for which you want to delete the stereotype.
 	 * @param steQualified
-	 *            : the qualified name of the stereotype you want to delete (ex.
-	 *            : SysML::Blocks::Block).
+	 *            : the qualified name of the stereotype you want to delete (ex. : SysML::Blocks::Block).
 	 */
 	public void deleteAssociatedStereotype(Element e, String steQualified) {
 		final Element element = e;
 
 		if (element != null && steQualified != null) {
-			final Stereotype stereotype = element
-					.getAppliedStereotype(steQualified);
+			final Stereotype stereotype = element.getAppliedStereotype(steQualified);
 			element.unapplyStereotype(stereotype);
 		} else {
 			final String message = "Can't delete the stereotype application because the element or the stereotypeName keys are not correct";
@@ -213,8 +197,7 @@ public class SysMLServices {
 	 *            : the given Element.
 	 * @param type
 	 *            : the type passed as a String.
-	 * @return true if the given element is an instance of the type, false
-	 *         otherwise.
+	 * @return true if the given element is an instance of the type, false otherwise.
 	 */
 	public boolean isInstanceOf(Element e, String type) {
 		if (e.eClass().getName().equalsIgnoreCase(type)) {
@@ -225,43 +208,34 @@ public class SysMLServices {
 	}
 
 	/**
-	 * Set the dimension feature for the given PrimitiveType stereotyped with a
-	 * ValueType.
+	 * Set the dimension feature for the given PrimitiveType stereotyped with a ValueType.
 	 * 
 	 * @param pt
-	 *            : the given Element (a PrimitiveType stereotyped with a
-	 *            ValueType).
+	 *            : the given Element (a PrimitiveType stereotyped with a ValueType).
 	 * @param is
-	 *            : the new Dimension (an InstanceSpecification stereotyped with
-	 *            a Dimension).
+	 *            : the new Dimension (an InstanceSpecification stereotyped with a Dimension).
 	 */
-	public void setDimensionForPrimitiveType(Element pt,
-			InstanceSpecification is) {
+	public void setDimensionForPrimitiveType(Element pt, InstanceSpecification is) {
 		if (is != null && pt != null) {
-			Stereotype valueType = pt
-					.getAppliedStereotype("SysML::Blocks::ValueType");
-			Dimension newDimension = (Dimension) is.getStereotypeApplication(is
+			final Stereotype valueType = pt.getAppliedStereotype("SysML::Blocks::ValueType");
+			final Dimension newDimension = (Dimension)is.getStereotypeApplication(is
 					.getAppliedStereotype("SysML::Blocks::Dimension"));
 			pt.setValue(valueType, "dimension", newDimension);
 		}
 	}
 
 	/**
-	 * Set the unit feature for the given PrimitiveType stereotyped with a
-	 * ValueType.
+	 * Set the unit feature for the given PrimitiveType stereotyped with a ValueType.
 	 * 
 	 * @param pt
-	 *            : the given Element (a PrimitiveType stereotyped with a
-	 *            ValueType).
+	 *            : the given Element (a PrimitiveType stereotyped with a ValueType).
 	 * @param is
-	 *            : the new Unit (an InstanceSpecification stereotyped with a
-	 *            Unit).
+	 *            : the new Unit (an InstanceSpecification stereotyped with a Unit).
 	 */
 	public void setUnitForPrimitiveType(Element pt, InstanceSpecification is) {
 		if (is != null && pt != null) {
-			Stereotype valueType = pt
-					.getAppliedStereotype("SysML::Blocks::ValueType");
-			Unit newUnit = (Unit) is.getStereotypeApplication(is
+			final Stereotype valueType = pt.getAppliedStereotype("SysML::Blocks::ValueType");
+			final Unit newUnit = (Unit)is.getStereotypeApplication(is
 					.getAppliedStereotype("SysML::Blocks::Unit"));
 			pt.setValue(valueType, "unit", newUnit);
 		}
@@ -277,8 +251,7 @@ public class SysMLServices {
 	 */
 	public void setIdForRequirement(Element r, String id) {
 		if (r != null && id != null) {
-			Stereotype requirement = r
-					.getAppliedStereotype("SysML::Requirements::Requirement");
+			final Stereotype requirement = r.getAppliedStereotype(SYSML_REQUIREMENT);
 			r.setValue(requirement, "id", id);
 		}
 	}
@@ -293,14 +266,13 @@ public class SysMLServices {
 	 */
 	public void setTextForRequirement(Element r, String text) {
 		if (r != null && text != null) {
-			Stereotype requirement = r
-					.getAppliedStereotype("SysML::Requirements::Requirement");
+			final Stereotype requirement = r.getAppliedStereotype(SYSML_REQUIREMENT);
 			r.setValue(requirement, "text", text);
 		}
 	}
 
 	/**
-	 * Returns the root container; it may be this object itself
+	 * Returns the root container; it may be this object itself.
 	 * 
 	 * @param eObject
 	 *            the object to get the root container for.
@@ -321,7 +293,7 @@ public class SysMLServices {
 	 */
 	public boolean isLayerActivated(EObject object, String layerID) {
 		if (object instanceof DSemanticDiagram) {
-			DSemanticDiagram d = (DSemanticDiagram) object;
+			final DSemanticDiagram d = (DSemanticDiagram)object;
 			for (Layer layer : d.getActivatedLayers()) {
 				if (layerID.equals(layer.getName())) {
 					return true;
@@ -331,6 +303,13 @@ public class SysMLServices {
 		return false;
 	}
 
+	/**
+	 * Get UML String type.
+	 * 
+	 * @param object
+	 *            the object for which to find the corresponding String type
+	 * @return the found String element or null
+	 */
 	public Type getUmlStringType(EObject object) {
 		return EcoreServices.INSTANCE.findTypeByName(object, "String");
 	}
@@ -344,24 +323,19 @@ public class SysMLServices {
 	 */
 	public Element updateStereotype(Element element) {
 		if (element instanceof Property) {
-			Type type = ((Property) element).getType();
+			final Type type = ((Property)element).getType();
 			if (type != null) {
-				Collection<EObject> elementStereotypes = element
-						.getStereotypeApplications();
-				Collection<EObject> typeStereotypes = type
-						.getStereotypeApplications();
+				final Collection<EObject> elementStereotypes = element.getStereotypeApplications();
+				final Collection<EObject> typeStereotypes = type.getStereotypeApplications();
 				for (EObject typeStereotype : typeStereotypes) {
 					if (typeStereotype instanceof ConstraintBlock) {
-						if (elementStereotypes == null
-								|| elementStereotypes.isEmpty()) {
-							createAssociatedStereotype(element,
-									"SysML::Constraints", "ConstraintProperty");
+						if (elementStereotypes == null || elementStereotypes.isEmpty()) {
+							createAssociatedStereotype(element, "SysML::Constraints", "ConstraintProperty");
 							break;
 						} else {
 							for (EObject elementStereotype : elementStereotypes) {
 								if (!(elementStereotype instanceof ConstraintProperty)) {
-									createAssociatedStereotype(element,
-											"SysML::Constraints",
+									createAssociatedStereotype(element, "SysML::Constraints",
 											"ConstraintProperty");
 									break;
 								}
@@ -370,8 +344,7 @@ public class SysMLServices {
 					} else if (typeStereotype instanceof Block) {
 						for (EObject elementStereotype : elementStereotypes) {
 							if (elementStereotype instanceof ConstraintProperty) {
-								deleteAssociatedStereotype(element,
-										"SysML::Constraints::ConstraintProperty");
+								deleteAssociatedStereotype(element, "SysML::Constraints::ConstraintProperty");
 								break;
 							}
 						}
@@ -389,39 +362,28 @@ public class SysMLServices {
 	 *            the Requirement to delete.
 	 */
 	public void deleteRequirement(NamedElement e) {
-		deleteAssociatedStereotype(e, "SysML::Requirements::Requirement");
-		EObject root = getRootContainer(e);
-		for (Iterator<EObject> iterator = root.eAllContents(); iterator
-				.hasNext();) {
-			EObject object = iterator.next();
+		deleteAssociatedStereotype(e, SYSML_REQUIREMENT);
+		final EObject root = getRootContainer(e);
+		for (final Iterator<EObject> iterator = root.eAllContents(); iterator.hasNext();) {
+			final EObject object = iterator.next();
 			if (object instanceof Abstraction) {
-				Element supplier = ((Abstraction) object).getSupplier(e
-						.getName());
+				final Element supplier = ((Abstraction)object).getSupplier(e.getName());
 				if (supplier != null) {
-					Stereotype s = ((Abstraction) object)
-							.getAppliedStereotype("SysML::Requirements::Satisfy");
+					Stereotype s = ((Abstraction)object).getAppliedStereotype("SysML::Requirements::Satisfy");
 					if (s != null) {
-						deleteAssociatedStereotype(((Abstraction) object),
-								"SysML::Requirements::Satisfy");
+						deleteAssociatedStereotype((Abstraction)object, "SysML::Requirements::Satisfy");
 					} else {
-						s = ((Abstraction) object)
-								.getAppliedStereotype("SysML::Requirements::DeriveReqt");
+						s = ((Abstraction)object).getAppliedStereotype("SysML::Requirements::DeriveReqt");
 						if (s != null) {
-							deleteAssociatedStereotype(((Abstraction) object),
-									"SysML::Requirements::DeriveReqt");
+							deleteAssociatedStereotype((Abstraction)object, "SysML::Requirements::DeriveReqt");
 						} else {
-							s = ((Abstraction) object)
-									.getAppliedStereotype("Standard::Refine");
+							s = ((Abstraction)object).getAppliedStereotype("Standard::Refine");
 							if (s != null) {
-								deleteAssociatedStereotype(
-										((Abstraction) object),
-										"Standard::Refine");
+								deleteAssociatedStereotype((Abstraction)object, "Standard::Refine");
 							} else {
-								s = ((Abstraction) object)
-										.getAppliedStereotype("SysML::Requirements::Verify");
+								s = ((Abstraction)object).getAppliedStereotype("SysML::Requirements::Verify");
 								if (s != null) {
-									deleteAssociatedStereotype(
-											((Abstraction) object),
+									deleteAssociatedStereotype((Abstraction)object,
 											"SysML::Requirements::Verify");
 								}
 							}

@@ -48,6 +48,11 @@ import fr.obeo.dsl.viewpoint.description.Viewpoint;
 import fr.obeo.dsl.viewpoint.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import fr.obeo.dsl.viewpoint.ui.tools.api.project.ModelingProjectManager;
 
+/**
+ * Sysml project wizard.
+ * 
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ */
 public class SysMLProjectWizard extends BasicNewResourceWizard {
 	/**
 	 * Dot constant.
@@ -59,10 +64,19 @@ public class SysMLProjectWizard extends BasicNewResourceWizard {
 	 */
 	public static final String MODEL_FILE_EXTENSION = "uml"; //$NON-NLS-1$
 
+	/**
+	 * The model page.
+	 */
 	private UmlModelWizardInitModelPage modelPage;
 
+	/**
+	 * The new project page.
+	 */
 	private WizardNewProjectCreationPage newProjectPage;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void addPages() {
 		super.addPages();
@@ -73,56 +87,80 @@ public class SysMLProjectWizard extends BasicNewResourceWizard {
 		newProjectPage.setDescription("Enter a project name"); //$NON-NLS-1$
 		addPage(newProjectPage);
 
-		modelPage = new UmlModelWizardInitModelPage(
-				Messages.SysMLModelWizard_UI_InitModelPageId);
+		modelPage = new UmlModelWizardInitModelPage(Messages.SysMLModelWizard_UI_InitModelPageId);
 		modelPage.setTitle(Messages.SysMLModelWizard_UI_InitModelPageTitle);
-		modelPage
-				.setDescription(Messages.SysMLModelWizard_UI_InitModelPageDescription);
+		modelPage.setDescription(Messages.SysMLModelWizard_UI_InitModelPageDescription);
 		addPage(modelPage);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean performFinish() {
 		try {
 			getContainer().run(
 					true,
 					false,
-					new InitProject(newProjectPage.getProjectName(),
-							newProjectPage.getLocationPath(), modelPage
-									.getInitialObjectName()));
+					new InitProject(newProjectPage.getProjectName(), newProjectPage.getLocationPath(),
+							modelPage.getInitialObjectName()));
 		} catch (InvocationTargetException e) {
-			Activator.log(IStatus.ERROR,
-					Messages.SysMLModelWizard_UI_Error_CreatingSysMLModel, e);
+			Activator.log(IStatus.ERROR, Messages.SysMLModelWizard_UI_Error_CreatingSysMLModel, e);
 			return false;
 		} catch (InterruptedException e) {
-			Activator.log(IStatus.ERROR,
-					Messages.SysMLModelWizard_UI_Error_CreatingSysMLModel, e);
+			Activator.log(IStatus.ERROR, Messages.SysMLModelWizard_UI_Error_CreatingSysMLModel, e);
 			return false;
 		}
 		return true;
 	}
 
+	/**
+	 * Init Project.
+	 * 
+	 * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+	 */
 	class InitProject extends WorkspaceModifyOperation {
 
+		/**
+		 * Project name.
+		 */
 		private String projectName;
 
+		/**
+		 * Project location path.
+		 */
 		private IPath locationPath;
 
+		/**
+		 * Semantic root element initial name.
+		 */
 		private String initialObjectName;
 
-		public InitProject(String projectName, IPath locationPath,
-				String initialObjectName) {
+		/**
+		 * Constructor.
+		 * 
+		 * @param projectName
+		 *            Project name
+		 * @param locationPath
+		 *            Project location path
+		 * @param initialObjectName
+		 *            Semantic root element initial name
+		 */
+		public InitProject(String projectName, IPath locationPath, String initialObjectName) {
 			this.projectName = projectName;
 			this.locationPath = locationPath;
 			this.initialObjectName = initialObjectName;
 		}
 
+		/**
+		 * {@inheritDoc}
+		 */
 		@Override
-		protected void execute(IProgressMonitor monitor) throws CoreException,
-				InvocationTargetException, InterruptedException {
-			IProject project = ModelingProjectManager.INSTANCE
-					.createNewModelingProject(projectName, locationPath, true);
-			Option<IFile> optionalNewfile = createSemanticResource(project);
+		protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException,
+				InterruptedException {
+			final IProject project = ModelingProjectManager.INSTANCE.createNewModelingProject(projectName,
+					locationPath, true);
+			final Option<IFile> optionalNewfile = createSemanticResource(project);
 			if (optionalNewfile.some() && optionalNewfile.get().exists()) {
 				selectAndReveal(optionalNewfile.get());
 			} else {
@@ -130,10 +168,16 @@ public class SysMLProjectWizard extends BasicNewResourceWizard {
 			}
 		}
 
+		/**
+		 * Create the semantic resource.
+		 * 
+		 * @param project
+		 *            Project
+		 * @return Semantic resource
+		 */
 		private Option<IFile> createSemanticResource(final IProject project) {
 			final Session session;
-			Option<ModelingProject> modelingProject = ModelingProject
-					.asModelingProject(project);
+			final Option<ModelingProject> modelingProject = ModelingProject.asModelingProject(project);
 			if (modelingProject.some()) {
 				session = modelingProject.get().getSession();
 			} else {
@@ -143,78 +187,56 @@ public class SysMLProjectWizard extends BasicNewResourceWizard {
 				return Options.newNone();
 			}
 
-			final String platformPath = '/' + project.getName() + '/'
-					+ initialObjectName.toLowerCase() + DOT
+			final String platformPath = '/' + project.getName() + '/' + initialObjectName.toLowerCase() + DOT
 					+ MODEL_FILE_EXTENSION;
-			session.getTransactionalEditingDomain()
-					.getCommandStack()
-					.execute(
-							new RecordingCommand(session
-									.getTransactionalEditingDomain()) {
-								@Override
-								protected void doExecute() {
+			session.getTransactionalEditingDomain().getCommandStack()
+					.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+						@Override
+						protected void doExecute() {
+							final URI semanticModelURI = URI.createPlatformResourceURI(platformPath, true);
+							final Resource res = new ResourceSetImpl().createResource(semanticModelURI);
+							// Add the initial model object to the contents.
+							final EObject rootObject = createInitialModel(initialObjectName);
 
-									final URI semanticModelURI = URI
-											.createPlatformResourceURI(
-													platformPath, true);
-									Resource res = new ResourceSetImpl()
-											.createResource(semanticModelURI);
-									/*
-									 * Add the initial model object to the
-									 * contents.
-									 */
-									final EObject rootObject = createInitialModel(initialObjectName);
+							if (rootObject != null) {
+								res.getContents().add(rootObject);
+							}
+							try {
+								res.save(Maps.newHashMap());
+							} catch (IOException e) {
+								UMLDesignerPlugin.log(IStatus.ERROR,
+										Messages.SysMLModelWizard_UI_Error_CreatingSysMLModel, e);
+							}
 
-									if (rootObject != null) {
-										res.getContents().add(rootObject);
-									}
-									try {
-										res.save(Maps.newHashMap());
-									} catch (IOException e) {
-										UMLDesignerPlugin
-												.log(IStatus.ERROR,
-														Messages.SysMLModelWizard_UI_Error_CreatingSysMLModel,
-														e);
-									}
+							session.addSemanticResource(semanticModelURI, true);
+							final ViewpointSelectionCallback callback = new ViewpointSelectionCallback();
 
-									session.addSemanticResource(
-											semanticModelURI, true);
-									ViewpointSelectionCallback callback = new ViewpointSelectionCallback();
-
-									for (Viewpoint vp : ViewpointRegistry
-											.getInstance().getViewpoints()) {
-										if ("UML Structural Modeling".equals(vp
-												.getName())) {
-											callback.selectViewpoint(vp,
-													session);
-										} else if ("UML Behavioral Modeling"
-												.equals(vp.getName())) {
-											callback.selectViewpoint(vp,
-													session);
-										} else if ("SysML".equals(vp.getName())) {
-											callback.selectViewpoint(vp,
-													session);
-										}
-
-									}
-									session.save();
+							for (Viewpoint vp : ViewpointRegistry.getInstance().getViewpoints()) {
+								if ("UML Structural Modeling".equals(vp.getName())) {
+									callback.selectViewpoint(vp, session);
+								} else if ("UML Behavioral Modeling".equals(vp.getName())) {
+									callback.selectViewpoint(vp, session);
+								} else if ("SysML".equals(vp.getName())) {
+									callback.selectViewpoint(vp, session);
 								}
-							});
-			return Options.newSome(ResourcesPlugin.getWorkspace().getRoot()
-					.getFile(new Path(platformPath)));
+							}
+							session.save();
+						}
+					});
+			return Options.newSome(ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformPath)));
 		}
 
 		/**
 		 * Creates the semantic root element from the given operation arguments.
 		 * 
 		 * @param initialObjectName2
+		 *            Name of initial root element
 		 * @return the semantic root {@link EObject}
 		 */
 		private EObject createInitialModel(String initialObjectName2) {
-			EClassifier found = UMLPackage.eINSTANCE
-					.getEClassifier(initialObjectName2);
+			final EClassifier found = UMLPackage.eINSTANCE.getEClassifier(initialObjectName2);
 			if (found instanceof EClass) {
-				return UMLFactory.eINSTANCE.create((EClass) found);
+				return UMLFactory.eINSTANCE.create((EClass)found);
 			} else {
 				return UMLFactory.eINSTANCE.createModel();
 			}

@@ -29,19 +29,15 @@ import fr.obeo.dsl.viewpoint.business.api.componentization.ViewpointRegistry;
 import fr.obeo.dsl.viewpoint.description.Viewpoint;
 
 /**
- * The activator class controls the plug-in life cycle
+ * The activator class controls the plug-in life cycle.
  * 
- * @author Axel RICHARD <a
- *         href="mailto:axel.richard@obeo.fr">axel.richard@obeo.fr</a>
+ * @author Axel Richard <a href="mailto:axel.richard@obeo.fr">axel.richard@obeo.fr</a>
  */
 public class Activator extends AbstractUIPlugin {
-	// The plug-in ID
+	/**
+	 * The plug-in ID.
+	 */
 	public static final String PLUGIN_ID = "org.obeonetwork.dsl.sysml.design";
-
-	// The shared instance
-	private static Activator plugin;
-
-	private static Set<Viewpoint> viewpoints;
 
 	/**
 	 * SysML pathmap.
@@ -64,6 +60,16 @@ public class Activator extends AbstractUIPlugin {
 	protected static final String STANDARD_PROFILE_PATH = "Standard.profile.uml";
 
 	/**
+	 * The shared instance.
+	 */
+	private static Activator plugin;
+
+	/**
+	 * The viewpoints.
+	 */
+	private static Set<Viewpoint> viewpoints;
+
+	/**
 	 * SysML Profile URI.
 	 */
 	private static URI sysMLProfileURI;
@@ -84,27 +90,22 @@ public class Activator extends AbstractUIPlugin {
 	private static Profile standardProfile;
 
 	/**
-	 * The constructor
+	 * The constructor.
 	 */
 	public Activator() {
 		final URI sysMLProfilesURI = URI.createURI(SYSML_PROFILES_PATHMAP);
 		sysMLProfileURI = sysMLProfilesURI.appendSegment(SYSML_PROFILE_PATH);
 		loadSysMLProfile();
 
-		final URI standardProfilesURI = URI
-				.createURI(STANDARD_PROFILES_PATHMAP);
-		standardProfileURI = standardProfilesURI
-				.appendSegment(STANDARD_PROFILE_PATH);
+		final URI standardProfilesURI = URI.createURI(STANDARD_PROFILES_PATHMAP);
+		standardProfileURI = standardProfilesURI.appendSegment(STANDARD_PROFILE_PATH);
 		loadStandardProfile();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
-	 * )
+	/**
+	 * {@inheritDoc}
 	 */
+	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
@@ -113,13 +114,10 @@ public class Activator extends AbstractUIPlugin {
 				PLUGIN_ID + "/description/sysml.odesign"));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
-	 * )
+	/**
+	 * {@inheritDoc}
 	 */
+	@Override
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		if (viewpoints != null) {
@@ -133,7 +131,7 @@ public class Activator extends AbstractUIPlugin {
 	}
 
 	/**
-	 * Returns the shared instance
+	 * Returns the shared instance.
 	 * 
 	 * @return the shared instance
 	 */
@@ -157,41 +155,49 @@ public class Activator extends AbstractUIPlugin {
 		return standardProfile;
 	}
 
+	/**
+	 * Log message.
+	 * 
+	 * @param severity
+	 *            Severity
+	 * @param message
+	 *            Message
+	 * @param exception
+	 *            ESception
+	 */
 	public static void log(int severity, String message, Throwable exception) {
 		getDefault().getLog().log(new Status(severity, PLUGIN_ID, message, exception));
 	}
-	
+
 	/**
-	 * Loads the SysML profile. In case of errors, a message is logged in the
-	 * plugin logger and the eclipse error log
+	 * Loads the SysML profile. In case of errors, a message is logged in the plugin logger and the eclipse
+	 * error log
 	 */
 	protected static void loadSysMLProfile() {
 
 		final ResourceSet resourceSet = new ResourceSetImpl();
 
 		try {
-			final Resource resource = resourceSet.getResource(sysMLProfileURI,
-					true);
-			sysMLProfile = (Profile) EcoreUtil.getObjectByType(
-					resource.getContents(), UMLPackage.Literals.PACKAGE);
+			final Resource resource = resourceSet.getResource(sysMLProfileURI, true);
+			sysMLProfile = (Profile)EcoreUtil.getObjectByType(resource.getContents(),
+					UMLPackage.Literals.PACKAGE);
 		} catch (WrappedException we) {
 			Activator.log(Status.ERROR, "Can't get the SysML profile !", we);
 		}
 	}
 
 	/**
-	 * Loads the Standard profile. In case of errors, a message is logged in the
-	 * plugin logger and the eclipse error log
+	 * Loads the Standard profile. In case of errors, a message is logged in the plugin logger and the eclipse
+	 * error log
 	 */
 	protected static void loadStandardProfile() {
 
 		final ResourceSet resourceSet = new ResourceSetImpl();
 
 		try {
-			final Resource resource = resourceSet.getResource(
-					standardProfileURI, true);
-			standardProfile = (Profile) EcoreUtil.getObjectByType(
-					resource.getContents(), UMLPackage.Literals.PACKAGE);
+			final Resource resource = resourceSet.getResource(standardProfileURI, true);
+			standardProfile = (Profile)EcoreUtil.getObjectByType(resource.getContents(),
+					UMLPackage.Literals.PACKAGE);
 		} catch (WrappedException we) {
 			Activator.log(Status.ERROR, "Can't get the Standard profile !", we);
 		}
