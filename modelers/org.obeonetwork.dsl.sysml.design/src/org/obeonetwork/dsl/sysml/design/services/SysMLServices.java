@@ -37,8 +37,6 @@ import org.obeonetwork.dsl.sysml.design.Activator;
 import org.obeonetwork.dsl.uml2.design.services.EcoreServices;
 
 import fr.obeo.dsl.viewpoint.DSemanticDiagram;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 import fr.obeo.dsl.viewpoint.description.Layer;
 
 /**
@@ -54,20 +52,19 @@ public class SysMLServices {
 	private static final String SYSML_REQUIREMENT = "SysML::Requirements::Requirement";
 
 	/**
-	 * Checks if the given profile is already applied on the given _package. It checks both the local
-	 * appliance and the ancestors appliance.
+	 * Check if a profile is applied on a package based on its qualified name.
 	 * 
 	 * @param currentPackage
-	 *            : the local package.
-	 * @param profile
-	 *            : the profile applied.
-	 * @return true if the profile is actually applied, false otherwise.
+	 *            Package
+	 * @param profileQualifiedName
+	 *            Profile qualified name
+	 * @return True if profile is laready applied otherwised false
 	 */
-	private static Boolean isProfileApplied(Package currentPackage, Profile profile) {
+	private static Boolean isProfileApplied(Package currentPackage, String profileQualifiedName) {
 		final EList<Profile> allProfiles = currentPackage.getAllAppliedProfiles();
 		final Iterator<Profile> it = allProfiles.iterator();
 		while (it.hasNext()) {
-			if (it.next().getQualifiedName().equalsIgnoreCase(profile.getQualifiedName()))
+			if (it.next().getQualifiedName().equalsIgnoreCase(profileQualifiedName))
 				return true;
 		}
 		return false;
@@ -84,7 +81,10 @@ public class SysMLServices {
 	 *            : the profile qualified name you want to apply.
 	 */
 	private void applySysMLProfile(Package p, String profileQualifiedName) {
+		if (isProfileApplied(p, profileQualifiedName))
+			return;
 
+		// Apply Profile
 		Resource profileResource = null;
 
 		if (profileQualifiedName.startsWith("SysML")) {
@@ -94,9 +94,6 @@ public class SysMLServices {
 			profileResource = TransactionUtil.getEditingDomain(p).getResourceSet()
 					.getResource(Activator.getStandardProfileURI(), true);
 		}
-
-		final Session session = SessionManager.INSTANCE.getSession(p);
-		SessionManager.INSTANCE.addResource(session, profileResource);
 
 		Package profilePackage = null;
 
@@ -123,17 +120,9 @@ public class SysMLServices {
 			final String message = "Can't apply the profile " + profileQualifiedName + " on "
 					+ p.getQualifiedName();
 			Activator.log(Status.WARNING, message, null);
-		} else if (isProfileApplied(p, profile)) {
-			// final String message = "The profile "
-			// + profile.getQualifiedName()
-			// + " is already applied on " + p.getQualifiedName();
-			// final IStatus status = new Status(Status.INFO,
-			// Activator.PLUGIN_ID, message);
-			// Activator.getLogger().log(status);
 		} else {
 			p.applyProfile(profile);
 		}
-
 	}
 
 	/**
