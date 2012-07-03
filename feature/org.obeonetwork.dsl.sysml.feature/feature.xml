@@ -2,7 +2,7 @@
 <feature
       id="org.obeonetwork.dsl.sysml.feature"
       label="SysML Designer (based on Obeo Designer)"
-      version="1.0.0.qualifier"
+      version="1.0.1.qualifier"
       provider-name="Obeo">
 
    <description url="http://docs.obeonetwork.com/sysml">
@@ -228,9 +228,9 @@ litigation.
       <import plugin="org.eclipse.emf.transaction"/>
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.ui.ide"/>
-      <import plugin="org.obeonetwork.dsl.sysml.design" version="0.7.1" match="greaterOrEqual"/>
+      <import plugin="org.obeonetwork.dsl.sysml.design" version="1.0.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.help"/>
-      <import feature="org.obeonetwork.dsl.feature.uml2" version="1.0.0.201112051035"/>
+      <import feature="org.obeonetwork.dsl.feature.uml2" version="1.1.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.feature.designer.architect" version="6.0.0" match="greaterOrEqual"/>
       <import plugin="fr.obeo.mda.license"/>
    </requires>
