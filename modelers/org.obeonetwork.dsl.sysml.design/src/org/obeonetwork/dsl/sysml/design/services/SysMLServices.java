@@ -83,26 +83,14 @@ public class SysMLServices {
 	private void applySysMLProfile(Package p, String profileQualifiedName) {
 		if (isProfileApplied(p, profileQualifiedName))
 			return;
-
-		// Apply Profile
-		Resource profileResource = null;
-
+		Profile parentProfile = null;
 		if (profileQualifiedName.startsWith("SysML")) {
-			profileResource = TransactionUtil.getEditingDomain(p).getResourceSet()
-					.getResource(Activator.getSysMLProfileURI(), true);
+		parentProfile = Activator.getSysMLProfile();
 		} else if (profileQualifiedName.startsWith("Standard")) {
-			profileResource = TransactionUtil.getEditingDomain(p).getResourceSet()
-					.getResource(Activator.getStandardProfileURI(), true);
+			parentProfile = Activator.getStandardProfile();
 		}
 
-		Package profilePackage = null;
-
-		if (profileResource != null && profileResource.getContents().size() > 0) {
-			final EObject libRoot = profileResource.getContents().get(0);
-			if (libRoot instanceof Package && libRoot.eContainer() == null) {
-				profilePackage = (Package)libRoot;
-			}
-		}
+		Package profilePackage = parentProfile;
 
 		final String[] profiles = profileQualifiedName.split(":{2}");
 		// search the profile in the package hierarchy
