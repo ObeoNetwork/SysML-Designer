@@ -13,13 +13,13 @@
   <parent>
     <groupId>org.obeonetwork.dsl.sysml</groupId>
     <artifactId>sysml-parent</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.3-SNAPSHOT</version>
     <relativePath>../..</relativePath>
   </parent>
 
   <artifactId>org.obeonetwork.dsl.sysml.doc</artifactId>
   <packaging>eclipse-plugin</packaging>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.0.3-SNAPSHOT</version>
 
 
  <build>       
