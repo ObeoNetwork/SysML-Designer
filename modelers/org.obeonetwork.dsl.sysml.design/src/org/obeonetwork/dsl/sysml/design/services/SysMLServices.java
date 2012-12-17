@@ -12,21 +12,25 @@ package org.obeonetwork.dsl.sysml.design.services;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.papyrus.sysml.blocks.Block;
 import org.eclipse.papyrus.sysml.blocks.Dimension;
 import org.eclipse.papyrus.sysml.blocks.Unit;
 import org.eclipse.papyrus.sysml.constraints.ConstraintBlock;
 import org.eclipse.papyrus.sysml.constraints.ConstraintProperty;
 import org.eclipse.uml2.uml.Abstraction;
+import org.eclipse.uml2.uml.Actor;
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InstanceSpecification;
+import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Profile;
@@ -36,7 +40,13 @@ import org.eclipse.uml2.uml.Type;
 import org.obeonetwork.dsl.sysml.design.Activator;
 import org.obeonetwork.dsl.uml2.design.services.EcoreServices;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+
 import fr.obeo.dsl.viewpoint.DSemanticDiagram;
+import fr.obeo.dsl.viewpoint.business.api.session.Session;
+import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 import fr.obeo.dsl.viewpoint.description.Layer;
 
 /**
@@ -85,7 +95,7 @@ public class SysMLServices {
 			return;
 		Profile parentProfile = null;
 		if (profileQualifiedName.startsWith("SysML")) {
-		parentProfile = Activator.getSysMLProfile();
+			parentProfile = Activator.getSysMLProfile();
 		} else if (profileQualifiedName.startsWith("Standard")) {
 			parentProfile = Activator.getStandardProfile();
 		}
@@ -371,5 +381,59 @@ public class SysMLServices {
 			}
 		}
 		EcoreUtil.delete(e);
+	}
+
+	/**
+	 * Get all the valid elements for a block definition diagram.
+	 * 
+	 * @param cur
+	 *            Current semantic element
+	 * @return List of elements visible on a block defintion diagram
+	 */
+	public List<EObject> getValidsForBlockDefinitionDiagram(EObject cur) {
+		Predicate<EObject> validForDiagram = new Predicate<EObject>() {
+
+			public boolean apply(EObject input) {
+
+				return "Model".equals(input.eClass().getName())
+						|| "Package".equals(input.eClass().getName())
+						|| input instanceof Interface
+						|| (input instanceof InstanceSpecification
+								&& hasStereotype((InstanceSpecification)input, "Unit")
+								|| (input instanceof InstanceSpecification && hasStereotype(
+										(InstanceSpecification)input, "Dimension"))
+								|| input instanceof DataType || input instanceof Actor || (input instanceof Class && hasStereotype(
+								(Class)input, "Block")));
+			}
+		};
+		return allValidSessionElements(cur, validForDiagram);
+	}
+
+	/**
+	 * Check if an UML element has a stereotype defined as parameter.
+	 * 
+	 * @param element
+	 *            UML element
+	 * @param stereotype
+	 *            Stereotype name to check
+	 * @return True if the UML element has the given stereotype
+	 */
+	private boolean hasStereotype(Element element, String stereotypeName) {
+		for (EObject stereotype : element.getStereotypeApplications()) {
+			if (stereotypeName.equals(stereotype.eClass().getName()))
+				return true;
+		}
+		return false;
+	}
+
+	private List<EObject> allValidSessionElements(EObject cur, Predicate<EObject> validForDiagram) {
+		Session found = SessionManager.INSTANCE.getSession(cur);
+		List<EObject> result = Lists.newArrayList();
+		if (found != null) {
+			for (Resource res : found.getSemanticResources()) {
+				Iterators.addAll(result, Iterators.filter(res.getAllContents(), validForDiagram));
+			}
+		}
+		return result;
 	}
 }
