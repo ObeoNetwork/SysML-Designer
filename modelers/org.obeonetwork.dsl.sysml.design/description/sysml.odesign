@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:description_1="http://www.obeo.fr/dsl/viewpoint/table/description/1.1.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" xmlns:tool="http://www.obeo.fr/dsl/viewpoint/description/tool/1.1.0" name="SysML modelers">
   <ownedViewpoints name="SysML" modelFileExtension="uml">
-    <ownedRepresentations xsi:type="description:DiagramDescription" name="Block Definition Diagram" titleExpression="['bdd ' + if self.oclIsKindOf(uml::Package) then ' [package] ' else ' [block]  ' endif + self.name + ' [' + self.name + ' diagram]'/]" domainClass="uml.NamedElement" preconditionExpression="[self.oclIsKindOf(uml::Package) or self->filter(uml::Class).getStereotypeApplications()->filter(sysml::blocks::Block)->size() > 0/]" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='BDD_Drop']" name="Block Definition Diagram" titleExpression="['bdd ' + if self.oclIsKindOf(uml::Package) then ' [package] ' else ' [block]  ' endif + self.name + ' [' + self.name + ' diagram]'/]" domainClass="uml.NamedElement" preconditionExpression="[self.oclIsKindOf(uml::Package) or self->filter(uml::Class).getStereotypeApplications()->filter(sysml::blocks::Block)->size() > 0/]" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#/"/>
       <defaultLayer name="BDDLayer">
@@ -394,6 +394,78 @@
                           </subModelOperations>
                           <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Unit)->size() > 0/]">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;BDD_NestedPackage&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </cases>
+                    <default/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="BDD_Drop" precondition="&lt;%filter(&quot;Package&quot;)+filter(&quot;Class&quot;)[eClass.name==&quot;Class&quot;]+filter(&quot;Interface&quot;)+filter(&quot;DataType&quot;)+filter(&quot;Actor&quot;)+filter(&quot;InstanceSpecification&quot;)%>" forceRefresh="true" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_NestedPackage'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element/]">
+                <subModelOperations xsi:type="tool:For" expression="&lt;%$element%>" iteratorName="selection">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="[selection->filter(Class)->size()>0/]">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block']" containerViewExpression="[newContainerView/]"/>
+                    </cases>
+                    <cases conditionExpression="[selection->filter(Interface)->size()>0/]">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface']" containerViewExpression="[newContainerView/]"/>
+                    </cases>
+                    <cases conditionExpression="[selection->filter(Enumeration)->size()>0/]">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration']" containerViewExpression="[newContainerView/]"/>
+                    </cases>
+                    <cases conditionExpression="[selection->filter(Actor)->size()>0/]">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor']" containerViewExpression="[newContainerView/]"/>
+                    </cases>
+                    <cases conditionExpression="[selection->filter(PrimitiveType)->size()>0/]">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType']" containerViewExpression="[newContainerView/]"/>
+                    </cases>
+                    <cases conditionExpression="[selection->filter(DataType)->size()>0/]">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType']" containerViewExpression="[newContainerView/]"/>
+                    </cases>
+                    <cases conditionExpression="[selection->filter(InstanceSpecification)->size()>0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Dimension)->size() > 0/]">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension']" containerViewExpression="[newContainerView/]"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Unit)->size() > 0/]">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" containerViewExpression="[newContainerView/]"/>
+                      </subModelOperations>
+                    </cases>
+                    <cases conditionExpression="[selection->filter(Package)->size()>0/]">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_NestedPackage']" containerViewExpression="[newContainerView/]"/>
+                      <subModelOperations xsi:type="tool:For" expression="[element.eContents()/]" iteratorName="packagedElement">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[packagedElement->filter(Enumeration)->size()>0/]">
+                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;BDD_NestedPackage&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[packagedElement->filter(Class)->size()>0/]">
+                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;BDD_NestedPackage&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[packagedElement->filter(Interface)->size()>0/]">
+                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;BDD_NestedPackage&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[packagedElement->filter(Actor)->size()>0/]">
+                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;BDD_NestedPackage&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[packagedElement->filter(PrimitiveType)->size()>0/]">
+                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;BDD_NestedPackage&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[packagedElement->filter(DataType)->size()>0/]">
+                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;BDD_NestedPackage&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[packagedElement->filter(InstanceSpecification)->size()>0/]">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Dimension)->size() > 0/]">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;BDD_NestedPackage&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Unit)->size() > 0/]">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;BDD_NestedPackage&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
                           </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
