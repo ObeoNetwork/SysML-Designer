@@ -476,6 +476,44 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:OperationAction" name="BDD_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target/]">
+                <subModelOperations xsi:type="tool:For" expression="[getRelated()/]">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="[i->filter(Class)->size()>0/]">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block']" containerViewExpression="[diagram/]"/>
+                    </cases>
+                    <cases conditionExpression="[i->filter(Interface)->size()>0/]">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface']" containerViewExpression="[diagram/]"/>
+                    </cases>
+                    <cases conditionExpression="[i->filter(Enumeration)->size()>0/]">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration']" containerViewExpression="[diagram/]"/>
+                    </cases>
+                    <cases conditionExpression="[i->filter(Actor)->size()>0/]">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor']" containerViewExpression="[diagram/]"/>
+                    </cases>
+                    <cases conditionExpression="[i->filter(PrimitiveType)->size()>0/]">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType']" containerViewExpression="[diagram/]"/>
+                    </cases>
+                    <cases conditionExpression="[i->filter(DataType)->size()>0/]">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType']" containerViewExpression="[diagram/]"/>
+                    </cases>
+                    <cases conditionExpression="[i->filter(InstanceSpecification)->size()>0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Dimension)->size() > 0/]">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension']" containerViewExpression="[diagram/]"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Unit)->size() > 0/]">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" containerViewExpression="[diagram/]"/>
+                      </subModelOperations>
+                    </cases>
+                    <default/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CD_RemoveExistingElements']"/>
         </toolSections>
         <toolSections name="Types" label="Types">
