@@ -398,12 +398,13 @@ public class SysMLServices {
 				return "Model".equals(input.eClass().getName())
 						|| "Package".equals(input.eClass().getName())
 						|| input instanceof Interface
-						|| (input instanceof InstanceSpecification
-								&& hasStereotype((InstanceSpecification)input, "Unit")
-								|| (input instanceof InstanceSpecification && hasStereotype(
-										(InstanceSpecification)input, "Dimension"))
-								|| input instanceof DataType || input instanceof Actor || (input instanceof Class && hasStereotype(
-								(Class)input, "Block")));
+						|| (input instanceof InstanceSpecification && hasStereotype(
+								(InstanceSpecification)input, "Unit"))
+						|| (input instanceof InstanceSpecification && hasStereotype(
+								(InstanceSpecification)input, "Dimension")) || input instanceof DataType
+						|| input instanceof Actor
+						|| (input instanceof Class && hasStereotype((Class)input, "Block"))
+						|| (input instanceof Class && hasStereotype((Class)input, "ConstraintBlock"));
 			}
 		};
 		return allValidSessionElements(cur, validForDiagram);
