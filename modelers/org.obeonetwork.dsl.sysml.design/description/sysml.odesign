@@ -756,7 +756,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <reusedTools xsi:type="tool:NodeCreationDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Literal']"/>
+          <reusedTools xsi:type="tool:NodeCreationDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Literal']"/>
         </toolSections>
         <toolSections name="Relationships" label="Relationships">
           <ownedTools xsi:type="tool:ToolGroup" name="Associations">
