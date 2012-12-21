@@ -33,6 +33,7 @@ import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
@@ -388,7 +389,7 @@ public class SysMLServices {
 	 * 
 	 * @param cur
 	 *            Current semantic element
-	 * @return List of elements visible on a block defintion diagram
+	 * @return List of elements visible on a block definition diagram
 	 */
 	public List<EObject> getValidsForBlockDefinitionDiagram(EObject cur) {
 		Predicate<EObject> validForDiagram = new Predicate<EObject>() {
@@ -411,6 +412,23 @@ public class SysMLServices {
 	}
 
 	/**
+	 * Get all the valid elements for an internal block diagram.
+	 * 
+	 * @param cur
+	 *            Current semantic element
+	 * @return List of elements visible on an internal block diagram
+	 */
+	public List<EObject> getValidsForInternalBlockDiagram(Class cur) {
+		Predicate<EObject> validForDiagram = new Predicate<EObject>() {
+
+			public boolean apply(EObject input) {
+				return !(input instanceof Port) && (input instanceof Property);
+			}
+		};
+		return allValidAttributes(cur, validForDiagram);
+	}
+
+	/**
 	 * Check if an UML element has a stereotype defined as parameter.
 	 * 
 	 * @param element
@@ -427,6 +445,15 @@ public class SysMLServices {
 		return false;
 	}
 
+	/**
+	 * Get all valid elements in session.
+	 * 
+	 * @param cur
+	 *            Current element
+	 * @param validForDiagram
+	 *            Predicate
+	 * @return List of valid elements
+	 */
 	private List<EObject> allValidSessionElements(EObject cur, Predicate<EObject> validForDiagram) {
 		Session found = SessionManager.INSTANCE.getSession(cur);
 		List<EObject> result = Lists.newArrayList();
@@ -435,6 +462,21 @@ public class SysMLServices {
 				Iterators.addAll(result, Iterators.filter(res.getAllContents(), validForDiagram));
 			}
 		}
+		return result;
+	}
+
+	/**
+	 * Get all valid attributes of a class.
+	 * 
+	 * @param cur
+	 *            Current element
+	 * @param validForDiagram
+	 *            Predicate
+	 * @return List of valid elements
+	 */
+	private List<EObject> allValidAttributes(Class cur, Predicate<EObject> validForDiagram) {
+		List<EObject> result = Lists.newArrayList();
+		Iterators.addAll(result, Iterators.filter(cur.getAttributes().iterator(), validForDiagram));
 		return result;
 	}
 }
