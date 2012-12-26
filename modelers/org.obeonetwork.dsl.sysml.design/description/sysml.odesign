@@ -2284,6 +2284,26 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:OperationAction" name="PAR_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target/]">
+                <subModelOperations xsi:type="tool:For" expression="[getRelated()/]">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="&lt;%$i.filter(&quot;Property&quot;)%>">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.eContainer.~target.filter(&quot;DNodeContainer&quot;)[(actualMapping.name==&quot;PAR_Block&quot;||actualMapping.name==&quot;PAR_Block_Import&quot;) &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram].length>0%>">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::constraints::ConstraintProperty)->size() > 0/]">
+                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']" containerViewExpression="&lt;%$i.eContainer.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;PAR_Block_Import&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::constraints::ConstraintProperty)->size() = 0/]"/>
+                      </subModelOperations>
+                    </cases>
+                    <default/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
         <toolSections name="PAR Create Objects" label="Features">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="PAR Create Constraint" label="New Constraint" containerMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']">
