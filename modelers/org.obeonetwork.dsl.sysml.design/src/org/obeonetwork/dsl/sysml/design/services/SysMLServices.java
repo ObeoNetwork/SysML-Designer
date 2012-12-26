@@ -24,6 +24,8 @@ import org.eclipse.papyrus.sysml.blocks.Dimension;
 import org.eclipse.papyrus.sysml.blocks.Unit;
 import org.eclipse.papyrus.sysml.constraints.ConstraintBlock;
 import org.eclipse.papyrus.sysml.constraints.ConstraintProperty;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Abstraction;
 import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.Class;
@@ -45,10 +47,15 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
+import fr.obeo.dsl.viewpoint.DDiagram;
+import fr.obeo.dsl.viewpoint.DRepresentation;
 import fr.obeo.dsl.viewpoint.DSemanticDiagram;
 import fr.obeo.dsl.viewpoint.business.api.session.Session;
 import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 import fr.obeo.dsl.viewpoint.description.Layer;
+import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectEditor;
+import fr.obeo.dsl.viewpoint.ui.business.api.session.IEditingSession;
+import fr.obeo.dsl.viewpoint.ui.business.api.session.SessionUIManager;
 
 /**
  * Utility services for SysML.
@@ -423,6 +430,66 @@ public class SysMLServices {
 
 			public boolean apply(EObject input) {
 				return !(input instanceof Port) && (input instanceof Property);
+			}
+		};
+		return allValidAttributes(cur, validForDiagram);
+	}
+
+	/**
+	 * Get all the valid elements for an internal block diagram.
+	 * 
+	 * @param cur
+	 *            Current semantic element
+	 * @return List of elements visible on an internal block diagram
+	 */
+	public List<EObject> getValidsForParametricBlockDiagram(Class cur) {
+		final boolean isValueBindingLayerActive = isValueBindingLayerActive(cur);
+		Predicate<EObject> validForDiagram = new Predicate<EObject>() {
+
+			public boolean apply(EObject input) {
+				if (!isValueBindingLayerActive) {
+					return !(input instanceof Port) && (input instanceof Property)
+							&& hasStereotype((Element)input, "ConstraintProperty");
+				} else {
+					return !(input instanceof Port) && (input instanceof Property);
+				}
+			}
+		};
+		return allValidAttributes(cur, validForDiagram);
+	}
+
+	private boolean isValueBindingLayerActive(EObject cur) {
+		IEditorPart editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+				.getActiveEditor();
+
+		if (editor instanceof DialectEditor) {
+			DialectEditor dialectEditor = (DialectEditor)editor;
+			DRepresentation representation = dialectEditor.getRepresentation();
+			if (representation instanceof DDiagram) {
+				DDiagram diagram = (DDiagram)representation;
+				List<Layer> layers = diagram.getActivatedLayers();
+				for (Layer layer : layers) {
+					if ("PAR ValueBinding Layer".equals(layer.getName()))
+						return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Get all the valid elements for an internal block diagram.
+	 * 
+	 * @param cur
+	 *            Current semantic element
+	 * @return List of elements visible on an internal block diagram
+	 */
+	public List<EObject> getValidsForParametricBlockDiagramValueBindingFilter(Class cur) {
+		Predicate<EObject> validForDiagram = new Predicate<EObject>() {
+
+			public boolean apply(EObject input) {
+				return !(input instanceof Port) && (input instanceof Property)
+						&& !hasStereotype((Element)input, "ConstraintProperty");
 			}
 		};
 		return allValidAttributes(cur, validForDiagram);
