@@ -2204,7 +2204,7 @@
         </containerMappings>
       </optionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" name="Parametric Diagram" titleExpression="['par [block] ' + self.name + ' [' + self.name + ' diagram]'/]" domainClass="uml.Class" preconditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Block)->size() > 0/]">
+    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='PAR_Drop']" name="Parametric Diagram" titleExpression="['par [block] ' + self.name + ' [' + self.name + ' diagram]'/]" domainClass="uml.Class" preconditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Block)->size() > 0/]">
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#/"/>
       <metamodel href="http://www.eclipse.org/uml2/3.0.0/UML#/"/>
       <defaultLayer name="PAR Parametric Layer" label="Parametric Layer">
@@ -2253,6 +2253,29 @@
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::constraints::ConstraintProperty)->size() = 0/]">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@optionalLayers[name='PAR%20ValueBinding%20Layer']/@containerMappings[name='PAR_Block_Import']/@subContainerMappings[name='PAR_ValueBinding']" containerViewExpression="&lt;%$selection.eContainer().~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;PAR_Block_Import&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
+                      </subModelOperations>
+                    </cases>
+                    <default/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="PAR_Drop" precondition="&lt;%filter(&quot;Class&quot;)+filter(&quot;Property&quot;)%>" forceRefresh="true" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@optionalLayers[name='PAR%20ValueBinding%20Layer']/@containerMappings[name='PAR_Block_Import']/@subContainerMappings[name='PAR_ValueBinding']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element/]">
+                <subModelOperations xsi:type="tool:For" expression="[element/]" iteratorName="selection">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="[selection->filter(Property)->size()>0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::constraints::ConstraintProperty)->size() > 0/]">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']" containerViewExpression="&lt;%$selection.eContainer().~target.filter(&quot;DNodeContainer&quot;)[(actualMapping.name==&quot;PAR_Block&quot; || actualMapping.name==&quot;PAR_Block_Import&quot;)&amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::constraints::ConstraintProperty)->size() = 0/]">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@optionalLayers[name='PAR%20ValueBinding%20Layer']/@containerMappings[name='PAR_Block_Import']/@subContainerMappings[name='PAR_ValueBinding']" containerViewExpression="&lt;%$selection.eContainer().~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;PAR_Block_Import&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
                       </subModelOperations>
                     </cases>
                     <default/>
