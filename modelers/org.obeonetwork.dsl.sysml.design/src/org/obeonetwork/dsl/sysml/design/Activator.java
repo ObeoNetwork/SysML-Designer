@@ -57,7 +57,7 @@ public class Activator extends AbstractUIPlugin {
 	/**
 	 * Path to Standard profile model.
 	 */
-	protected static final String STANDARD_PROFILE_PATH = "Standard.profile.uml";
+	protected static final String STANDARD_PROFILE_PATH = "StandardL2.profile.uml";
 
 	/**
 	 * The shared instance.
