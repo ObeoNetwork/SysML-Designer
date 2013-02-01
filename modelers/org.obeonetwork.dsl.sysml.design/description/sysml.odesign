@@ -29,12 +29,16 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="BDD_Actor" navigationDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='Safety']/@toolSections.0/@ownedTools[name='Cause%20analysis'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='Safety']/@toolSections.0/@ownedTools[name='Accident%20case%20analysis']" semanticCandidatesExpression="[filter(uml::Association).getTarget().type/]" createElements="false" documentation="Mapping to create actors" domainClass="uml.Actor">
+        <nodeMappings name="BDD_Actor" navigationDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='Safety']/@toolSections.0/@ownedTools[name='Cause%20analysis'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='Safety']/@toolSections.0/@ownedTools[name='Accident%20case%20analysis']" semanticCandidatesExpression="[self->filter(uml::Association).getTarget().type/]" createElements="false" documentation="Mapping to create actors" domainClass="uml.Actor">
           <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
-          <style xsi:type="style:WorkspaceImageDescription" labelSize="10" showIcon="false" labelExpression="[name/]" resizeKind="NSEW" workspacePath="/org.obeonetwork.dsl.uml2.design/images/actor.svg"/>
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="10" showIcon="false" labelExpression="[name/]" resizeKind="NSEW" workspacePath="/org.obeonetwork.dsl.uml2.design/images/actor.svg">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
           <conditionnalStyles predicateExpression="[self.eContainer() &lt;> container/]">
             <style xsi:type="style:WorkspaceImageDescription" labelSize="10" showIcon="false" labelExpression="[name/]" resizeKind="NSEW" workspacePath="/org.obeonetwork.dsl.uml2.design/images/actor.svg">
               <borderColor xsi:type="description:UserFixedColor" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@userColorsPalettes[name='UMLPalette']/@entries[name='very%20light%20gray']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
         </nodeMappings>
@@ -1651,8 +1655,8 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Requirement Cross Table" titleExpression="['req [package] ' + self.name + ' [NewCrossTable]'/]" domainClass="uml.Package">
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#/"/>
-      <metamodel href="http://www.eclipse.org/uml2/schemas/Standard/1#/"/>
-      <metamodel href="http://www.eclipse.org/uml2/3.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
       <ownedLineMappings name="RCT_Requirements" semanticElements="[self->union(self.getStereotypeApplications()->filter(sysml::requirements::Requirement))/]" domainClass="uml.Class" semanticCandidatesExpression="[packagedElement->select(not(getStereotypeApplications()->filter(sysml::requirements::Requirement)->isEmpty()))/]" headerLabelExpression="['&lt;&lt;Requirement>> ' + getStereotypeApplications()->filter(sysml::requirements::Requirement).id + ' : ' + name/]">
         <ownedSubLines name="RCT_SubRequirements" semanticElements="[self->union(self.getStereotypeApplications()->filter(sysml::requirements::Requirement))/]" domainClass="uml.Class" semanticCandidatesExpression="[nestedClassifier->select(not(getStereotypeApplications()->filter(sysml::requirements::Requirement)->isEmpty()))/]" headerLabelExpression="['&lt;&lt;Requirement>> ' + getStereotypeApplications()->filter(sysml::requirements::Requirement).id + ' : ' + name/]">
           <delete name="RCT Delete Sub Requirement" precondition="[false/]">
@@ -2206,7 +2210,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='PAR_Drop']" name="Parametric Diagram" titleExpression="['par [block] ' + self.name + ' [' + self.name + ' diagram]'/]" domainClass="uml.Class" preconditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Block)->size() > 0/]">
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#/"/>
-      <metamodel href="http://www.eclipse.org/uml2/3.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
       <defaultLayer name="PAR Parametric Layer" label="Parametric Layer">
         <edgeMappings name="PAR_ParameterConnector" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='PAR%20Delete%20Edges']/@ownedTools[name='Delete%20Parameter%20Connector']" semanticCandidatesExpression="[ownedConnector/]" semanticElements="[self/]" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']/@borderedNodeMappings[name='PAR_Parameter']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']/@borderedNodeMappings[name='PAR_Parameter']" targetFinderExpression="[end->asSequence()->last().role/]" sourceFinderExpression="[end->asSequence()->first().role/]" domainClass="uml.Connector" useDomainElement="true">
           <style targetArrow="NoDecoration" sizeComputationExpression="2" routingStyle="manhattan">
