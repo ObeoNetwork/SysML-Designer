@@ -20,7 +20,7 @@ Contributors:
   <extension
         point="org.eclipse.ui.newWizards">
      <wizard
-           category="fr.obeo.dsl.viewpoint.category/fr.obeo.dsl.viewpoint.modelers.category"
+           category="org.obeonetwork.dsl.uml2.design.category"
            class="org.obeonetwork.dsl.sysml.design.ui.wizards.newmodel.SysMLProjectWizard"
            finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
            icon="icons/NewUmlModel.gif"
