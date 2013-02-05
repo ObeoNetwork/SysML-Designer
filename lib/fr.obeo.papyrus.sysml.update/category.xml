@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/fr.obeo.papyrus.sysml.feature_0.9.1.qualifier.jar" id="fr.obeo.papyrus.sysml.feature" version="0.9.1.qualifier"/>
+</site>
+
