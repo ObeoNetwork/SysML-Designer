@@ -82,7 +82,8 @@ public class SysMLServices {
 		final EList<Profile> allProfiles = currentPackage.getAllAppliedProfiles();
 		final Iterator<Profile> it = allProfiles.iterator();
 		while (it.hasNext()) {
-			if (it.next().getQualifiedName().equalsIgnoreCase(profileQualifiedName))
+			Profile cur = it.next();
+			if (profileQualifiedName.equalsIgnoreCase(cur.getQualifiedName()))
 				return true;
 		}
 		return false;
