@@ -51,7 +51,7 @@
           </style>
           <reconnections href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']"/>
         </edgeMappings>
-        <edgeMappings name="BDD_Association" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Edges']/@ownedTools[name='Delete%20Association']" semanticCandidatesExpression="[eAllContents()/]" semanticElements="[self.getSemanticElements()/]" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType']" targetFinderExpression="[getTarget().type/]" sourceFinderExpression="[getSource().type/]" targetExpression="[self/]" domainClass="uml.Association" useDomainElement="true">
+        <edgeMappings name="BDD_Association" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Edges']/@ownedTools[name='Delete%20Association']" semanticElements="[self.getSemanticElements()/]" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType']" targetFinderExpression="[getTarget().type/]" sourceFinderExpression="[getSource().type/]" targetExpression="[self/]" domainClass="uml.Association" useDomainElement="true">
           <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
           <style targetArrow="NoDecoration" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -76,7 +76,7 @@
           </style>
           <reconnections href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']"/>
         </edgeMappings>
-        <edgeMappings name="BDD_Dependency" preconditionExpression="[not(self.oclIsKindOf(uml::InterfaceRealization))/]" semanticElements="[self/]" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType']" targetFinderExpression="[supplier/]" sourceFinderExpression="[client/]" targetExpression="[self/]" domainClass="uml.Dependency" useDomainElement="true">
+        <edgeMappings name="BDD_Dependency" preconditionExpression="[not(self.oclIsKindOf(uml::InterfaceRealization))/]" semanticElements="[self/]" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='BDD%20Parametric%20Layer']/@containerMappings[name='BDD_ConstraintBlock'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_NestedPackage'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='BDD%20Parametric%20Layer']/@containerMappings[name='BDD_ConstraintBlock'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_NestedPackage'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" targetFinderExpression="[supplier/]" sourceFinderExpression="[client/]" targetExpression="[self/]" domainClass="uml.Dependency" useDomainElement="true">
           <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
           <style lineStyle="dash" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -1001,30 +1001,10 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source/]">
-                  <subModelOperations xsi:type="tool:Switch">
-                    <cases conditionExpression="[source = sourceView.eContainer(viewpoint::DDiagram).oclAsType(viewpoint::DSemanticDecorator).target/]">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsKindOf(uml::Class)/]">
-                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Dependency" referenceName="nestedClassifier">
-                          <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="[source/]"/>
-                          <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="[$target/]"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </cases>
-                    <default>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsKindOf(uml::Package)/]">
-                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Dependency" referenceName="packagedElement">
-                          <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="[source/]"/>
-                          <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="[target/]"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsKindOf(uml::Class)/]">
-                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Dependency" referenceName="nestedClassifier">
-                          <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="[source/]"/>
-                          <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="[target/]"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </default>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source.eContainer(Package)/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Dependency" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="[target/]"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -1035,30 +1015,10 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source/]">
-                  <subModelOperations xsi:type="tool:Switch">
-                    <cases conditionExpression="[source = sourceView.eContainer(viewpoint::DDiagram).oclAsType(viewpoint::DSemanticDecorator).target/]">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsKindOf(uml::Class)/]">
-                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Usage" referenceName="nestedClassifier">
-                          <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="[target/]"/>
-                          <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="[source/]"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </cases>
-                    <default>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsKindOf(uml::Package)/]">
-                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Usage" referenceName="packagedElement">
-                          <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="[target/]"/>
-                          <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="[source/]"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsKindOf(uml::Class)/]">
-                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Usage" referenceName="nestedClassifier">
-                          <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="[target/]"/>
-                          <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="[source/]"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </default>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source.eContainer(Package)/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Usage" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="[target/]"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
