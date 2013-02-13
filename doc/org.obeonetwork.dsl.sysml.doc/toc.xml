@@ -2,43 +2,43 @@
 <?NLS TYPE="org.eclipse.help.toc"?>
 
 <toc label="SysML Designer" topic="doc/textile/Overview.html">
-  <topic href="doc/textile/gettingstarted/Gettingstarted.html" label="*Getting started*">
+  <topic href="doc/textile/gettingstarted/Gettingstarted.html" label="Getting started">
 		<topic href="doc/textile/gettingstarted/Gettingstarted.html#StartingfromtheAlarmRadioexample" label="Starting from the AlarmRadio example"></topic>
 		<topic href="doc/textile/gettingstarted/Gettingstarted.html#CreateanewSysMLproject" label="Create a new SysML project"></topic>
 		<topic href="doc/textile/gettingstarted/Gettingstarted.html#DisplayeditanexistingSysMLandUMLmodel" label="Display &amp; edit an existing SysML(and UML) model"></topic>
-		<topic href="doc/textile/gettingstarted/Gettingstarted.html#Newrepresentation" label="*New representation*"></topic>
-		<topic href="doc/textile/gettingstarted/Gettingstarted.html#BlockDefinitionDiagramBDDrepresentation" label="*Block Definition Diagram (BDD) representation*">
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#CreateaBlock" label="*Create a Block*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#EditaBlock" label="*Edit a Block*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#DeleteaBlock" label="*Delete a Block*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#Otherelements" label="*Other elements*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#CreateNavigatetoanInternalBlockDiagramoraParametricDiagram" label="*Create/Navigate to an Internal Block Diagram or a Parametric Diagram*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#RequirementsLayer" label="*Requirements Layer*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#ConstraintsLayer" label="*Constraints Layer*"></topic>
+		<topic href="doc/textile/gettingstarted/Gettingstarted.html#Newrepresentation" label="New representation"></topic>
+		<topic href="doc/textile/gettingstarted/Gettingstarted.html#BlockDefinitionDiagramBDDrepresentation" label="Block Definition Diagram (BDD) representation">
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#CreateaBlock" label="Create a Block"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#EditaBlock" label="Edit a Block"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#DeleteaBlock" label="Delete a Block"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#Otherelements" label="Other elements"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#CreateNavigatetoanInternalBlockDiagramoraParametricDiagram" label="Create/Navigate to an Internal Block Diagram or a Parametric Diagram"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#RequirementsLayer" label="Requirements Layer"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#ConstraintsLayer" label="Constraints Layer"></topic>
 		</topic>
-		<topic href="doc/textile/gettingstarted/Gettingstarted.html#InternalBlockDiagramIBDrepresentation" label="*Internal Block Diagram (IBD) representation*">
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#CreateaPart" label="*Create a Part*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#EditaPart" label="*Edit a Part*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#DeleteaPart" label="*Delete a Part*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#Otherelements2" label="*Other elements*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#CreateNavigatetotheBlockDefinitionDiagram" label="*Create/Navigate to the Block Definition Diagram*"></topic>
+		<topic href="doc/textile/gettingstarted/Gettingstarted.html#InternalBlockDiagramIBDrepresentation" label="Internal Block Diagram (IBD) representation">
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#CreateaPart" label="Create a Part"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#EditaPart" label="Edit a Part"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#DeleteaPart" label="Delete a Part"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#Otherelements2" label="Other elements"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#CreateNavigatetotheBlockDefinitionDiagram" label="Create/Navigate to the Block Definition Diagram"></topic>
 		</topic>
-		<topic href="doc/textile/gettingstarted/Gettingstarted.html#ParametricDiagramPARrepresentation" label="*Parametric Diagram (PAR) representation*">
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#CreateaConstraint" label="*Create a Constraint*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#AddanexistingConstraint" label="*Add an existing Constraint*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#CreateaParameter" label="*Create a Parameter*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#EditaConstraintoraParameter" label="*Edit a Constraint or a Parameter*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#DeleteaConstraintoraParameter" label="*Delete a Constraint or a Parameter*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#NavigatetotheInternalBlockDiagram" label="*Navigate to the Internal Block Diagram*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#ValueBindingLayer" label="*Value Binding Layer*"></topic>
+		<topic href="doc/textile/gettingstarted/Gettingstarted.html#ParametricDiagramPARrepresentation" label="Parametric Diagram (PAR) representation">
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#CreateaConstraint" label="Create a Constraint"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#AddanexistingConstraint" label="Add an existing Constraint"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#CreateaParameter" label="Create a Parameter"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#EditaConstraintoraParameter" label="Edit a Constraint or a Parameter"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#DeleteaConstraintoraParameter" label="Delete a Constraint or a Parameter"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#NavigatetotheInternalBlockDiagram" label="Navigate to the Internal Block Diagram"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#ValueBindingLayer" label="Value Binding Layer"></topic>
 		</topic>
-		<topic href="doc/textile/gettingstarted/Gettingstarted.html#RequirementsTablerepresentation" label="*Requirements Table representation*">
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#CreateaRequirement" label="*Create a Requirement*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#EditaRequirement" label="*Edit a Requirement*"></topic>
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#DeleteaRequirement" label="*Delete a Requirement*"></topic>
+		<topic href="doc/textile/gettingstarted/Gettingstarted.html#RequirementsTablerepresentation" label="Requirements Table representation">
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#CreateaRequirement" label="Create a Requirement"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#EditaRequirement" label="Edit a Requirement"></topic>
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#DeleteaRequirement" label="Delete a Requirement"></topic>
 		</topic>
-		<topic href="doc/textile/gettingstarted/Gettingstarted.html#RequirementsCrossTablerepresentation" label="*Requirements CrossTable representation*">
-			<topic href="doc/textile/gettingstarted/Gettingstarted.html#AddDeletearelationbetweenarequirementandanelement" label="*Add/Delete a relation between a requirement and an element*"></topic>
+		<topic href="doc/textile/gettingstarted/Gettingstarted.html#RequirementsCrossTablerepresentation" label="Requirements CrossTable representation">
+			<topic href="doc/textile/gettingstarted/Gettingstarted.html#AddDeletearelationbetweenarequirementandanelement" label="Add/Delete a relation between a requirement and an element"></topic>
 		</topic>
 	</topic>
    <topic href="doc/textile/alarmradioexample/Alarmradioexample.html" label="Simple alarm radio example">
