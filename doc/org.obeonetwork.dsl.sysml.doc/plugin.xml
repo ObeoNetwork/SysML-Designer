@@ -16,4 +16,28 @@
             configId="org.eclipse.ui.intro.universalConfig"
             content="intro/welcome_intro.xml"/>  
    </extension>
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <cheatsheet
+            category="org.obeonetwork.dsl.uml2"
+            composite="false"
+            contentFile="doc/cheatsheets/CreateProject.xml"
+            id="org.obeonetwork.dsl.sysml.design.doc.cheatsheets.createProject"
+            name="org.obeonetwork.dsl.sysml.design.doc.cheatsheets.createProject">
+      </cheatsheet>
+      <cheatsheet
+            category="org.obeonetwork.dsl.uml2"
+            composite="false"
+            contentFile="doc/cheatsheets/CreateRepresentation.xml"
+            id="org.obeonetwork.dsl.sysml.design.doc.cheatsheets.createRepresentation"
+            name="org.obeonetwork.dsl.sysml.design.doc.cheatsheets.createRepresentation">
+      </cheatsheet>
+      <cheatsheet
+            category="org.obeonetwork.dsl.uml2"
+            composite="false"
+            contentFile="doc/cheatsheets/SampleModel.xml"
+            id="org.obeonetwork.dsl.sysml.design.doc.cheatsheets.sampleModel"
+            name="org.obeonetwork.dsl.sysml.design.doc.cheatsheets.sampleModel">
+      </cheatsheet>
+   </extension>
 </plugin>
