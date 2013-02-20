@@ -55,7 +55,7 @@
 		<repository>
 			<id>od-uml</id>
 			<layout>p2</layout>
-			<url>http://update.obeo.fr/release/uml/2.0.0/</url>
+			<url>http://update.obeo.fr/release/uml/2.1.1/</url>
 		</repository>
 	</repositories>
 
