@@ -28,12 +28,15 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Abstraction;
 import org.eclipse.uml2.uml.Actor;
+import org.eclipse.uml2.uml.Behavior;
+import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Profile;
@@ -48,14 +51,15 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
 import fr.obeo.dsl.viewpoint.DDiagram;
+import fr.obeo.dsl.viewpoint.DEdge;
+import fr.obeo.dsl.viewpoint.DNodeList;
 import fr.obeo.dsl.viewpoint.DRepresentation;
 import fr.obeo.dsl.viewpoint.DSemanticDiagram;
+import fr.obeo.dsl.viewpoint.EdgeTarget;
 import fr.obeo.dsl.viewpoint.business.api.session.Session;
 import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 import fr.obeo.dsl.viewpoint.description.Layer;
 import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectEditor;
-import fr.obeo.dsl.viewpoint.ui.business.api.session.IEditingSession;
-import fr.obeo.dsl.viewpoint.ui.business.api.session.SessionUIManager;
 
 /**
  * Utility services for SysML.
@@ -68,6 +72,16 @@ public class SysMLServices {
 	 * Sysml requirement stereotype.
 	 */
 	private static final String SYSML_REQUIREMENT = "SysML::Requirements::Requirement";
+
+	/**
+	 * Sysml testcase stereotype.
+	 */
+	private static final String SYSML_TESTCASE = "SysML::Requirements::TestCase";
+
+	/**
+	 * Sysml block stereotype.
+	 */
+	private static final String SYSML_BLOCK = "SysML::Blocks::Block";
 
 	/**
 	 * Check if a profile is applied on a package based on its qualified name.
@@ -393,6 +407,63 @@ public class SysMLServices {
 	}
 
 	/**
+	 * Get all the valid elements for a requirement diagram.
+	 * 
+	 * @param cur
+	 *            Current semantic element
+	 * @return List of elements visible on a requirement diagram
+	 */
+	public List<EObject> getValidsForRequirementDiagram(EObject cur, DDiagram diagram) {
+
+		final boolean isVerifyLayerActive = isVerifyLayerActive(diagram);
+		final boolean isSatisfyLayerActive = isSatisfyLayerActive(diagram);
+		final boolean isRefineLayerActive = isRefineLayerActive(diagram);
+
+		Predicate<EObject> validForClassDiagram = new Predicate<EObject>() {
+
+			public boolean apply(EObject input) {
+				return input instanceof Package
+						|| ("Class".equals(input.eClass().getName()) && ((Class)input)
+								.getAppliedStereotype(SYSML_REQUIREMENT) != null)
+						|| (isVerifyLayerActive && ((input instanceof Class && isTestClass((Class)input)) || (input instanceof Operation && ((Operation)input)
+								.getAppliedStereotype(SYSML_TESTCASE) != null)))
+						|| (isSatisfyLayerActive && ((input instanceof Class && ((Class)input)
+								.getAppliedStereotype(SYSML_BLOCK) != null)))
+						|| (isRefineLayerActive && (input instanceof Behavior || input instanceof BehavioredClassifier));
+			}
+
+			private boolean isTestClass(Class input) {
+				for (Operation operation : input.getAllOperations()) {
+					if (operation.getAppliedStereotype(SYSML_TESTCASE) != null)
+						return true;
+				}
+				return false;
+			}
+		};
+		return allValidSessionElements(cur, validForClassDiagram);
+	}
+
+	private boolean isVerifyLayerActive(DDiagram diagram) {
+		return isLayerActive(diagram, "Verify");
+	}
+
+	private boolean isSatisfyLayerActive(DDiagram diagram) {
+		return isLayerActive(diagram, "Satisfy");
+	}
+
+	private boolean isRefineLayerActive(DDiagram diagram) {
+		return isLayerActive(diagram, "Refine");
+	}
+
+	private boolean isLayerActive(DDiagram diagram, String layerName) {
+		for (Layer layer : diagram.getActivatedLayers()) {
+			if (layerName.equals(layer.getName()))
+				return true;
+		}
+		return false;
+	}
+
+	/**
 	 * Get all the valid elements for a block definition diagram.
 	 * 
 	 * @param cur
@@ -546,5 +617,39 @@ public class SysMLServices {
 		List<EObject> result = Lists.newArrayList();
 		Iterators.addAll(result, Iterators.filter(cur.getAttributes().iterator(), validForDiagram));
 		return result;
+	}
+
+	/**
+	 * Generic service used to process treatments on a reconnect The processing has to be defined by
+	 * overriding the corresponding caseXXX.
+	 * 
+	 * @param context
+	 *            Element attached to the existing edge
+	 * @param edgeView
+	 *            Represents the graphical new edge
+	 * @param sourceView
+	 *            Represents the graphical element pointed by the edge before reconnecting
+	 * @param targetView
+	 *            Represents the graphical element pointed by the edge after reconnecting
+	 * @param source
+	 *            Represents the semantic element pointed by the edge before reconnecting
+	 * @param target
+	 *            Represents the semantic element pointed by the edge after reconnecting
+	 * @return the Element attached to the edge once it has been modified
+	 */
+	public Element reconnectRequirement(Element context, DEdge edgeView, EdgeTarget sourceView,
+			EdgeTarget targetView, Class source, Class target) {
+		final SysMLReconnectSwitch reconnectService = new SysMLReconnectSwitch();
+
+		// The edgeview represents the new graphical edge
+		// with testing of its source and target nodes we can
+		// know if the user reconnected the source or the target of the edge
+		reconnectService.setReconnectingSource(edgeView.getSourceNode().equals(targetView));
+		Class requirement = (Class)((DNodeList)edgeView.getTargetNode()).getTarget();
+
+		reconnectService.setSubRequirement(requirement);
+		reconnectService.setOldPointedClass(source);
+		reconnectService.setNewPointedClass(target);
+		return reconnectService.doSwitch(context);
 	}
 }
