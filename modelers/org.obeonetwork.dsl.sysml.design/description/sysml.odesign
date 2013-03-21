@@ -2852,6 +2852,93 @@
         </toolSections>
       </optionalLayers>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Satisfy Table" titleExpression="['req [package] ' + self.name + ' [SatisfyTable]'/]" domainClass="uml.Package">
+      <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
+      <ownedLineMappings name="RCT_Requirements" semanticElements="[self->union(self.getStereotypeApplications()->filter(sysml::requirements::Requirement))/]" domainClass="uml.Class" semanticCandidatesExpression="[packagedElement->select(not(getStereotypeApplications()->filter(sysml::requirements::Requirement)->isEmpty()))/]" headerLabelExpression="['&lt;&lt;Requirement>> ' + getStereotypeApplications()->filter(sysml::requirements::Requirement).id + ' : ' + name/]">
+        <ownedSubLines name="RCT_SubRequirements" semanticElements="[self->union(self.getStereotypeApplications()->filter(sysml::requirements::Requirement))/]" domainClass="uml.Class" semanticCandidatesExpression="[nestedClassifier->select(not(getStereotypeApplications()->filter(sysml::requirements::Requirement)->isEmpty()))/]" headerLabelExpression="['&lt;&lt;Requirement>> ' + getStereotypeApplications()->filter(sysml::requirements::Requirement).id + ' : ' + name/]">
+          <delete name="RCT Delete Sub Requirement" precondition="[false/]">
+            <variables name="element" documentation="The currently edited element."/>
+            <variables name="root" documentation="The semantic element corresponding to the current table."/>
+            <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[self/]"/>
+          </delete>
+        </ownedSubLines>
+        <delete name="RCT Delete Requirement" precondition="[false/]">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[self/]"/>
+        </delete>
+      </ownedLineMappings>
+      <ownedColumnMappings name="RCT_Block" semanticElements="&lt;%self+getStereotypeApplications()%>" headerLabelExpression="[computeUmlLabel()/]" domainClass="uml.Class" semanticCandidatesExpression="&lt;%self.eAllContents().filter(&quot;Class&quot;)[getStereotypeApplications().filter(&quot;Block&quot;)]%>">
+        <delete name="RCT Delete Requirement And Block" precondition="[false/]">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[self/]"/>
+        </delete>
+      </ownedColumnMappings>
+      <intersection name="RCT_Satisfy" label="Satisfy" lineMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Satisfy%20Table']/@ownedLineMappings[name='RCT_Requirements'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Satisfy%20Table']/@ownedLineMappings[name='RCT_Requirements']/@ownedSubLines[name='RCT_SubRequirements']" columnMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Satisfy%20Table']/@ownedColumnMappings.0" labelExpression="S" useDomainClass="true" columnFinderExpression="[client/]" lineFinderExpression="[supplier/]" semanticCandidatesExpression="[getRootContainer().eAllContents(uml::Abstraction)->select(not(getStereotypeApplications()->filter(sysml::requirements::Satisfy)->isEmpty()))/]" domainClass="uml.Abstraction">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:If" conditionExpression="&lt;%$0.equalsIgnoreCase(&quot;&quot;)%>">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[element.deleteAssociatedStereotype('SysML::Requirements::Satisfy')/]">
+              <subModelOperations xsi:type="tool:RemoveElement"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+        <create name="Create Cell Satisfy">
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[lineSemantic.eContainer(uml::Package)/]">
+            <subModelOperations xsi:type="tool:Switch">
+              <cases conditionExpression="[arg0.equalsIgnoreCase('S')/]">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Abstraction" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="satisfy">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::Requirements', 'Satisfy')/]"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="[lineSemantic/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="[columnSemantic/]"/>
+                </subModelOperations>
+              </cases>
+              <cases conditionExpression="[arg0.equalsIgnoreCase('D')/]">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Abstraction" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="derive">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::Requirements', 'DeriveReqt')/]"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="[lineSemantic/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="[columnSemantic/]"/>
+                </subModelOperations>
+              </cases>
+              <cases conditionExpression="[arg0.equalsIgnoreCase('R')/]">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Abstraction" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="refine">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('Standard', 'Refine')/]"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="[lineSemantic/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="[columnSemantic/]"/>
+                </subModelOperations>
+              </cases>
+              <cases conditionExpression="[arg0.equalsIgnoreCase('V')/]">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Abstraction" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="verify">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::Requirements', 'Verify')/]"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="[lineSemantic/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="[columnSemantic/]"/>
+                </subModelOperations>
+              </cases>
+              <default/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </create>
+      </intersection>
+    </ownedRepresentations>
     <ownedRepresentationExtensions xsi:type="description:DiagramExtensionDescription" name="SysML Package Hierarchy" viewpointURI="viewpoint:/org.obeonetwork.dsl.uml2.design/UML Structural Modeling" representationName="Package Hierarchy">
       <layers name="SysML layer">
         <toolSections>
