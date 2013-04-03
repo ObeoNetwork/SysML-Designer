@@ -1523,67 +1523,67 @@
         </edgeMappings>
         <containerMappings name="IBD_Block" detailDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='IBD%20Create%20PAR']" navigationDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='IBD%20to%20BDD'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='IBD%20to%20PAR']" semanticCandidatesExpression="[self/]" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class">
           <borderedNodeMappings name="IBD_FlowPort" preconditionExpression="[getStereotypeApplications()->filter(sysml::portandflows::FlowPort)->size() > 0/]" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='Delete%20FlowPort']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20FlowPort%20Name']" semanticCandidatesExpression="[ownedPort/]" semanticElements="[self->union(self.getStereotypeApplications())/]" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='IDD%20Select%20Type%20for%20FlowPort']" domainClass="uml.Port">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (inout)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BluePortInOut']">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (inout)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BluePortInOut']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
             <conditionnalStyles predicateExpression="[getStereotypeApplications()->filter(sysml::portandflows::FlowPort)->asSequence()->first().direction  = 'out'/]">
-              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (out)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortOut']">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (out)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortOut']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[getStereotypeApplications()->filter(sysml::portandflows::FlowPort)->asSequence()->first().direction  = 'in'/]">
-              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (in)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortIn']">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (in)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortIn']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
           </borderedNodeMappings>
           <borderedNodeMappings name="IBD_Port" preconditionExpression="[getStereotypeApplications()->filter(sysml::portandflows::FlowPort)->size() = 0/]" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='Delete%20Port']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Port%20Name']" semanticCandidatesExpression="[ownedPort/]" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='IDD%20Select%20Type%20for%20Port']" domainClass="uml.Port">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BluePortInOut']">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BluePortInOut']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
           <subContainerMappings name="IBD_Part" detailDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='IBD']" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='Delete%20Part']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Part%20Name']" createElements="false" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='IDD%20Select%20Type%20for%20Part']" domainClass="uml.Property">
             <borderedNodeMappings name="IBD_PartFlowPort" preconditionExpression="&lt;%getStereotypeApplications().filter(&quot;portandflows.FlowPort&quot;).nSize() > 0%>" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='Delete%20FlowPort']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20FlowPort%20Name']" semanticCandidatesExpression="[type.oclAsType(uml::EncapsulatedClassifier).ownedPort/]" semanticElements="&lt;%self+getStereotypeApplications()%>" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='IDD%20Select%20Type%20for%20FlowPort']" domainClass="uml.Port">
-              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (inout)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BluePortInOut']">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (inout)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BluePortInOut']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
               <conditionnalStyles predicateExpression="[getStereotypeApplications()->filter(sysml::portandflows::FlowPort)->asSequence()->first().direction  = 'out'/]">
-                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (out)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortOut']">
+                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (out)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortOut']">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 </style>
               </conditionnalStyles>
               <conditionnalStyles predicateExpression="[getStereotypeApplications()->filter(sysml::portandflows::FlowPort)->asSequence()->first().direction  = 'in'/]">
-                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (in)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortIn']">
+                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (in)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortIn']">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 </style>
               </conditionnalStyles>
             </borderedNodeMappings>
             <borderedNodeMappings name="IBD_PartPort" preconditionExpression="&lt;%getStereotypeApplications().filter(&quot;portandflows.FlowPort&quot;).nSize() == 0%>" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='Delete%20Port']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Port%20Name']" semanticCandidatesExpression="[type.oclAsType(uml::EncapsulatedClassifier).ownedPort/]" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='IDD%20Select%20Type%20for%20Port']" domainClass="uml.Port">
-              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BluePortInOut']">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BluePortInOut']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
               <conditionnalStyles predicateExpression="[getStereotypeApplications()->filter(sysml::portandflows::FlowPort)->asSequence()->first().direction  = 'out'/]">
-                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortOut']">
+                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortOut']">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 </style>
               </conditionnalStyles>
               <conditionnalStyles predicateExpression="[getStereotypeApplications()->filter(sysml::portandflows::FlowPort)->asSequence()->first().direction  = 'in'/]">
-                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortIn']">
+                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortIn']">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 </style>
               </conditionnalStyles>
             </borderedNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[computeUmlLabel()/]" tooltipExpression="[name + ' : ' + type.name/]" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BlueBlock']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="[computeUmlLabel()/]" tooltipExpression="[name + ' : ' + type.name/]" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BlueBlock']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -1698,7 +1698,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
                 <subModelOperations xsi:type="tool:If" conditionExpression="[container.oclIsKindOf(uml::Class)/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Port" referenceName="ownedAttribute" variableName="p">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['flowPort' + container.ownedAttribute->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['flowPort' + container.type.oclAsType(uml::Class).ownedAttribute->size()/]"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="[selectedType/]"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::PortAndFlows', 'FlowPort')/]"/>
@@ -1707,7 +1707,7 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="[container.oclIsKindOf(Property)/]">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.type/]">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Port" referenceName="ownedAttribute" variableName="p">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['flowPort' + container.type.ownedAttribute->size()/]"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['flowPort' + container.type.oclAsType(uml::Class).ownedAttribute->size()/]"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="[selectedType/]"/>
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::PortAndFlows', 'FlowPort')/]"/>
@@ -1726,7 +1726,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
                 <subModelOperations xsi:type="tool:If" conditionExpression="[container.oclIsKindOf(uml::Class)/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Port" referenceName="ownedAttribute" variableName="p">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['port' + container.ownedAttribute->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['port' + container.type.oclAsType(uml::Class).ownedAttribute->size()/]"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="[selectedType/]"/>
                   </subModelOperations>
@@ -1734,7 +1734,7 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="[container.oclIsKindOf(Property)/]">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.type/]">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Port" referenceName="ownedAttribute" variableName="p">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['port' + container.type.ownedAttribute->size()/]"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['port' + container.type.oclAsType(uml::Class).ownedAttribute->size()/]"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="[selectedType/]"/>
                     </subModelOperations>
@@ -1903,31 +1903,6 @@
           </ownedTools>
         </toolSections>
       </defaultLayer>
-      <optionalLayers name="IBD Requirement Layer" label="Requirements">
-        <edgeMappings name="IBD_Satisfy" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='IBD%20Delete%20Requirement']" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@subContainerMappings[name='IBD_Part']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@optionalLayers[name='IBD%20Requirement%20Layer']/@containerMappings[name='IBD_Requirements']" targetFinderExpression="[type->select(not(eInverse(uml::Abstraction)->select(not(getStereotypeApplications()->filter(sysml::requirements::Satisfy)->isEmpty()))->isEmpty()))/]">
-          <style lineStyle="dash" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="satisfy">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <containerMappings name="IBD_Requirements" preconditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Block)->size() > 0/]" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='IBD%20Delete%20Requirement']" semanticCandidatesExpression="[ownedAttribute->filter(uml::Property).type->select(not(eInverse(uml::Abstraction)->select(not(getStereotypeApplications()->filter(sysml::requirements::Satisfy)->isEmpty()))->isEmpty()))/]" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class" listContainer="true">
-          <subNodeMappings name="IBD_Requirement" preconditionExpression="[getStereotypeApplications()->filter(sysml::requirements::Requirement)->size() > 0/]" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='IBD%20Delete%20Requirement']" semanticCandidatesExpression="[eInverse(uml::Abstraction)->select(not(getStereotypeApplications()->filter(sysml::requirements::Satisfy)->isEmpty())).supplier/]" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class">
-            <style xsi:type="style:LozengeNodeDescription" labelExpression="[getStereotypeApplications()->filter(sysml::requirements::Requirement).id + ' : ' + name/]" tooltipExpression="[getStereotypeApplications()->filter(sysml::requirements::Requirement).id + ' : ' + name/]">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            </style>
-          </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="Requirements" tooltipExpression="Requirements">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
-          </style>
-        </containerMappings>
-      </optionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='PAR_Drop']" name="Parametric Diagram" titleExpression="['par [block] ' + self.name + ' [' + self.name + ' diagram]'/]" domainClass="uml.Class" preconditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Block)->size() > 0/]">
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#/"/>
@@ -2031,7 +2006,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="PAR Create Objects" label="Features">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="PAR Create Constraint" label="New Constraint" containerMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="PAR Create Constraint" label="Constraint" containerMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']">
             <variable name="container">
               <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="[container.getRootContainer().eAllContents(uml::Package)->union(container.getRootContainer().eAllContents(uml::Class)->select(not(getStereotypeApplications()->filter(sysml::blocks::Block)->isEmpty())))/]" message="Select Package or Block in which the new constraint Block will be created"/>
             </variable>
