@@ -699,7 +699,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.setDimension($element)%>"/>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:SelectionWizardDescription" name="BDD_Set_Unit" label="Unit" precondition="&lt;%$container.getStereotypeApplications().filter(&quot;ValueType&quot;)%>" forceRefresh="true" candidatesExpression="&lt;%getRootContainer().eAllContents(&quot;InstanceSpecification&quot;)[getStereotypeApplications().filter(&quot;Unit&quot;)]%>" message="Please select a unit" iconPath="/org.eclipse.papyrus.sysml/icons/blocks/Dimension.gif" windowTitle="Select a Dimension">
+            <tools xsi:type="tool:SelectionWizardDescription" name="BDD_Set_Unit" label="Unit" precondition="&lt;%$container.getStereotypeApplications().filter(&quot;ValueType&quot;)%>" forceRefresh="true" candidatesExpression="&lt;%getRootContainer().eAllContents(&quot;InstanceSpecification&quot;)[getStereotypeApplications().filter(&quot;Unit&quot;)]%>" message="Please select a unit" iconPath="/org.eclipse.papyrus.sysml/icons/blocks/Unit.gif" windowTitle="Select a Dimension">
               <element name="element"/>
               <containerView name="containerView"/>
               <container name="container"/>
