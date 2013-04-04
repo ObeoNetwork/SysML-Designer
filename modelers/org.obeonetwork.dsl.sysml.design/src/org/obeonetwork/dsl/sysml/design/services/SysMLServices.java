@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.papyrus.sysml.blocks.Block;
 import org.eclipse.papyrus.sysml.blocks.Dimension;
 import org.eclipse.papyrus.sysml.blocks.Unit;
+import org.eclipse.papyrus.sysml.blocks.ValueType;
 import org.eclipse.papyrus.sysml.constraints.ConstraintBlock;
 import org.eclipse.papyrus.sysml.constraints.ConstraintProperty;
 import org.eclipse.ui.IEditorPart;
@@ -651,5 +652,53 @@ public class SysMLServices {
 		reconnectService.setOldPointedClass(source);
 		reconnectService.setNewPointedClass(target);
 		return reconnectService.doSwitch(context);
+	}
+
+	/**
+	 * Set dimension.
+	 * 
+	 * @param dataType
+	 *            Datatype
+	 * @param instanceSpecification
+	 *            Dimension
+	 */
+	public void setDimension(Element dataType, InstanceSpecification instanceSpecification) {
+		if (dataType.getStereotypeApplications() != null) {
+			EObject stereotype = dataType.getStereotypeApplications().get(0);
+			if (stereotype instanceof ValueType) {
+				ValueType valueType = (ValueType)stereotype;
+				if (instanceSpecification.getStereotypeApplications() != null) {
+					stereotype = instanceSpecification.getStereotypeApplications().get(0);
+					if (stereotype instanceof Dimension) {
+						Dimension dimension = (Dimension)stereotype;
+						valueType.setDimension(dimension);
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * Set unit.
+	 * 
+	 * @param dataType
+	 *            Datatype
+	 * @param instanceSpecification
+	 *            unit
+	 */
+	public void setUnit(Element dataType, InstanceSpecification instanceSpecification) {
+		if (dataType.getStereotypeApplications() != null) {
+			EObject stereotype = dataType.getStereotypeApplications().get(0);
+			if (stereotype instanceof ValueType) {
+				ValueType valueType = (ValueType)stereotype;
+				if (instanceSpecification.getStereotypeApplications() != null) {
+					stereotype = instanceSpecification.getStereotypeApplications().get(0);
+					if (stereotype instanceof Unit) {
+						Unit unit = (Unit)stereotype;
+						valueType.setUnit(unit);
+					}
+				}
+			}
+		}
 	}
 }
