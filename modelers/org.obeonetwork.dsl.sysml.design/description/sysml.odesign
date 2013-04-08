@@ -2343,9 +2343,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;UseCase&quot;)%>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$selection%>">
-                      <subModelOperations xsi:type="tool:CreateView" containerViewExpression="&lt;%$containerView%>">
-                        <mapping xsi:type="description:NodeMapping" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase_Root']"/>
-                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@optionalLayers[name='Refine']/@nodeMappings[name='RD_UseCase']" containerViewExpression="&lt;%$containerView%>"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Collaboration&quot;)%>">
