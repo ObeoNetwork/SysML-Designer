@@ -41,7 +41,7 @@ public class AlarmRadioExampleWizard extends AbstractExampleWizard {
 
 		// Assume the version of OCL is an indication of the Eclipse version
 		final String bundleName = "org.obeonetwork.dsl.sysml.examples";
-		String baseName = "org.obeonetwork.sysml.alarmradio.example";
+		String baseName = "AlarmRadio";
 
 		projects.add(new ProjectDescriptor(bundleName,
 				"examples/" + baseName + ".zip", baseName)); //$NON-NLS-1$ //$NON-NLS-2$ 
