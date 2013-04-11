@@ -2240,7 +2240,7 @@
         </toolSections>
       </optionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RD_Drop']" name="Requirement Diagram" titleExpression="['req [package] ' + self.name + ' [' + self.name + ' diagram]'/]" domainClass="uml.Package">
+    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RD_Drop']" name="Requirement Diagram" titleExpression="['req [package] ' + self.name + ' [' + self.name + ' diagram]'/]" domainClass="uml.Package" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#//requirements"/>
       <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
       <defaultLayer name="Default">
