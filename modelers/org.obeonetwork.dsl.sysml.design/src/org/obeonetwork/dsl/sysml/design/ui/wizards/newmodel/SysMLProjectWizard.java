@@ -10,12 +10,12 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.sysml.design.ui.wizards.newmodel;
 
-import java.lang.reflect.InvocationTargetException;
-
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.swt.widgets.Display;
-import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UMLProjectWizard;
+import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UmlProjectUtils;
+
+import fr.obeo.dsl.common.tools.api.util.Option;
+import fr.obeo.dsl.viewpoint.business.api.modelingproject.ModelingProject;
 
 /**
  * Sysml project wizard.
@@ -40,25 +40,18 @@ public class SysMLProjectWizard extends UMLProjectWizard {
 
 	@Override
 	public boolean performFinish() {
-		try {
-			final InitProject runnable = new InitProject(newProjectPage.getProjectName(),
-					newProjectPage.getLocationPath(), modelPage.getInitialObjectName());
-			getContainer().run(true, false, runnable);
-			updatePerspective();
-			Display.getDefault().syncExec(new Runnable() {
-
-				public void run() {
-					runnable.enableViewpointsAndReveal(UML_STRUCTURAL_VP, UML_BEHAVIORAL_VP, SYSML_VP);
+		// Call the UML model wizard to create the default UML model and the modeling project
+		super.performFinish();
+		Display.getDefault().syncExec(new Runnable() {
+			public void run() {
+				final Option<ModelingProject> created = ModelingProject.asModelingProject(project);
+				if (created.some()) {
+					// Enable SysML viewpoint
+					ModelingProject modelingProject = created.get();
+					UmlProjectUtils.enableViewpoints(modelingProject.getSession(), SYSML_VP);
 				}
-			});
-		} catch (InvocationTargetException e) {
-			UMLDesignerPlugin.log(IStatus.ERROR, Messages.SysMLModelWizard_UI_Error_CreatingSysMLModel, e);
-			return false;
-		} catch (InterruptedException e) {
-			UMLDesignerPlugin.log(IStatus.ERROR, Messages.SysMLModelWizard_UI_Error_CreatingSysMLModel, e);
-			return false;
-		}
+			}
+		});
 		return true;
-
 	}
 }
