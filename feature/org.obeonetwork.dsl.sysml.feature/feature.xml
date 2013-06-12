@@ -2,7 +2,7 @@
 <feature
       id="org.obeonetwork.dsl.sysml.feature"
       label="SysML Designer (based on Obeo Designer)"
-      version="2.1.0.qualifier"
+      version="2.2.0.qualifier"
       provider-name="Obeo">
 
    <description url="http://docs.obeonetwork.com/sysml">
