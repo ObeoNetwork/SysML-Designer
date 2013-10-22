@@ -45,7 +45,7 @@
 		<repository>
 			<id>obeodesigner</id>
 			<layout>p2</layout>
-			<url>http://www.obeo.fr/download/release/designer/6.1/latest/juno3/update</url>
+			<url>http://www.obeo.fr/download/release/designer/6.2/latest/juno3/update</url>
 		</repository>
 		<repository>
 			<id>Papyrus</id>
