@@ -13,7 +13,7 @@
   <parent>
     <groupId>fr.obeo.papyrus.sysml</groupId>
     <artifactId>papyrus-sysml-parent</artifactId>
-    <version>0.9.1-SNAPSHOT</version>
+    <version>0.10.1-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
 

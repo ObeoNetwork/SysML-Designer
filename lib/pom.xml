@@ -11,7 +11,7 @@
 
 	<groupId>fr.obeo.papyrus.sysml</groupId>
 	<artifactId>papyrus-sysml-parent</artifactId>
-	<version>0.9.1-SNAPSHOT</version>
+	<version>0.10.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Papyrus SysML</name>
@@ -40,18 +40,13 @@
 		<repository>
 			<id>obeodesigner</id>
 			<layout>p2</layout>
-			<url>http://update.obeo.fr/release/designer/6.2.0/juno3/update/repository</url>
+			<url>http://update.obeo.fr/release/designer/6.2.0/kepler/update/repository</url>
 		</repository>
 		<repository>
 			<id>Papyrus</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/maintenance/juno</url>
+			<url>http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/kepler</url>
 		</repository>	
-		<repository>
-			<id>od-uml</id>
-			<layout>p2</layout>
-			<url>http://update.obeo.fr/release/uml/2.4.1/</url>
-		</repository>
 	</repositories>
 
 
