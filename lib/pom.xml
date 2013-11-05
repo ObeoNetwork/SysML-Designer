@@ -40,7 +40,7 @@
 		<repository>
 			<id>obeodesigner</id>
 			<layout>p2</layout>
-			<url>http://www.obeo.fr/download/release/designer/6.1/latest/juno3/update</url>
+			<url>http://update.obeo.fr/release/designer/6.2.0/juno3/update/repository</url>
 		</repository>
 		<repository>
 			<id>Papyrus</id>
@@ -50,7 +50,7 @@
 		<repository>
 			<id>od-uml</id>
 			<layout>p2</layout>
-			<url>http://update.obeo.fr/release/uml/2.0.0/</url>
+			<url>http://update.obeo.fr/release/uml/2.4.1/</url>
 		</repository>
 	</repositories>
 
