@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:description_1="http://www.obeo.fr/dsl/viewpoint/table/description/1.1.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" xmlns:tool="http://www.obeo.fr/dsl/viewpoint/description/tool/1.1.0" name="SysML modelers" version="6.5.0.201210011230">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:description_1="http://www.obeo.fr/dsl/viewpoint/table/description/1.1.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" xmlns:tool="http://www.obeo.fr/dsl/viewpoint/description/tool/1.1.0" name="SysML modelers" version="6.7.0.201302071200">
   <ownedViewpoints name="SysML" modelFileExtension="uml">
-    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='BDD_Drop']" name="Block Definition Diagram" titleExpression="['bdd ' + if self.oclIsKindOf(uml::Package) then ' [package] ' else ' [block]  ' endif + self.name + ' [' + self.name + ' diagram]'/]" domainClass="uml.NamedElement" preconditionExpression="[self.oclIsKindOf(uml::Package) or self->filter(uml::Class).getStereotypeApplications()->filter(sysml::blocks::Block)->size() > 0/]" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='BDD_Drop']" name="Block Definition Diagram" titleExpression="['bdd ' + if self.oclIsKindOf(uml::Package) then ' [package] ' else ' [block]  ' endif + self.name + ' [' + self.name + ' diagram]'/]" domainClass="uml.NamedElement" preconditionExpression="service:isValidBlockDefinitionDiagramRoot" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#/"/>
       <defaultLayer name="BDDLayer">
-        <nodeMappings name="BDD_Dimension" preconditionExpression="[self.getStereotypeApplications()->filter(sysml::blocks::Dimension)->size() > 0/]" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Dimension']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Dimension%20Name']" createElements="false" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.InstanceSpecification">
+        <nodeMappings name="BDD_Dimension" preconditionExpression="service:isDimension" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Dimension']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Dimension%20Name']" createElements="false" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.InstanceSpecification">
           <style xsi:type="style:SquareDescription" labelExpression="[computeUmlLabel()/]" iconPath="/org.eclipse.papyrus.sysml/icons/blocks/Dimension.gif" tooltipExpression="[name/]" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="13" height="5" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BlueDataType']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -17,7 +17,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="BDD_Unit" preconditionExpression="[self.getStereotypeApplications()->filter(sysml::blocks::Unit)->size() > 0/]" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Unit']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Unit%20Name']" createElements="false" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.InstanceSpecification">
+        <nodeMappings name="BDD_Unit" preconditionExpression="service:isUnit" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Unit']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Unit%20Name']" createElements="false" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.InstanceSpecification">
           <style xsi:type="style:SquareDescription" labelExpression="[computeUmlLabel()/]" iconPath="/org.eclipse.papyrus.sysml/icons/blocks/Unit.gif" tooltipExpression="[name/]" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="13" height="5" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BlueDataType']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -42,7 +42,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <edgeMappings name="BDD_Generalization" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Edges']/@ownedTools[name='Delete%20Generalization']" semanticCandidatesExpression="&lt;%$diagram.getNodeInverseRefs(&quot;Generalization&quot;)%>" semanticElements="[self/]" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface']" targetFinderExpression="[general/]" sourceFinderExpression="[owner/]" targetExpression="[self/]" domainClass="uml.Generalization" useDomainElement="true">
+        <edgeMappings name="BDD_Generalization" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Edges']/@ownedTools[name='Delete%20Generalization']" semanticCandidatesExpression="&lt;%$diagram.getNodeInverseRefs(&quot;Generalization&quot;)%>" semanticElements="[self/]" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface']" targetFinderExpression="feature:general" sourceFinderExpression="feature:owner" targetExpression="[self/]" domainClass="uml.Generalization" useDomainElement="true">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -67,7 +67,7 @@
           </style>
           <reconnections href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']"/>
         </edgeMappings>
-        <edgeMappings name="BDD_InterfaceRealization" semanticCandidatesExpression="&lt;%$diagram.getNodeInverseRefs(&quot;InterfaceRealization&quot;)%>" semanticElements="[self/]" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface']" targetFinderExpression="[supplier/]" sourceFinderExpression="[client/]" targetExpression="[self/]" domainClass="uml.InterfaceRealization" useDomainElement="true">
+        <edgeMappings name="BDD_InterfaceRealization" semanticCandidatesExpression="&lt;%$diagram.getNodeInverseRefs(&quot;InterfaceRealization&quot;)%>" semanticElements="[self/]" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" targetExpression="[self/]" domainClass="uml.InterfaceRealization" useDomainElement="true">
           <style lineStyle="dash" targetArrow="InputClosedArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -76,7 +76,7 @@
           </style>
           <reconnections href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']"/>
         </edgeMappings>
-        <edgeMappings name="BDD_Dependency" preconditionExpression="[not(self.oclIsKindOf(uml::InterfaceRealization))/]" semanticCandidatesExpression="&lt;%$diagram.getNodeInverseRefs(&quot;Dependency&quot;)%>" semanticElements="[self/]" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='BDD%20Parametric%20Layer']/@containerMappings[name='BDD_ConstraintBlock'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_NestedPackage'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='BDD%20Parametric%20Layer']/@containerMappings[name='BDD_ConstraintBlock'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_NestedPackage'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" targetFinderExpression="[supplier/]" sourceFinderExpression="[client/]" targetExpression="[self/]" domainClass="uml.Dependency" useDomainElement="true">
+        <edgeMappings name="BDD_Dependency" preconditionExpression="[not(self.oclIsKindOf(uml::InterfaceRealization))/]" semanticCandidatesExpression="&lt;%$diagram.getNodeInverseRefs(&quot;Dependency&quot;)%>" semanticElements="[self/]" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='BDD%20Parametric%20Layer']/@containerMappings[name='BDD_ConstraintBlock'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_NestedPackage'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='BDD%20Parametric%20Layer']/@containerMappings[name='BDD_ConstraintBlock'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_NestedPackage'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" targetExpression="[self/]" domainClass="uml.Dependency" useDomainElement="true">
           <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
           <style lineStyle="dash" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -94,7 +94,7 @@
           </conditionnalStyles>
           <reconnections href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']"/>
         </edgeMappings>
-        <containerMappings xsi:type="description:ContainerMappingImport" name="BDD_Enumeration" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Enumeration']" listContainer="true" hideSubMappings="true">
+        <containerMappings xsi:type="description:ContainerMappingImport" name="BDD_Enumeration" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Enumeration']" childrenPresentation="List" hideSubMappings="true">
           <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']/@subNodeMappings[name='CD_EnumerationLiteral']"/>
           <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[computeUmlLabel()/]" tooltipExpression="[name/]" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BlueDataType']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -129,7 +129,7 @@
           </conditionnalStyles>
           <importedMapping href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package']"/>
         </containerMappings>
-        <containerMappings name="BDD_Block" detailDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Internal%20Block%20Diagram%20creation'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Block%20Definition%20Diagram%20creation'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Parametric%20Diagram%20creation']" navigationDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Internal%20Block%20Diagram%20navigation'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Parametric%20Diagram%20navigation']" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Block']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Block%20Name%20and%20Type']" createElements="false" semanticElements="[self->union(self.getStereotypeApplications())/]" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='BDD_DoubleClickToIBD']" domainClass="uml.Class" listContainer="true">
+        <containerMappings name="BDD_Block" detailDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Internal%20Block%20Diagram%20creation'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Block%20Definition%20Diagram%20creation'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Parametric%20Diagram%20creation']" navigationDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Internal%20Block%20Diagram%20navigation'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Parametric%20Diagram%20navigation']" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Block']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Block%20Name%20and%20Type']" createElements="false" semanticElements="[self->union(self.getStereotypeApplications())/]" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='BDD_DoubleClickToIBD']" domainClass="uml.Class" childrenPresentation="List">
           <subNodeMappings name="BDD_Function" detailDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Function%20description%20creation']" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Function']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Function%20Name']" semanticCandidatesExpression="[ownedBehavior/]" domainClass="uml.Activity">
             <style xsi:type="style:SquareDescription" labelExpression="[computeUmlLabel()/]" tooltipExpression="[computeUmlLabel()/]">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
@@ -137,7 +137,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="BDD_Property" preconditionExpression="[if diagram.isLayerActivated('BDD Parametric Layer') = false then getStereotypeApplications()->filter(sysml::constraints::ConstraintProperty)->size() = 0 and not(oclIsKindOf(uml::Port)) else not(oclIsKindOf(uml::Port)) endif/]" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Property%20Name%20and%20Type']" semanticCandidatesExpression="[ownedAttribute/]" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='BDD%20Select%20Type%20for%20Block%20Property']" domainClass="uml.Property">
+          <subNodeMappings name="BDD_Property" preconditionExpression="[isValidProperty(diagram)/]" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Property%20Name%20and%20Type']" semanticCandidatesExpression="[ownedAttribute/]" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='BDD%20Select%20Type%20for%20Block%20Property']" domainClass="uml.Property">
             <style xsi:type="style:SquareDescription" labelExpression="[computeUmlLabel()/]" labelAlignment="LEFT" tooltipExpression="[computeUmlTooltip()/]" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -174,7 +174,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="BDD_Interface" createElements="false" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Interface" listContainer="true">
+        <containerMappings name="BDD_Interface" createElements="false" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Interface" childrenPresentation="List">
           <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
           <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']"/>
           <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
@@ -193,7 +193,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="BDD_DataType" preconditionExpression="[self->filter(uml::PrimitiveType)->isEmpty()/]" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20DataTypeValueType']" createElements="false" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.DataType" listContainer="true">
+        <containerMappings name="BDD_DataType" preconditionExpression="[self->filter(uml::PrimitiveType)->isEmpty()/]" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20DataTypeValueType']" createElements="false" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.DataType" childrenPresentation="List">
           <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
           <subNodeMappings name="BDD_DTVTUnit" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20PTVTUnit']" semanticCandidatesExpression="&lt;%getStereotypeApplications().filter(&quot;blocks.ValueType&quot;)[base_DataType.filter(&quot;uml.DataType&quot;)].unit.base_InstanceSpecification%>" domainClass="uml.InstanceSpecification">
             <style xsi:type="style:SquareDescription" iconPath="/org.eclipse.papyrus.sysml/icons/blocks/Unit.gif" labelAlignment="LEFT" tooltipExpression="[name/]">
@@ -240,7 +240,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="BDD_PrimitiveType" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20PrimitiveTypeValueType']" createElements="false" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.PrimitiveType" listContainer="true">
+        <containerMappings name="BDD_PrimitiveType" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20PrimitiveTypeValueType']" createElements="false" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.PrimitiveType" childrenPresentation="List">
           <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
           <subNodeMappings name="BDD_PTVTUnit" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20PTVTUnit']" semanticCandidatesExpression="&lt;%getStereotypeApplications().filter(&quot;blocks.ValueType&quot;)[base_DataType.filter(&quot;uml.PrimitiveType&quot;)].unit.base_InstanceSpecification%>" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='BDD%20Select%20Unit%20for%20PTVT']" domainClass="uml.InstanceSpecification">
             <style xsi:type="style:SquareDescription" iconPath="/org.eclipse.papyrus.sysml/icons/blocks/Unit.gif" labelAlignment="LEFT" tooltipExpression="[name/]">
@@ -279,10 +279,10 @@
                 <subModelOperations xsi:type="tool:For" expression="&lt;%$element%>" iteratorName="selection">
                   <subModelOperations xsi:type="tool:Switch">
                     <cases conditionExpression="[selection->filter(Class)->size()>0/]">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Block)->size() > 0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="service:isBlock">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block']" containerViewExpression="[containerView/]"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::constraints::ConstraintBlock)->size() > 0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="service:isConstraintBlock">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='BDD%20Parametric%20Layer']/@containerMappings[name='BDD_ConstraintBlock']" containerViewExpression="[containerView/]"/>
                       </subModelOperations>
                     </cases>
@@ -302,10 +302,10 @@
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType']" containerViewExpression="[containerView/]"/>
                     </cases>
                     <cases conditionExpression="[selection->filter(InstanceSpecification)->size()>0/]">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Dimension)->size() > 0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="service:isDimension">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension']" containerViewExpression="[containerView/]"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Unit)->size() > 0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="service:isUnit">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" containerViewExpression="[containerView/]"/>
                       </subModelOperations>
                     </cases>
@@ -331,10 +331,10 @@
                           <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;BDD_NestedPackage&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
                         </subModelOperations>
                         <subModelOperations xsi:type="tool:If" conditionExpression="[packagedElement->filter(InstanceSpecification)->size()>0/]">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Dimension)->size() > 0/]">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="service:isDimension">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;BDD_NestedPackage&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
                           </subModelOperations>
-                          <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Unit)->size() > 0/]">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="service:isUnit">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;BDD_NestedPackage&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
                           </subModelOperations>
                         </subModelOperations>
@@ -356,10 +356,10 @@
                 <subModelOperations xsi:type="tool:For" expression="&lt;%$element%>" iteratorName="selection">
                   <subModelOperations xsi:type="tool:Switch">
                     <cases conditionExpression="[selection->filter(Class)->size()>0/]">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Block)->size() > 0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="service:isBlock">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block']" containerViewExpression="[newContainerView/]"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::constraints::ConstraintBlock)->size() > 0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="service:isConstraintBlock">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='BDD%20Parametric%20Layer']/@containerMappings[name='BDD_ConstraintBlock']" containerViewExpression="[newContainerView/]"/>
                       </subModelOperations>
                     </cases>
@@ -379,10 +379,10 @@
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType']" containerViewExpression="[newContainerView/]"/>
                     </cases>
                     <cases conditionExpression="[selection->filter(InstanceSpecification)->size()>0/]">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Dimension)->size() > 0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="service:isDimension">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension']" containerViewExpression="[newContainerView/]"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Unit)->size() > 0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="service:isUnit">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" containerViewExpression="[newContainerView/]"/>
                       </subModelOperations>
                     </cases>
@@ -408,10 +408,10 @@
                           <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;BDD_NestedPackage&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
                         </subModelOperations>
                         <subModelOperations xsi:type="tool:If" conditionExpression="[packagedElement->filter(InstanceSpecification)->size()>0/]">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Dimension)->size() > 0/]">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="service:isDimension">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;BDD_NestedPackage&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
                           </subModelOperations>
-                          <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Unit)->size() > 0/]">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="service:isUnit">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;BDD_NestedPackage&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
                           </subModelOperations>
                         </subModelOperations>
@@ -430,10 +430,10 @@
                 <subModelOperations xsi:type="tool:For" expression="[getRelated()/]">
                   <subModelOperations xsi:type="tool:Switch">
                     <cases conditionExpression="[i->filter(Class)->size()>0/]">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Block)->size() > 0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="service:isBlock">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block']" containerViewExpression="[diagram/]"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::constraints::ConstraintBlock)->size() > 0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="service:isConstraintBlock">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='BDD%20Parametric%20Layer']/@containerMappings[name='BDD_ConstraintBlock']" containerViewExpression="[diagram/]"/>
                       </subModelOperations>
                     </cases>
@@ -453,10 +453,10 @@
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_DataType']" containerViewExpression="[diagram/]"/>
                     </cases>
                     <cases conditionExpression="[i->filter(InstanceSpecification)->size()>0/]">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Dimension)->size() > 0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="service:isDimension">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension']" containerViewExpression="[diagram/]"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Unit)->size() > 0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="service:isUnit">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" containerViewExpression="[diagram/]"/>
                       </subModelOperations>
                     </cases>
@@ -466,7 +466,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CD_RemoveExistingElements']"/>
+          <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='RemoveExistingElements']"/>
         </toolSections>
         <toolSections name="Types" label="Types">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create Block" label="Block" containerMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block']">
@@ -476,14 +476,14 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
                 <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsKindOf(uml::Package)/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement" variableName="valuetype">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="newBlock"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::Blocks', 'Block')/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsKindOf(uml::Class)/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="nestedClassifier" variableName="valuetype">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="newBlock"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::Blocks', 'Block')/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -621,12 +621,12 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
                 <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsKindOf(uml::Package)/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Interface" referenceName="packagedElement">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Interface' + eContainer().eContents()->filter(uml::Interface)->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsKindOf(uml::Class)/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Interface" referenceName="nestedClassifier">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Interface' + eContainer().eContents()->filter(uml::Interface)->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -639,7 +639,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
                 <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsKindOf(uml::Package)/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Package' + eContainer().eContents()->filter(uml::Package)->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -653,7 +653,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Activity" referenceName="ownedBehavior">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['newFunction' + eContainer().eContents()->filter(uml::Activity)->size()/]"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -664,7 +664,7 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['property' + eContainer().eContents()->filter(uml::Property)->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="[getUmlStringType()/]"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
@@ -679,10 +679,12 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['property' + eContainer().eContents()->filter(uml::Property)->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="[element/]">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[element.getStereotypeApplications()->filter(sysml::constraints::ConstraintBlock)->size() > 0/]">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::Constraints', 'ConstraintProperty')/]"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                        <subModelOperations xsi:type="tool:If">
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::Constraints', 'ConstraintProperty')/]"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
@@ -1092,7 +1094,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:DoubleClickDescription" name="BDD Select Dimension for PTVT" forceRefresh="true" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType']/@subNodeMappings[name='BDD_PTVTDimension']">
             <element name="element">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[eContainer(uml::Package).eAllContents(uml::InstanceSpecification)->select(not(getStereotypeApplications()->filter(sysml::blocks::Dimension)->isEmpty()))/]" message="Select Dimension"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[eContainer(uml::Package).getAllDimensions()/]" message="Select Dimension"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1101,7 +1103,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:DoubleClickDescription" name="BDD Select Unit for PTVT" forceRefresh="true" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_PrimitiveType']/@subNodeMappings[name='BDD_PTVTUnit']">
             <element name="element">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[eContainer(uml::Package).eAllContents(uml::InstanceSpecification)->select(not(getStereotypeApplications()->filter(sysml::blocks::Unit)->isEmpty()))/]" message="Select Unit"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[eContainer(uml::Package).getAllUnits()/]" message="Select Unit"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1194,7 +1196,7 @@
               <elementView name="elementView"/>
               <containerView name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[containerView.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(uml::Element).getStereotypeApplications()->filter(sysml::blocks::ValueType)->select(not(base_DataType->filter(uml::PrimitiveType)->isEmpty()))/]">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[containerView.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(uml::Element).getValueType()/]">
                   <subModelOperations xsi:type="tool:Unset" featureName="unit"/>
                 </firstModelOperations>
               </initialOperation>
@@ -1204,7 +1206,7 @@
               <elementView name="elementView"/>
               <containerView name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[containerView.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(uml::Element).getStereotypeApplications()->filter(sysml::blocks::ValueType)->select(not(base_DataType->filter(uml::PrimitiveType)->isEmpty()))/]">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[containerView.oclAsType(viewpoint::DSemanticDecorator).target.oclAsType(uml::Element).getValueType()/]">
                   <subModelOperations xsi:type="tool:Unset" featureName="dimension"/>
                 </firstModelOperations>
               </initialOperation>
@@ -1342,9 +1344,9 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="BDD_RequirementsSatisfy" preconditionExpression="[self.getStereotypeApplications()->filter(sysml::blocks::Block)->size() > 0 or self.getStereotypeApplications()->filter(sysml::constraints::ConstraintBlock)->size() > 0/]" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Requirement']" semanticCandidatesExpression="&lt;%packagedElement.filter(&quot;uml.Class&quot;)[~.filter(&quot;Abstraction&quot;)[getStereotypeApplications().filter(&quot;requirements.Satisfy&quot;)]]%>" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class" listContainer="true">
-          <subNodeMappings name="BDD_Requirement" preconditionExpression="[self.getStereotypeApplications()->filter(sysml::requirements::Requirement)->size() > 0/]" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Requirement']" semanticCandidatesExpression="&lt;%~.filter(&quot;Abstraction&quot;)[getStereotypeApplications().filter(&quot;requirements.Satisfy&quot;)].supplier%>" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class">
-            <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelExpression="[getStereotypeApplications()->filter(sysml::requirements::Requirement).id + ' : ' + name/]" labelAlignment="LEFT">
+        <containerMappings name="BDD_RequirementsSatisfy" preconditionExpression="[isBlock() or isConstraintBlock()/]" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Requirement']" semanticCandidatesExpression="&lt;%packagedElement.filter(&quot;uml.Class&quot;)[~.filter(&quot;Abstraction&quot;)[getStereotypeApplications().filter(&quot;requirements.Satisfy&quot;)]]%>" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class" childrenPresentation="List">
+          <subNodeMappings name="BDD_Requirement" preconditionExpression="service:isRequirement" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Requirement']" semanticCandidatesExpression="&lt;%~.filter(&quot;Abstraction&quot;)[getStereotypeApplications().filter(&quot;requirements.Satisfy&quot;)].supplier%>" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class">
+            <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelExpression="[getRequirementId()+ ' : ' + name/]" labelAlignment="LEFT" labelPosition="node">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -1359,7 +1361,7 @@
         </containerMappings>
       </optionalLayers>
       <optionalLayers name="BDD Parametric Layer" label="Constraints">
-        <containerMappings name="BDD_ConstraintBlock" preconditionExpression="[self.getStereotypeApplications()->filter(sysml::constraints::ConstraintBlock)->size() > 0/]" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='BDD%20Parametric%20Layer']/@toolSections.2/@ownedTools[name='BDD_Delete_ConstraintBlock']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='BDD%20Parametric%20Layer']/@toolSections.1/@ownedTools[name='BDD_Edit_ConstraintBlock']" createElements="false" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class" listContainer="true">
+        <containerMappings name="BDD_ConstraintBlock" preconditionExpression="service:isConstraintBlock" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='BDD%20Parametric%20Layer']/@toolSections.2/@ownedTools[name='BDD_Delete_ConstraintBlock']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='BDD%20Parametric%20Layer']/@toolSections.1/@ownedTools[name='BDD_Edit_ConstraintBlock']" createElements="false" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class" childrenPresentation="List">
           <subNodeMappings name="BDD_Constraint_Comment" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='BDD%20Parametric%20Layer']/@toolSections.2/@ownedTools[name='BDD_Delete_Comment']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@optionalLayers[name='BDD%20Parametric%20Layer']/@toolSections.1/@ownedTools[name='BDD_Edit_Comment']" semanticCandidatesExpression="[ownedComment/]" domainClass="uml.Comment">
             <style xsi:type="style:SquareDescription" labelExpression="['{ ' + _body + ' }'/]" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1388,14 +1390,14 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
                 <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsKindOf(uml::Package)/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement" variableName="newConstraintBlock">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="newConstraintBlock"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::Constraints', 'ConstraintBlock')/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsKindOf(uml::Class)/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="nestedClassifier" variableName="newConstraintBlock">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="newConstraintBlock"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::Constraints', 'ConstraintBlock')/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -1467,8 +1469,8 @@
       </optionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Requirement Table" titleExpression="['req [package] ' + self.name + ' [RequirementTable]'/]" domainClass="uml.Package">
-      <ownedLineMappings name="RT_Requirements" semanticElements="[self->union(self.getStereotypeApplications()->filter(sysml::requirements::Requirement))/]" domainClass="uml.Class" semanticCandidatesExpression="[packagedElement->select(not(getStereotypeApplications()->filter(sysml::requirements::Requirement)->isEmpty()))/]" headerLabelExpression="&lt;&lt; Requirement >>">
-        <ownedSubLines name="RT_SubRequirements" semanticElements="[self->union(self.getStereotypeApplications()->filter(sysml::requirements::Requirement))/]" domainClass="uml.Class" semanticCandidatesExpression="[nestedClassifier->select(not(getStereotypeApplications()->filter(sysml::requirements::Requirement)->isEmpty()))/]" headerLabelExpression="&lt;&lt; Requirement >>">
+      <ownedLineMappings name="RT_Requirements" semanticElements="service:getRequirements" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements" headerLabelExpression="&lt;&lt; Requirement >>">
+        <ownedSubLines name="RT_SubRequirements" semanticElements="service:getRequirements" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements" headerLabelExpression="&lt;&lt; Requirement >>">
           <delete name="RT Delete SubRequirement" label="Delete Sub Requirement">
             <variables name="element" documentation="The currently edited element."/>
             <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -1481,8 +1483,8 @@
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
           <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[element/]">
             <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="nestedClassifier">
-              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['subreq' + element.nestedClassifier->filter(uml::Class)->select(not(getStereotypeApplications()->filter(sysml::requirements::Requirement)->isEmpty()))->size()/]"/>
               <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::Requirements', 'Requirement')/]"/>
+              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
             </subModelOperations>
           </firstModelOperation>
         </create>
@@ -1498,8 +1500,8 @@
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
         <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[container/]">
           <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
-            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['req' + container.packagedElement->filter(uml::Class)->select(not(getStereotypeApplications()->filter(sysml::requirements::Requirement)->isEmpty()))->size()/]"/>
             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::Requirements', 'Requirement')/]"/>
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
           </subModelOperations>
         </firstModelOperation>
       </ownedCreateLine>
@@ -1514,7 +1516,7 @@
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
-      <ownedColumnMappings name="RT_Id" label="ID" headerLabelExpression="ID" featureName="id" labelExpression="[id/]" featureParentExpression="[getStereotypeApplications()->filter(sysml::requirements::Requirement)->asSequence()->first()/]">
+      <ownedColumnMappings name="RT_Id" label="ID" headerLabelExpression="ID" featureName="id" labelExpression="[id/]" featureParentExpression="service:getRequirement">
         <directEdit>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
@@ -1523,7 +1525,7 @@
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
-      <ownedColumnMappings name="RT_Text" label="Text" headerLabelExpression="Text" featureName="text" labelExpression="[text/]" featureParentExpression="[getStereotypeApplications()->filter(sysml::requirements::Requirement)->asSequence()->first()/]">
+      <ownedColumnMappings name="RT_Text" label="Text" headerLabelExpression="Text" featureName="text" labelExpression="[text/]" featureParentExpression="service:getRequirement">
         <directEdit>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
@@ -1533,7 +1535,7 @@
         </directEdit>
       </ownedColumnMappings>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='IBD_Drop']" name="Internal Block Diagram" titleExpression="['ibd [block] ' + self.name + ' [' + self.name + ' diagram]'/]" domainClass="uml.Class" preconditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Block)->size() > 0/]" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='IBD_Drop']" name="Internal Block Diagram" titleExpression="['ibd [block] ' + self.name + ' [' + self.name + ' diagram]'/]" domainClass="uml.Class" preconditionExpression="service:isValidInternalBlockDiagramRoot" enablePopupBars="true">
       <defaultLayer name="IBDLayer">
         <edgeMappings name="IBD_PortConnector" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Edges']/@ownedTools[name='Delete%20Connector']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Connector%20Name']" semanticCandidatesExpression="[ownedConnector/]" semanticElements="[self/]" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@borderedNodeMappings[name='IBD_FlowPort'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@borderedNodeMappings[name='IBD_Port'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@subContainerMappings[name='IBD_Part']/@borderedNodeMappings[name='IBD_PartFlowPort'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@subContainerMappings[name='IBD_Part']/@borderedNodeMappings[name='IBD_PartPort']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@borderedNodeMappings[name='IBD_FlowPort'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@borderedNodeMappings[name='IBD_Port'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@subContainerMappings[name='IBD_Part']/@borderedNodeMappings[name='IBD_PartFlowPort'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@subContainerMappings[name='IBD_Part']/@borderedNodeMappings[name='IBD_PartPort']" targetFinderExpression="[end->asSequence()->last().role/]" sourceFinderExpression="[end->asSequence()->first().role/]" domainClass="uml.Connector" useDomainElement="true">
           <style targetArrow="NoDecoration" sizeComputationExpression="2" routingStyle="manhattan">
@@ -1542,7 +1544,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
-          <conditionnalStyles predicateExpression="[end.getStereotypeApplications()->filter(sysml::portandflows::FlowPort)->size() >0/]">
+          <conditionnalStyles predicateExpression="[end.isFlowPort()/]">
             <style targetArrow="NoDecoration" sizeComputationExpression="2" routingStyle="manhattan">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
               <centerLabelStyleDescription labelExpression="[computeUmlLabel()/]">
@@ -1552,25 +1554,25 @@
           </conditionnalStyles>
         </edgeMappings>
         <containerMappings name="IBD_Block" detailDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='IBD%20Create%20PAR']" navigationDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='IBD%20to%20BDD'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='IBD%20to%20PAR']" semanticCandidatesExpression="[self/]" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class">
-          <borderedNodeMappings name="IBD_FlowPort" preconditionExpression="[getStereotypeApplications()->filter(sysml::portandflows::FlowPort)->size() > 0/]" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='Delete%20FlowPort']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20FlowPort%20Name']" semanticCandidatesExpression="[ownedPort/]" semanticElements="[self->union(self.getStereotypeApplications())/]" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='IDD%20Select%20Type%20for%20FlowPort']" domainClass="uml.Port">
+          <borderedNodeMappings name="IBD_FlowPort" preconditionExpression="service:isFlowPort" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='Delete%20FlowPort']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20FlowPort%20Name']" semanticCandidatesExpression="[ownedPort/]" semanticElements="[self->union(self.getStereotypeApplications())/]" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='IDD%20Select%20Type%20for%20FlowPort']" domainClass="uml.Port">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (inout)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BluePortInOut']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
-            <conditionnalStyles predicateExpression="[getStereotypeApplications()->filter(sysml::portandflows::FlowPort)->asSequence()->first().direction  = 'out'/]">
+            <conditionnalStyles predicateExpression="service:isOutFlowPort">
               <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (out)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortOut']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="[getStereotypeApplications()->filter(sysml::portandflows::FlowPort)->asSequence()->first().direction  = 'in'/]">
+            <conditionnalStyles predicateExpression="service:isInFlowPort">
               <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (in)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortIn']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </conditionnalStyles>
           </borderedNodeMappings>
-          <borderedNodeMappings name="IBD_Port" preconditionExpression="[getStereotypeApplications()->filter(sysml::portandflows::FlowPort)->size() = 0/]" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='Delete%20Port']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Port%20Name']" semanticCandidatesExpression="[ownedPort/]" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='IDD%20Select%20Type%20for%20Port']" domainClass="uml.Port">
+          <borderedNodeMappings name="IBD_Port" preconditionExpression="service:isPort" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='Delete%20Port']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Port%20Name']" semanticCandidatesExpression="[ownedPort/]" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='IDD%20Select%20Type%20for%20Port']" domainClass="uml.Port">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BluePortInOut']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1582,13 +1584,13 @@
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
-              <conditionnalStyles predicateExpression="[getStereotypeApplications()->filter(sysml::portandflows::FlowPort)->asSequence()->first().direction  = 'out'/]">
+              <conditionnalStyles predicateExpression="service:isOutFlowPort">
                 <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (out)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortOut']">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 </style>
               </conditionnalStyles>
-              <conditionnalStyles predicateExpression="[getStereotypeApplications()->filter(sysml::portandflows::FlowPort)->asSequence()->first().direction  = 'in'/]">
+              <conditionnalStyles predicateExpression="service:isInFlowPort">
                 <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (in)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortIn']">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1600,13 +1602,13 @@
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
-              <conditionnalStyles predicateExpression="[getStereotypeApplications()->filter(sysml::portandflows::FlowPort)->asSequence()->first().direction  = 'out'/]">
+              <conditionnalStyles predicateExpression="service:isOutFlowPort">
                 <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortOut']">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 </style>
               </conditionnalStyles>
-              <conditionnalStyles predicateExpression="[getStereotypeApplications()->filter(sysml::portandflows::FlowPort)->asSequence()->first().direction  = 'in'/]">
+              <conditionnalStyles predicateExpression="service:isInFlowPort">
                 <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='PortIn']">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1706,7 +1708,7 @@
         <toolSections name="IBD Create Objects" label="Features">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="IBD Create Part" label="Part" forceRefresh="true" containerMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@subContainerMappings[name='IBD_Part']">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[container.getRootContainer().eAllContents(uml::Class)->select(not(getStereotypeApplications()->filter(sysml::blocks::Block)->isEmpty()) and getStereotypeApplications()->filter(sysml::constraints::ConstraintBlock)->isEmpty())/]" message="Select Block"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[container.getAllNonConstraintBlocks()/]" message="Select Block"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1721,26 +1723,26 @@
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="IBD Create FlowPort" label="FlowPort" nodeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@borderedNodeMappings[name='IBD_FlowPort'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@subContainerMappings[name='IBD_Part']/@borderedNodeMappings[name='IBD_PartFlowPort']">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[container.getRootContainer().eAllContents(uml::Class)->select(c : Class |  c.getStereotypeApplications()->filter(sysml::constraints::ConstraintBlock)->isEmpty() and (not(c.getStereotypeApplications()->filter(sysml::blocks::Block)->isEmpty()) or not(c->filter(uml::DataType)->isEmpty()) or not(c->filter(uml::PrimitiveType)->isEmpty())))/]" message="Select Type"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[container.getPortTypes()/]" message="Select Type"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
                 <subModelOperations xsi:type="tool:If" conditionExpression="[container.oclIsKindOf(uml::Class)/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Port" referenceName="ownedAttribute" variableName="p">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['flowPort' + container.type.oclAsType(uml::Class).ownedAttribute->size()/]"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::PortAndFlows', 'FlowPort')/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="[selectedType/]"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::PortAndFlows', 'FlowPort')/]"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="[container.oclIsKindOf(Property)/]">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.type/]">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Port" referenceName="ownedAttribute" variableName="p">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['flowPort' + container.type.oclAsType(uml::Class).ownedAttribute->size()/]"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::PortAndFlows', 'FlowPort')/]"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="[selectedType/]"/>
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::PortAndFlows', 'FlowPort')/]"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -1749,22 +1751,22 @@
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="IBD Create Port" label="Port" nodeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@borderedNodeMappings[name='IBD_Port'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@subContainerMappings[name='IBD_Part']/@borderedNodeMappings[name='IBD_PartPort']">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[container.getRootContainer().eAllContents(uml::Class)->select(c : Class |  c.getStereotypeApplications()->filter(sysml::constraints::ConstraintBlock)->isEmpty() and (not(c.getStereotypeApplications()->filter(sysml::blocks::Block)->isEmpty()) or not(c->filter(uml::DataType)->isEmpty()) or not(c->filter(uml::PrimitiveType)->isEmpty())))/]" message="Select Type"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[container.getPortTypes()/]" message="Select Type"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
                 <subModelOperations xsi:type="tool:If" conditionExpression="[container.oclIsKindOf(uml::Class)/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Port" referenceName="ownedAttribute" variableName="p">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['port' + container.type.oclAsType(uml::Class).ownedAttribute->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="[selectedType/]"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="[container.oclIsKindOf(Property)/]">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[container.oclIsKindOf(uml::Property)/]">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.type/]">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Port" referenceName="ownedAttribute" variableName="p">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['port' + container.type.oclAsType(uml::Class).ownedAttribute->size()/]"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="[selectedType/]"/>
                     </subModelOperations>
@@ -1885,7 +1887,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:DoubleClickDescription" name="IDD Select Type for FlowPort" forceRefresh="true" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@borderedNodeMappings[name='IBD_FlowPort'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@subContainerMappings[name='IBD_Part']/@borderedNodeMappings[name='IBD_PartFlowPort']">
             <element name="element">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[element.getRootContainer().eAllContents(uml::Class)->select(c : Class | not(c.getStereotypeApplications()->filter(sysml::blocks::Block)->isEmpty()) or not(c->filter(uml::DataType)->isEmpty()) or not(c->filter(uml::PrimitiveType)->isEmpty()))/]" message="Select Type"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[element.getRootContainer().eAllContents(uml::Class)->select(c : Class | c.isBlock() or not(c->filter(uml::DataType)->isEmpty()) or not(c->filter(uml::PrimitiveType)->isEmpty()))/]" message="Select Type"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1896,7 +1898,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:DoubleClickDescription" name="IDD Select Type for Port" forceRefresh="true" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@borderedNodeMappings[name='IBD_Port'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@subContainerMappings[name='IBD_Part']/@borderedNodeMappings[name='IBD_PartPort']">
             <element name="element">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[element.getRootContainer().eAllContents(uml::Class)->select(c : Class | not(c.getStereotypeApplications()->filter(sysml::blocks::Block)->isEmpty()) or not(c->filter(uml::DataType)->isEmpty()) or not(c->filter(uml::PrimitiveType)->isEmpty()))/]" message="Select Type"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[element.getRootContainer().eAllContents(uml::Class)->select(c : Class | c.isBlock() or not(c->filter(uml::DataType)->isEmpty()) or not(c->filter(uml::PrimitiveType)->isEmpty()))/]" message="Select Type"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1934,7 +1936,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='PAR_Drop']" name="Parametric Diagram" titleExpression="['par [block] ' + self.name + ' [' + self.name + ' diagram]'/]" domainClass="uml.Class" preconditionExpression="[getStereotypeApplications()->filter(sysml::blocks::Block)->size() > 0/]">
+    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='PAR_Drop']" name="Parametric Diagram" titleExpression="['par [block] ' + self.name + ' [' + self.name + ' diagram]'/]" domainClass="uml.Class" preconditionExpression="service:isValidParametricDiagramRoot" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#/"/>
       <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
       <defaultLayer name="PAR Parametric Layer" label="Parametric Layer">
@@ -1947,7 +1949,7 @@
           </style>
         </edgeMappings>
         <containerMappings name="PAR_Block" navigationDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='PAR%20to%20IBD']" semanticCandidatesExpression="[self/]" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class">
-          <subContainerMappings name="PAR_Constraint" preconditionExpression="[getStereotypeApplications()->filter(sysml::constraints::ConstraintProperty)->size() > 0/]" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='PAR%20Delete%20Objects']/@ownedTools[name='Delete%20Constraint%20Property']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PAR_Edit_Constraint']" semanticCandidatesExpression="[eContents()/]" createElements="false" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='PAR%20Select%20Type%20for%20Constraint']" domainClass="uml.Property">
+          <subContainerMappings name="PAR_Constraint" preconditionExpression="service:isConstraintProperty" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='PAR%20Delete%20Objects']/@ownedTools[name='Delete%20Constraint%20Property']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PAR_Edit_Constraint']" semanticCandidatesExpression="[eContents()/]" createElements="false" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='PAR%20Select%20Type%20for%20Constraint']" domainClass="uml.Property">
             <borderedNodeMappings name="PAR_Parameter" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='PAR%20Delete%20Objects']/@ownedTools[name='Delete%20Parameter']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PAR_Edit_Parameter']" semanticCandidatesExpression="[type.eContents(uml::Property)/]" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='PAR%20Select%20Type%20for%20Parameter']" domainClass="uml.Property">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[computeUmlLabel()/]" sizeComputationExpression="2" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
@@ -1978,10 +1980,10 @@
                 <subModelOperations xsi:type="tool:For" expression="[element/]" iteratorName="selection">
                   <subModelOperations xsi:type="tool:Switch">
                     <cases conditionExpression="[selection->filter(Property)->size()>0/]">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::constraints::ConstraintProperty)->size() > 0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="service:isConstraintProperty">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']" containerViewExpression="&lt;%$selection.eContainer().~target.filter(&quot;DNodeContainer&quot;)[(actualMapping.name==&quot;PAR_Block&quot; || actualMapping.name==&quot;PAR_Block_Import&quot;)&amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::constraints::ConstraintProperty)->size() = 0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="[not isConstraintProperty()/]">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@optionalLayers[name='PAR%20ValueBinding%20Layer']/@containerMappings[name='PAR_Block_Import']/@subContainerMappings[name='PAR_ValueBinding']" containerViewExpression="&lt;%$selection.eContainer().~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;PAR_Block_Import&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
                       </subModelOperations>
                     </cases>
@@ -2001,10 +2003,10 @@
                 <subModelOperations xsi:type="tool:For" expression="[element/]" iteratorName="selection">
                   <subModelOperations xsi:type="tool:Switch">
                     <cases conditionExpression="[selection->filter(Property)->size()>0/]">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::constraints::ConstraintProperty)->size() > 0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="service:isConstraintProperty">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']" containerViewExpression="&lt;%$selection.eContainer().~target.filter(&quot;DNodeContainer&quot;)[(actualMapping.name==&quot;PAR_Block&quot; || actualMapping.name==&quot;PAR_Block_Import&quot;)&amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::constraints::ConstraintProperty)->size() = 0/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="[not isConstraintProperty()/]">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@optionalLayers[name='PAR%20ValueBinding%20Layer']/@containerMappings[name='PAR_Block_Import']/@subContainerMappings[name='PAR_ValueBinding']" containerViewExpression="&lt;%$selection.eContainer().~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;PAR_Block_Import&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
                       </subModelOperations>
                     </cases>
@@ -2022,10 +2024,10 @@
                   <subModelOperations xsi:type="tool:Switch">
                     <cases conditionExpression="&lt;%$i.filter(&quot;Property&quot;)%>">
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.eContainer.~target.filter(&quot;DNodeContainer&quot;)[(actualMapping.name==&quot;PAR_Block&quot;||actualMapping.name==&quot;PAR_Block_Import&quot;) &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram].length>0%>">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::constraints::ConstraintProperty)->size() > 0/]">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="service:isConstraintProperty">
                           <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']" containerViewExpression="&lt;%$i.eContainer.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;PAR_Block_Import&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::constraints::ConstraintProperty)->size() = 0/]"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[not isConstraintProperty/]"/>
                       </subModelOperations>
                     </cases>
                     <default/>
@@ -2038,27 +2040,27 @@
         <toolSections name="PAR Create Objects" label="Features">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="PAR Create Constraint" label="Constraint" containerMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="[container.getRootContainer().eAllContents(uml::Package)->union(container.getRootContainer().eAllContents(uml::Class)->select(not(getStereotypeApplications()->filter(sysml::blocks::Block)->isEmpty())))/]" message="Select Package or Block in which the new constraint Block will be created"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="[container.getAllBlocks()/]" message="Select Package or Block in which the new constraint Block will be created"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[selectedElement/]">
                 <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsKindOf(uml::Package)/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement" variableName="newConstraintBlock">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="newConstraintBlock"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::Constraints', 'ConstraintBlock')/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsKindOf(uml::Class)/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="nestedClassifier" variableName="newConstraintBlock">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="newConstraintBlock"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::Constraints', 'ConstraintBlock')/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute" variableName="constraintProperty">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['constraintProperty' + container.ownedAttribute->size()/]"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::Constraints', 'ConstraintProperty')/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="[newConstraintBlock/]"/>
                   </subModelOperations>
@@ -2068,7 +2070,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="PAR Create Parameter" label="Parameter" nodeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']/@borderedNodeMappings[name='PAR_Parameter']">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[container.getRootContainer().eAllContents(uml::Classifier)->select(c : Classifier | not(c.getStereotypeApplications()->filter(sysml::blocks::Block)->isEmpty()) or not(c->filter(uml::DataType)->isEmpty()) or not(c->filter(uml::PrimitiveType)->isEmpty()))/]" message="Select Type"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[container.getRootContainer().eAllContents(uml::Classifier)->select(c : Classifier | c.isBlock() or not(c->filter(uml::DataType)->isEmpty()) or not(c->filter(uml::PrimitiveType)->isEmpty()))/]" message="Select Type"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -2157,7 +2159,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:DoubleClickDescription" name="PAR Select Type for Constraint" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']">
             <element name="element">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="[element.getRootContainer().eAllContents(uml::Class)->select(not(getStereotypeApplications()->filter(sysml::constraints::ConstraintBlock)->isEmpty()))/]" message="Select Block Constraint"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="service:getAllConstraintBlocks" message="Select Block Constraint"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -2168,7 +2170,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:DoubleClickDescription" name="PAR Select Type for Parameter" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']/@borderedNodeMappings[name='PAR_Parameter']">
             <element name="element">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[element.getRootContainer().eAllContents(uml::Class)->select(c : Class | c.getStereotypeApplications()->filter(sysml::constraints::ConstraintBlock)->isEmpty() and not(c.getStereotypeApplications()->filter(sysml::blocks::Block)->isEmpty()) or not(c->filter(uml::DataType)->isEmpty()) or not(c->filter(uml::PrimitiveType)->isEmpty()))/]" message="Select Type"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[element.getRootContainer().eAllContents(uml::Class)->select(c : Class | not c.isConstraintBlock() and c.isBlock()) or not(c->filter(uml::DataType)->isEmpty()) or not(c->filter(uml::PrimitiveType)->isEmpty()))/]" message="Select Type"/>
             </element>
             <elementView name="elementView"/>
             <initialOperation>
@@ -2268,9 +2270,9 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="RD_Requirement" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='RD_Edit']" createElements="false" semanticElements="&lt;%self%>" domainClass="requirements.Requirement" reusedContainerMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" listContainer="true">
+        <containerMappings name="RD_Requirement" preconditionExpression="service:isRequirement" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='RD_Edit']" createElements="false" semanticElements="&lt;%self%>" domainClass="uml.Class" reusedContainerMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" childrenPresentation="List">
           <subNodeMappings name="RD_Requirement_Id" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='RD_Requirement_Id_Edit']" semanticCandidatesExpression="&lt;%self%>" domainClass="uml.Class">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="Id=&quot;&lt;%self.getStereotypeApplications().id%>&quot;" labelAlignment="LEFT" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="Id=&quot;&lt;%getRequirementId()%>&quot;" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -2432,12 +2434,12 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target%>">
                 <subModelOperations xsi:type="tool:For" expression="&lt;%getRelated()%>">
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.filter(&quot;Class&quot;)%>">
-                    <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::requirements::Requirement)->size() > 0/]">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="service:isRequirement">
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" containerViewExpression="&lt;%$diagram%>"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.filter(&quot;Operation&quot;)%>">
-                    <subModelOperations xsi:type="tool:If" conditionExpression="[getStereotypeApplications()->filter(sysml::requirements::TestCase)->size() > 0/]">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="service:isTestCase">
                       <subModelOperations xsi:type="tool:CreateView" containerViewExpression="&lt;%$diagram%>"/>
                     </subModelOperations>
                   </subModelOperations>
@@ -2445,7 +2447,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CD_RemoveExistingElements']"/>
+          <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='RemoveExistingElements']"/>
         </toolSections>
         <toolSections name="Types">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Requirement" containerMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" iconPath="/org.eclipse.papyrus.sysml/icons/requirements/Requirement.gif">
@@ -2455,15 +2457,15 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;Package&quot;)%>">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['req' + container.packagedElement->filter(uml::Class)->select(not(getStereotypeApplications()->filter(sysml::requirements::Requirement)->isEmpty()))->size()/]"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::Requirements', 'Requirement')/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                     <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" containerViewExpression="&lt;%$containerView%>"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;Class&quot;)%>">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="nestedClassifier">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['req' + container.nestedClassifier->filter(uml::Class)->select(not(getStereotypeApplications()->filter(sysml::requirements::Requirement)->isEmpty()))->size()/]"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::Requirements', 'Requirement')/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                     <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" containerViewExpression="&lt;%$diagram%>"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -2655,10 +2657,10 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['testClass ' + container.packagedElement->filter(uml::Class)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Operation" referenceName="ownedOperation" variableName="operation">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['operation ' + container.packagedElement->filter(uml::Class)->size()/]"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[createAssociatedStereotype('SysML::Requirements', 'TestCase')/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -2695,7 +2697,7 @@
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#/"/>
       <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2#/"/>
       <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
-      <ownedLineMappings name="RCT_Requirements" semanticElements="[self->union(self.getStereotypeApplications()->filter(sysml::requirements::Requirement))/]" domainClass="uml.Class" semanticCandidatesExpression="&lt;%self.eAllContents(&quot;Class&quot;)[getStereotypeApplications().filter(&quot;Requirement&quot;)]%>" headerLabelExpression="['&lt;&lt;Requirement>> ' + getStereotypeApplications()->filter(sysml::requirements::Requirement).id + ' : ' + name/]">
+      <ownedLineMappings name="RCT_Requirements" semanticElements="service:isRequirement" domainClass="uml.Class" semanticCandidatesExpression="&lt;%self.eAllContents(&quot;Class&quot;)[getStereotypeApplications().filter(&quot;Requirement&quot;)]%>" headerLabelExpression="['&lt;&lt;Requirement>> ' + getRequirementId() + ' : ' + name/]">
         <delete name="RCT Delete Requirement" precondition="[false/]">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -2709,7 +2711,7 @@
           <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[self/]"/>
         </delete>
       </ownedColumnMappings>
-      <intersection name="RCT_Derive" label="Derive" lineMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Derive%20Refine%20Requirement%20Table']/@ownedLineMappings[name='RCT_Requirements']" columnMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Derive%20Refine%20Requirement%20Table']/@ownedColumnMappings.0" labelExpression="D" useDomainClass="true" columnFinderExpression="[client/]" lineFinderExpression="[supplier/]" semanticCandidatesExpression="[getRootContainer().eAllContents(uml::Abstraction)->select(not(getStereotypeApplications()->filter(sysml::requirements::DeriveReqt)->isEmpty()))/]" domainClass="uml.Abstraction">
+      <intersection name="RCT_Derive" label="Derive" lineMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Derive%20Refine%20Requirement%20Table']/@ownedLineMappings[name='RCT_Requirements']" columnMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Derive%20Refine%20Requirement%20Table']/@ownedColumnMappings.0" labelExpression="D" useDomainClass="true" columnFinderExpression="[client/]" lineFinderExpression="[supplier/]" semanticCandidatesExpression="service:getAllDeriveReqts" domainClass="uml.Abstraction">
         <directEdit>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
@@ -2771,8 +2773,8 @@
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#/"/>
       <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2#/"/>
       <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
-      <ownedLineMappings name="ST_Requirements" semanticElements="[self->union(self.getStereotypeApplications()->filter(sysml::requirements::Requirement))/]" domainClass="uml.Class" semanticCandidatesExpression="[packagedElement->select(not(getStereotypeApplications()->filter(sysml::requirements::Requirement)->isEmpty()))/]" headerLabelExpression="['&lt;&lt;Requirement>> ' + getStereotypeApplications()->filter(sysml::requirements::Requirement).id + ' : ' + name/]">
-        <ownedSubLines name="ST_SubRequirements" semanticElements="[self->union(self.getStereotypeApplications()->filter(sysml::requirements::Requirement))/]" domainClass="uml.Class" semanticCandidatesExpression="[nestedClassifier->select(not(getStereotypeApplications()->filter(sysml::requirements::Requirement)->isEmpty()))/]" headerLabelExpression="['&lt;&lt;Requirement>> ' + getStereotypeApplications()->filter(sysml::requirements::Requirement).id + ' : ' + name/]">
+      <ownedLineMappings name="ST_Requirements" semanticElements="service:getRequirements" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements" headerLabelExpression="['&lt;&lt;Requirement>> ' + getRequirementId() + ' : ' + name/]">
+        <ownedSubLines name="ST_SubRequirements" semanticElements="service:getRequirements" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements" headerLabelExpression="['&lt;&lt;Requirement>> ' + getRequirementId()+ ' : ' + name/]">
           <delete name="RCT Delete Sub Requirement" precondition="[false/]">
             <variables name="element" documentation="The currently edited element."/>
             <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -2792,7 +2794,7 @@
           <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[self/]"/>
         </delete>
       </ownedColumnMappings>
-      <intersection name="ST_Satisfy" label="Satisfy" lineMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Satisfy%20Table']/@ownedLineMappings[name='ST_Requirements'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Satisfy%20Table']/@ownedLineMappings[name='ST_Requirements']/@ownedSubLines[name='ST_SubRequirements']" columnMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Satisfy%20Table']/@ownedColumnMappings.0" labelExpression="S" useDomainClass="true" columnFinderExpression="[client/]" lineFinderExpression="[supplier/]" semanticCandidatesExpression="[getRootContainer().eAllContents(uml::Abstraction)->select(not(getStereotypeApplications()->filter(sysml::requirements::Satisfy)->isEmpty()))/]" domainClass="uml.Abstraction">
+      <intersection name="ST_Satisfy" label="Satisfy" lineMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Satisfy%20Table']/@ownedLineMappings[name='ST_Requirements'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Satisfy%20Table']/@ownedLineMappings[name='ST_Requirements']/@ownedSubLines[name='ST_SubRequirements']" columnMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Satisfy%20Table']/@ownedColumnMappings.0" labelExpression="S" useDomainClass="true" columnFinderExpression="[client/]" lineFinderExpression="[supplier/]" semanticCandidatesExpression="service:getAllSatisfyReqts" domainClass="uml.Abstraction">
         <directEdit>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
@@ -2831,7 +2833,7 @@
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#/"/>
       <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2#/"/>
       <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
-      <ownedLineMappings name="VT_Requirements" semanticElements="[self->union(self.getStereotypeApplications()->filter(sysml::requirements::Requirement))/]" domainClass="uml.Class" semanticCandidatesExpression="&lt;%self.eAllContents(&quot;Class&quot;)[getStereotypeApplications().filter(&quot;Requirement&quot;)]%>" headerLabelExpression="['&lt;&lt;Requirement>> ' + getStereotypeApplications()->filter(sysml::requirements::Requirement).id + ' : ' + name/]">
+      <ownedLineMappings name="VT_Requirements" semanticElements="service:getRequirements" domainClass="uml.Class" semanticCandidatesExpression="&lt;%self.eAllContents(&quot;Class&quot;)[getStereotypeApplications().filter(&quot;Requirement&quot;)]%>" headerLabelExpression="['&lt;&lt;Requirement>> ' + getRequirementId() + ' : ' + name/]">
         <delete name="VT Delete Requirement" precondition="[false/]">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -2845,7 +2847,7 @@
           <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[self/]"/>
         </delete>
       </ownedColumnMappings>
-      <intersection name="VT_Verify" label="Verify" lineMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Verify%20Table']/@ownedLineMappings[name='VT_Requirements']" columnMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Verify%20Table']/@ownedColumnMappings.0" labelExpression="V" useDomainClass="true" columnFinderExpression="[client/]" lineFinderExpression="[supplier/]" semanticCandidatesExpression="[getRootContainer().eAllContents(uml::Abstraction)->select(not(getStereotypeApplications()->filter(sysml::requirements::Verify)->isEmpty()))/]" domainClass="uml.Abstraction">
+      <intersection name="VT_Verify" label="Verify" lineMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Verify%20Table']/@ownedLineMappings[name='VT_Requirements']" columnMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Verify%20Table']/@ownedColumnMappings.0" labelExpression="V" useDomainClass="true" columnFinderExpression="[client/]" lineFinderExpression="[supplier/]" semanticCandidatesExpression="service:getAllVerifyReqts" domainClass="uml.Abstraction">
         <directEdit>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
@@ -2884,7 +2886,7 @@
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#/"/>
       <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2#/"/>
       <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
-      <ownedLineMappings name="RT_Requirements" semanticElements="[self->union(self.getStereotypeApplications()->filter(sysml::requirements::Requirement))/]" domainClass="uml.Class" semanticCandidatesExpression="&lt;%self.eAllContents(&quot;Class&quot;)[getStereotypeApplications().filter(&quot;Requirement&quot;)]%>" headerLabelExpression="['&lt;&lt;Requirement>> ' + getStereotypeApplications()->filter(sysml::requirements::Requirement).id + ' : ' + name/]">
+      <ownedLineMappings name="RT_Requirements" semanticElements="service:getRequirements" domainClass="uml.Class" semanticCandidatesExpression="&lt;%self.eAllContents(&quot;Class&quot;)[getStereotypeApplications().filter(&quot;Requirement&quot;)]%>" headerLabelExpression="['&lt;&lt;Requirement>> ' + getRequirementId() + ' : ' + name/]">
         <delete name="VT Delete Requirement" precondition="[false/]">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -2953,6 +2955,7 @@
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.EcoreServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.services.PortServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.services.DebugServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.services.LabelServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="SysML Color Palette">
     <entries xsi:type="description:UserFixedColor" red="126" green="177" blue="254" name="BlueBlock"/>

@@ -25,6 +25,13 @@ import org.eclipse.papyrus.sysml.blocks.Unit;
 import org.eclipse.papyrus.sysml.blocks.ValueType;
 import org.eclipse.papyrus.sysml.constraints.ConstraintBlock;
 import org.eclipse.papyrus.sysml.constraints.ConstraintProperty;
+import org.eclipse.papyrus.sysml.portandflows.FlowDirection;
+import org.eclipse.papyrus.sysml.portandflows.FlowPort;
+import org.eclipse.papyrus.sysml.requirements.DeriveReqt;
+import org.eclipse.papyrus.sysml.requirements.Requirement;
+import org.eclipse.papyrus.sysml.requirements.Satisfy;
+import org.eclipse.papyrus.sysml.requirements.TestCase;
+import org.eclipse.papyrus.sysml.requirements.Verify;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Abstraction;
@@ -32,6 +39,7 @@ import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InstanceSpecification;
@@ -40,6 +48,7 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Port;
+import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
@@ -66,6 +75,7 @@ import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectEditor;
  * Utility services for SysML.
  * 
  * @author Axel Richard <a href="mailto:axel.richard@obeo.fr">axel.richard@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class SysMLServices {
 
@@ -700,5 +710,559 @@ public class SysMLServices {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Checks if an element is a valid root of a block definition diagram.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element could be a root of a block definition diagram otherwise false
+	 */
+	public boolean isValidBlockDefinitionDiagramRoot(NamedElement element) {
+		// Replace the acceleo expression : [self.oclIsKindOf(uml::Package) or
+		// self->filter(uml::Class).getStereotypeApplications()->filter(sysml::blocks::Block)->size() > 0/]
+		if (element instanceof Package) {
+			return true;
+		} else if (element instanceof Class) {
+			return isBlock((Class)element);
+		}
+		return false;
+	}
+
+	/**
+	 * Checks if an element is a valid root of an internal block diagram.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element could be a root of an internal block diagram otherwise false
+	 */
+	public boolean isValidInternalBlockDiagramRoot(Class element) {
+		// Replace the acceleo expression : [getStereotypeApplications()->filter(sysml::blocks::Block)->size()
+		// > 0/]
+		return isBlock(element);
+	}
+
+	/**
+	 * Checks if an element is a valid root of a parametric diagram.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element could be a root of a parametric diagram otherwise false
+	 */
+	public boolean isValidParametricDiagramRoot(Class element) {
+		// Replace the acceleo expression : [getStereotypeApplications()->filter(sysml::blocks::Block)->size()
+		// > 0/]
+		return isBlock(element);
+	}
+
+	/**
+	 * Checks if element has the stereotype block.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element is a block otherwise false
+	 */
+	public boolean isBlock(Classifier element) {
+		return isStereotype(element, Block.class);
+	}
+
+	/**
+	 * Get all non constraint blocks.
+	 * 
+	 * @param container
+	 *            Container
+	 * @return All blocks.
+	 */
+	public List<Class> getAllNonConstraintBlocks(EObject container) {
+		SysMLServices service = new SysMLServices();
+		// Replace expression :
+		// [container.getRootContainer().eAllContents(uml::Package)->union(container.getRootContainer().eAllContents(uml::Class)->select(isBlock()))/]
+		List<Class> blocks = Lists.newArrayList();
+		for (Iterator<EObject> iterator = service.getRootContainer(container).eAllContents(); iterator
+				.hasNext();) {
+			EObject element = iterator.next();
+			if (element instanceof Class && (isBlock((Class)element) && !isConstraintBlock((Class)element))) {
+				blocks.add(((Class)element));
+			}
+		}
+		return blocks;
+	}
+
+	/**
+	 * Get all non constraint blocks.
+	 * 
+	 * @param container
+	 *            Container
+	 * @return All blocks.
+	 */
+	public List<Class> getAllConstraintBlocks(EObject container) {
+		SysMLServices service = new SysMLServices();
+		// Replace expression :
+		// [container.getRootContainer().eAllContents(uml::Package)->union(container.getRootContainer().eAllContents(uml::Class)->select(isBlock()))/]
+		List<Class> blocks = Lists.newArrayList();
+		for (Iterator<EObject> iterator = service.getRootContainer(container).eAllContents(); iterator
+				.hasNext();) {
+			EObject element = iterator.next();
+			if (element instanceof Class && isConstraintBlock((Class)element)) {
+				blocks.add(((Class)element));
+			}
+		}
+		return blocks;
+	}
+
+	/**
+	 * Checks if element has the stereotype constraint block.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element is a constraint block otherwise false
+	 */
+	public boolean isConstraintBlock(Classifier element) {
+		return isStereotype(element, ConstraintBlock.class);
+	}
+
+	/**
+	 * Checks if element has the stereotype requirement.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element is a requirement otherwise false
+	 */
+	public boolean isRequirement(Class element) {
+		return isStereotype(element, Requirement.class);
+	}
+
+	/**
+	 * Get requirement.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element is a requirement otherwise false
+	 */
+	public Requirement getRequirement(Class element) {
+		// Replace acceleo expression :
+		// [getStereotypeApplications()->filter(sysml::requirements::Requirement)->size() > 0/]
+		for (EObject stereotype : element.getStereotypeApplications()) {
+			if (stereotype instanceof Requirement) {
+				return (Requirement)stereotype;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Get requirement id.
+	 * 
+	 * @param element
+	 *            Requirement
+	 * @return Id
+	 */
+	public String getRequirementId(Class element) {
+		Requirement requirement = getRequirement(element);
+		return requirement.getId();
+	}
+
+	/**
+	 * Checks if element has the stereotype value type.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element is a value type otherwise false
+	 */
+	public boolean isValueType(NamedElement element) {
+		for (EObject stereotype : element.getStereotypeApplications()) {
+			if (stereotype instanceof ValueType) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Get value type.
+	 * 
+	 * @param element
+	 *            Element
+	 * @return Value type
+	 */
+	public EObject getValueType(Element element) {
+		// Replace acceleo expression :
+		// getStereotypeApplications()->filter(sysml::blocks::ValueType)->select(not(base_DataType->filter(uml::PrimitiveType)->isEmpty()))
+		for (EObject stereotype : element.getStereotypeApplications()) {
+			if (stereotype instanceof ValueType
+					&& (!(((ValueType)stereotype).getBase_DataType() instanceof PrimitiveType))) {
+				return stereotype;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Checks if element has the stereotype dimension.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element is a dimension otherwise false
+	 */
+	public boolean isDimension(InstanceSpecification element) {
+		return isStereotype(element, Dimension.class);
+	}
+
+	/**
+	 * Checks if element has the stereotype unit.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element is a unit otherwise false
+	 */
+	public boolean isUnit(InstanceSpecification element) {
+		// Replace acceleo expression:
+		// [self.getStereotypeApplications()->filter(sysml::blocks::Unit)->size() > 0/]
+		for (EObject stereotype : element.getStereotypeApplications()) {
+			if (stereotype instanceof Unit) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Checks if element is a valid property.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element is a valid property otherwise false
+	 */
+	public boolean isValidProperty(Property element, DSemanticDiagram diagram) {
+		// Replace acceleo expression: [if diagram.isLayerActivated('BDD Parametric Layer') = false then
+		// getStereotypeApplications()->filter(sysml::constraints::ConstraintProperty)->size() = 0 and
+		// not(oclIsKindOf(uml::Port)) else not(oclIsKindOf(uml::Port)) endif/]
+		SysMLServices service = new SysMLServices();
+
+		if (!service.isLayerActivated(diagram, "BDD Parametric Layer")) {
+			if (element.getStereotypeApplications().size() == 0 && !(element instanceof Port)) {
+				return true;
+			}
+			for (EObject stereotype : element.getStereotypeApplications()) {
+				if (!(stereotype instanceof ConstraintProperty) && !(element instanceof Port)) {
+					return true;
+				}
+			}
+		} else {
+			if (!(element instanceof Port)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Get requirements defined in a package.
+	 * 
+	 * @param pkg
+	 *            Package
+	 * @return Requirements
+	 */
+	public List<Object> getRequirements(Package pkg) {
+		return getRequirements(pkg.getPackagedElements().toArray());
+	}
+
+	/**
+	 * Get requirement defined under a requirement.
+	 * 
+	 * @param class_
+	 *            Requirement
+	 * @return Sub requirements
+	 */
+	public List<Object> getRequirements(Classifier class_) {
+		return getRequirements(class_.eContents().toArray());
+	}
+
+	/**
+	 * Get requirements.
+	 * 
+	 * @param elements
+	 *            Possible requirements
+	 * @return Requirements
+	 */
+	private List<Object> getRequirements(Object[] elements) {
+		// Replace acceleo expression:
+		// self->union(self.getStereotypeApplications()->filter(sysml::requirements::Requirement))
+		List<Object> requirements = Lists.newArrayList();
+		for (Object element : elements) {
+			if (element instanceof Class && isRequirement((Class)element)) {
+				requirements.add(element);
+			}
+		}
+		return requirements;
+	}
+
+	/**
+	 * Checks if element has the stereotype flow port.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element is a flow port otherwise false
+	 */
+	public boolean isFlowPort(NamedElement element) {
+		return isStereotype(element, FlowPort.class);
+	}
+
+	/**
+	 * Checks if element has the stereotype port.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element is a port otherwise false
+	 */
+	public boolean isPort(NamedElement element) {
+		return element instanceof Port && !isFlowPort(element);
+	}
+
+	/**
+	 * Check if element has the SysML stereotype given in parameters.
+	 * 
+	 * @param element
+	 *            Element to check
+	 * @param sysmlStereotype
+	 *            stereotype
+	 * @return True if the elements has the stereotype otherwise false
+	 */
+	@SuppressWarnings("rawtypes")
+	private boolean isStereotype(NamedElement element, java.lang.Class sysmlStereotype) {
+		for (EObject stereotype : element.getStereotypeApplications()) {
+			if (sysmlStereotype.isInstance(stereotype)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Get the flow port.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return Flow port
+	 */
+	public FlowPort getFlowPort(NamedElement element) {
+		for (EObject stereotype : element.getStereotypeApplications()) {
+			if (stereotype instanceof FlowPort) {
+				return (FlowPort)stereotype;
+			}
+		}
+		return null;
+	}
+
+	public boolean isOutFlowPort(NamedElement element) {
+		FlowPort port = getFlowPort(element);
+		return port.getDirection().equals(FlowDirection.OUT);
+	}
+
+	public boolean isInFlowPort(NamedElement element) {
+		FlowPort port = getFlowPort(element);
+		return port.getDirection().equals(FlowDirection.IN);
+	}
+
+	/**
+	 * Checks if element has the stereotype constraint property.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element is a constraint property otherwise false
+	 */
+	public boolean isConstraintProperty(NamedElement element) {
+		return isStereotype(element, ConstraintProperty.class);
+	}
+
+	/**
+	 * Checks if element has the stereotype test case.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element is a test case otherwise false
+	 */
+	public boolean isTestCase(NamedElement element) {
+		for (EObject stereotype : element.getStereotypeApplications()) {
+			if (stereotype instanceof TestCase) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Checks if element has the stereotype test case.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element is a test case otherwise false
+	 */
+	public boolean isDeriveReqt(NamedElement element) {
+		return isStereotype(element, DeriveReqt.class);
+	}
+
+	/**
+	 * Checks if element has the stereotype satisfy.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element is a satisfy otherwise false
+	 */
+	public boolean isSatisfy(NamedElement element) {
+		return isStereotype(element, Satisfy.class);
+	}
+
+	/**
+	 * Checks if element has the stereotype verify.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element is a verify otherwise false
+	 */
+	public boolean isVerify(NamedElement element) {
+		return isStereotype(element, Verify.class);
+	}
+
+	/**
+	 * Get all blocks.
+	 * 
+	 * @param container
+	 *            Container
+	 * @return All blocks.
+	 */
+	public List<Class> getAllBlocks(EObject container) {
+		SysMLServices service = new SysMLServices();
+		// Replace expression :
+		// [container.getRootContainer().eAllContents(uml::Package)->union(container.getRootContainer().eAllContents(uml::Class)->select(isBlock()))/]
+		List<Class> blocks = Lists.newArrayList();
+		for (Iterator<EObject> iterator = service.getRootContainer(container).eAllContents(); iterator
+				.hasNext();) {
+			EObject element = iterator.next();
+			if (element instanceof Class && isBlock((Class)element)) {
+				blocks.add(((Class)element));
+			}
+		}
+		return blocks;
+	}
+
+	/**
+	 * Get all dimensions.
+	 * 
+	 * @param container
+	 *            Package
+	 * @return All dimensions.
+	 */
+	public List<InstanceSpecification> getAllDimensions(Package container) {
+		List<InstanceSpecification> results = Lists.newArrayList();
+		for (Iterator<EObject> iterator = container.eAllContents(); iterator.hasNext();) {
+			EObject element = iterator.next();
+			if (element instanceof InstanceSpecification && isDimension((InstanceSpecification)element)) {
+				results.add(((InstanceSpecification)element));
+			}
+		}
+		return results;
+	}
+
+	/**
+	 * Get all units.
+	 * 
+	 * @param container
+	 *            Package
+	 * @return All units.
+	 */
+	public List<InstanceSpecification> getAllUnits(Package container) {
+		List<InstanceSpecification> results = Lists.newArrayList();
+		for (Iterator<EObject> iterator = container.eAllContents(); iterator.hasNext();) {
+			EObject element = iterator.next();
+			if (element instanceof InstanceSpecification && isUnit((InstanceSpecification)element)) {
+				results.add(((InstanceSpecification)element));
+			}
+		}
+		return results;
+	}
+
+	/**
+	 * Get all derive requirements.
+	 * 
+	 * @param container
+	 *            Package
+	 * @return All derive requirements.
+	 */
+	public List<NamedElement> getAllDeriveReqts(Package container) {
+		SysMLServices service = new SysMLServices();
+		List<NamedElement> results = Lists.newArrayList();
+		for (Iterator<EObject> iterator = service.getRootContainer(container).eAllContents(); iterator
+				.hasNext();) {
+			EObject element = iterator.next();
+			if (element instanceof Abstraction && isDeriveReqt((NamedElement)element)) {
+				results.add(((NamedElement)element));
+			}
+		}
+		return results;
+	}
+
+	/**
+	 * Get all satisfy requirements.
+	 * 
+	 * @param container
+	 *            Package
+	 * @return All satisfy requirements.
+	 */
+	public List<NamedElement> getAllSatisfyReqts(Package container) {
+		SysMLServices service = new SysMLServices();
+		List<NamedElement> results = Lists.newArrayList();
+		for (Iterator<EObject> iterator = service.getRootContainer(container).eAllContents(); iterator
+				.hasNext();) {
+			EObject element = iterator.next();
+			if (element instanceof Abstraction && isSatisfy((NamedElement)element)) {
+				results.add(((NamedElement)element));
+			}
+		}
+		return results;
+	}
+
+	/**
+	 * Get all verify requirements.
+	 * 
+	 * @param container
+	 *            Package
+	 * @return All verify requirements.
+	 */
+	public List<NamedElement> getAllVerifyReqts(Package container) {
+		SysMLServices service = new SysMLServices();
+		List<NamedElement> results = Lists.newArrayList();
+		for (Iterator<EObject> iterator = service.getRootContainer(container).eAllContents(); iterator
+				.hasNext();) {
+			EObject element = iterator.next();
+			if (element instanceof Abstraction && isVerify((NamedElement)element)) {
+				results.add(((NamedElement)element));
+			}
+		}
+		return results;
+	}
+
+	/**
+	 * Get port types.
+	 * 
+	 * @param container
+	 *            Container
+	 * @return Port types
+	 */
+	public List<Classifier> getPortTypes(EObject container) {
+		SysMLServices service = new SysMLServices();
+		List<Classifier> results = Lists.newArrayList();
+		for (Iterator<EObject> iterator = service.getRootContainer(container).eAllContents(); iterator
+				.hasNext();) {
+			EObject element = iterator.next();
+			if (element instanceof Classifier
+					&& !isConstraintBlock((Classifier)element)
+					&& (isBlock((Classifier)element) || element instanceof PrimitiveType || element instanceof DataType)) {
+				results.add(((Classifier)element));
+			}
+		}
+		return results;
 	}
 }
