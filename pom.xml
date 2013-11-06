@@ -45,12 +45,12 @@
 		<repository>
 			<id>obeodesigner</id>
 			<layout>p2</layout>
-			<url>http://www.obeo.fr/download/release/designer/6.2/latest/juno3/update</url>
+			<url>http://update.obeo.fr/release/designer/6.2.0/kepler/update/repository</url>
 		</repository>
 		<repository>
 			<id>Papyrus</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/maintenance/juno</url>
+			<url>http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/kepler</url>
 		</repository>	
 		<repository>
 			<id>od-uml</id>
