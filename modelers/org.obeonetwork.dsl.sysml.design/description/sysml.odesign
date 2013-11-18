@@ -937,7 +937,7 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
                   <subModelOperations xsi:type="tool:Switch">
-                    <cases conditionExpression="[source = sourceView.eContainer(viewpoint::DDiagram).oclAsType(viewpoint::DSemanticDecorator).target/]">
+                    <cases conditionExpression="[container = containerView.eContainer(viewpoint::DDiagram).oclAsType(viewpoint::DSemanticDecorator).target/]">
                       <subModelOperations xsi:type="tool:If" conditionExpression="[oclIsKindOf(uml::Class)/]">
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Association" referenceName="nestedClassifier">
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
