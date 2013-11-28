@@ -32,14 +32,30 @@ import org.eclipse.papyrus.sysml.requirements.Requirement;
 import org.eclipse.papyrus.sysml.requirements.Satisfy;
 import org.eclipse.papyrus.sysml.requirements.TestCase;
 import org.eclipse.papyrus.sysml.requirements.Verify;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.internal.metamodel.spec.DSemanticDiagramSpec;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.Layer;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Abstraction;
+import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Collaboration;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InstanceSpecification;
@@ -51,25 +67,18 @@ import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UseCase;
+import org.eclipse.uml2.uml.profile.l2.Refine;
 import org.obeonetwork.dsl.sysml.design.Activator;
 import org.obeonetwork.dsl.uml2.design.services.EcoreServices;
+import org.obeonetwork.dsl.uml2.design.services.UMLServices;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DNodeList;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.description.Layer;
 
 /**
  * Utility services for SysML.
@@ -204,7 +213,9 @@ public class SysMLServices {
 
 		if (element != null && steQualified != null) {
 			final Stereotype stereotype = element.getAppliedStereotype(steQualified);
-			element.unapplyStereotype(stereotype);
+			if (stereotype != null) {
+				element.unapplyStereotype(stereotype);
+			}
 		} else {
 			final String message = "Can't delete the stereotype application because the element or the stereotypeName keys are not correct";
 			Activator.log(Status.INFO, message, null);
@@ -424,7 +435,7 @@ public class SysMLServices {
 	 *            Current semantic element
 	 * @return List of elements visible on a requirement diagram
 	 */
-	public List<EObject> getValidsForRequirementDiagram(EObject cur, DDiagram diagram) {
+	public List<EObject> getValidsForRequirementDiagram(Element cur, DDiagram diagram) {
 
 		final boolean isVerifyLayerActive = isVerifyLayerActive(diagram);
 		final boolean isSatisfyLayerActive = isSatisfyLayerActive(diagram);
@@ -833,6 +844,11 @@ public class SysMLServices {
 		return isStereotype(element, Requirement.class);
 	}
 
+	public boolean isNotBlockOrRequirement(Element element) {
+		return element instanceof Class && !isBlock((Class)element) && !isRequirement((Class)element)
+				&& !(element instanceof Activity) && !(element instanceof StateMachine);
+	}
+
 	/**
 	 * Get requirement.
 	 * 
@@ -864,6 +880,44 @@ public class SysMLServices {
 	}
 
 	/**
+	 * Get requirement text.
+	 * 
+	 * @param element
+	 *            Requirement
+	 * @return Text
+	 */
+	public String getRequirementText(Class element) {
+		Requirement requirement = getRequirement(element);
+		return requirement.getText();
+	}
+
+	/**
+	 * Set requirement id.
+	 * 
+	 * @param element
+	 *            Requirement
+	 * @param newId
+	 *            Id
+	 */
+	public void setRequirementId(Class element, String newId) {
+		Requirement requirement = getRequirement(element);
+		requirement.setId(newId);
+	}
+
+	/**
+	 * Set requirement text.
+	 * 
+	 * @param element
+	 *            Requirement
+	 * @param newText
+	 *            Text
+	 */
+	public void setRequirementText(Class element, String newText) {
+		Requirement requirement = getRequirement(element);
+		requirement.setText(newText);
+	}
+
+	/**
 	 * Checks if element has the stereotype value type.
 	 * 
 	 * @param element
@@ -890,8 +944,7 @@ public class SysMLServices {
 		// Replace acceleo expression :
 		// getStereotypeApplications()->filter(sysml::blocks::ValueType)->select(not(base_DataType->filter(uml::PrimitiveType)->isEmpty()))
 		for (EObject stereotype : element.getStereotypeApplications()) {
-			if (stereotype instanceof ValueType
-					&& (!(((ValueType)stereotype).getBase_DataType() instanceof PrimitiveType))) {
+			if (stereotype instanceof ValueType) {
 				return stereotype;
 			}
 		}
@@ -1006,7 +1059,7 @@ public class SysMLServices {
 	 *            Named element
 	 * @return True if element is a flow port otherwise false
 	 */
-	public boolean isFlowPort(NamedElement element) {
+	public boolean isFlowPort(Element element) {
 		return isStereotype(element, FlowPort.class);
 	}
 
@@ -1031,7 +1084,7 @@ public class SysMLServices {
 	 * @return True if the elements has the stereotype otherwise false
 	 */
 	@SuppressWarnings("rawtypes")
-	private boolean isStereotype(NamedElement element, java.lang.Class sysmlStereotype) {
+	private boolean isStereotype(Element element, java.lang.Class sysmlStereotype) {
 		for (EObject stereotype : element.getStereotypeApplications()) {
 			if (sysmlStereotype.isInstance(stereotype)) {
 				return true;
@@ -1094,14 +1147,25 @@ public class SysMLServices {
 	}
 
 	/**
-	 * Checks if element has the stereotype test case.
+	 * Checks if element has the stereotype derive requirement.
 	 * 
 	 * @param element
 	 *            Named element
-	 * @return True if element is a test case otherwise false
+	 * @return True if element is a derive requirement otherwise false
 	 */
 	public boolean isDeriveReqt(NamedElement element) {
 		return isStereotype(element, DeriveReqt.class);
+	}
+
+	/**
+	 * Checks if element has the stereotype refine.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return True if element is a refine otherwise false
+	 */
+	public boolean isRefine(NamedElement element) {
+		return isStereotype(element, Refine.class);
 	}
 
 	/**
@@ -1133,7 +1197,7 @@ public class SysMLServices {
 	 *            Container
 	 * @return All blocks.
 	 */
-	public List<Class> getAllBlocks(EObject container) {
+	public List<Class> getAllBlocks(Element container) {
 		SysMLServices service = new SysMLServices();
 		// Replace expression :
 		// [container.getRootContainer().eAllContents(uml::Package)->union(container.getRootContainer().eAllContents(uml::Class)->select(isBlock()))/]
@@ -1149,15 +1213,95 @@ public class SysMLServices {
 	}
 
 	/**
+	 * Get all actors.
+	 * 
+	 * @param element
+	 *            element
+	 * @return All actors.
+	 */
+	public List<Element> getAllActorsAndContainers(Element element) {
+		List<Element> results = Lists.newArrayList();
+		UMLServices service = new UMLServices();
+
+		List<Package> models = service.getAllAvailableRootPackages(element);
+		results.addAll(models);
+		for (Package pkg : models) {
+			for (Iterator<EObject> iterator = pkg.eAllContents(); iterator.hasNext();) {
+				EObject iter = iterator.next();
+				if (iter instanceof Actor || iter instanceof Package) {
+					results.add((Element)iter);
+				}
+			}
+		}
+
+		return results;
+	}
+
+	/**
+	 * Get all value types.
+	 * 
+	 * @param container
+	 *            Container
+	 * @return All value types.
+	 */
+	public List<ValueType> getAllValueTypes(EObject container) {
+		List<ValueType> valuetypes = Lists.newArrayList();
+		for (Iterator<EObject> iterator = getRootContainer(container).eAllContents(); iterator.hasNext();) {
+			EObject element = iterator.next();
+			if (element instanceof ValueType && isValueType((NamedElement)element)) {
+				valuetypes.add(((ValueType)element));
+			}
+		}
+		return valuetypes;
+	}
+
+	/**
+	 * Get all test cases.
+	 * 
+	 * @param container
+	 *            Container
+	 * @return All test cases.
+	 */
+	public List<Operation> getAllTestCases(Element container) {
+		List<Operation> testcases = Lists.newArrayList();
+		for (Iterator<EObject> iterator = getRootContainer(container).eAllContents(); iterator.hasNext();) {
+			EObject element = iterator.next();
+			if (element instanceof Operation && isTestCase((Operation)element)) {
+				testcases.add(((Operation)element));
+			}
+		}
+		return testcases;
+	}
+
+	/**
+	 * Get all behaviors.
+	 * 
+	 * @param container
+	 *            Container
+	 * @return All behaviors.
+	 */
+	public List<Element> getAllBehaviors(Element container) {
+		List<Element> results = Lists.newArrayList();
+		for (Iterator<EObject> iterator = getRootContainer(container).eAllContents(); iterator.hasNext();) {
+			EObject element = iterator.next();
+			if (element instanceof StateMachine || element instanceof Activity || element instanceof UseCase
+					|| element instanceof Collaboration) {
+				results.add((Element)element);
+			}
+		}
+		return results;
+	}
+
+	/**
 	 * Get all dimensions.
 	 * 
 	 * @param container
 	 *            Package
 	 * @return All dimensions.
 	 */
-	public List<InstanceSpecification> getAllDimensions(Package container) {
+	public List<InstanceSpecification> getAllDimensions(Element valueType) {
 		List<InstanceSpecification> results = Lists.newArrayList();
-		for (Iterator<EObject> iterator = container.eAllContents(); iterator.hasNext();) {
+		for (Iterator<EObject> iterator = valueType.getModel().eAllContents(); iterator.hasNext();) {
 			EObject element = iterator.next();
 			if (element instanceof InstanceSpecification && isDimension((InstanceSpecification)element)) {
 				results.add(((InstanceSpecification)element));
@@ -1167,15 +1311,69 @@ public class SysMLServices {
 	}
 
 	/**
+	 * Get dimension.
+	 * 
+	 * @param container
+	 *            Package
+	 * @return Dimension.
+	 */
+	public Dimension getDimension(Element valueType) {
+		for (EObject stereotype : valueType.getStereotypeApplications()) {
+			if (stereotype instanceof ValueType) {
+				return ((ValueType)stereotype).getDimension();
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Get dimension name.
+	 * 
+	 * @param dimension
+	 *            Dimension
+	 * @return Name
+	 */
+	public String getName(Dimension dimension) {
+		return dimension.getBase_InstanceSpecification().getName();
+	}
+
+	/**
+	 * Get unit.
+	 * 
+	 * @param container
+	 *            Package
+	 * @return Unit.
+	 */
+	public Unit getUnit(Element valueType) {
+		for (EObject stereotype : valueType.getStereotypeApplications()) {
+			if (stereotype instanceof ValueType) {
+				return ((ValueType)stereotype).getUnit();
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Get unit name.
+	 * 
+	 * @param unit
+	 *            Unit
+	 * @return Name
+	 */
+	public String getName(Unit unit) {
+		return unit.getBase_InstanceSpecification().getName();
+	}
+
+	/**
 	 * Get all units.
 	 * 
 	 * @param container
 	 *            Package
 	 * @return All units.
 	 */
-	public List<InstanceSpecification> getAllUnits(Package container) {
+	public List<InstanceSpecification> getAllUnits(Element valueType) {
 		List<InstanceSpecification> results = Lists.newArrayList();
-		for (Iterator<EObject> iterator = container.eAllContents(); iterator.hasNext();) {
+		for (Iterator<EObject> iterator = valueType.getModel().eAllContents(); iterator.hasNext();) {
 			EObject element = iterator.next();
 			if (element instanceof InstanceSpecification && isUnit((InstanceSpecification)element)) {
 				results.add(((InstanceSpecification)element));
@@ -1198,6 +1396,26 @@ public class SysMLServices {
 				.hasNext();) {
 			EObject element = iterator.next();
 			if (element instanceof Abstraction && isDeriveReqt((NamedElement)element)) {
+				results.add(((NamedElement)element));
+			}
+		}
+		return results;
+	}
+
+	/**
+	 * Get all refine requirements.
+	 * 
+	 * @param container
+	 *            Package
+	 * @return All refine requirements.
+	 */
+	public List<NamedElement> getAllRefine(Package container) {
+		SysMLServices service = new SysMLServices();
+		List<NamedElement> results = Lists.newArrayList();
+		for (Iterator<EObject> iterator = service.getRootContainer(container).eAllContents(); iterator
+				.hasNext();) {
+			EObject element = iterator.next();
+			if (element instanceof Abstraction && isRefine((NamedElement)element)) {
 				results.add(((NamedElement)element));
 			}
 		}
@@ -1263,6 +1481,37 @@ public class SysMLServices {
 				results.add(((Classifier)element));
 			}
 		}
+		return results;
+	}
+
+	public void unsetDimension(EObject valueType) {
+		((ValueType)((Element)valueType).getStereotypeApplications()).setDimension(null);
+	}
+
+	public List<EObject> getValidsForSysmlDiagram(final Element element,
+			final DSemanticDecorator containerView) {
+		// Get representation
+		DRepresentation representation = null;
+		if (containerView instanceof DRepresentation) {
+			representation = (DRepresentation)containerView;
+		} else if (containerView instanceof DDiagramElement) {
+			representation = ((DDiagramElement)containerView).getParentDiagram();
+		}
+		List<EObject> results = null;
+		if (representation instanceof DSemanticDiagramSpec) {
+			DiagramDescription description = ((DSemanticDiagramSpec)representation).getDescription();
+
+			if ("Block Definition Diagram".equals(description.getName())) {
+				results = getValidsForBlockDefinitionDiagram(element);
+			} else if ("Internal Block Diagram".equals(description.getName())) {
+				results = getValidsForInternalBlockDiagram((Class)element);
+			} else if ("Parametric Block Diagram".equals(description.getName())) {
+				results = getValidsForParametricBlockDiagram((Class)element);
+			} else if ("Requirement Diagram".equals(description.getName())) {
+				results = getValidsForRequirementDiagram(element, (DDiagram)representation);
+			}
+		}
+
 		return results;
 	}
 }
