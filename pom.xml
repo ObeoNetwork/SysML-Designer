@@ -28,6 +28,7 @@
 
 	<properties>
 		<tycho-version>0.12.0</tycho-version>
+        <uml-site>http://update.obeo.fr/integration/uml/repository/</uml-site>
 	</properties>
 
 
@@ -55,7 +56,7 @@
 		<repository>
 			<id>od-uml</id>
 			<layout>p2</layout>
-			<url>http://update.obeo.fr/integration/uml/repository/</url>
+			<url>${uml-site}</url>
 		</repository>
 	</repositories>
 
