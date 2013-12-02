@@ -11,7 +11,7 @@ Contributors:
     Obeo - initial API and implementation
 -->
 <plugin>
-  <extension point="fr.obeo.dsl.viewpoint.componentization">
+  <extension point="org.eclipse.sirius.componentization">
     <component class="org.obeonetwork.dsl.sysml.design.Activator"
                id="org.obeonetwork.dsl.sysml.design"
 	       name="sysml">
@@ -22,18 +22,18 @@ Contributors:
      <wizard
            category="org.obeonetwork.dsl.uml2.design.category"
            class="org.obeonetwork.dsl.sysml.design.ui.wizards.newmodel.SysMLProjectWizard"
-           finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+           finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
            icon="icons/NewUmlModel.gif"
            id="org.obeonetwork.dsl.sysml.design.newSysMLProject"
            name="SysML Project"
-           preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+           preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling"
            project="true">
      </wizard>
   </extension>
    <extension
           point="org.eclipse.ui.perspectiveExtensions">
        <perspectiveExtension
-             targetID="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling">
+             targetID="org.eclipse.sirius.ui.tools.perspective.modeling">
           <newWizardShortcut
                 id="org.obeonetwork.dsl.sysml.design.newSysMLProject">
           </newWizardShortcut>
