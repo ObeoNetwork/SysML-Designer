@@ -1675,7 +1675,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <reusedTools xsi:type="tool:SelectionWizardDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='AddExistingElements']"/>
+          <reusedTools xsi:type="tool:SelectionWizardDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='AddExistingAttributes']"/>
           <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='RemoveExistingElements']"/>
           <reusedTools xsi:type="tool:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Diagram']"/>
           <reusedTools xsi:type="tool:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Model']"/>
