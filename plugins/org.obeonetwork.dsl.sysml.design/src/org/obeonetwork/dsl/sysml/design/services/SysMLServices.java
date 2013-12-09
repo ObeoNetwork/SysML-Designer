@@ -1506,7 +1506,7 @@ public class SysMLServices {
 				results = getValidsForBlockDefinitionDiagram(element);
 			} else if ("Internal Block Diagram".equals(description.getName())) {
 				results = getValidsForInternalBlockDiagram((Class)element);
-			} else if ("Parametric Block Diagram".equals(description.getName())) {
+			} else if ("Parametric Diagram".equals(description.getName())) {
 				results = getValidsForParametricBlockDiagram((Class)element);
 			} else if ("Requirement Diagram".equals(description.getName())) {
 				results = getValidsForRequirementDiagram(element, (DDiagram)representation);
