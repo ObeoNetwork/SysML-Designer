@@ -39,6 +39,14 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.paste(copiedElement, copiedView, containerView)/]"/>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="AddExistingAttributes" label="Add" precondition="[container.oclAsType(ecore::EObject).isValidAttributesContainer(containerView.oclAsType(ecore::EObject))/]" forceRefresh="true" candidatesExpression="[self.getValidsForSysmlDiagram(containerView)/]" multiple="true" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" windowTitle="Select element to add in current representation">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[containerView.oclAsType(ecore::EObject).addExistingElements(element->filter(ecore::EObject))/]"/>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
@@ -1314,7 +1322,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappings>
-        <containerMappings name="IBD_Block" detailDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='IBD%20Create%20PAR']" navigationDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='IBD%20to%20BDD'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='IBD%20to%20PAR']" pasteDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Paste']" semanticCandidatesExpression="var:self" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class">
+        <containerMappings name="IBD_Block" detailDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='IBD%20Create%20PAR'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='IBD']" navigationDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='IBD%20to%20BDD'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='IBD%20to%20PAR']" pasteDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Paste']" semanticCandidatesExpression="var:self" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Model'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Diagram']">
           <borderedNodeMappings name="IBD_FlowPort" preconditionExpression="service:isFlowPort" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='Delete%20FlowPort']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20FlowPort%20Name']" semanticCandidatesExpression="feature:ownedPort" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Port">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (inout)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BluePortInOut']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
@@ -1339,7 +1347,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
-          <subContainerMappings name="IBD_Part" detailDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='IBD']" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='Delete%20Part']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Part%20Name']" createElements="false" domainClass="uml.Property">
+          <subContainerMappings name="IBD_Part" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='Delete%20Part']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Part%20Name']" createElements="false" domainClass="uml.Property">
             <borderedNodeMappings name="IBD_PartFlowPort" preconditionExpression="service:isFlowPort" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='Delete%20FlowPort']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20FlowPort%20Name']" semanticCandidatesExpression="[type.oclAsType(uml::EncapsulatedClassifier).ownedPort/]" semanticElements="[self->union(getStereotypeApplications())/]" domainClass="uml.Port">
               <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" showIcon="false" labelExpression="[name + ' : ' + type.name/]" tooltipExpression="[name + ' : ' + type.name + ' (inout)'/]" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BluePortInOut']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
@@ -1414,7 +1422,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <reusedTools xsi:type="tool:SelectionWizardDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='AddExistingElements']"/>
+          <reusedTools xsi:type="tool:SelectionWizardDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='AddExistingAttributes']"/>
           <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='RemoveExistingElements']"/>
           <reusedTools xsi:type="tool:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Diagram']"/>
           <reusedTools xsi:type="tool:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Model']"/>
@@ -1492,7 +1500,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="IBD Create Edges" label="Connections">
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="IBD Create Port Connector" label="Flow" precondition="[if eContainer() &lt;> preSourceView.eContainer(viewpoint::DDiagram).oclAsType(viewpoint::DSemanticDecorator).target and preTarget.eContainer() &lt;> preTargetView.eContainer(viewpoint::DDiagram).oclAsType(viewpoint::DSemanticDecorator).target then isDualWith(preTarget) else isDelegationOf(preTarget) endif/]" edgeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@edgeMappings[name='IBD_PortConnector']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="IBD Create Port Connector" label="Connector" precondition="[if eContainer() &lt;> preSourceView.eContainer(viewpoint::DDiagram).oclAsType(viewpoint::DSemanticDecorator).target and preTarget.eContainer() &lt;> preTargetView.eContainer(viewpoint::DDiagram).oclAsType(viewpoint::DSemanticDecorator).target then isDualWith(preTarget) else isDelegationOf(preTarget) endif/]" edgeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@edgeMappings[name='IBD_PortConnector']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -1590,7 +1598,7 @@
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="IBD" label="Create Internal Block Diagram" titleExpression="['ibd [block] ' + self.name + ' [' + self.name + ' diagram]'/]" browseExpression="[type/]" diagramDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="IBD" label="Create Internal Block Diagram" titleExpression="['ibd [block] ' + self.name + ' [' + self.name + ' diagram]'/]" browseExpression="feature:type" diagramDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
             </initialOperation>
@@ -1602,7 +1610,7 @@
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="IBD Create PAR" label="Create Parametric Diagram" titleExpression="['par [block] ' + self.name + ' [' + self.name + ' diagram]'/]" browseExpression="[type/]" diagramDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="IBD Create PAR" label="Create Parametric Diagram" titleExpression="['par [block] ' + self.name + ' [' + self.name + ' diagram]'/]" browseExpression="feature:type" diagramDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
             </initialOperation>
@@ -1624,7 +1632,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="PAR_Block" navigationDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='PAR%20to%20IBD']" pasteDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Paste']" semanticCandidatesExpression="var:self" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class">
+        <containerMappings name="PAR_Block" navigationDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='PAR%20to%20IBD']" pasteDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Paste']" semanticCandidatesExpression="var:self" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Model'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Diagram']">
           <subContainerMappings name="PAR_Constraint" preconditionExpression="service:isConstraintProperty" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='PAR%20Delete%20Objects']/@ownedTools[name='Delete%20Constraint%20Property']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PAR_Edit_Constraint']" semanticCandidatesExpression="[eContents()/]" createElements="false" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='PAR%20Select%20Type%20for%20Constraint']" domainClass="uml.Property">
             <borderedNodeMappings name="PAR_Parameter" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='PAR%20Delete%20Objects']/@ownedTools[name='Delete%20Parameter']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PAR_Edit_Parameter']" semanticCandidatesExpression="[type.eContents(uml::Property)/]" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='PAR%20Select%20Type%20for%20Parameter']" domainClass="uml.Property">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="service:computeUmlLabel" sizeComputationExpression="2" resizeKind="NSEW">
