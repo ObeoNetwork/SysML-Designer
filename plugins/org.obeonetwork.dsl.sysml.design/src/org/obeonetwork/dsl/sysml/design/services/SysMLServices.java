@@ -74,6 +74,7 @@ import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.profile.l2.Refine;
 import org.obeonetwork.dsl.sysml.design.Activator;
 import org.obeonetwork.dsl.uml2.design.services.EcoreServices;
+import org.obeonetwork.dsl.uml2.design.services.UIServices;
 import org.obeonetwork.dsl.uml2.design.services.UMLServices;
 
 import com.google.common.base.Predicate;
@@ -523,7 +524,7 @@ public class SysMLServices {
 		Predicate<EObject> validForDiagram = new Predicate<EObject>() {
 
 			public boolean apply(EObject input) {
-				return !(input instanceof Port) && (input instanceof Property);
+				return (!(input instanceof Port) && (input instanceof Property));
 			}
 		};
 		return allValidAttributes(cur, validForDiagram);
@@ -1513,5 +1514,12 @@ public class SysMLServices {
 		}
 
 		return results;
+	}
+
+	public boolean isValidAttributesContainer(EObject container, EObject containerView) {
+		// [container.oclAsType(ecore::EObject).existValidElementsForContainerView(containerView.oclAsType(ecore::EObject))/]
+		UIServices service = new UIServices();
+		return service.existValidElementsForContainerView(container, containerView)
+				&& !(containerView instanceof DDiagram);
 	}
 }
