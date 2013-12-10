@@ -17,6 +17,7 @@ import java.util.List;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.papyrus.sysml.blocks.Block;
@@ -775,7 +776,7 @@ public class SysMLServices {
 	 *            Named element
 	 * @return True if element is a block otherwise false
 	 */
-	public boolean isBlock(Classifier element) {
+	public boolean isBlock(Element element) {
 		return isStereotype(element, Block.class);
 	}
 
@@ -841,7 +842,7 @@ public class SysMLServices {
 	 *            Named element
 	 * @return True if element is a requirement otherwise false
 	 */
-	public boolean isRequirement(Class element) {
+	public boolean isRequirement(Element element) {
 		return isStereotype(element, Requirement.class);
 	}
 
@@ -1521,5 +1522,33 @@ public class SysMLServices {
 		UIServices service = new UIServices();
 		return service.existValidElementsForContainerView(container, containerView)
 				&& !(containerView instanceof DDiagram);
+	}
+
+	/**
+	 * Get satisfied requirements.
+	 * 
+	 * @param element
+	 *            Block
+	 * @return Requirements satisfied by the given block
+	 */
+	public List<Class> getSatisfiedRequirements(Class element) {
+		List<Class> results = Lists.newArrayList();
+		Collection<Setting> xRefs = SessionManager.INSTANCE.getSession(element).getSemanticCrossReferencer()
+				.getInverseReferences(element);
+		for (Setting xRef : xRefs) {
+			EObject eObject = xRef.getEObject();
+			if (eObject instanceof Abstraction) {
+				for (Element supplier : ((Abstraction)eObject).getSuppliers()) {
+					if (supplier instanceof Class) {
+						for (EObject stereotype : supplier.getStereotypeApplications()) {
+							if (stereotype instanceof Requirement) {
+								results.add((Class)supplier);
+							}
+						}
+					}
+				}
+			}
+		}
+		return results;
 	}
 }

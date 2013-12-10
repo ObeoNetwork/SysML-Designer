@@ -1113,8 +1113,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="BDD_RequirementsSatisfy" preconditionExpression="[isBlock()/]" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Requirement']" semanticCandidatesExpression="&lt;%packagedElement.filter(&quot;uml.Class&quot;)[~.filter(&quot;Abstraction&quot;)[getStereotypeApplications().filter(&quot;requirements.Satisfy&quot;)]]%>" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class" childrenPresentation="List">
-          <subNodeMappings name="BDD_Requirement" preconditionExpression="service:isRequirement" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Requirement']" semanticCandidatesExpression="&lt;%~.filter(&quot;Abstraction&quot;)[getStereotypeApplications().filter(&quot;requirements.Satisfy&quot;)].supplier%>" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class">
+        <containerMappings name="BDD_RequirementsSatisfy" preconditionExpression="[isBlock()/]" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Requirement']" semanticCandidatesExpression="[packagedElement-->select(isBlock())->eInverse()->select(oclIsTypeOf(uml::Class))->select(isRequirement())/]" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class" childrenPresentation="List">
+          <subNodeMappings name="BDD_Requirement" preconditionExpression="service:isRequirement" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Requirement']" semanticCandidatesExpression="service:getSatisfiedRequirements" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class">
             <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelExpression="[getRequirementId()+ ' : ' + name/]" labelAlignment="LEFT" labelPosition="node">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1633,8 +1633,8 @@
           </style>
         </edgeMappings>
         <containerMappings name="PAR_Block" navigationDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='PAR%20to%20IBD']" pasteDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Paste']" semanticCandidatesExpression="var:self" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Model'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Diagram']">
-          <subContainerMappings name="PAR_Constraint" preconditionExpression="service:isConstraintProperty" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='PAR%20Delete%20Objects']/@ownedTools[name='Delete%20Constraint%20Property']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PAR_Edit_Constraint']" semanticCandidatesExpression="[eContents()/]" createElements="false" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='PAR%20Select%20Type%20for%20Constraint']" domainClass="uml.Property">
-            <borderedNodeMappings name="PAR_Parameter" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='PAR%20Delete%20Objects']/@ownedTools[name='Delete%20Parameter']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PAR_Edit_Parameter']" semanticCandidatesExpression="[type.eContents(uml::Property)/]" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='PAR%20Select%20Type%20for%20Parameter']" domainClass="uml.Property">
+          <subContainerMappings name="PAR_Constraint" preconditionExpression="service:isConstraintProperty" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='PAR%20Delete%20Objects']/@ownedTools[name='Delete%20Constraint%20Property']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PAR_Edit_Constraint']" semanticCandidatesExpression="[eContents()/]" createElements="false" domainClass="uml.Property">
+            <borderedNodeMappings name="PAR_Parameter" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='PAR%20Delete%20Objects']/@ownedTools[name='Delete%20Parameter']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PAR_Edit_Parameter']" semanticCandidatesExpression="[type.eContents(uml::Property)/]" domainClass="uml.Property">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="service:computeUmlLabel" sizeComputationExpression="2" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1782,7 +1782,7 @@
           </subSections>
         </toolSections>
         <toolSections name="PAR Edit Section">
-          <ownedTools xsi:type="tool:DirectEditLabel" name="PAR_Edit_Constraint" label="Edit Constraint">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="PAR_Edit_Constraint" label="Edit Constraint" inputLabelExpression="[name+':'+type.name/]">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[editUmlLabel(arg0)/]"/>
@@ -1800,28 +1800,6 @@
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="PAR Select Type for Constraint" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']">
-            <element name="element">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="service:getAllConstraintBlocks" message="Select Block Constraint"/>
-            </element>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="[selectedElement/]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="PAR Select Type for Parameter" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']/@borderedNodeMappings[name='PAR_Parameter']">
-            <element name="element">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="[element.getRootContainer().eAllContents(uml::Class)->select(c : Class | not c.isConstraintBlock() and c.isBlock()) or not(c->filter(uml::DataType)->isEmpty()) or not(c->filter(uml::PrimitiveType)->isEmpty()))/]" message="Select Type"/>
-            </element>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:selectedType"/>
-              </firstModelOperations>
-            </initialOperation>
           </ownedTools>
         </toolSections>
       </defaultLayer>
