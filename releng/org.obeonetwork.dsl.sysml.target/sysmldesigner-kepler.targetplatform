@@ -53,7 +53,8 @@ location "http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/" {
 	org.eclipse.emf.eef.runtime
 }
 
-location "http://download.eclipse.org/sirius/updates/nightly/0.9" {
+// Sirius
+location "http://download.eclipse.org/sirius/updates/nightly/latest/kepler" {
 	with source, requirements
 	//runtime
 	org.eclipse.sirius.runtime.feature.group
@@ -62,7 +63,6 @@ location "http://download.eclipse.org/sirius/updates/nightly/0.9" {
 	org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group
 	org.eclipse.sirius.runtime.ide.eef.feature.group
 	org.eclipse.sirius.runtime.ide.ui.feature.group
-	org.eclipse.sirius.runtime.ide.ui.tests.support.feature.group
 	org.eclipse.sirius.specifier.ide.ui.feature.group
 	org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group
 }
