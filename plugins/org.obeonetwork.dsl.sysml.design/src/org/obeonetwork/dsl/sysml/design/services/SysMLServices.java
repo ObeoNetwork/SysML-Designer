@@ -40,6 +40,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
 import org.eclipse.sirius.viewpoint.DNodeList;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -1550,5 +1551,25 @@ public class SysMLServices {
 			}
 		}
 		return results;
+	}
+
+	/**
+	 * Get the parent view of an element. This method is used by the add related elements function to retrieve
+	 * the parent view.
+	 * 
+	 * @param element
+	 *            element
+	 * @return Parent view
+	 */
+	public DNodeContainer getParentView(Element element) {
+		Session session = SessionManager.INSTANCE.getSession(element);
+		Collection<Setting> refs = session.getSemanticCrossReferencer().getInverseReferences(
+				element.eContainer());
+		for (Setting setting : refs) {
+			if (setting.getEObject() instanceof DNodeContainer) {
+				return (DNodeContainer)setting.getEObject();
+			}
+		}
+		return null;
 	}
 }

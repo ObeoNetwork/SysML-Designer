@@ -1412,9 +1412,7 @@
                 <subModelOperations xsi:type="tool:For" expression="service:getRelated">
                   <subModelOperations xsi:type="tool:Switch">
                     <cases conditionExpression="[i.oclIsTypeOf(uml::Property)/]">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.eContainer.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;IBD_Block&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram].length>0%>">
-                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@subContainerMappings[name='IBD_Part']" containerViewExpression="&lt;%$i.eContainer.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;IBD_Block&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
-                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@subContainerMappings[name='IBD_Part']" containerViewExpression="service:i.getParentView"/>
                     </cases>
                     <default/>
                   </subModelOperations>
@@ -1662,11 +1660,8 @@
                 <subModelOperations xsi:type="tool:For" expression="service:getRelated">
                   <subModelOperations xsi:type="tool:Switch">
                     <cases conditionExpression="[i.oclIsTypeOf(uml::Property)/]">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.eContainer.~target.filter(&quot;DNodeContainer&quot;)[(actualMapping.name==&quot;PAR_Block&quot;||actualMapping.name==&quot;PAR_Block_Import&quot;) &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram].length>0%>">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="service:isConstraintProperty">
-                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']" containerViewExpression="&lt;%$i.eContainer.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;PAR_Block_Import&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
-                        </subModelOperations>
-                        <subModelOperations xsi:type="tool:If" conditionExpression="[not isConstraintProperty/]"/>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="service:isConstraintProperty">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']" containerViewExpression="service:i.getParentView"/>
                       </subModelOperations>
                     </cases>
                     <default/>
@@ -2299,7 +2294,7 @@
           <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:self"/>
         </delete>
       </ownedLineMappings>
-      <ownedColumnMappings name="VT_TestCase" semanticElements="&lt;%self+getStereotypeApplications()%>" headerLabelExpression="service:computeUmlLabel" domainClass="uml.Operation" semanticCandidatesExpression="service:getAllTestCases">
+      <ownedColumnMappings name="VT_TestCase" semanticElements="[self->union(self.getStereotypeApplications())/]" headerLabelExpression="service:computeUmlLabel" domainClass="uml.Operation" semanticCandidatesExpression="service:getAllTestCases">
         <delete name="VT Delete TestCase" precondition="[false/]">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
