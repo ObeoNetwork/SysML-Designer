@@ -57,6 +57,9 @@ Contributors:
     <!-- Build plugins -->
     <module>${root-path}/plugins/org.obeonetwork.dsl.sysml.design</module>
     <module>${root-path}/plugins/org.obeonetwork.dsl.sysml.examples</module>
+    
+    <!-- Build test plugins -->
+    <module>${root-path}/tests/org.obeonetwork.dsl.sysml.design.tests</module>
 
     <!-- Build docs -->
     <module>${root-path}/doc/org.obeonetwork.dsl.sysml.doc</module>
