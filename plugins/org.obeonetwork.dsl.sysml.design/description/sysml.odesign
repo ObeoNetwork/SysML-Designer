@@ -2052,6 +2052,17 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Composition" label="Contained in" precondition="[preSourceView.target &lt;> preTargetView.target/]" edgeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@edgeMappings[name='RD_Composition']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool:SetValue" featureName="nestedClassifier" valueExpression="var:source"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
         <toolSections name="RD_Edit">
           <ownedTools xsi:type="tool:DirectEditLabel" name="RD_Edit" inputLabelExpression="feature:name">
