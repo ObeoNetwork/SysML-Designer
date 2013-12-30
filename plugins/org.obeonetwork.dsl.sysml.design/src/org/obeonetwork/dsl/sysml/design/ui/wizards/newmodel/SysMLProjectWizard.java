@@ -10,12 +10,11 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.sysml.design.ui.wizards.newmodel;
 
+import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.swt.widgets.Display;
 import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UMLProjectWizard;
 import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UmlProjectUtils;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 
 /**
  * Sysml project wizard.
