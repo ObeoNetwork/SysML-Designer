@@ -46,7 +46,7 @@
 		<repository>
 			<id>obeodesigner</id>
 			<layout>p2</layout>
-			<url>http://update.obeo.fr/release/designer/6.2.0/kepler/update/repository</url>
+            <url>http://update.obeo.fr/release/designer/6.2.1/kepler/update/repository/</url>
 		</repository>
 		<repository>
 			<id>Papyrus</id>
