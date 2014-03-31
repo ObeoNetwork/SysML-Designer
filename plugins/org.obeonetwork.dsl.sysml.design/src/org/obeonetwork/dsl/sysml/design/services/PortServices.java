@@ -33,6 +33,7 @@ public class PortServices {
 	 * @return true if the type are equals and the directions are opposite
 	 */
 	public boolean isDualWith(Port source, Port target) {
+		System.out.println(source.getName() + "->" + target.getName());
 		return isConnectableWith(source, target, true);
 	}
 
