@@ -12,6 +12,7 @@ package org.obeonetwork.dsl.sysml.design.services;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.papyrus.sysml.portandflows.FlowDirection;
 import org.eclipse.papyrus.sysml.portandflows.FlowPort;
 import org.eclipse.uml2.uml.Port;
 
@@ -19,6 +20,7 @@ import org.eclipse.uml2.uml.Port;
  * Port services.
  * 
  * @author Axel Richard <a href="mailto:axel.richard@obeo.fr">axel.richard@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class PortServices {
 
@@ -33,12 +35,11 @@ public class PortServices {
 	 * @return true if the type are equals and the directions are opposite
 	 */
 	public boolean isDualWith(Port source, Port target) {
-		System.out.println(source.getName() + "->" + target.getName());
 		return isConnectableWith(source, target, true);
 	}
 
 	/**
-	 * Tests if the port can me connected from their direction, their types and their location. The direction
+	 * Tests if the port can be connected from their direction, their types and their location. The direction
 	 * must be equal.
 	 * 
 	 * @param source
@@ -49,6 +50,20 @@ public class PortServices {
 	 */
 	public boolean isDelegationOf(Port source, Port target) {
 		return isConnectableWith(source, target, false);
+	}
+
+	/**
+	 * Tests if the port cannot be connected from their direction, their types and their location. The
+	 * direction must be equal.
+	 * 
+	 * @param source
+	 *            the source port
+	 * @param target
+	 *            the target port
+	 * @return true if the type are equals and the directions equivalent
+	 */
+	public boolean isNotDelegationOf(Port source, Port target) {
+		return !isDelegationOf(source, target);
 	}
 
 	/**
@@ -83,7 +98,9 @@ public class PortServices {
 
 			if (sourcePort != null && targetPort != null) {
 				if (isOppositeDirection) {
-					return sourcePort.getDirection() != targetPort.getDirection();
+					return sourcePort.getDirection() != targetPort.getDirection()
+							|| (sourcePort.getDirection() == targetPort.getDirection() && sourcePort
+									.getDirection() == FlowDirection.INOUT);
 				}
 				return sourcePort.getDirection() == targetPort.getDirection();
 			}
