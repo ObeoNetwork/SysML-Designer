@@ -1537,13 +1537,21 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[sourceView.eContainer(diagram::DDiagram).oclAsType(viewpoint::DSemanticDecorator).target/]">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Connector" referenceName="ownedConnector">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Connector" referenceName="ownedConnector" variableName="connector">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['newConnector' + eContainer(uml::StructuredClassifier).ownedConnector->size()/]"/>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ConnectorEnd" referenceName="end" variableName="c_end_source">
                     <subModelOperations xsi:type="tool:SetValue" featureName="role" valueExpression="var:source"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ConnectorEnd" referenceName="end" variableName="c_end_target">
                     <subModelOperations xsi:type="tool:SetValue" featureName="role" valueExpression="var:target"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="service:source.isNotDelegationOf(target)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:c_end_source">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="partWithPort" valueExpression="var:target"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:c_end_target">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="partWithPort" valueExpression="var:source"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
