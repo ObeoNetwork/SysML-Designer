@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Reused Description" preconditionExpression="[false/]">
       <defaultLayer name="Default">
         <toolSections name="Reused tools">
-          <ownedTools xsi:type="tool:SelectionWizardDescription" name="AddExistingElements" label="Add" precondition="[container.oclAsType(ecore::EObject).existValidElementsForContainerView(containerView.oclAsType(ecore::EObject))/]" forceRefresh="true" candidatesExpression="[self.getValidsForSysmlDiagram(containerView)/]" multiple="true" tree="true" rootExpression="[self.oclAsType(ecore::EObject).getAllRootsInSession()->filter(uml::Model)/]" childrenExpression="feature:eContents" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" windowTitle="Select element to add in current representation">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="AddExistingElements" label="Add" precondition="[container.oclAsType(ecore::EObject).existValidElementsForContainerView(containerView.oclAsType(ecore::EObject))/]" forceRefresh="true" candidatesExpression="[self.getValidsForSysmlDiagram(containerView.oclAsType(viewpoint::DSemanticDecorator))/]" multiple="true" tree="true" rootExpression="[self.oclAsType(ecore::EObject).getAllRootsInSession()->filter(uml::Model)/]" childrenExpression="feature:eContents" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" windowTitle="Select element to add in current representation">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
