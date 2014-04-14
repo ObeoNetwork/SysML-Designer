@@ -20,13 +20,12 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.osgi.framework.BundleContext;
-
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * The activator class controls the plug-in life cycle.
@@ -57,7 +56,7 @@ public class Activator extends AbstractUIPlugin {
 	/**
 	 * Path to Standard profile model.
 	 */
-	protected static final String STANDARD_PROFILE_PATH = "StandardL2.profile.uml";
+	protected static final String STANDARD_PROFILE_PATH = "Standard.profile.uml";
 
 	/**
 	 * The shared instance.

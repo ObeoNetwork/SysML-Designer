@@ -73,7 +73,7 @@ import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UseCase;
-import org.eclipse.uml2.uml.profile.l2.Refine;
+import org.eclipse.uml2.uml.profile.standard.Refine;
 import org.obeonetwork.dsl.sysml.design.Activator;
 import org.obeonetwork.dsl.uml2.design.services.EcoreServices;
 import org.obeonetwork.dsl.uml2.design.services.UIServices;
