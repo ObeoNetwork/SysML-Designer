@@ -1,0 +1,10 @@
+target "SysMLDesigner-luna"
+
+include "http://marketplace.obeonetwork.com/updates/nightly/uml/4.0.0/umldesigner-luna.targetplatform"
+with source, requirements
+
+// SysML
+
+location "http://download.eclipse.org/modeling/mdt/papyrus/updates/milestones/1.0/M6/main" {
+	org.eclipse.papyrus.sysml
+}
