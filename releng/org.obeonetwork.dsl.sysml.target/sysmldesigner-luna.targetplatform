@@ -7,4 +7,6 @@ with source, requirements
 
 location "http://download.eclipse.org/modeling/mdt/papyrus/updates/milestones/1.0/RC4/main" {
 	org.eclipse.papyrus.sysml
+	org.eclipse.papyrus.uml.extensionpoints
+	org.eclipse.papyrus.infra.emf
 }
