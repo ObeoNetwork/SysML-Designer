@@ -10,11 +10,15 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.sysml.design.ui.wizards.newmodel;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Display;
 import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UMLProjectWizard;
-import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UmlProjectUtils;
 
 /**
  * Sysml project wizard.
@@ -47,10 +51,28 @@ public class SysMLProjectWizard extends UMLProjectWizard {
 				if (created.some()) {
 					// Enable SysML viewpoint
 					ModelingProject modelingProject = created.get();
-					UmlProjectUtils.enableViewpoints(modelingProject.getSession(), SYSML_VP);
+					enableSysMLViewpoints(modelingProject.getSession());
 				}
 			}
 		});
 		return true;
+	}
+
+	public static void enableSysMLViewpoints(final Session session) {
+		if (session != null) {
+			session.getTransactionalEditingDomain().getCommandStack()
+					.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+						@Override
+						protected void doExecute() {
+							ViewpointSelectionCallback selection = new ViewpointSelectionCallback();
+							for (Viewpoint previouslySelected : session.getSelectedViewpoints(false)) {
+								selection.deselectViewpoint(previouslySelected, session,
+										new NullProgressMonitor());
+							}
+							selection.selectViewpoint(SysmlViewpoints.fromViewpointRegistry().sysml(),
+									session, new NullProgressMonitor());
+						}
+					});
+		}
 	}
 }
