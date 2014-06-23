@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.obeonetwork.dsl.sysml.runtime.feature"
-      label="SysML Designer (based on Sirius)"
+      label="SysML Designer"
       version="4.0.0.qualifier"
       provider-name="Obeo">
 
    <description url="http://docs.obeonetwork.com/sysml">
-      Copyright (c) 2010-2012 Obeo.
+      This modeler provides a set of common diagrams to work with
+SysML 1.3 models.
    </description>
 
    <copyright url="http://www.obeo.fr/legal.php?lang=en">
