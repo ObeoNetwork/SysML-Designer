@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.papyrus.uml.extensionpoints">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.papyrus.uml.extensionpoints" id="UMLProfile" name="New UML profile to register in PAPYRUS"/>
+      </appInfo>
+      <documentation>
+         This extension point is used to registered UML profiles packaged as plugins into Papyrus modeling tool.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="profile"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="profile">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="name" icon="iconpath"/>
+         </appInfo>
+      </annotation>
+      <complexType>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Name of the profile. This will be used to display the profile in dialogs, etc...
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="path" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Gives the path to the uml file that implements this profile.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="qualifiednames" type="string">
+            <annotation>
+               <documentation>
+                  List of qualified names for profiles. This is used by the tool when applying the profile. Usually, all subprofiles are applied. If this attribute is used, only indicated sub-profiles will be applied.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="iconpath" type="string">
+            <annotation>
+               <documentation>
+                  Icon that describes the profile. Used in dialogs, etc...
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  Short description of the profile
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="provider" type="string">
+            <annotation>
+               <documentation>
+                  Identifies the provider of the profile.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         Since 1.7
+
+Updated in version 1.8.0:
+- added &quot;qualified names&quot; attribute
+
+Updated in version 1.9.0:
+- description, icon and provider attributes added.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+          &lt;extension
+         point=&quot;org.eclipse.papyrus.uml.extensionpoints.UMLProfile&quot;&gt;
+      &lt;profile
+            description=&quot;Ecore profile&quot;
+            path=&quot;pathmap://UML_PROFILES/Ecore.profile.uml&quot;
+            iconpath=&quot;icons/ecore.gif&quot;
+            name=&quot;Ecore&quot;
+            provider=&quot;Eclipe.org&quot;&gt;
+      &lt;/profile&gt;
+&lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2007 CEA LIST
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License
+v1.0 which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+Contributors:
+CEA LIST - initial API and implementation
+      </documentation>
+   </annotation>
+
+</schema>
