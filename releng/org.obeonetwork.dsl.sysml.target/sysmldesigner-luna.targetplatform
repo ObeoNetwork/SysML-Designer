@@ -4,37 +4,3 @@ include "http://marketplace.obeonetwork.com/updates/nightly/uml/4.0.0/umldesigne
 with source, requirements
 
 // SysML
-
-location "http://download.eclipse.org/modeling/mdt/papyrus/updates/milestones/1.0/RC4/main" {
-	org.eclipse.papyrus.sysml
-	org.eclipse.papyrus.uml.extensionpoints
-	org.eclipse.papyrus.infra.emf
-	org.eclipse.papyrus.infra.core.log
-	org.eclipse.papyrus.infra.widgets
-	org.eclipse.papyrus.infra.tools
-	org.eclipse.papyrus.infra.core
-	org.eclipse.papyrus.infra.services.labelprovider
-	org.eclipse.papyrus.emf.facet.custom.ui
-	org.eclipse.papyrus.emf.facet.custom.core
-	org.eclipse.papyrus.emf.facet.util.swt
-	org.eclipse.papyrus.emf.facet.custom.metamodel
-	org.eclipse.papyrus.emf.facet.util.emf.core
-	org.eclipse.papyrus.emf.facet.efacet.core
-	org.eclipse.papyrus.emf.facet.util.core
-	org.eclipse.papyrus.emf.facet.efacet.metamodel
-	org.eclipse.papyrus.emf.facet.query.java.core
-	org.eclipse.papyrus.emf.facet.util.core
-	org.eclipse.papyrus.emf.facet.util.ui
-	org.eclipse.papyrus.emf.facet.util.jface.ui
-	org.eclipse.papyrus.infra.core.sasheditor
-	org.eclipse.papyrus.infra.core.sasheditor.di
-	org.eclipse.papyrus.emf.facet.efacet
-	org.eclipse.papyrus.emf.facet.util.emf.catalog
-	org.eclipse.papyrus.emf.facet.common.ui
-	org.eclipse.papyrus.emf.facet.efacet.catalog
-	org.eclipse.papyrus.emf.facet.util.emf.ui
-	org.eclipse.papyrus.emf.facet.query.java.metamodel
-	org.eclipse.papyrus.emf.facet.util.pde.core
-	org.eclipse.papyrus.emf.facet.common.core
-	org.eclipse.papyrus.emf.facet.query.java
-}

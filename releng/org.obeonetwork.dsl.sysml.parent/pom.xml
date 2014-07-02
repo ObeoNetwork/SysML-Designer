@@ -55,6 +55,8 @@ Contributors:
 
   <modules>
     <!-- Build plugins -->
+    <module>${root-path}/lib/org.eclipse.papyrus.sysml</module>
+    <module>${root-path}/lib/org.eclipse.papyrus.uml.extensionpoints</module>
     <module>${root-path}/plugins/org.obeonetwork.dsl.sysml.design</module>
     <module>${root-path}/plugins/org.obeonetwork.dsl.sysml.examples</module>
     

@@ -2,10 +2,10 @@
 <project>
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>org.eclipse.papyrus</artifactId>
-		<groupId>org.eclipse.papyrus</groupId>
-		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../../../releng/top-pom-main.xml</relativePath>
+		<artifactId>parent</artifactId>
+		<groupId>org.obeonetwork.dsl.sysml</groupId>
+		<version>4.0.0-SNAPSHOT</version>
+		<relativePath>../../releng/org.obeonetwork.dsl.sysml.parent</relativePath>
 	</parent>
 	<artifactId>org.eclipse.papyrus.sysml</artifactId>
 	<groupId>org.eclipse.papyrus</groupId>
