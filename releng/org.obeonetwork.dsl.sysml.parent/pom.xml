@@ -40,7 +40,7 @@ Contributors:
 
   <properties>
     <tycho-version>0.19.0</tycho-version>
-    <uml-site>http://update.obeo.fr/integration/uml/repository/</uml-site>
+    <uml-site>http://marketplace.obeonetwork.com/updates/nightly/uml/repository</uml-site>
     <root-path>../..</root-path>
     <platform-version-name>luna</platform-version-name>
   </properties>
