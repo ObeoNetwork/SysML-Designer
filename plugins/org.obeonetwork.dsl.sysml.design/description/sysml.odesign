@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="SysML modelers" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="SysML modelers" version="8.1.0">
   <ownedViewpoints name="SysML" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Reused Description" preconditionExpression="[false/]">
       <defaultLayer name="Default">
@@ -12,7 +12,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[containerView.oclAsType(ecore::EObject).addExistingElements(element->filter(ecore::EObject))/]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop From Model" precondition="[newContainer.oclAsType(uml::Element).isValidElementForContainerView(element.oclAsType(uml::Element),newViewContainer)/]" forceRefresh="true" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_NestedPackage'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_ValueType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@additionalLayers[name='BDD%20Parametric%20Layer']/@containerMappings[name='BDD_ConstraintBlock'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@additionalLayers[name='BDD%20Requirements%20Layer']/@containerMappings[name='BDD_RequirementsSatisfy']/@subNodeMappings[name='BDD_Requirement'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@subContainerMappings[name='IBD_Part'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Refine']/@containerMappings[name='RD_Activity'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Refine']/@containerMappings[name='RD_StateMachine'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Refine']/@nodeMappings[name='RD_UseCase'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Verify']/@containerMappings[name='RD_TestCase']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Drop From Model" precondition="[newContainer.oclAsType(uml::Element).isValidElementForContainerView(element.oclAsType(uml::Element),newViewContainer)/]" forceRefresh="true" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_NestedPackage'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_ValueType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@additionalLayers[name='BDD%20Parametric%20Layer']/@containerMappings[name='BDD_ConstraintBlock'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@additionalLayers[name='BDD%20Requirements%20Layer']/@containerMappings[name='BDD_RequirementsSatisfy']/@subNodeMappings[name='BDD_Requirement'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@subContainerMappings[name='IBD_Part'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Refine']/@containerMappings[name='RD_Activity'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Refine']/@containerMappings[name='RD_StateMachine'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Refine']/@nodeMappings[name='RD_UseCase'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Verify']/@containerMappings[name='RD_TestCase']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -21,7 +21,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[newSemanticContainer.dropFromModel(element, newContainerView)/]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop From Diagram" precondition="[newContainer.oclAsType(uml::Element).isValidElementForContainerView(element.oclAsType(uml::Element),newViewContainer)/]" forceRefresh="true" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_NestedPackage'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_ValueType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@additionalLayers[name='BDD%20Parametric%20Layer']/@containerMappings[name='BDD_ConstraintBlock'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@subContainerMappings[name='IBD_Part'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Refine']/@containerMappings[name='RD_Activity'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Refine']/@containerMappings[name='RD_StateMachine'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Refine']/@nodeMappings[name='RD_UseCase'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Verify']/@containerMappings[name='RD_TestCase']">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Drop From Diagram" precondition="[newContainer.oclAsType(uml::Element).isValidElementForContainerView(element.oclAsType(uml::Element),newViewContainer)/]" forceRefresh="true" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_NestedPackage'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_ValueType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@additionalLayers[name='BDD%20Parametric%20Layer']/@containerMappings[name='BDD_ConstraintBlock'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@subContainerMappings[name='IBD_Part'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Refine']/@containerMappings[name='RD_Activity'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Refine']/@containerMappings[name='RD_StateMachine'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Refine']/@nodeMappings[name='RD_UseCase'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Verify']/@containerMappings[name='RD_TestCase']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -78,7 +78,7 @@
           </conditionnalStyles>
         </nodeMappings>
         <nodeMappings name="BDD_Actor" createElements="false" documentation="Mapping to create actors" domainClass="uml.Actor">
-          <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
+          <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
           <style xsi:type="style:WorkspaceImageDescription" labelSize="10" showIcon="false" resizeKind="NSEW" workspacePath="/org.obeonetwork.dsl.uml2.design/images/actor.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -91,10 +91,10 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
-          <reconnections href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']"/>
+          <reconnections href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']"/>
         </edgeMappings>
         <edgeMappings name="BDD_Association" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Edges']/@ownedTools[name='Delete%20Association']" semanticCandidatesExpression="service:diagram.getAssociationInverseRefs" semanticElements="service:getSemanticElements" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_ValueType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_ValueType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@additionalLayers[name='BDD%20Parametric%20Layer']/@containerMappings[name='BDD_ConstraintBlock']" targetFinderExpression="[getTarget().type/]" sourceFinderExpression="[getSource().type/]" targetExpression="var:self" domainClass="uml.Association" useDomainElement="true">
-          <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
+          <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
           <style targetArrow="NoDecoration" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <beginLabelStyleDescription showIcon="false" labelExpression="[getSource().computeAssociationEndLabel()/]">
@@ -107,7 +107,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </endLabelStyleDescription>
           </style>
-          <reconnections href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']"/>
+          <reconnections href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']"/>
         </edgeMappings>
         <edgeMappings name="BDD_InterfaceRealization" semanticCandidatesExpression="service:diagram.getInterfaceRealizationInverseRefs" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" targetExpression="var:self" domainClass="uml.InterfaceRealization" useDomainElement="true">
           <style lineStyle="dash" targetArrow="InputClosedArrow" sizeComputationExpression="1">
@@ -116,10 +116,10 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
-          <reconnections href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']"/>
+          <reconnections href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']"/>
         </edgeMappings>
         <edgeMappings name="BDD_Dependency" preconditionExpression="[not(self.oclIsKindOf(uml::InterfaceRealization))/]" semanticCandidatesExpression="service:diagram.getDependencyInverseRefs" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_ValueType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@additionalLayers[name='BDD%20Parametric%20Layer']/@containerMappings[name='BDD_ConstraintBlock'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_NestedPackage'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_ValueType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@additionalLayers[name='BDD%20Parametric%20Layer']/@containerMappings[name='BDD_ConstraintBlock'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_NestedPackage'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" targetExpression="var:self" domainClass="uml.Dependency" useDomainElement="true">
-          <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
+          <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
           <style lineStyle="dash" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
@@ -134,10 +134,10 @@
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-          <reconnections href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']"/>
+          <reconnections href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']"/>
         </edgeMappings>
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="BDD_Enumeration" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Enumeration']" childrenPresentation="List" hideSubMappings="true">
-          <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']/@subNodeMappings[name='CD_EnumerationLiteral']"/>
+          <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']/@subNodeMappings[name='CD_EnumerationLiteral']"/>
           <style xsi:type="style:FlatContainerStyleDescription" labelExpression="service:computeUmlLabel" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BlueDataType']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -150,9 +150,9 @@
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </conditionnalStyles>
-          <importedMapping href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']"/>
+          <importedMapping href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']"/>
         </containerMappings>
-        <containerMappings xsi:type="description_1:ContainerMappingImport" name="BDD_NestedPackage" detailDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Block%20Definition%20Diagram%20creation']" createElements="false" reusedNodeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" reusedContainerMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_ValueType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@additionalLayers[name='BDD%20Requirements%20Layer']/@containerMappings[name='BDD_RequirementsSatisfy'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_NestedPackage']" hideSubMappings="true">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="BDD_NestedPackage" detailDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Block%20Definition%20Diagram%20creation']" reusedNodeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Dimension'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Unit']" reusedContainerMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Enumeration'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_ValueType'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Interface'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@additionalLayers[name='BDD%20Requirements%20Layer']/@containerMappings[name='BDD_RequirementsSatisfy'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_NestedPackage']" hideSubMappings="true">
           <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="service:computeUmlLabel" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -169,7 +169,7 @@
               <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
             </style>
           </conditionnalStyles>
-          <importedMapping href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package']"/>
+          <importedMapping href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package']"/>
         </containerMappings>
         <containerMappings name="BDD_Block" detailDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Internal%20Block%20Diagram%20creation'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Block%20Definition%20Diagram%20creation'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Parametric%20Diagram%20creation'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Create%20activity%20diagram'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Create%20statemachine%20diagram']" navigationDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Internal%20Block%20Diagram%20navigation'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Parametric%20Diagram%20navigation'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Open%20activity%20diagram%20from%20block'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Open%20statemachine%20diagram']" preconditionExpression="service:isBlock" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Block']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Block%20Name%20and%20Type']" createElements="false" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Class" childrenPresentation="List">
           <subNodeMappings name="BDD_Function" detailDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.6/@ownedTools[name='Function%20description%20creation']" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20Function']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Function%20Name']" semanticCandidatesExpression="feature:ownedBehavior" domainClass="uml.Activity">
@@ -186,7 +186,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']"/>
+          <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']"/>
           <style xsi:type="style:FlatContainerStyleDescription" labelExpression="service:computeUmlLabel" tooltipExpression="feature:name" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BlueBlock']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -217,9 +217,9 @@
           </conditionnalStyles>
         </containerMappings>
         <containerMappings name="BDD_Interface" createElements="false" semanticElements="[self->union(self.getStereotypeApplications())/]" domainClass="uml.Interface" childrenPresentation="List">
-          <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
-          <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']"/>
-          <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
+          <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
+          <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']"/>
+          <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
           <style xsi:type="style:FlatContainerStyleDescription" labelExpression="service:computeUmlLabel" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -250,8 +250,8 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']"/>
-          <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
+          <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']"/>
+          <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
           <style xsi:type="style:FlatContainerStyleDescription" labelExpression="service:computeUmlLabel" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BlueDataType']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -326,9 +326,9 @@
             </initialOperation>
           </ownedTools>
           <reusedTools xsi:type="tool:SelectionWizardDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='AddExistingElements']"/>
-          <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='RemoveExistingElements']"/>
-          <reusedTools xsi:type="tool:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Diagram']"/>
-          <reusedTools xsi:type="tool:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Model']"/>
+          <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='RemoveExistingElements']"/>
+          <reusedTools xsi:type="tool_1:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Diagram']"/>
+          <reusedTools xsi:type="tool_1:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Model']"/>
           <reusedTools xsi:type="tool:PasteDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Paste']"/>
         </toolSections>
         <toolSections name="Types" label="Types">
@@ -486,7 +486,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <reusedTools xsi:type="tool:PopupMenu" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Import%20primitive%20types']"/>
+          <reusedTools xsi:type="tool:PopupMenu" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Import%20primitive%20types']"/>
         </toolSections>
         <toolSections name="Features">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" name="BDD_Create_Function" label="Function" nodeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block']/@subNodeMappings[name='BDD_Function']">
@@ -549,7 +549,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <reusedTools xsi:type="tool_1:NodeCreationDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Literal']"/>
+          <reusedTools xsi:type="tool_1:NodeCreationDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Literal']"/>
         </toolSections>
         <toolSections name="Relationships" label="Relationships">
           <ownedTools xsi:type="tool_1:ToolGroup" name="Associations">
@@ -898,7 +898,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <reusedTools xsi:type="tool_1:ReconnectEdgeDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']"/>
+          <reusedTools xsi:type="tool_1:ReconnectEdgeDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']"/>
         </toolSections>
         <toolSections name="BDD Edit Section">
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Dimension Name" forceRefresh="true" inputLabelExpression="feature:name">
@@ -1118,21 +1118,21 @@
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']"/>
           </ownedTools>
-          <reusedTools xsi:type="tool_1:DiagramCreationDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='navigation']/@ownedTools[name='Activity%20diagram']"/>
-          <reusedTools xsi:type="tool_1:DiagramNavigationDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='navigation']/@ownedTools[name='Nav%20to%20Activity%20diag']"/>
+          <reusedTools xsi:type="tool_1:DiagramCreationDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='navigation']/@ownedTools[name='Activity%20diagram']"/>
+          <reusedTools xsi:type="tool_1:DiagramNavigationDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='navigation']/@ownedTools[name='Nav%20to%20Activity%20diag']"/>
         </toolSections>
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomizationReuse" appliedOn="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@edgeMappings[name='BDD_Association']/@style">
-            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.0/@featureCustomizations.0"/>
-            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.1/@featureCustomizations.0"/>
-            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.2/@featureCustomizations.0"/>
-            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.3/@featureCustomizations.0"/>
-            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.4/@featureCustomizations.0"/>
-            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.5/@featureCustomizations.0"/>
-            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.6/@featureCustomizations.0"/>
-            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.7/@featureCustomizations.0"/>
-            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.8/@featureCustomizations.0"/>
-            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.9/@featureCustomizations.0"/>
+            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.0/@featureCustomizations.0"/>
+            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.1/@featureCustomizations.0"/>
+            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.2/@featureCustomizations.0"/>
+            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.3/@featureCustomizations.0"/>
+            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.4/@featureCustomizations.0"/>
+            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.5/@featureCustomizations.0"/>
+            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.6/@featureCustomizations.0"/>
+            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.7/@featureCustomizations.0"/>
+            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.8/@featureCustomizations.0"/>
+            <reuse xsi:type="description:EAttributeCustomization" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@customization/@vsmElementCustomizations.9/@featureCustomizations.0"/>
           </vsmElementCustomizations>
         </customization>
       </defaultLayer>
@@ -1453,9 +1453,9 @@
             </initialOperation>
           </ownedTools>
           <reusedTools xsi:type="tool:SelectionWizardDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='AddExistingAttributes']"/>
-          <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='RemoveExistingElements']"/>
-          <reusedTools xsi:type="tool:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Diagram']"/>
-          <reusedTools xsi:type="tool:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Model']"/>
+          <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='RemoveExistingElements']"/>
+          <reusedTools xsi:type="tool_1:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Diagram']"/>
+          <reusedTools xsi:type="tool_1:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Model']"/>
           <reusedTools xsi:type="tool:PasteDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Paste']"/>
         </toolSections>
         <toolSections name="IBD Create Objects" label="Features">
@@ -1660,7 +1660,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Model'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Diagram']" name="Parametric Diagram" titleExpression="['par [block] ' + self.name + ' [' + self.name + ' diagram]'/]" pasteDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Paste']" domainClass="uml.Class" preconditionExpression="service:isValidParametricDiagramRoot" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#/"/>
-      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
       <defaultLayer name="PAR Parametric Layer" label="Parametric Layer">
         <edgeMappings name="PAR_ParameterConnector" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='PAR%20Delete%20Edges']/@ownedTools[name='Delete%20Parameter%20Connector']" semanticCandidatesExpression="[ownedConnector/]" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']/@borderedNodeMappings[name='PAR_Parameter']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']/@borderedNodeMappings[name='PAR_Parameter']" targetFinderExpression="[end->asSequence()->last().role/]" sourceFinderExpression="[end->asSequence()->first().role/]" domainClass="uml.Connector" useDomainElement="true">
           <style targetArrow="NoDecoration" sizeComputationExpression="2" routingStyle="manhattan">
@@ -1711,9 +1711,9 @@
             </initialOperation>
           </ownedTools>
           <reusedTools xsi:type="tool:SelectionWizardDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='AddExistingAttributes']"/>
-          <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='RemoveExistingElements']"/>
-          <reusedTools xsi:type="tool:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Diagram']"/>
-          <reusedTools xsi:type="tool:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Model']"/>
+          <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='RemoveExistingElements']"/>
+          <reusedTools xsi:type="tool_1:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Diagram']"/>
+          <reusedTools xsi:type="tool_1:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Model']"/>
           <reusedTools xsi:type="tool:PasteDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Paste']"/>
         </toolSections>
         <toolSections name="PAR Create Objects" label="Features">
@@ -1901,7 +1901,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Model'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Diagram']" name="Requirement Diagram" titleExpression="['req [package] ' + self.name + ' [' + self.name + ' diagram]'/]" pasteDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Paste']" domainClass="uml.Package" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#//requirements"/>
-      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
       <defaultLayer name="Default">
         <edgeMappings name="RD_DeriveReqtOrRefine" semanticCandidatesExpression="service:diagram.getDependencyInverseRefs" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" domainClass="uml.Abstraction" useDomainElement="true" reconnections="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
           <style lineStyle="dash" sizeComputationExpression="1">
@@ -1970,9 +1970,9 @@
             </initialOperation>
           </ownedTools>
           <reusedTools xsi:type="tool:SelectionWizardDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='AddExistingElements']"/>
-          <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='RemoveExistingElements']"/>
-          <reusedTools xsi:type="tool:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Diagram']"/>
-          <reusedTools xsi:type="tool:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Model']"/>
+          <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='RemoveExistingElements']"/>
+          <reusedTools xsi:type="tool_1:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Diagram']"/>
+          <reusedTools xsi:type="tool_1:ContainerDropDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20From%20Model']"/>
           <reusedTools xsi:type="tool:PasteDescription" href="#//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Paste']"/>
         </toolSections>
         <toolSections name="Types">
@@ -2229,8 +2229,8 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="Derive Refine Requirement Table" titleExpression="['req [package] ' + self.name + ' [Derive Refine Table]'/]" domainClass="uml.Package">
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#/"/>
-      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2#/"/>
-      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
       <ownedLineMappings name="RCT_Requirements" semanticElements="var:container" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements" headerLabelExpression="[getRequirementId()+':'+name/]"/>
       <ownedColumnMappings name="RCT_Requirement" semanticElements="var:container" headerLabelExpression="[getRequirementId()+':'+name/]" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements"/>
       <intersection name="RCT_Derive" label="Derive" lineMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Derive%20Refine%20Requirement%20Table']/@ownedLineMappings[name='RCT_Requirements']" columnMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Derive%20Refine%20Requirement%20Table']/@ownedColumnMappings.0" labelExpression="D" useDomainClass="true" columnFinderExpression="feature:client" lineFinderExpression="feature:supplier" semanticCandidatesExpression="service:getAllDeriveReqts" domainClass="uml.Abstraction">
@@ -2293,8 +2293,8 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="Satisfy Table" titleExpression="['req [package] ' + self.name + ' [SatisfyTable]'/]" domainClass="uml.Package">
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#/"/>
-      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2#/"/>
-      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
       <ownedLineMappings name="ST_Requirements" semanticElements="service:getRequirements" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements" headerLabelExpression="[getRequirementId() + ' : ' + name/]">
         <ownedSubLines name="ST_SubRequirements" semanticElements="service:getRequirements" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements" headerLabelExpression="[getRequirementId()+ ' : ' + name/]"/>
       </ownedLineMappings>
@@ -2336,8 +2336,8 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="Verify Table" titleExpression="['req [package] ' + self.name + ' [VerifyTable]'/]" domainClass="uml.Package">
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#/"/>
-      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2#/"/>
-      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
       <ownedLineMappings name="VT_Requirements" semanticElements="service:getRequirements" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements" headerLabelExpression="[getRequirementId() + ' : ' + name/]">
         <delete name="VT Delete Requirement" precondition="[false/]">
           <variables name="element" documentation="The currently edited element."/>
@@ -2389,8 +2389,8 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="Refine Table" titleExpression="['req [package] ' + self.name + ' [RefineTable]'/]" domainClass="uml.Package">
       <metamodel href="http://www.eclipse.org/papyrus/0.7.0/SysML#/"/>
-      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2#/"/>
-      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
       <ownedLineMappings name="RT_Requirements" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements" headerLabelExpression="[getRequirementId() + ' : ' + name/]"/>
       <ownedColumnMappings name="RT_Behavior" headerLabelExpression="service:computeUmlLabel" domainClass="uml.Element" semanticCandidatesExpression="service:getAllBehaviors"/>
       <intersection name="RT_Refine" label="Refine" lineMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Refine%20Table']/@ownedLineMappings[name='RT_Requirements']" columnMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Refine%20Table']/@ownedColumnMappings.0" labelExpression="R" useDomainClass="true" columnFinderExpression="feature:client" lineFinderExpression="feature:supplier" semanticCandidatesExpression="service:getAllRefine" domainClass="uml.Abstraction">
@@ -2428,8 +2428,8 @@
         </create>
       </intersection>
     </ownedRepresentations>
-    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="SysML Package Hierarchy" viewpointURI="viewpoint:/org.obeonetwork.dsl.uml2.design/UML Structural Modeling" representationName="Package Hierarchy">
-      <layers name="SysML layer">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="SysML Package Hierarchy" viewpointURI="viewpoint:/org.obeonetwork.dsl.uml2.design/Capture" representationName="Package Hierarchy">
+      <layers name="SysML" optional="false">
         <toolSections>
           <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Block Definition Diagram" diagramDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']">
             <initialOperation>
@@ -2438,6 +2438,186 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
+        </toolSections>
+      </layers>
+    </ownedRepresentationExtensions>
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="SysML Dashboard" viewpointURI="viewpoint:/org.obeonetwork.dsl.uml2.design/Dashboard" representationName="Dashboard">
+      <layers name="SysML" optional="false">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="DA_Dashboard_Extension" semanticCandidatesExpression="var:self" domainClass="uml.Model" childrenPresentation="HorizontalStack">
+          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="DA_Create_Extension" semanticCandidatesExpression="var:self" domainClass="uml.Model" childrenPresentation="VerticalStack">
+            <subContainerMappings name="DA_SysML" semanticCandidatesExpression="var:self" domainClass="uml.Model" childrenPresentation="List">
+              <subNodeMappings name="DA_BlockDefinitionDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@toolSections.0/@subSections[name='Create']/@subSections[name='SysML']/@ownedTools[name='DA_CreateBlockDefinitionDiagram']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Block Definition Diagram" iconPath="/org.eclipse.papyrus.sysml/icons/blocks/Block.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new block definition diagram" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_InternalBlockDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@toolSections.0/@subSections[name='Create']/@subSections[name='SysML']/@ownedTools[name='DA_CreateInternalBlockDiagram']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Internal Block Diagram" iconPath="/org.eclipse.papyrus.sysml/icons/portandflows/FlowPort.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new internal block diagram" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_ParametricDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@toolSections.0/@subSections[name='Create']/@subSections[name='SysML']/@ownedTools[name='DA_CreateParametricDiagram']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Parametric Diagram" iconPath="/org.eclipse.papyrus.sysml/icons/constraints/ConstraintBlock.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new parametric diagram" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_RequirementDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@toolSections.0/@subSections[name='Create']/@subSections[name='SysML']/@ownedTools[name='DA_CreateRequirementDiagram']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Requirement Diagram" iconPath="/org.eclipse.papyrus.sysml/icons/requirements/Requirement.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new requirement diagram" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_DeriveRefineRequirementTable" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@toolSections.0/@subSections[name='Create']/@subSections[name='SysML']/@ownedTools[name='DA_CreateDeriveRefineRequirementTable']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Dervie Refine Requirement Table" iconPath="/org.eclipse.papyrus.sysml/icons/requirements/DeriveReqt.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new derive/refine requirement table" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_SatisfyTable" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@toolSections.0/@subSections[name='Create']/@subSections[name='SysML']/@ownedTools[name='DA_CreateSatisfyTable']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Satisfy Table" iconPath="/org.eclipse.papyrus.sysml/icons/requirements/Satisfy.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new satisfy table" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_VerifyTable" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@toolSections.0/@subSections[name='Create']/@subSections[name='SysML']/@ownedTools[name='DA_CreateVerifyTable']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Verify Table" iconPath="/org.eclipse.papyrus.sysml/icons/requirements/Verify.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new verify table" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_RefineTable" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@toolSections.0/@subSections[name='Create']/@subSections[name='SysML']/@ownedTools[name='DA_CreateRefineTable']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Refine Table" iconPath="/org.eclipse.papyrus.sysml/icons/requirements/Refine.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new refine table" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_RequirementTable" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@toolSections.0/@subSections[name='Create']/@subSections[name='SysML']/@ownedTools[name='DA_CreateRequirementTable']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Requirement Table" iconPath="/org.eclipse.papyrus.sysml/icons/requirements/Requirement.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new requirement table" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="10" arcHeight="10" labelSize="12" labelFormat="bold" showIcon="false" labelExpression="SysML" tooltipExpression="Create new SysML diagrams" roundedCorner="true" backgroundStyle="Liquid">
+                <borderColor xsi:type="description:UserFixedColor" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@userColorsPalettes[name='UMLPalette']/@entries[name='dark%20lagune']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                <backgroundColor xsi:type="description:UserFixedColor" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']"/>
+                <foregroundColor xsi:type="description:UserFixedColor" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']"/>
+              </style>
+            </subContainerMappings>
+            <reusedContainerMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Capture']"/>
+            <reusedContainerMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Design']"/>
+            <reusedContainerMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Extend']"/>
+            <reusedContainerMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Review']"/>
+            <importedMapping href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']"/>
+          </subContainerMappings>
+          <reusedContainerMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']"/>
+          <reusedContainerMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Navigate']"/>
+          <reusedContainerMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Help']"/>
+          <importedMapping href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']"/>
+        </containerMappings>
+        <toolSections name="tools">
+          <subSections name="Create">
+            <subSections name="SysML">
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateBlockDefinitionDiagram" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@containerMappings[name='DA_Dashboard_Extension']/@subContainerMappings[name='DA_Create_Extension']/@subContainerMappings[name='DA_SysML']/@subNodeMappings[name='DA_BlockDefinitionDiagram']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createBlockDefinitionDiagram"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateInternalBlockDiagram" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@containerMappings[name='DA_Dashboard_Extension']/@subContainerMappings[name='DA_Create_Extension']/@subContainerMappings[name='DA_SysML']/@subNodeMappings[name='DA_InternalBlockDiagram']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:initBlockForPackage">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createInternalBlockDiagram"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateParametricDiagram" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@containerMappings[name='DA_Dashboard_Extension']/@subContainerMappings[name='DA_Create_Extension']/@subContainerMappings[name='DA_SysML']/@subNodeMappings[name='DA_ParametricDiagram']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:initBlockForPackage">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createParametricDiagram"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateRequirementDiagram" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@containerMappings[name='DA_Dashboard_Extension']/@subContainerMappings[name='DA_Create_Extension']/@subContainerMappings[name='DA_SysML']/@subNodeMappings[name='DA_RequirementDiagram']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createRequirementDiagram"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateRequirementTable" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@containerMappings[name='DA_Dashboard_Extension']/@subContainerMappings[name='DA_Create_Extension']/@subContainerMappings[name='DA_SysML']/@subNodeMappings[name='DA_RequirementTable']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createRequirementTable"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateDeriveRefineRequirementTable" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@containerMappings[name='DA_Dashboard_Extension']/@subContainerMappings[name='DA_Create_Extension']/@subContainerMappings[name='DA_SysML']/@subNodeMappings[name='DA_DeriveRefineRequirementTable']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createDeriveRefineRequirementTable"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateSatisfyTable" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@containerMappings[name='DA_Dashboard_Extension']/@subContainerMappings[name='DA_Create_Extension']/@subContainerMappings[name='DA_SysML']/@subNodeMappings[name='DA_SatisfyTable']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createSatisfyTable"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateVerifyTable" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@containerMappings[name='DA_Dashboard_Extension']/@subContainerMappings[name='DA_Create_Extension']/@subContainerMappings[name='DA_SysML']/@subNodeMappings[name='DA_VerifyTable']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createVerifyTable"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateRefineTable" mappings="//@ownedViewpoints[name='SysML']/@ownedRepresentationExtensions[name='SysML%20Dashboard']/@layers[name='SysML']/@containerMappings[name='DA_Dashboard_Extension']/@subContainerMappings[name='DA_Create_Extension']/@subContainerMappings[name='DA_SysML']/@subNodeMappings[name='DA_RefineTable']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createRefineTable"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+            </subSections>
+          </subSections>
+          <subSections name="Help"/>
         </toolSections>
       </layers>
     </ownedRepresentationExtensions>
@@ -2451,6 +2631,7 @@
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.services.LabelServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UIServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.ActivityServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.services.SysMLDashboardServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="SysML Color Palette">
     <entries xsi:type="description:UserFixedColor" red="126" green="177" blue="254" name="BlueBlock"/>

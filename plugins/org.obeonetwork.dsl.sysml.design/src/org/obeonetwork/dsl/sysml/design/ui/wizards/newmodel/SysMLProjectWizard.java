@@ -18,6 +18,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Display;
+import org.obeonetwork.dsl.uml2.design.ui.extension.editor.UmlViewpoints;
 import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UMLProjectWizard;
 
 /**
@@ -69,6 +70,10 @@ public class SysMLProjectWizard extends UMLProjectWizard {
 								selection.deselectViewpoint(previouslySelected, session,
 										new NullProgressMonitor());
 							}
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().dashboard(),
+									session, new NullProgressMonitor());
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().capture(),
+									session, new NullProgressMonitor());
 							selection.selectViewpoint(SysmlViewpoints.fromViewpointRegistry().sysml(),
 									session, new NullProgressMonitor());
 						}
