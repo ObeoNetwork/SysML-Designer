@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SysML Designer Documentation
 Bundle-SymbolicName: org.obeonetwork.dsl.sysml.doc;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 4.0.1.qualifier
 Bundle-Vendor: Obeo
 Require-Bundle: org.eclipse.help,
  org.eclipse.ui.cheatsheets

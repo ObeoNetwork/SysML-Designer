@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: sysML Designer Tests
+Bundle-Name: SysML Designer Tests
 Bundle-SymbolicName: org.obeonetwork.dsl.sysml.design.tests;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 4.0.1.qualifier
 Bundle-Activator: org.obeonetwork.dsl.sysml.design.tests.Activator
 Bundle-Vendor: Obeo Network
 Require-Bundle: org.eclipse.core.runtime,
