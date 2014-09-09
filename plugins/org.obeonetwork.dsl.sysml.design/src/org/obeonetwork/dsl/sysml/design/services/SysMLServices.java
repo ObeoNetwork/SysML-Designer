@@ -1480,7 +1480,7 @@ public class SysMLServices {
 			EObject element = iterator.next();
 			if (element instanceof Classifier
 					&& !isConstraintBlock((Classifier)element)
-					&& (isBlock((Classifier)element) || element instanceof PrimitiveType || element instanceof DataType)) {
+					&& (isBlock((Classifier)element) || element instanceof PrimitiveType || element instanceof DataType || element instanceof Interface)) {
 				results.add(((Classifier)element));
 			}
 		}
