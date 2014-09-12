@@ -1472,7 +1472,7 @@ public class SysMLServices {
 	 *            Container
 	 * @return Port types
 	 */
-	public List<Classifier> getPortTypes(EObject container) {
+	public List<Classifier> q(EObject container) {
 		SysMLServices service = new SysMLServices();
 		List<Classifier> results = Lists.newArrayList();
 		for (Iterator<EObject> iterator = service.getRootContainer(container).eAllContents(); iterator
@@ -1480,7 +1480,8 @@ public class SysMLServices {
 			EObject element = iterator.next();
 			if (element instanceof Classifier
 					&& !isConstraintBlock((Classifier)element)
-					&& (isBlock((Classifier)element) || element instanceof PrimitiveType || element instanceof DataType)) {
+					&& (isBlock((Classifier)element) || element instanceof PrimitiveType
+							|| element instanceof DataType || element instanceof Interface)) {
 				results.add(((Classifier)element));
 			}
 		}
