@@ -46,7 +46,7 @@ public class InterpretedExpressionTests {
 		List<Object[]> parameters = Lists.newArrayList();
 		SortedMultiset<String> allExpressions = TreeMultiset.create();
 		collectExpressionFromSysmlDesignerViewpoints(parameters,
-				allExpressions, "SysML");
+				allExpressions, ServiceTestsUtils.VP_SYSML);
 		for (String expr : allExpressions.elementSet()) {
 			System.out.println(allExpressions.count(expr) + " : " + expr);
 		}
@@ -57,8 +57,7 @@ public class InterpretedExpressionTests {
 			List<Object[]> parameters, SortedMultiset<String> allExpressions,
 			String vpName) {
 		Viewpoint structural = ViewpointRegistry.getInstance().getViewpoint(
-				URI.createURI("viewpoint:/org.obeonetwork.dsl.sysml.design/"
-						+ vpName));
+				URI.createURI(ServiceTestsUtils.SYSML_VP_URI + vpName));
 		collectExpressionsFromViewpoint(parameters, structural, allExpressions);
 	}
 

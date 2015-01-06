@@ -21,7 +21,7 @@ Contributors:
         point="org.eclipse.ui.newWizards">
      <wizard
            category="org.obeonetwork.dsl.uml2.design.category"
-           class="org.obeonetwork.dsl.sysml.design.ui.wizards.newmodel.SysMLProjectWizard"
+           class="org.obeonetwork.dsl.sysml.design.internal.wizards.newmodel.SysMLProjectWizard"
            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
            icon="icons/NewUmlModel.gif"
            id="org.obeonetwork.dsl.sysml.design.newSysMLProject"

@@ -1,25 +1,20 @@
 /*******************************************************************************
- * Copyright (c) 2013 Obeo.
+ * Copyright (c) 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
+package org.obeonetwork.dsl.sysml.design.api.services;
 
-package org.obeonetwork.dsl.sysml.design.tests.plugin.manual;
-
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
-
-@RunWith(Suite.class)
-@SuiteClasses({ AllServicesTests.class })
 /**
- * Testing : Hand written SysML Designer plugin tests
+ * A set of services to handle the Package hierarchy diagram.
+ *
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
-public class SysmlDesignerManualPluginTests {
-
+public class SysMLPackageHierarchyServices extends SysmlAbstractDiagramServices {
+	// No specific services
 }

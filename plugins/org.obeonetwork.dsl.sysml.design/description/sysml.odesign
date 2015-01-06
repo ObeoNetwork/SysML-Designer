@@ -97,13 +97,13 @@
           <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
           <style targetArrow="NoDecoration" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <beginLabelStyleDescription showIcon="false" labelExpression="[getSource().computeAssociationEndLabel()/]">
+            <beginLabelStyleDescription showIcon="false" labelExpression="[self.oclAsType(uml::Association).computeAssociationBeginLabel()/]">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </beginLabelStyleDescription>
             <centerLabelStyleDescription showIcon="false" labelExpression="service:computeUmlLabel">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
-            <endLabelStyleDescription showIcon="false" labelExpression="[getTarget().computeAssociationEndLabel()/]">
+            <endLabelStyleDescription showIcon="false" labelExpression="[self.oclAsType(uml::Association).computeAssociationEndLabel()/]">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </endLabelStyleDescription>
           </style>
@@ -1019,7 +1019,7 @@
               <elementView name="elementView"/>
               <containerView name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[containerView.oclAsType(diagram::DDiagramElement).target.unSetDimension()/]"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[containerView.oclAsType(diagram::DDiagramElement).target.unsetDimension()/]"/>
               </initialOperation>
             </ownedTools>
           </subSections>
@@ -2621,17 +2621,18 @@
         </toolSections>
       </layers>
     </ownedRepresentationExtensions>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.services.SysMLServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.LabelServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLProfileServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.EcoreServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.services.PortServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.services.DebugServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.services.LabelServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UIServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.ActivityServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.services.SysMLDashboardServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.ReusedDescriptionServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.BlockDefinitionDiagramServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.RequirementTableServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.InternalBlockDiagramServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.ParametricDiagramServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.RequirementDiagramServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.DeriveRefineRequirementTableServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.SatisfyTableServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.VerifyTableServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.RefineTableServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.SysMLPackageHierarchyServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.SysMLDashboardServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="SysML Color Palette">
     <entries xsi:type="description:UserFixedColor" red="126" green="177" blue="254" name="BlueBlock"/>

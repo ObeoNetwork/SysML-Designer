@@ -16,10 +16,11 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ AllServicesTests.class })
+@SuiteClasses({ JavaExtensionTests.class, DeclaredServiceTests.class,
+		ServiceExpressionSysmlViewpointTests.class })
 /**
  * Testing : Hand written SysML Designer plugin tests
  */
-public class SysmlDesignerManualPluginTests {
+public class AllServicesTests {
 
 }
