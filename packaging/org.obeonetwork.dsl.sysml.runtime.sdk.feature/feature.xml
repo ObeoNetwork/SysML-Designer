@@ -2,7 +2,7 @@
 <feature
       id="org.obeonetwork.dsl.sysml.runtime.sdk.feature"
       label="SysML Designer SDK (based on Sirius)"
-      version="4.0.1.qualifier"
+      version="5.0.0.qualifier"
       provider-name="Obeo">
 
    <description url="http://docs.obeonetwork.com/sysml">
