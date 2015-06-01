@@ -20,6 +20,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -39,6 +40,7 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.obeonetwork.dsl.sysml.design.internal.services.ISysmlConstants;
+import org.obeonetwork.dsl.sysml.design.internal.services.SysmlElementServices;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
@@ -85,6 +87,32 @@ public class ReusedDescriptionServices extends org.obeonetwork.dsl.uml2.design.a
 			}
 		}
 		return result;
+	}
+
+	public void createAssociatedStereotype(Element e, String profileQualifiedName, String stereotypeName) {
+		SysmlElementServices.INSTANCE.createAssociatedStereotype(e, profileQualifiedName, stereotypeName);
+	}
+
+	/**
+	 * Check if an element is a container.
+	 *
+	 * @param container
+	 *            Semantic container
+	 * @param containerView
+	 *            Container view
+	 * @return True if element is valid for the given container view
+	 */
+	public boolean existValidElementsForContainerView(final EObject container, final EObject containerView) {
+		if (container instanceof Element && containerView instanceof DSemanticDecorator) {
+			final Session session = SessionManager.INSTANCE.getSession(container);
+			// Get all available mappings applicable for the selected element in the
+			// current container
+			final List<DiagramElementMapping> semanticElementMappings = getMappings(
+					(DSemanticDecorator)containerView, session);
+
+			return semanticElementMappings.size() > 0;
+		}
+		return false;
 	}
 
 	/**
@@ -174,10 +202,10 @@ public class ReusedDescriptionServices extends org.obeonetwork.dsl.uml2.design.a
 						|| isVerifyLayerActive(diagram)
 						&& (input instanceof Class && isTestClass((Class)input) || input instanceof Operation
 								&& ((Operation)input).getAppliedStereotype(ISysmlConstants.SYSML_TESTCASE) != null)
-						|| isSatisfyLayerActive(diagram) && input instanceof Class
-						&& ((Class)input).getAppliedStereotype(ISysmlConstants.SYSML_BLOCK) != null
-						|| isRefineLayerActive(diagram)
-						&& (input instanceof Behavior || input instanceof BehavioredClassifier);
+								|| isSatisfyLayerActive(diagram) && input instanceof Class
+								&& ((Class)input).getAppliedStereotype(ISysmlConstants.SYSML_BLOCK) != null
+								|| isRefineLayerActive(diagram)
+								&& (input instanceof Behavior || input instanceof BehavioredClassifier);
 			}
 
 			private boolean isTestClass(Class input) {
