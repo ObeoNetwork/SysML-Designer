@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
@@ -14,7 +14,7 @@ import org.eclipse.osgi.util.NLS;
 
 // CHECKSTYLE:OFF
 public class Messages extends NLS {
-	private static final String BUNDLE_NAME = "org.obeonetwork.dsl.sysml.design.ui.wizards.newmodel.messages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.obeonetwork.dsl.sysml.design.internal.wizards"; //$NON-NLS-1$
 
 	public static String SysMLModelWizard_DefaultModelName;
 
@@ -55,6 +55,7 @@ public class Messages extends NLS {
 	public static String SysMLModelWizardInitModelPage_XmlEncodingLabel;
 
 	public static String SysMLModelWizardInitModelPage_XmlEncodings;
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

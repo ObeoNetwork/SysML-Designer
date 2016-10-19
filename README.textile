@@ -7,9 +7,8 @@ These plugins are released under the EPL Open-Souce License.
 More details about features, screenshots, release notes, dependencies here:
 
  * http://marketplace.obeonetwork.com/module/sysml
- * http://docs.obeonetwork.com/uml
- * http://www.obeodesigner.com
-
+ * http://umldesigner.com
+ * http://www.eclipse.org/sirius
 
 To build the module you'll need Maven3 and type @mvn clean verify checkstyle:checkstyle@
 

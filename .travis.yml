@@ -1,0 +1,48 @@
+language: java
+jdk: oraclejdk8
+env:
+  global:
+  - MAVEN_OPTS="-XX:MaxPermSize=512m"
+  - secure: KpzAMqnf5+K5PNmZbcoiaSjWS//sVkPlbjrpb662rrkQcZHslqnAVmy2h+OsSaA6pefhRpzrSmys9vu7Ou4ZPNOBgxlmePOUl+MfEXOe+9EO3G6GLooyvzzk/9rsOYuHMiM6hrJZsPWF2NyIibElqE/l6YKuTUH9XOWnVbGZ+oY=
+sudo: false
+before_script:
+- gem install jekyll --version '= 1.5.1'
+- gem install RedCloth
+script:
+- mvn clean verify
+- chmod a+x prepare-deploy-local-dir.sh
+- echo "$TRAVIS_TAG"
+- if [[ "$TRAVIS_TAG" != "" ]]; then ./prepare-deploy-local-dir.sh $TRAVIS_BUILD_DIR/$TRAVIS_TAG;
+  fi
+- mv packaging/org.obeonetwork.dsl.sysml.update/target/org.obeonetwork.dsl.sysml.update-*-SNAPSHOT.zip
+  packaging/org.obeonetwork.dsl.sysml.update/target/org.obeonetwork.dsl.sysml.update-nightly.zip
+- ./prepare-deploy-local-dir.sh $TRAVIS_BUILD_DIR/nightly
+deploy:
+# Deploy nightly on s3
+  - provider: s3
+    access_key_id: AKIAJJVZATSVUD3VGHXA
+    secret_access_key:
+      secure: Q/gg6DF4GWnN3ffaJaMUjdA6Kxc+cPFKh8XEu9GRoCkmvjTfcR1Adwvh1AmNatgT8qa1C1+qfWVxotUl5QK9b8XB8jsG/ea3vi35GqXPaE9As6isbu9kA/CJgyYNDj4Nekk3BHEDmFckwkhTCaSDVlNI8b33wR8pS5gk/VGt65Q=
+    bucket: obeo-sysmldesigner-nightly
+    local-dir: "${TRAVIS_BUILD_DIR}/nightly"
+    acl: public_read
+    skip_cleanup: true
+    region: eu-west-1
+    upload-dir: "${TRAVIS_BRANCH}"
+    on:
+      branch: master
+# Deploy release on s3
+  - provider: s3
+    access_key_id: AKIAJJVZATSVUD3VGHXA
+    secret_access_key:
+      secure: Q/gg6DF4GWnN3ffaJaMUjdA6Kxc+cPFKh8XEu9GRoCkmvjTfcR1Adwvh1AmNatgT8qa1C1+qfWVxotUl5QK9b8XB8jsG/ea3vi35GqXPaE9As6isbu9kA/CJgyYNDj4Nekk3BHEDmFckwkhTCaSDVlNI8b33wR8pS5gk/VGt65Q=
+    bucket: obeo-sysmldesigner-releases
+    local-dir: "${TRAVIS_BUILD_DIR}/${TRAVIS_TAG}"
+    acl: public_read
+    skip_cleanup: true
+    region: eu-west-1
+    upload-dir: "${TRAVIS_TAG}"
+    on:
+      tags: true
+      all_branches: true
+      repo: ObeoNetwork/SysML-Designer

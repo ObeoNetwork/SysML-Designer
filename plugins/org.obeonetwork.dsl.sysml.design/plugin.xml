@@ -12,7 +12,7 @@ Contributors:
 -->
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="org.obeonetwork.dsl.sysml.design.Activator"
+    <component class="org.obeonetwork.dsl.sysml.design.SysMLDesignerPlugin"
                id="org.obeonetwork.dsl.sysml.design"
 	       name="sysml">
     </component>

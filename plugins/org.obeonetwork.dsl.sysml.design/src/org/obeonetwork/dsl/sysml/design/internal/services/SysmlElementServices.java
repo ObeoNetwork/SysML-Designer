@@ -35,7 +35,7 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.profile.standard.Refine;
-import org.obeonetwork.dsl.sysml.design.Activator;
+import org.obeonetwork.dsl.sysml.design.SysMLDesignerPlugin;
 
 /**
  * Utility services for SysML.
@@ -72,9 +72,9 @@ public class SysmlElementServices {
 		}
 		Profile parentProfile = null;
 		if (profileQualifiedName.startsWith("SysML")) { //$NON-NLS-1$
-			parentProfile = Activator.getSysMLProfile();
+			parentProfile = SysMLDesignerPlugin.getSysMLProfile();
 		} else if (profileQualifiedName.startsWith("Standard")) { //$NON-NLS-1$
-			parentProfile = Activator.getStandardProfile();
+			parentProfile = SysMLDesignerPlugin.getStandardProfile();
 		}
 
 		Package profilePackage = parentProfile;
@@ -94,7 +94,7 @@ public class SysmlElementServices {
 		if (profile == null) {
 			final String message = "Can't apply the profile " + profileQualifiedName + " on " //$NON-NLS-1$ //$NON-NLS-2$
 					+ p.getQualifiedName();
-			Activator.log(IStatus.WARNING, message, null);
+			SysMLDesignerPlugin.log(IStatus.WARNING, message, null);
 		} else {
 			p.applyProfile(profile);
 		}
@@ -124,11 +124,11 @@ public class SysmlElementServices {
 		if (stereotype == null) {
 			final String message = "Can't apply the setereotype " + stereotypeQualifiedName + " on " //$NON-NLS-1$ //$NON-NLS-2$
 					+ element.toString();
-			Activator.log(IStatus.WARNING, message, null);
+			SysMLDesignerPlugin.log(IStatus.WARNING, message, null);
 		} else if (appliedStereotypes != null && appliedStereotypes.contains(stereotype)) {
 			final String message = "The stereotype " + stereotype.getQualifiedName() //$NON-NLS-1$
 					+ " is already applied on " + element.toString(); //$NON-NLS-1$
-			Activator.log(IStatus.INFO, message, null);
+			SysMLDesignerPlugin.log(IStatus.INFO, message, null);
 		} else {
 			element.applyStereotype(stereotype);
 		}
@@ -152,7 +152,7 @@ public class SysmlElementServices {
 			}
 		} else {
 			final String message = "Can't delete the stereotype application because the element or the stereotypeName keys are not correct"; //$NON-NLS-1$
-			Activator.log(IStatus.INFO, message, null);
+			SysMLDesignerPlugin.log(IStatus.INFO, message, null);
 		}
 	}
 

@@ -32,7 +32,7 @@ import org.osgi.framework.BundleContext;
  * 
  * @author Axel Richard <a href="mailto:axel.richard@obeo.fr">axel.richard@obeo.fr</a>
  */
-public class Activator extends AbstractUIPlugin {
+public class SysMLDesignerPlugin extends AbstractUIPlugin {
 	/**
 	 * The plug-in ID.
 	 */
@@ -61,7 +61,7 @@ public class Activator extends AbstractUIPlugin {
 	/**
 	 * The shared instance.
 	 */
-	private static Activator plugin;
+	private static SysMLDesignerPlugin plugin;
 
 	/**
 	 * The viewpoints.
@@ -91,7 +91,7 @@ public class Activator extends AbstractUIPlugin {
 	/**
 	 * The constructor.
 	 */
-	public Activator() {
+	public SysMLDesignerPlugin() {
 		final URI sysMLProfilesURI = URI.createURI(SYSML_PROFILES_PATHMAP);
 		sysMLProfileURI = sysMLProfilesURI.appendSegment(SYSML_PROFILE_PATH);
 		loadSysMLProfile();
@@ -134,7 +134,7 @@ public class Activator extends AbstractUIPlugin {
 	 * 
 	 * @return the shared instance
 	 */
-	public static Activator getDefault() {
+	public static SysMLDesignerPlugin getDefault() {
 		return plugin;
 	}
 
@@ -181,7 +181,7 @@ public class Activator extends AbstractUIPlugin {
 			sysMLProfile = (Profile)EcoreUtil.getObjectByType(resource.getContents(),
 					UMLPackage.Literals.PACKAGE);
 		} catch (WrappedException we) {
-			Activator.log(Status.ERROR, "Can't get the SysML profile !", we);
+			SysMLDesignerPlugin.log(Status.ERROR, "Can't get the SysML profile !", we);
 		}
 	}
 
@@ -198,7 +198,7 @@ public class Activator extends AbstractUIPlugin {
 			standardProfile = (Profile)EcoreUtil.getObjectByType(resource.getContents(),
 					UMLPackage.Literals.PACKAGE);
 		} catch (WrappedException we) {
-			Activator.log(Status.ERROR, "Can't get the Standard profile !", we);
+			SysMLDesignerPlugin.log(Status.ERROR, "Can't get the Standard profile !", we);
 		}
 	}
 }

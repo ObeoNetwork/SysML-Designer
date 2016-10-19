@@ -10,9 +10,13 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.sysml.design.api.services;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.uml2.uml.NamedElement;
 import org.obeonetwork.dsl.sysml.design.internal.services.LabelServices;
 import org.obeonetwork.dsl.uml2.design.api.services.AbstractDiagramServices;
+import org.obeonetwork.dsl.uml2.design.api.services.ReusedDescriptionServices;
 
 /**
  * A set of services used by SysML diagrams.
@@ -29,5 +33,20 @@ public abstract class SysmlAbstractDiagramServices extends AbstractDiagramServic
 	 */
 	public String computeSysmlLabel(NamedElement element) {
 		return LabelServices.INSTANCE.computeSysmlLabel(element);
+	}
+
+	/**
+	 * Open the select existing element dialog.
+	 *
+	 * @param selectedContainer
+	 *            Selected element
+	 * @param selectedContainerView
+	 * @param diagram
+	 *            Current diagram
+	 */
+	public void openSelectExistingElementsDialog(EObject selectedContainer,
+			DSemanticDecorator selectedContainerView, DDiagram diagram) {
+		final ReusedDescriptionServices services = new ReusedDescriptionServices();
+		services.openSelectExistingElementsDialog(selectedContainer, selectedContainerView, diagram);
 	}
 }
