@@ -55,7 +55,7 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.obeonetwork.dsl.uml2.design" version="0.0.0"/>
-      <repository location="https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-releases/7.0.0/repository/"/>
+      <repository location="https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-releases/7.1.0/repository/"/>
     </location>
   </locations>
 </target>

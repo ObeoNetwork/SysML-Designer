@@ -4,6 +4,6 @@ include "https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-nightly/master/umld
 with source, requirements
 
 // SysML
-location "https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-releases/7.0.0/repository/" {
+location "https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-releases/7.1.0/repository/" {
 	org.obeonetwork.dsl.uml2.design lazy
 }

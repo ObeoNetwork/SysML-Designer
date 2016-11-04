@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SysML Designer
 Bundle-SymbolicName: org.obeonetwork.dsl.sysml.design;singleton:=true
-Bundle-Version: 5.0.0.qualifier
+Bundle-Version: 7.1.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.sysml.design.SysMLDesignerPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.navigator,
@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.common.acceleo.mtl,
  org.eclipse.sirius.common.acceleo.mtl.ide,
  org.eclipse.uml2.uml;bundle-version="[5.0.0,6.0.0)",
- org.obeonetwork.dsl.uml2.design;bundle-version="[7.0.0,8.0.0)",
+ org.obeonetwork.dsl.uml2.design;bundle-version="[7.1.0,8.0.0)",
  com.google.guava,
  org.eclipse.sirius.ext.base,
  org.eclipse.uml2.uml.profile.standard,
