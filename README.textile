@@ -4,11 +4,7 @@ This modeler provides a set of common diagrams to work with SysML models.
 
 These plugins are released under the EPL Open-Souce License.
 
-More details about features, screenshots, release notes, dependencies here:
-
- * http://marketplace.obeonetwork.com/module/sysml
- * http://umldesigner.com
- * http://www.eclipse.org/sirius
+More details about features, screenshots, release notes, dependencies here: http://www.umldesigner.org/ref-doc/presentation.html#SysML_Designer
 
 To build the module you'll need Maven3 and type @mvn clean verify checkstyle:checkstyle@
 
