@@ -2,7 +2,7 @@
 <feature
       id="org.obeonetwork.dsl.sysml.runtime.feature"
       label="SysML Designer"
-      version="7.1.0.qualifier"
+      version="8.0.0.qualifier"
       provider-name="Obeo">
 
    <description url="http://docs.obeonetwork.com/sysml">
@@ -230,12 +230,6 @@ litigation.
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
-   <plugin
-         id="org.obeonetwork.dsl.sysml.doc"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
 
    <plugin
          id="org.eclipse.papyrus.sysml"

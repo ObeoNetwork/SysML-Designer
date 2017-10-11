@@ -5,9 +5,6 @@ env:
   - MAVEN_OPTS="-XX:MaxPermSize=512m"
   - secure: KpzAMqnf5+K5PNmZbcoiaSjWS//sVkPlbjrpb662rrkQcZHslqnAVmy2h+OsSaA6pefhRpzrSmys9vu7Ou4ZPNOBgxlmePOUl+MfEXOe+9EO3G6GLooyvzzk/9rsOYuHMiM6hrJZsPWF2NyIibElqE/l6YKuTUH9XOWnVbGZ+oY=
 sudo: false
-before_script:
-- gem install jekyll --version '= 1.5.1'
-- gem install RedCloth
 script:
 - mvn clean verify
 - chmod a+x prepare-deploy-local-dir.sh
