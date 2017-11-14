@@ -7,7 +7,7 @@
 
    <description url="http://docs.obeonetwork.com/sysml">
       This modeler provides a set of common diagrams to work with
-SysML 1.3 models.
+SysML 1.4 models.
    </description>
 
    <copyright url="http://www.obeo.fr/legal.php?lang=en">
@@ -232,14 +232,14 @@ litigation.
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.papyrus.sysml"
+         id="org.eclipse.papyrus.sysml14"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.papyrus.uml.extensionpoints"
+         id="org.eclipse.papyrus.sysml14.edit"
          download-size="0"
          install-size="0"
          version="0.0.0"

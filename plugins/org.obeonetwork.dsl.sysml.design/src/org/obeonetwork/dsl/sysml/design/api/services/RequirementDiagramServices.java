@@ -13,7 +13,8 @@ package org.obeonetwork.dsl.sysml.design.api.services;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.sysml.requirements.Requirement;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.papyrus.sysml14.requirements.Requirement;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeList;
@@ -23,6 +24,8 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.StateMachine;
+import org.eclipse.uml2.uml.Stereotype;
+import org.obeonetwork.dsl.sysml.design.internal.services.ISysmlConstants;
 import org.obeonetwork.dsl.sysml.design.internal.services.SysMLReconnectSwitch;
 import org.obeonetwork.dsl.sysml.design.internal.services.SysmlElementServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.NodeInverseRefsServices;
@@ -33,6 +36,21 @@ import org.obeonetwork.dsl.uml2.design.internal.services.NodeInverseRefsServices
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class RequirementDiagramServices extends SysmlAbstractDiagramServices {
+
+	private static final String REQUIREMENT_ID_ATTRIBUTE_NAME = "id"; //$NON-NLS-1$
+
+	private static final String REQUIREMENT_TEXT_ATTRIBUTE_NAME = "text"; //$NON-NLS-1$
+
+	/**
+	 * Delete the given requirement.
+	 *
+	 * @param requirement
+	 *            the requirement to delete.
+	 */
+	public void deleteRequirement(final Class requirement) {
+		EcoreUtil.remove(requirement);
+	}
+
 	/**
 	 * Retrieve the cross references of the abstraction of all the UML elements displayed as node in a
 	 * Diagram.
@@ -126,4 +144,39 @@ public class RequirementDiagramServices extends SysmlAbstractDiagramServices {
 		reconnectService.setNewPointedClass(target);
 		return reconnectService.doSwitch(context);
 	}
+
+	/**
+	 * Sets the identifier of the requirement applied on the given element. Does nothing if the requirement
+	 * stereotype is not applied on the given element.
+	 *
+	 * @param element
+	 *            the element to modify.
+	 * @param id
+	 *            the identifier of the requirement to set.
+	 */
+	public Element setRequirementId(final Element element, final String id) {
+		final Stereotype requirement = element.getAppliedStereotype(ISysmlConstants.SYSML_REQUIREMENT);
+		if (requirement != null) {
+			element.setValue(requirement, REQUIREMENT_ID_ATTRIBUTE_NAME, id);
+		}
+		return element;
+	}
+
+	/**
+	 * Sets the text of the requirement applied on the given element. Does nothing if the requirement
+	 * stereotype is not applied on the given element.
+	 *
+	 * @param element
+	 *            the element to modify.
+	 * @param text
+	 *            the text of the requirement to set.
+	 */
+	public Element setRequirementText(final Element element, final String text) {
+		final Stereotype requirement = element.getAppliedStereotype(ISysmlConstants.SYSML_REQUIREMENT);
+		if (requirement != null) {
+			element.setValue(requirement, REQUIREMENT_TEXT_ATTRIBUTE_NAME, text);
+		}
+		return element;
+	}
+
 }

@@ -16,20 +16,17 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.papyrus.sysml.blocks.Block;
-import org.eclipse.papyrus.sysml.blocks.Dimension;
-import org.eclipse.papyrus.sysml.constraints.ConstraintBlock;
-import org.eclipse.papyrus.sysml.constraints.ConstraintProperty;
-import org.eclipse.papyrus.sysml.portandflows.FlowPort;
-import org.eclipse.papyrus.sysml.requirements.DeriveReqt;
-import org.eclipse.papyrus.sysml.requirements.Requirement;
-import org.eclipse.papyrus.sysml.requirements.Satisfy;
-import org.eclipse.papyrus.sysml.requirements.TestCase;
-import org.eclipse.papyrus.sysml.requirements.Verify;
+import org.eclipse.papyrus.sysml14.blocks.Block;
+import org.eclipse.papyrus.sysml14.constraintblocks.ConstraintBlock;
+import org.eclipse.papyrus.sysml14.deprecatedelements.FlowPort;
+import org.eclipse.papyrus.sysml14.requirements.DeriveReqt;
+import org.eclipse.papyrus.sysml14.requirements.Requirement;
+import org.eclipse.papyrus.sysml14.requirements.Satisfy;
+import org.eclipse.papyrus.sysml14.requirements.TestCase;
+import org.eclipse.papyrus.sysml14.requirements.Verify;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Profile;
@@ -215,7 +212,12 @@ public class SysmlElementServices {
 	 * @return True if element is a constraint property otherwise false
 	 */
 	public boolean isConstraintProperty(NamedElement element) {
-		return isStereotype(element, ConstraintProperty.class);
+		for (final EObject appliedStereotype : element.getStereotypeApplications()) {
+			if (appliedStereotype instanceof ConstraintBlock) {
+				return ((ConstraintBlock)appliedStereotype).getParameters().contains(element);
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -227,17 +229,6 @@ public class SysmlElementServices {
 	 */
 	public boolean isDeriveReqt(NamedElement element) {
 		return isStereotype(element, DeriveReqt.class);
-	}
-
-	/**
-	 * Checks if element has the stereotype dimension.
-	 *
-	 * @param element
-	 *            Named element
-	 * @return True if element is a dimension otherwise false
-	 */
-	public boolean isDimension(InstanceSpecification element) {
-		return isStereotype(element, Dimension.class);
 	}
 
 	/**
