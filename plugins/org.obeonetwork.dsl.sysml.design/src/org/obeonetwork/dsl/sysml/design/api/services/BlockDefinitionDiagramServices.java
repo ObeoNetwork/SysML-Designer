@@ -16,13 +16,9 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
-import org.eclipse.papyrus.sysml.blocks.Block;
-import org.eclipse.papyrus.sysml.blocks.Dimension;
-import org.eclipse.papyrus.sysml.blocks.Unit;
-import org.eclipse.papyrus.sysml.blocks.ValueType;
-import org.eclipse.papyrus.sysml.constraints.ConstraintBlock;
-import org.eclipse.papyrus.sysml.constraints.ConstraintProperty;
-import org.eclipse.papyrus.sysml.requirements.Requirement;
+import org.eclipse.papyrus.sysml14.blocks.ValueType;
+import org.eclipse.papyrus.sysml14.requirements.Requirement;
+import org.eclipse.papyrus.sysml14.util.QUDVUtil;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.uml2.uml.Abstraction;
@@ -34,7 +30,6 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
-import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.obeonetwork.dsl.sysml.design.internal.services.SysmlElementServices;
 import org.obeonetwork.dsl.uml2.design.api.utils.UmlUtils;
@@ -49,6 +44,12 @@ import com.google.common.collect.Lists;
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class BlockDefinitionDiagramServices extends SysmlAbstractDiagramServices {
+
+	private static final Classifier UNIT_CLASS = QUDVUtil
+			.getClassifierByNameSpaceFromQUDV(QUDVUtil.UNIT_AND_QUANTITY_KIND, QUDVUtil.UNIT);
+
+	private static final Classifier QUANTITY_KIND__CLASS = QUDVUtil
+			.getClassifierByNameSpaceFromQUDV(QUDVUtil.UNIT_AND_QUANTITY_KIND, QUDVUtil.QUANTITY_KIND);
 
 	/**
 	 * Compute the label of the given association.
@@ -118,8 +119,7 @@ public class BlockDefinitionDiagramServices extends SysmlAbstractDiagramServices
 		final List<InstanceSpecification> results = Lists.newArrayList();
 		for (final Iterator<EObject> iterator = valueType.getModel().eAllContents(); iterator.hasNext();) {
 			final EObject element = iterator.next();
-			if (element instanceof InstanceSpecification
-					&& SysmlElementServices.INSTANCE.isDimension((InstanceSpecification)element)) {
+			if (element instanceof InstanceSpecification && isDimension((InstanceSpecification)element)) {
 				results.add((InstanceSpecification)element);
 			}
 		}
@@ -165,10 +165,10 @@ public class BlockDefinitionDiagramServices extends SysmlAbstractDiagramServices
 	 *            Package
 	 * @return Dimension.
 	 */
-	public Dimension getDimension(Element valueType) {
+	public InstanceSpecification getDimension(Element valueType) {
 		for (final EObject stereotype : valueType.getStereotypeApplications()) {
 			if (stereotype instanceof ValueType) {
-				return ((ValueType)stereotype).getDimension();
+				return ((ValueType)stereotype).getQuantityKind();
 			}
 		}
 		return null;
@@ -240,7 +240,7 @@ public class BlockDefinitionDiagramServices extends SysmlAbstractDiagramServices
 	 *            Package
 	 * @return Unit.
 	 */
-	public Unit getUnit(Element valueType) {
+	public InstanceSpecification getUnit(Element valueType) {
 		for (final EObject stereotype : valueType.getStereotypeApplications()) {
 			if (stereotype instanceof ValueType) {
 				return ((ValueType)stereotype).getUnit();
@@ -264,10 +264,20 @@ public class BlockDefinitionDiagramServices extends SysmlAbstractDiagramServices
 	}
 
 	/**
-	 * @see SysmlElementServices#isDimension(InstanceSpecification)
+	 * Checks if element specifies a QUDV Quantity Kind
+	 *
+	 * @param element
+	 *            the specification to check.
+	 * @return True if element specifies a QUDV Quantity Kind otherwise false
 	 */
 	public boolean isDimension(InstanceSpecification element) {
-		return SysmlElementServices.INSTANCE.isDimension(element);
+		// all classifiers must be a Quantity Kind (see ValueType SysML Specifications).
+		for (final Classifier specifiedClassifier : element.getClassifiers()) {
+			if (!specifiedClassifier.isSubstitutableFor(QUANTITY_KIND__CLASS)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -278,21 +288,33 @@ public class BlockDefinitionDiagramServices extends SysmlAbstractDiagramServices
 	}
 
 	/**
-	 * Checks if element has the stereotype unit.
+	 * Checks if the given element is an unit. It returns <code>true</code> if the given classifier is the
+	 * Unit classifier or a subtype of the Unit classifier.
+	 *
+	 * @param classifierToCheck
+	 *            the classifier to check.
+	 * @return returns <code>true</code> if the given classifier is the Unit classifier or a subtype of the
+	 *         Unit classifier.
+	 */
+	private boolean isUnit(final Classifier classifierToCheck) {
+		return classifierToCheck.isSubstitutableFor(UNIT_CLASS);
+	}
+
+	/**
+	 * Checks if element specifies a QUDV Unit.
 	 *
 	 * @param element
-	 *            Named element
-	 * @return True if element is a unit otherwise false
+	 *            the specification to check.
+	 * @return True if element specifies an unit otherwise false.
 	 */
 	public boolean isUnit(InstanceSpecification element) {
-		// Replace acceleo expression:
-		// [self.getStereotypeApplications()->filter(sysml::blocks::Unit)->size() > 0/]
-		for (final EObject stereotype : element.getStereotypeApplications()) {
-			if (stereotype instanceof Unit) {
-				return true;
+		// all classifiers must be an Unit (see ValueType SysML Specifications).
+		for (final Classifier specifiedClassifier : element.getClassifiers()) {
+			if (!isUnit(specifiedClassifier)) {
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 
 	/**
@@ -339,16 +361,10 @@ public class BlockDefinitionDiagramServices extends SysmlAbstractDiagramServices
 	 */
 	public void setDimension(Element dataType, InstanceSpecification instanceSpecification) {
 		if (dataType.getStereotypeApplications() != null) {
-			EObject stereotype = dataType.getStereotypeApplications().get(0);
+			final EObject stereotype = dataType.getStereotypeApplications().get(0);
 			if (stereotype instanceof ValueType) {
 				final ValueType valueType = (ValueType)stereotype;
-				if (instanceSpecification.getStereotypeApplications() != null) {
-					stereotype = instanceSpecification.getStereotypeApplications().get(0);
-					if (stereotype instanceof Dimension) {
-						final Dimension dimension = (Dimension)stereotype;
-						valueType.setDimension(dimension);
-					}
-				}
+				valueType.setQuantityKind(instanceSpecification);
 			}
 		}
 	}
@@ -363,22 +379,16 @@ public class BlockDefinitionDiagramServices extends SysmlAbstractDiagramServices
 	 */
 	public void setUnit(Element dataType, InstanceSpecification instanceSpecification) {
 		if (dataType.getStereotypeApplications() != null) {
-			EObject stereotype = dataType.getStereotypeApplications().get(0);
+			final EObject stereotype = dataType.getStereotypeApplications().get(0);
 			if (stereotype instanceof ValueType) {
 				final ValueType valueType = (ValueType)stereotype;
-				if (instanceSpecification.getStereotypeApplications() != null) {
-					stereotype = instanceSpecification.getStereotypeApplications().get(0);
-					if (stereotype instanceof Unit) {
-						final Unit unit = (Unit)stereotype;
-						valueType.setUnit(unit);
-					}
-				}
+				valueType.setUnit(instanceSpecification);
 			}
 		}
 	}
 
 	public void unsetDimension(EObject valueType) {
-		((ValueType)((Element)valueType).getStereotypeApplications()).setDimension(null);
+		((ValueType)((Element)valueType).getStereotypeApplications()).setQuantityKind(null);
 	}
 
 	/**
@@ -389,37 +399,7 @@ public class BlockDefinitionDiagramServices extends SysmlAbstractDiagramServices
 	 * @return the element updated.
 	 */
 	public Element updateStereotype(Element element) {
-		if (element instanceof Property) {
-			final Type type = ((Property)element).getType();
-			if (type != null) {
-				final Collection<EObject> elementStereotypes = element.getStereotypeApplications();
-				final Collection<EObject> typeStereotypes = type.getStereotypeApplications();
-				for (final EObject typeStereotype : typeStereotypes) {
-					if (typeStereotype instanceof ConstraintBlock) {
-						if (elementStereotypes == null || elementStereotypes.isEmpty()) {
-							SysmlElementServices.INSTANCE.createAssociatedStereotype(element,
-									"SysML::Constraints", "ConstraintProperty"); //$NON-NLS-1$ //$NON-NLS-2$
-							break;
-						}
-						for (final EObject elementStereotype : elementStereotypes) {
-							if (!(elementStereotype instanceof ConstraintProperty)) {
-								SysmlElementServices.INSTANCE.createAssociatedStereotype(element,
-										"SysML::Constraints", "ConstraintProperty"); //$NON-NLS-1$ //$NON-NLS-2$
-								break;
-							}
-						}
-
-					} else if (typeStereotype instanceof Block) {
-						for (final EObject elementStereotype : elementStereotypes) {
-							if (elementStereotype instanceof ConstraintProperty) {
-								deleteAssociatedStereotype(element, "SysML::Constraints::ConstraintProperty"); //$NON-NLS-1$
-								break;
-							}
-						}
-					}
-				}
-			}
-		}
+		// nothing to do anymore.
 		return element;
 	}
 }

@@ -12,8 +12,8 @@ package org.obeonetwork.dsl.sysml.design.internal.services;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.papyrus.sysml.portandflows.FlowDirection;
-import org.eclipse.papyrus.sysml.portandflows.FlowPort;
+import org.eclipse.papyrus.sysml14.deprecatedelements.FlowPort;
+import org.eclipse.papyrus.sysml14.portsandflows.FlowDirection;
 import org.eclipse.uml2.uml.Port;
 
 /**
@@ -87,7 +87,7 @@ public class PortServices {
 				if (isOppositeDirection) {
 					return sourcePort.getDirection() != targetPort.getDirection()
 							|| sourcePort.getDirection() == targetPort.getDirection()
-							&& sourcePort.getDirection() == FlowDirection.INOUT;
+									&& sourcePort.getDirection() == FlowDirection.INOUT;
 				}
 				return sourcePort.getDirection() == targetPort.getDirection();
 			}

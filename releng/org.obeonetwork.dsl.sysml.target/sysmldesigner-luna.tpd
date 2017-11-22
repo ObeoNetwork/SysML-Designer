@@ -4,3 +4,7 @@ include "http://marketplace.obeonetwork.com/updates/nightly/uml/umldesigner-luna
 with source, requirements
 
 // SysML
+location "http://download.eclipse.org/modeling/mdt/papyrus/components/sysml14/" {
+	org.eclipse.papyrus.sysml14 lazy
+	
+}

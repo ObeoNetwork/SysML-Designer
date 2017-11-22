@@ -12,7 +12,7 @@ package org.obeonetwork.dsl.sysml.design.api.services;
 
 import java.util.List;
 
-import org.eclipse.papyrus.sysml.requirements.Requirement;
+import org.eclipse.papyrus.sysml14.requirements.Requirement;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Element;
@@ -29,6 +29,15 @@ import com.google.common.collect.Lists;
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class RequirementTableServices {
+
+	public String getIdForRequirement(final Element element) {
+		final Stereotype requirement = element.getAppliedStereotype(ISysmlConstants.SYSML_REQUIREMENT);
+		if (requirement != null) {
+			final Object id = element.getValue(requirement, "id"); //$NON-NLS-1$
+			return id == null ? "" : String.valueOf(id); //$NON-NLS-1$
+		}
+		return null;
+	}
 
 	/**
 	 * @see SysmlElementServices#getRequirement(Class)
@@ -76,6 +85,15 @@ public class RequirementTableServices {
 	 */
 	public List<Object> getRequirements(Package pkg) {
 		return getRequirements(pkg.getPackagedElements().toArray());
+	}
+
+	public String getTextForRequirement(final Element element) {
+		final Stereotype requirement = element.getAppliedStereotype(ISysmlConstants.SYSML_REQUIREMENT);
+		if (requirement != null) {
+			final Object id = element.getValue(requirement, "text"); //$NON-NLS-1$
+			return id == null ? "" : String.valueOf(id); //$NON-NLS-1$
+		}
+		return null;
 	}
 
 	/**
