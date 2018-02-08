@@ -107,7 +107,7 @@ public class ComputeLabelSwitch extends UMLSwitch<String> {
 				return input instanceof Operation;
 			}
 		};
-		return computeLabel(element, "function", predicate); //$NON-NLS-1$
+		return computeLabel(element, "operation", predicate); //$NON-NLS-1$
 	}
 
 	@Override
@@ -174,8 +174,8 @@ public class ComputeLabelSwitch extends UMLSwitch<String> {
 	@SuppressWarnings("unchecked")
 	private String computeLabel(EObject element, String name,
 			@SuppressWarnings("rawtypes") Predicate predicate) {
-		final List<EObject> existingElements = Lists.newArrayList(Iterables.filter(element.eContainer()
-				.eContents(), predicate));
+		final List<EObject> existingElements = Lists
+				.newArrayList(Iterables.filter(element.eContainer().eContents(), predicate));
 
 		return name + existingElements.size();
 	}
