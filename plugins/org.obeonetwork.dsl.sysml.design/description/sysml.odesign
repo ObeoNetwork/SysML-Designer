@@ -181,7 +181,13 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']"/>
+          <subNodeMappings name="BDD_Operation" semanticCandidatesExpression="feature:ownedOperation" domainClass="uml.Operation">
+            <style xsi:type="style:SquareDescription" labelExpression="service:computeUmlLabel" labelAlignment="LEFT" sizeComputationExpression="1" labelPosition="node">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="service:computeUmlLabel" tooltipExpression="feature:name" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BlueBlock']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -233,6 +239,13 @@
           </conditionnalStyles>
         </containerMappings>
         <containerMappings name="BDD_ValueType" preconditionExpression="aql:self->filter(uml::PrimitiveType)->isEmpty()" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Delete%20DataTypeValueType']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20ValueType%20Name']" createElements="false" semanticElements="aql:self->union(self.getStereotypeApplications())" domainClass="uml.DataType" childrenPresentation="List">
+          <subNodeMappings name="BDD_VTOperation" semanticCandidatesExpression="feature:ownedOperation" domainClass="uml::Operation">
+            <style xsi:type="style:SquareDescription" labelExpression="service:computeUmlLabel" labelAlignment="LEFT">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
           <subNodeMappings name="BDD_DTVTUnit" semanticCandidatesExpression="service:getUnit" domainClass="uml::InstanceSpecification">
             <style xsi:type="style:SquareDescription" labelExpression="service:getName" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/Unit.gif" labelAlignment="LEFT">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -477,6 +490,15 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="uml.Activity" referenceName="ownedBehavior">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="BDD_Create_Operation" label="Operation" nodeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block']/@subNodeMappings[name='BDD_Operation'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_ValueType']/@subNodeMappings[name='BDD_VTOperation']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Operation.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="uml.Operation" referenceName="ownedOperation">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
               </firstModelOperations>
             </initialOperation>
@@ -1303,7 +1325,7 @@
             <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:self.deleteRequirement()"/>
           </delete>
         </ownedSubLines>
-        <create name="RT Create SubRequirement" label="Create SubRequirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Table']/@ownedLineMappings[name='RT_Requirements']/@ownedSubLines[name='RT_SubRequirements']">
+        <create name="RT Create SubRequirement" label="Create SubRequirement" forceRefresh="true" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Table']/@ownedLineMappings[name='RT_Requirements']/@ownedSubLines[name='RT_SubRequirements']" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -1320,7 +1342,7 @@
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:self.deleteRequirement()"/>
         </delete>
       </ownedLineMappings>
-      <ownedCreateLine name="RT Create Requirement" label="Create Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Table']/@ownedLineMappings[name='RT_Requirements']">
+      <ownedCreateLine name="RT Create Requirement" label="Create Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Table']/@ownedLineMappings[name='RT_Requirements']" elementsToSelect="service:stdEmptyCollection">
         <variables name="root" documentation="The semantic element of the table."/>
         <variables name="element" documentation="The semantic currently edited element."/>
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
