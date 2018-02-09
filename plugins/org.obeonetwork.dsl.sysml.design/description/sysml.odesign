@@ -353,6 +353,17 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="BDD_Create_Actor" label="Actor" nodeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@nodeMappings[name='BDD_Actor']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="uml.Actor" referenceName="ownedType">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Group DataType" label="Data Types">
             <tools xsi:type="tool:ContainerCreationDescription" name="Create ValueType" label="ValueType" containerMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_ValueType']">
               <variable name="container"/>
@@ -1303,7 +1314,7 @@
             <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:self.deleteRequirement()"/>
           </delete>
         </ownedSubLines>
-        <create name="RT Create SubRequirement" label="Create SubRequirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Table']/@ownedLineMappings[name='RT_Requirements']/@ownedSubLines[name='RT_SubRequirements']">
+        <create name="RT Create SubRequirement" label="Create SubRequirement" forceRefresh="true" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Table']/@ownedLineMappings[name='RT_Requirements']/@ownedSubLines[name='RT_SubRequirements']" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -1320,7 +1331,7 @@
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:self.deleteRequirement()"/>
         </delete>
       </ownedLineMappings>
-      <ownedCreateLine name="RT Create Requirement" label="Create Requirement" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Table']/@ownedLineMappings[name='RT_Requirements']">
+      <ownedCreateLine name="RT Create Requirement" label="Create Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Table']/@ownedLineMappings[name='RT_Requirements']" elementsToSelect="service:stdEmptyCollection">
         <variables name="root" documentation="The semantic element of the table."/>
         <variables name="element" documentation="The semantic currently edited element."/>
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
