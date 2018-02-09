@@ -42,7 +42,7 @@ public class ComputeLabelSwitch extends UMLSwitch<String> {
 				return input instanceof Activity;
 			}
 		};
-		return computeLabel(element, "function", predicate); //$NON-NLS-1$
+		return computeLabel(element, "activity", predicate); //$NON-NLS-1$
 	}
 
 	@Override
