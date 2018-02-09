@@ -22,6 +22,7 @@ import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 
 import com.google.common.base.Predicate;
@@ -158,6 +159,16 @@ public class ComputeLabelSwitch extends UMLSwitch<String> {
 			}
 		};
 		return computeLabel(element, getUmlTypeName(element), predicate);
+	}
+
+	@Override
+	public String caseStateMachine(StateMachine element) {
+		final Predicate<EObject> predicate = new Predicate<EObject>() {
+			public boolean apply(EObject input) {
+				return input instanceof StateMachine;
+			}
+		};
+		return computeLabel(element, "stateMachine", predicate); //$NON-NLS-1$
 	}
 
 	/**
