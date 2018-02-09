@@ -260,6 +260,13 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
+          <subNodeMappings name="BDD_VTProperty" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Property%20Name%20and%20Type']" semanticCandidatesExpression="feature:ownedAttribute" domainClass="uml.Property">
+            <style xsi:type="style:SquareDescription" labelExpression="service:computeUmlLabel" labelAlignment="LEFT" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
           <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']"/>
           <reusedNodeMappings href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"/>
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="service:computeUmlLabel" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BlueDataType']">
@@ -504,7 +511,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="BDD_Group_Properties" label="Properties">
-            <tools xsi:type="tool:NodeCreationDescription" name="BDD_Create_Property" label="Property" nodeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block']/@subNodeMappings[name='BDD_Property']">
+            <tools xsi:type="tool:NodeCreationDescription" name="BDD_Create_Property" label="Property" nodeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_Block']/@subNodeMappings[name='BDD_Property'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@containerMappings[name='BDD_ValueType']/@subNodeMappings[name='BDD_VTProperty']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
