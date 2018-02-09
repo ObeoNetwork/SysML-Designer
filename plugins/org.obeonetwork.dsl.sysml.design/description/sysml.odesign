@@ -247,14 +247,14 @@
             </style>
           </subNodeMappings>
           <subNodeMappings name="BDD_DTVTUnit" semanticCandidatesExpression="service:getUnit" domainClass="uml::InstanceSpecification">
-            <style xsi:type="style:SquareDescription" labelExpression="service:getName" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/Unit.gif" labelAlignment="LEFT">
+            <style xsi:type="style:SquareDescription" labelExpression="service:computeUmlLabel" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/Unit.gif" labelAlignment="LEFT">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
           <subNodeMappings name="BDD_DTVTDimension" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Block%20Definition%20Diagram']/@defaultLayer/@toolSections.5/@subSections[name='BDD%20Delete%20Objects']/@ownedTools[name='Unset%20Dimension%20in%20ValueType']" semanticCandidatesExpression="service:getDimension" domainClass="uml::InstanceSpecification">
-            <style xsi:type="style:SquareDescription" labelExpression="service:getName" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/Dimension.gif" labelAlignment="LEFT">
+            <style xsi:type="style:SquareDescription" labelExpression="service:computeUmlLabel" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/Dimension.gif" labelAlignment="LEFT">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
