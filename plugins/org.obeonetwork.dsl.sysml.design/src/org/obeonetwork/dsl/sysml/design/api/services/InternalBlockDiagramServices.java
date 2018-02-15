@@ -55,7 +55,7 @@ public class InternalBlockDiagramServices extends SysmlAbstractDiagramServices {
 
 	/**
 	 * Create a proxy port.
-	 * 
+	 *
 	 * @param container
 	 * @return
 	 */
@@ -164,6 +164,12 @@ public class InternalBlockDiagramServices extends SysmlAbstractDiagramServices {
 		final Type portType = port.getType();
 
 		if (portType != null) {
+			if (portType.getOwnedElements().contains(port)) {
+				// do not display recursive same nested port
+				// nested port is type by the same type as the parent port
+				return results;
+			}
+
 			final List<EObject> contents = portType.eContents();
 			for (final EObject eObject : contents) {
 				if (eObject instanceof Port) {
