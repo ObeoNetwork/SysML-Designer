@@ -4,7 +4,7 @@ This modeler provides a set of common diagrams to work with SysML models.
 
 These plugins are released under the EPL Open-Souce License.
 
-More details about features, screenshots, release notes, dependencies here: http://www.umldesigner.org/ref-doc/presentation.html#sysml-designer
+More details about features, screenshots, release notes, dependencies here: hhttp://www.umldesigner.org/ref-doc/define-the-system.html
 
 This modeling tool has been created with: http://www.eclipse.org/sirius
 
