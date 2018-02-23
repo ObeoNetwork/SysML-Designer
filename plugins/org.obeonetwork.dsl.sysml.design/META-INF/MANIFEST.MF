@@ -4,27 +4,25 @@ Bundle-Name: SysML Designer
 Bundle-SymbolicName: org.obeonetwork.dsl.sysml.design;singleton:=true
 Bundle-Version: 8.0.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.sysml.design.SysMLDesignerPlugin
-Require-Bundle: org.eclipse.ui,
- org.eclipse.ui.navigator,
- org.eclipse.ui.ide,
- org.eclipse.core.runtime,
+Require-Bundle: com.google.guava,
  org.eclipse.emf.transaction,
  org.eclipse.sirius.common,
  org.eclipse.sirius.common.ui,
- org.eclipse.sirius,
- org.eclipse.sirius.ui,
- org.eclipse.sirius.common.acceleo.mtl,
- org.eclipse.sirius.common.acceleo.mtl.ide,
+ org.eclipse.sirius;bundle-version="[5.0.0,6.0.0)",
+ org.eclipse.sirius.ui;bundle-version="[5.0.0,6.0.0)",
+ org.eclipse.sirius.diagram;bundle-version="[5.0.0,6.0.0)",
+ org.eclipse.sirius.ext.base;bundle-version="[5.0.0,6.0.0)",
+ org.eclipse.ui,
+ org.eclipse.ui.ide,
+ org.eclipse.ui.navigator,
  org.eclipse.uml2.uml;bundle-version="[5.0.0,6.0.0)",
- org.obeonetwork.dsl.uml2.design;bundle-version="[8.0.0,9.0.0)",
- com.google.guava,
- org.eclipse.sirius.ext.base,
  org.eclipse.uml2.uml.profile.standard,
- org.eclipse.sirius.diagram,
- org.eclipse.papyrus.sysml14;bundle-version=" [1.0.0,2.0.0)",
- org.eclipse.papyrus.sysml14.edit;bundle-version="[1.0.0,2.0.0)"
+ org.eclipse.papyrus.sysml14;bundle-version="[1.0.0,2.0.0)",
+ org.eclipse.papyrus.sysml14.edit;bundle-version="[1.0.0,2.0.0)",
+ org.obeonetwork.dsl.uml2.core.design,
+ org.eclipse.search
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.obeonetwork.dsl.sysml.design.api.services,
- org.obeonetwork.dsl.sysml.design.api.utils
+Export-Package: org.obeonetwork.dsl.sysml.core.api.utils,
+ org.obeonetwork.dsl.sysml.design.api.services
 Bundle-Vendor: Obeo

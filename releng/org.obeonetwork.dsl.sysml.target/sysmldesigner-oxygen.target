@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="SysMLDesigner-oxygen" sequenceNumber="1510592661">
+<target name="SysMLDesigner-oxygen" sequenceNumber="1519983119">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.uml2.uml.feature.group" version="5.3.0.v20170605-1616"/>
       <unit id="org.eclipse.uml2.uml.edit.feature.group" version="5.3.0.v20170605-1616"/>
       <unit id="org.eclipse.uml2.feature.group" version="5.3.0.v20170605-1616"/>
-      <unit id="org.eclipse.amalgam.discovery.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.amalgam.explorer.activity.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.platform.sdk" version="0.0.0"/>
       <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.epp.mpc.feature.group" version="0.0.0"/>
@@ -27,18 +25,12 @@
       <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20170307180635/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.acceleo.query.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.acceleo.feature.group" version="0.0.0"/>
-      <repository location="http://download.eclipse.org/acceleo/updates/milestones/3.7/S201705121344"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.eef.sdk.feature.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.eef.ext.widgets.reference.feature.feature.group" version="0.0.0"/>
       <repository location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.runtime.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.runtime.aql.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.properties.feature.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group" version="0.0.0"/>
@@ -51,18 +43,8 @@
       <repository location="http://download.eclipse.org/sirius/updates/releases/5.0.2/oxygen"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.emf.compare.diagram.gmf.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.emf.compare.ide.ui.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.emf.compare.rcp.ui.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.emf.compare.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.emf.compare.uml2.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.emf.compare.diagram.ide.ui.sirius" version="0.0.0"/>
-      <unit id="org.eclipse.emf.compare.diagram.sirius" version="0.0.0"/>
-      <repository location="http://download.eclipse.org/modeling/emf/compare/updates/milestones/3.3/S201706130827"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.obeonetwork.dsl.uml2.design" version="0.0.0"/>
-      <repository location="https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-releases/8.0.0/repository/"/>
+      <unit id="org.obeonetwork.dsl.uml2.core.design" version="0.0.0"/>
+      <repository location="file:///C:/github/UML-Designer/packaging/org.obeonetwork.dsl.uml2.core.update/target/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.papyrus.sysml14" version="0.0.0"/>

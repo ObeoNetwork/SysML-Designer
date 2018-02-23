@@ -15,8 +15,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.uml2.uml.NamedElement;
 import org.obeonetwork.dsl.sysml.design.internal.services.LabelServices;
-import org.obeonetwork.dsl.uml2.design.api.services.AbstractDiagramServices;
-import org.obeonetwork.dsl.uml2.design.api.services.ReusedDescriptionServices;
+import org.obeonetwork.dsl.uml2.core.api.services.AbstractDiagramServices;
 
 /**
  * A set of services used by SysML diagrams.

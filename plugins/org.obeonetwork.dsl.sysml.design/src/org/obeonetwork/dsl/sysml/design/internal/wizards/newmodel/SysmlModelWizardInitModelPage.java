@@ -14,8 +14,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-import org.obeonetwork.dsl.uml2.design.api.wizards.UmlProjectUtils;
-import org.obeonetwork.dsl.uml2.design.internal.wizards.Messages;
+import org.obeonetwork.dsl.uml2.core.api.wizards.UmlProjectUtils;
+import org.obeonetwork.dsl.uml2.core.internal.wizards.Messages;
 
 /**
  * The model initialization wizard page.

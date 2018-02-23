@@ -40,7 +40,8 @@ Contributors:
 
   <properties>
     <tycho-version>0.19.0</tycho-version>
-    <uml-site>https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-nightly/master/repository</uml-site>
+    <!-- <umlcore-site>https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-nightly/master/repository</umlcore-site> FRB faire pointer vers l updatesite d'umlCore--> 
+    <umlcore-site>file:///C:/github/UML-Designer/packaging/org.obeonetwork.dsl.uml2.core.update/target/repository</umlcore-site>
     <root-path>../..</root-path>
     <platform-version-name>oxygen</platform-version-name>
   </properties>
@@ -49,7 +50,7 @@ Contributors:
     <repository>
       <id>uml</id>
       <layout>p2</layout>
-      <url>${uml-site}</url>
+      <url>${umlcore-site}</url>
     </repository>
   </repositories>
 

@@ -28,7 +28,7 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.obeonetwork.dsl.sysml.design.internal.services.ISysmlConstants;
 import org.obeonetwork.dsl.sysml.design.internal.services.SysMLReconnectSwitch;
 import org.obeonetwork.dsl.sysml.design.internal.services.SysmlElementServices;
-import org.obeonetwork.dsl.uml2.design.internal.services.NodeInverseRefsServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.NodeInverseRefsServices;
 
 /**
  * A set of services to handle the Requirement diagram.

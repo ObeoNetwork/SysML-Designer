@@ -1,13 +1,14 @@
 target "SysMLDesigner-oxygen"
-
-include "https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-nightly/master/umldesigner-oxygen.tpd"
+include "https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-nightly/master/umlcoredesigner-oxygen.tpd"
+//include "file:///C:/github/UML-Designer/releng/org.obeonetwork.dsl.uml2.core.target/umlcoredesigner-oxygen.tpd"
 with source, requirements
 
-// SysML
-location "https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-releases/8.0.0/repository/" {
-	org.obeonetwork.dsl.uml2.design lazy
+// UML Designer core
+location "https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-nightly/master/repository/"{
+	org.obeonetwork.dsl.uml2.core.design lazy
 }
 
+// SysML
 location "http://download.eclipse.org/modeling/mdt/papyrus/components/sysml14/" {
 	org.eclipse.papyrus.sysml14 lazy
 	org.eclipse.papyrus.sysml14.edit lazy

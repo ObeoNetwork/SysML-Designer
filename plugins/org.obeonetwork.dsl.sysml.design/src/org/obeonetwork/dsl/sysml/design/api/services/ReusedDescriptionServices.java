@@ -52,7 +52,7 @@ import com.google.common.collect.Lists;
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 @SuppressWarnings("restriction")
-public class ReusedDescriptionServices extends org.obeonetwork.dsl.uml2.design.api.services.ReusedDescriptionServices {
+public class ReusedDescriptionServices extends org.obeonetwork.dsl.uml2.core.api.services.ReusedDescriptionServices {
 
 	/**
 	 * Get all valid attributes of a class.
@@ -130,12 +130,12 @@ public class ReusedDescriptionServices extends org.obeonetwork.dsl.uml2.design.a
 				return "Model".equals(input.eClass().getName()) || "Package".equals(input.eClass().getName()) //$NON-NLS-1$ //$NON-NLS-2$
 						|| input instanceof Interface
 						|| input instanceof InstanceSpecification
-						&& hasStereotype((InstanceSpecification)input, "Unit") //$NON-NLS-1$
+								&& hasStereotype((InstanceSpecification)input, "Unit") //$NON-NLS-1$
 						|| input instanceof InstanceSpecification
-						&& hasStereotype((InstanceSpecification)input, "Dimension") //$NON-NLS-1$
-						|| input instanceof DataType || input instanceof Actor || input instanceof Class
-						&& hasStereotype((Class)input, "Block") || input instanceof Class //$NON-NLS-1$
-						&& hasStereotype((Class)input, "ConstraintBlock"); //$NON-NLS-1$
+								&& hasStereotype((InstanceSpecification)input, "Dimension") //$NON-NLS-1$
+						|| input instanceof DataType || input instanceof Actor
+						|| input instanceof Class && hasStereotype((Class)input, "Block") //$NON-NLS-1$
+						|| input instanceof Class && hasStereotype((Class)input, "ConstraintBlock"); //$NON-NLS-1$
 			}
 		};
 		return allValidSessionElements(cur, validForDiagram);
@@ -196,15 +196,15 @@ public class ReusedDescriptionServices extends org.obeonetwork.dsl.uml2.design.a
 		final Predicate<EObject> validForClassDiagram = new Predicate<EObject>() {
 
 			public boolean apply(EObject input) {
-				return input instanceof Package
-						|| "Class".equals(input.eClass().getName()) //$NON-NLS-1$
+				return input instanceof Package || "Class".equals(input.eClass().getName()) //$NON-NLS-1$
 						&& ((Class)input).getAppliedStereotype(ISysmlConstants.SYSML_REQUIREMENT) != null
 						|| isVerifyLayerActive(diagram)
-						&& (input instanceof Class && isTestClass((Class)input) || input instanceof Operation
-								&& ((Operation)input).getAppliedStereotype(ISysmlConstants.SYSML_TESTCASE) != null)
-								|| isSatisfyLayerActive(diagram) && input instanceof Class
+								&& (input instanceof Class && isTestClass((Class)input)
+										|| input instanceof Operation && ((Operation)input)
+												.getAppliedStereotype(ISysmlConstants.SYSML_TESTCASE) != null)
+						|| isSatisfyLayerActive(diagram) && input instanceof Class
 								&& ((Class)input).getAppliedStereotype(ISysmlConstants.SYSML_BLOCK) != null
-								|| isRefineLayerActive(diagram)
+						|| isRefineLayerActive(diagram)
 								&& (input instanceof Behavior || input instanceof BehavioredClassifier);
 			}
 

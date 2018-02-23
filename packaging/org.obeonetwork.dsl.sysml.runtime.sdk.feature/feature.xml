@@ -6,7 +6,7 @@
       provider-name="Obeo">
 
    <description url="http://docs.obeonetwork.com/sysml">
-      Copyright (c) 2010-2012 Obeo.
+      Copyright (c) 2010-2018 Obeo.
    </description>
 
    <copyright url="http://www.obeo.fr/legal.php?lang=en">
@@ -216,12 +216,8 @@ Each party waives its rights to a jury trial in any resulting
 litigation.
    </license>
 
-   <includes
-         id="org.obeonetwork.dsl.sysml.runtime.feature"
-         version="0.0.0"/>
-
    <requires>
-      <import feature="org.obeonetwork.dsl.uml2.runtime.sdk.feature" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.obeonetwork.dsl.uml2.core.runtime.sdk.feature" version="8.0.0" match="greaterOrEqual"/>
    </requires>
 
 </feature>

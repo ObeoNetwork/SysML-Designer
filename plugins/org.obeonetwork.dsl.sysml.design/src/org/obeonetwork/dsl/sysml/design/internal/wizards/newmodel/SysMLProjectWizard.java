@@ -26,8 +26,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.obeonetwork.dsl.sysml.design.SysMLDesignerPlugin;
 import org.obeonetwork.dsl.sysml.design.internal.wizards.Messages;
-import org.obeonetwork.dsl.uml2.design.api.wizards.UmlProjectUtils;
-import org.obeonetwork.dsl.uml2.design.internal.wizards.newmodel.AbstractNewUmlModelWizard;
+import org.obeonetwork.dsl.uml2.core.api.wizards.UmlProjectUtils;
+import org.obeonetwork.dsl.uml2.core.wizard.AbstractNewUmlModelWizard;
 
 /**
  * Sysml project wizard.
@@ -58,6 +58,13 @@ public class SysMLProjectWizard extends AbstractNewUmlModelWizard {
 		addPage(modelPage);
 	}
 
+	protected void enableSysmlViewpoint(final Session session) {
+		final ViewpointSelectionCallback selection1 = new ViewpointSelectionCallback();
+		final URI sysmlViewpointUri = URI.createURI("viewpoint:/org.obeonetwork.dsl.sysml.design/SysML"); //$NON-NLS-1$
+		final Viewpoint sysmlViewpoint = ViewpointRegistry.getInstance().getViewpoint(sysmlViewpointUri);
+		selection1.selectViewpoint(sysmlViewpoint, session, new NullProgressMonitor());
+	}
+
 	@Override
 	public boolean performFinish() {
 		try {
@@ -69,35 +76,26 @@ public class SysMLProjectWizard extends AbstractNewUmlModelWizard {
 					+ UmlProjectUtils.MODEL_FILE_EXTENSION;
 
 			super.performFinish();
+
 			Display.getDefault().syncExec(new Runnable() {
 
 				public void run() {
 					// Create default empty UML model
-					org.obeonetwork.dsl.uml2.design.api.wizards.UmlProjectUtils
-							.createSemanticResource(project, rootObjectName, newUmlModelFileName);
+					org.obeonetwork.dsl.uml2.core.api.wizards.UmlProjectUtils.createSemanticResource(project,
+							rootObjectName, newUmlModelFileName);
 
-					// Enable UML viewpoints
+					// Enable SysML viewpoint
 					final Option<ModelingProject> created = ModelingProject.asModelingProject(project);
 					if (created.some()) {
 						final Session session = created.get().getSession();
 						if (session != null) {
 							session.getTransactionalEditingDomain().getCommandStack()
-
 									.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-								@Override
-								protected void doExecute() {
-									final ViewpointSelectionCallback selection = new ViewpointSelectionCallback();
-									for (final Viewpoint previouslySelected : session
-											.getSelectedViewpoints(false)) {
-										selection.deselectViewpoint(previouslySelected, session,
-												new NullProgressMonitor());
-									}
-									selection.selectViewpoint(
-											ViewpointRegistry.getInstance().getViewpoint(URI.createURI(
-													"viewpoint:/org.obeonetwork.dsl.sysml.design/SysML")), //$NON-NLS-1$
-											session, new NullProgressMonitor());
-								}
-							});
+										@Override
+										protected void doExecute() {
+											enableSysmlViewpoint(session);
+										}
+									});
 						}
 					}
 				}

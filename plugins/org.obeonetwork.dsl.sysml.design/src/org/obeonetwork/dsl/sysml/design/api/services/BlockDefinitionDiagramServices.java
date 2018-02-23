@@ -32,9 +32,9 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Type;
 import org.obeonetwork.dsl.sysml.design.internal.services.SysmlElementServices;
-import org.obeonetwork.dsl.uml2.design.api.utils.UmlUtils;
-import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
-import org.obeonetwork.dsl.uml2.design.internal.services.NodeInverseRefsServices;
+import org.obeonetwork.dsl.uml2.core.api.utils.UmlUtils;
+import org.obeonetwork.dsl.uml2.core.internal.services.LabelServices;
+import org.obeonetwork.dsl.uml2.core.internal.services.NodeInverseRefsServices;
 
 import com.google.common.collect.Lists;
 
