@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="SysML modelers" version="12.0.0.2017041100">
+  <ownedViewpoints name="SysML" modelFileExtension="uml">
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Requirement Table" titleExpression="aql:'req [package] ' + self.name + ' [RequirementTable]'" domainClass="uml.Package">
+      <metamodel href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//requirements"/>
+      <ownedLineMappings name="RT_Requirements" semanticElements="service:getRequirements" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements" headerLabelExpression="&lt;&lt; Requirement >>">
+        <ownedSubLines name="RT_SubRequirements" semanticElements="service:getRequirements" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements" headerLabelExpression="&lt;&lt; Requirement >>">
+          <delete name="RT Delete SubRequirement" label="Delete Sub Requirement">
+            <variables name="element" documentation="The currently edited element."/>
+            <variables name="root" documentation="The semantic element corresponding to the current table."/>
+            <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:self.deleteRequirement()"/>
+          </delete>
+        </ownedSubLines>
+        <create name="RT Create SubRequirement" label="Create SubRequirement" forceRefresh="true" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Table']/@ownedLineMappings[name='RT_Requirements']/@ownedSubLines[name='RT_SubRequirements']" elementsToSelect="service:stdEmptyCollection">
+          <variables name="root" documentation="The semantic element of the table."/>
+          <variables name="element" documentation="The semantic currently edited element."/>
+          <variables name="container" documentation="The semantic element corresponding to the view container."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
+            <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="nestedClassifier">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::Requirements', 'Requirement')"/>
+              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
+            </subModelOperations>
+          </firstModelOperation>
+        </create>
+        <delete name="RT Delete Requirement" label="Delete Requirement">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:self.deleteRequirement()"/>
+        </delete>
+      </ownedLineMappings>
+      <ownedCreateLine name="RT Create Requirement" label="Create Requirement" forceRefresh="true" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Table']/@ownedLineMappings[name='RT_Requirements']" elementsToSelect="service:stdEmptyCollection">
+        <variables name="root" documentation="The semantic element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:container">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::Requirements', 'Requirement')"/>
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
+          </subModelOperations>
+        </firstModelOperation>
+      </ownedCreateLine>
+      <ownedColumnMappings name="RT_Name" label="Name" headerLabelExpression="Name" canEdit="aql:true" featureName="name" labelExpression="feature:name">
+        <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+      </ownedColumnMappings>
+      <ownedColumnMappings name="RT_Id" label="ID" headerLabelExpression="ID" featureName="id" labelExpression="feature:id" featureParentExpression="service:getRequirement">
+        <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:lineSemantic.oclAsType(uml::Element).setIdForRequirement(arg0)"/>
+          <mask mask="{0}"/>
+        </directEdit>
+      </ownedColumnMappings>
+      <ownedColumnMappings name="RT_Text" label="Text" headerLabelExpression="Text" featureName="text" labelExpression="feature:text" featureParentExpression="service:getRequirement">
+        <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:lineSemantic.oclAsType(uml::Element).setTextForRequirement(arg0)"/>
+          <mask mask="{0}"/>
+        </directEdit>
+      </ownedColumnMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Parametric Diagram" titleExpression="aql:'par [block] ' + self.name + ' [' + self.name + ' diagram]'" domainClass="uml.Class" preconditionExpression="service:isValidParametricDiagramRoot" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks"/>
+      <defaultLayer name="PAR Parametric Layer" label="Parametric Layer">
+        <edgeMappings name="PAR_ParameterConnector" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='PAR%20Delete%20Edges']/@ownedTools[name='Delete%20Parameter%20Connector']" semanticCandidatesExpression="aql:self.ownedConnector" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']/@borderedNodeMappings[name='PAR_Parameter']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']/@borderedNodeMappings[name='PAR_Parameter']" targetFinderExpression="aql:self.end->asSequence()->last().role" sourceFinderExpression="aql:self.end->asSequence()->first().role" domainClass="uml.Connector" useDomainElement="true">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="PAR_Block" navigationDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='PAR%20to%20IBD']" semanticCandidatesExpression="var:self" semanticElements="aql:self->union(self.getStereotypeApplications())" domainClass="uml.Class">
+          <subContainerMappings name="PAR_Constraint" preconditionExpression="service:isConstraintProperty" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='PAR%20Delete%20Objects']/@ownedTools[name='Delete%20Constraint%20Property']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PAR_Edit_Constraint']" semanticCandidatesExpression="aql:self.eContents()" createElements="false" domainClass="uml.Property">
+            <borderedNodeMappings name="PAR_Parameter" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='PAR%20Delete%20Objects']/@ownedTools[name='Delete%20Parameter']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PAR_Edit_Parameter']" semanticCandidatesExpression="aql:self.type.eContents(uml::Property)" domainClass="uml.Property">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="service:computeUmlLabel" sizeComputationExpression="2" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="15" arcHeight="15" borderSizeComputationExpression="1" showIcon="false" labelExpression="service:computeUmlLabel" tooltipExpression="feature:name" roundedCorner="true" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BlueBlock']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:diagram.name" labelAlignment="LEFT" tooltipExpression="feature:name" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BlueDataType']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
+          </style>
+        </containerMappings>
+        <toolSections name="PAR_ExistingElements" label="Existing Elements">
+          <ownedTools xsi:type="tool:OperationAction" name="PAR_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.png">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.target">
+                <subModelOperations xsi:type="tool:For" expression="service:getRelated">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="aql:i.oclIsTypeOf(uml::Property)">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="service:isConstraintProperty">
+                        <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']" containerViewExpression="service:i.getParentView"/>
+                      </subModelOperations>
+                    </cases>
+                    <default/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='AddExistingElements']"/>
+          <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements']"/>
+        </toolSections>
+        <toolSections name="PAR Create Objects" label="Features">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="PAR Create Constraint" label="Constraint" containerMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']">
+            <variable name="container">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedElement" candidatesExpression="aql:container.getAllBlocks()" message="Select Package or Block in which the new constraint Block will be created"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:selectedElement">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Package)">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement" variableName="newConstraintBlock">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::ConstraintBlocks', 'ConstraintBlock')"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Class)">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="nestedClassifier" variableName="newConstraintBlock">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::ConstraintBlocks', 'ConstraintBlock')"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute" variableName="constraintProperty">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="aql:newConstraintBlock"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="PAR Create Parameter" label="Parameter" nodeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']/@borderedNodeMappings[name='PAR_Parameter']">
+            <variable name="container">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedType" candidatesExpression="aql:container.getRootContainer().eAllContents(uml::Classifier)->select(c : uml::Classifier | c.isBlock() or not(c->filter(uml::DataType)->isEmpty()) or not(c->filter(uml::PrimitiveType)->isEmpty()))" message="Select Type"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.type">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute" variableName="parameter">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'parameter' + container.type.ownedAttribute->size()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:selectedType"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="PAR Create Edges" label="Connections">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="PAR Create Parameter Connector" label="Parameter" precondition="aql:preSource.type = preTarget.type" edgeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@edgeMappings[name='PAR_ParameterConnector']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sourceView.eContainer(diagram::DSemanticDiagram).target">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Connector" referenceName="ownedConnector">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'newConnector' + self.eContainer(uml::StructuredClassifier).ownedConnector->size()"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ConnectorEnd" referenceName="end" variableName="c_end_source">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="role" valueExpression="var:source"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ConnectorEnd" referenceName="end" variableName="c_end_target">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="role" valueExpression="var:target"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="PAR Delete Section" label="PAR Delete Section">
+          <subSections name="PAR Delete Objects">
+            <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete Constraint Property">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <containerView name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:RemoveElement"/>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete Parameter">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <containerView name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:RemoveElement"/>
+              </initialOperation>
+            </ownedTools>
+          </subSections>
+          <subSections name="PAR Delete Edges">
+            <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete Parameter Connector">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <containerView name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:RemoveElement"/>
+              </initialOperation>
+            </ownedTools>
+          </subSections>
+        </toolSections>
+        <toolSections name="PAR Edit Section">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="PAR_Edit_Constraint" label="Edit Constraint" inputLabelExpression="aql:self.name+':'+self.type.name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.editUmlLabel(arg0)"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="PAR_Edit_Parameter" label="Edit Parameter">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.editUmlLabel(arg0)"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="PAR Navigate Section">
+          <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="PAR to IBD" forceRefresh="true" browseExpression="feature:eContainer" navigationNameExpression="aql:'Open ' + diagramName">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="PAR ValueBinding Layer" label="Value Binding">
+        <edgeMappings name="PAR_ValueBindingConnector" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@additionalLayers[name='PAR%20ValueBinding%20Layer']/@toolSections.1/@ownedTools[name='Delete%20Value%20Binding%20Connector']" semanticCandidatesExpression="aql:self.ownedConnector" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']/@borderedNodeMappings[name='PAR_Parameter']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@additionalLayers[name='PAR%20ValueBinding%20Layer']/@containerMappings[name='PAR_Block_Import']/@subContainerMappings[name='PAR_ValueBinding']" targetFinderExpression="aql:self.end->asSequence()->last().role" sourceFinderExpression="aql:self.end->asSequence()->first().role" domainClass="uml.Connector" useDomainElement="true">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings xsi:type="description_2:ContainerMappingImport" name="PAR_Block_Import" semanticCandidatesExpression="var:self" reusedContainerMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']/@subContainerMappings[name='PAR_Constraint']" importedMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@defaultLayer/@containerMappings[name='PAR_Block']">
+          <subContainerMappings name="PAR_ValueBinding" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@additionalLayers[name='PAR%20ValueBinding%20Layer']/@toolSections.1/@ownedTools[name='Delete%20Value%20Binding']" createElements="false" domainClass="uml.Property">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.name + ' : ' + self.type.name + '\n(' + self.eContainer(uml::Class).name + ')'" tooltipExpression="feature:name" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BlueBlock']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
+        </containerMappings>
+        <toolSections name="PAR Create Edges" label="Connections">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="PAR Create ValueBinding Connector" label="Value" precondition="aql:preSource.type = preTarget.type" edgeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Parametric%20Diagram']/@additionalLayers[name='PAR%20ValueBinding%20Layer']/@edgeMappings[name='PAR_ValueBindingConnector']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sourceView.eContainer(diagram::DSemanticDiagram).target">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Connector" referenceName="ownedConnector">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'newConnector' + self.eContainer(uml::StructuredClassifier).ownedConnector->size()"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ConnectorEnd" referenceName="end" variableName="c_end_source">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="role" valueExpression="var:source"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ConnectorEnd" referenceName="end" variableName="c_end_target">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="role" valueExpression="var:target"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="PAR Delete Value Binding Section">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete Value Binding">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
+                <subModelOperations xsi:type="tool:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete Value Binding Connector">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:RemoveElement"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Requirement Diagram" titleExpression="aql:'req [package] ' + self.name + ' [' + self.name + ' diagram]'" domainClass="uml.Package" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//requirements"/>
+      <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="RD_DeriveReqtOrRefine" semanticCandidatesExpression="service:diagram.getDependencyInverseRefs" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" domainClass="uml.Abstraction" useDomainElement="true" reconnections="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
+          <style lineStyle="dash">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;deriveReqt>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+          <conditionnalStyles predicateExpression="service:isRefine">
+            <style lineStyle="dash">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;refine>>">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <edgeMappings name="RD_Composition" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" targetFinderExpression="feature:eContents" reconnections="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect_Composition']">
+          <style sourceArrow="FillDiamond">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="RD_Requirement" preconditionExpression="service:isRequirement" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='RD_Edit']" createElements="false" semanticElements="var:self" domainClass="uml.Class" childrenPresentation="List">
+          <subNodeMappings name="RD_Requirement_Id" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='RD_Requirement_Id_Edit']" semanticCandidatesExpression="var:self" domainClass="uml.Class">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Id='+self.getRequirementId()" labelAlignment="LEFT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="RD_Requirement_Text" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='RD_Requirement_Text_Edit']" semanticCandidatesExpression="var:self" domainClass="uml.Class">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Text='+self.getRequirementText()" labelAlignment="LEFT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" labelExpression="service:computeUmlLabel" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/Requirement.gif" backgroundStyle="Liquid">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:UserFixedColor" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@userColorsPalettes[name='UMLPalette']/@entries[name='very%20light%20gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Existing Elements">
+          <ownedTools xsi:type="tool:OperationAction" name="RD_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.png">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.target">
+                <subModelOperations xsi:type="tool:For" expression="service:getRelated">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:i.oclIsTypeOf(uml::Class)">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="service:isRequirement">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" containerViewExpression="var:diagram"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:i.oclIsTypeOf(uml::Operation)">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="service:isTestCase">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Verify']/@containerMappings[name='RD_TestCase']" containerViewExpression="var:diagram"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='AddExistingElements']"/>
+          <reusedTools xsi:type="tool:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements']"/>
+        </toolSections>
+        <toolSections name="Types">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Requirement" precondition="aql:self.oclIsKindOf(uml::Package)" forceRefresh="true" containerMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/Requirement.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsKindOf(uml::Package)">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::Requirements', 'Requirement')"/>
+                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" containerViewExpression="var:containerView"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsKindOf(uml::Class)">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::Requirements', 'Requirement')"/>
+                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" containerViewExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Relationships">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="DeriveReqt" edgeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@edgeMappings[name='RD_DeriveReqtOrRefine']" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/DeriveReqt.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.eContainer(uml::Package)">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Abstraction" referenceName="packagedElement" variableName="abstraction">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="derive"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="var:source"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::Requirements', 'DeriveReqt')"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="clientDependency" valueExpression="var:abstraction"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Reconnect" forceRefresh="true" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.reconnectEdge(edgeView, sourceView, targetView, source, target)"/>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Reconnect_Composition" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.reconnectRequirement(edgeView, sourceView, targetView, source, target)"/>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Refine" edgeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Refine']/@edgeMappings[name='RD_Refine'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@edgeMappings[name='RD_DeriveReqtOrRefine']" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/Refine.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.eContainer(uml::Package)">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Abstraction" referenceName="packagedElement" variableName="abstraction">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="refine"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="var:source"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('StandardProfileL2', 'Refine')"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="clientDependency" valueExpression="var:abstraction"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Composition" label="Contained in" precondition="aql:preSourceView.target &lt;> preTargetView.target" edgeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@edgeMappings[name='RD_Composition']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool:SetValue" featureName="nestedClassifier" valueExpression="var:source"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="RD_Edit">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="RD_Edit" inputLabelExpression="feature:name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="RD_Requirement_Id_Edit" inputLabelExpression="service:getRequirementId">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.setRequirementId(arg0)"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="RD_Requirement_Text_Edit" inputLabelExpression="service:getRequirementText">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.setRequirementText(arg0)"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="Refine" activeByDefault="true">
+        <nodeMappings name="RD_UseCase" createElements="false" domainClass="uml.UseCase">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="10" showIcon="false" sizeComputationExpression="14" labelPosition="node" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.obeonetwork.dsl.uml2.design/images/use_case.svg">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="RD_Refine" semanticCandidatesExpression="service:diagram.getAbstractionInverseRefs()" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Refine']/@containerMappings[name='RD_Activity'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Refine']/@containerMappings[name='RD_StateMachine'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Refine']/@nodeMappings[name='RD_UseCase']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']/@subNodeMappings[name='RD_Requirement_Text']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" domainClass="uml.Abstraction" useDomainElement="true" reconnections="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
+          <style lineStyle="dash">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;refine>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="RD_Activity" createElements="false" domainClass="uml.Activity">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" labelSize="10" labelExpression="service:computeUmlLabel" roundedCorner="true" backgroundStyle="Liquid">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="RD_StateMachine" createElements="false" domainClass="uml.StateMachine">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" labelSize="10" labelExpression="service:computeUmlLabel" roundedCorner="true" backgroundStyle="Liquid">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:UserFixedColor" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@userColorsPalettes[name='UMLPalette']/@entries[name='very%20light%20gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="RD_Element" preconditionExpression="service:isNotBlockOrRequirement" createElements="false" domainClass="uml.Element">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="service:computeUmlLabel" roundedCorner="true" backgroundStyle="Liquid">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+      <additionalLayers name="Satisfy" activeByDefault="true">
+        <edgeMappings name="RD_Satisfy" semanticCandidatesExpression="service:diagram.getAbstractionInverseRefs()" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Refine']/@containerMappings[name='RD_Element']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" domainClass="uml.Abstraction" useDomainElement="true" reconnections="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
+          <style lineStyle="dash">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;satisfy>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="Relationships">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Satisfy" edgeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Satisfy']/@edgeMappings[name='RD_Satisfy']" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/DeriveReqt.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.eContainer(uml::Package)">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Abstraction" referenceName="packagedElement" variableName="abstraction">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="satisfy"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="var:source"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::Requirements', 'Satisfy')"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="clientDependency" valueExpression="var:abstraction"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="satisfiedBy" valueExpression="var:source"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+      <additionalLayers name="Verify" activeByDefault="true">
+        <edgeMappings name="RD_Verify" semanticCandidatesExpression="service:diagram.getAbstractionInverseRefs()" sourceMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Verify']/@containerMappings[name='RD_TestCase']" targetMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@containerMappings[name='RD_Requirement']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" domainClass="uml.Abstraction" useDomainElement="true" reconnections="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
+          <style lineStyle="dash">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;verify>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="RD_TestCase" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='RD_Edit']" createElements="false" domainClass="uml.Operation">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" labelExpression="service:computeUmlLabel" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/TestCase.gif" backgroundStyle="Liquid">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:UserFixedColor" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Types">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="TestCase" containerMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Verify']/@containerMappings[name='RD_TestCase']" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/TestCase.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Operation" referenceName="ownedOperation" variableName="operation">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::Requirements', 'TestCase')"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeSysmlLabel"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Relationships">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Verify" edgeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Requirement%20Diagram']/@additionalLayers[name='Verify']/@edgeMappings[name='RD_Verify']" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/DeriveReqt.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.eContainer(uml::Package)">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Abstraction" referenceName="packagedElement" variableName="abstraction">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="verify"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="var:source"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::Requirements', 'Verify')"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="clientDependency" valueExpression="var:abstraction"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="verifiedBy" valueExpression="var:source"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Derive Refine Requirement Table" titleExpression="aql:'req [package] ' + self.name + ' [Derive Refine Table]'" domainClass="uml.Package">
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#/"/>
+      <ownedLineMappings name="RCT_Requirements" semanticElements="var:container" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements" headerLabelExpression="aql:self.getRequirementId()+':'+self.name"/>
+      <ownedColumnMappings name="RCT_Requirement" semanticElements="var:container" headerLabelExpression="aql:self.getRequirementId()+':'+self.name" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements"/>
+      <intersection name="RCT_Derive" label="Derive" lineMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Derive%20Refine%20Requirement%20Table']/@ownedLineMappings[name='RCT_Requirements']" columnMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Derive%20Refine%20Requirement%20Table']/@ownedColumnMappings.0" labelExpression="D" useDomainClass="true" columnFinderExpression="feature:client" lineFinderExpression="feature:supplier" semanticCandidatesExpression="service:getAllDeriveReqts" domainClass="uml.Abstraction">
+        <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0.equalsIgnoreCase('')">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element->filter(uml::Element).deleteAssociatedStereotype('SysML::Requirements::DeriveReqt')">
+              <subModelOperations xsi:type="tool:RemoveElement"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+        <create name="Create Cell Derive Refine">
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:lineSemantic.eContainer(uml::Package)">
+            <subModelOperations xsi:type="tool:Switch">
+              <cases conditionExpression="aql:arg0.equalsIgnoreCase('D')">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Abstraction" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="derive">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::Requirements', 'DeriveReqt')"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="var:lineSemantic"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="var:columnSemantic"/>
+                </subModelOperations>
+              </cases>
+              <cases conditionExpression="aql:arg0.equalsIgnoreCase('R')">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Abstraction" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="refine">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('StandardProfileL2', 'Refine')"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="var:lineSemantic"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="var:columnSemantic"/>
+                </subModelOperations>
+              </cases>
+              <default/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </create>
+      </intersection>
+      <intersection name="RCT_Refine" label="Refine" lineMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Derive%20Refine%20Requirement%20Table']/@ownedLineMappings[name='RCT_Requirements']" columnMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Derive%20Refine%20Requirement%20Table']/@ownedColumnMappings.0" labelExpression="R" useDomainClass="true" columnFinderExpression="feature:client" lineFinderExpression="feature:supplier" semanticCandidatesExpression="service:getAllRefine" domainClass="uml.Abstraction">
+        <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0.equalsIgnoreCase('')">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element->filter(uml::Element).deleteAssociatedStereotype('standardProfileL2::Refine')">
+              <subModelOperations xsi:type="tool:RemoveElement"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+      </intersection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Satisfy Table" titleExpression="aql:'req [package] ' + self.name + ' [SatisfyTable]'" domainClass="uml.Package">
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#/"/>
+      <ownedLineMappings name="ST_Requirements" semanticElements="service:getRequirements" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements" headerLabelExpression="aql:self.getRequirementId() + ' : ' + self.name">
+        <ownedSubLines name="ST_SubRequirements" semanticElements="service:getRequirements" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements" headerLabelExpression="aql:self.getRequirementId()+ ' : ' + self.name"/>
+      </ownedLineMappings>
+      <ownedColumnMappings name="ST_Block" headerLabelExpression="service:computeUmlLabel" domainClass="uml.Class" semanticCandidatesExpression="service:getAllBlocks"/>
+      <intersection name="ST_Satisfy" label="Satisfy" lineMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Satisfy%20Table']/@ownedLineMappings[name='ST_Requirements'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Satisfy%20Table']/@ownedLineMappings[name='ST_Requirements']/@ownedSubLines[name='ST_SubRequirements']" columnMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Satisfy%20Table']/@ownedColumnMappings.0" labelExpression="S" useDomainClass="true" columnFinderExpression="feature:client" lineFinderExpression="feature:supplier" semanticCandidatesExpression="service:getAllSatisfyReqts" domainClass="uml.Abstraction">
+        <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0.equalsIgnoreCase('')">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element->filter(uml::Element).deleteAssociatedStereotype('SysML::Requirements::Satisfy')">
+              <subModelOperations xsi:type="tool:RemoveElement"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+        <create name="Create Cell Satisfy">
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:lineSemantic.eContainer(uml::Package)">
+            <subModelOperations xsi:type="tool:Switch">
+              <cases conditionExpression="aql:arg0.equalsIgnoreCase('S')">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Abstraction" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="satisfy">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::Requirements', 'Satisfy')"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="var:lineSemantic"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="var:columnSemantic"/>
+                </subModelOperations>
+              </cases>
+              <default/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </create>
+      </intersection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Verify Table" titleExpression="aql:'req [package] ' + self.name + ' [VerifyTable]'" domainClass="uml.Package">
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#/"/>
+      <ownedLineMappings name="VT_Requirements" semanticElements="service:getRequirements" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements" headerLabelExpression="aql:self.getRequirementId() + ' : ' + self.name">
+        <delete name="VT Delete Requirement" precondition="aql:false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+        </delete>
+      </ownedLineMappings>
+      <ownedColumnMappings name="VT_TestCase" semanticElements="aql:self->union(self.getStereotypeApplications())" headerLabelExpression="service:computeUmlLabel" domainClass="uml.Operation" semanticCandidatesExpression="service:getAllTestCases">
+        <delete name="VT Delete TestCase" precondition="aql:false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+        </delete>
+      </ownedColumnMappings>
+      <intersection name="VT_Verify" label="Verify" lineMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Verify%20Table']/@ownedLineMappings[name='VT_Requirements']" columnMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Verify%20Table']/@ownedColumnMappings.0" labelExpression="V" useDomainClass="true" columnFinderExpression="feature:client" lineFinderExpression="feature:supplier" semanticCandidatesExpression="service:getAllVerifyReqts" domainClass="uml.Abstraction">
+        <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0.equalsIgnoreCase('')">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element->filter(uml::Element).deleteAssociatedStereotype('SysML::Requirements::Verify')">
+              <subModelOperations xsi:type="tool:RemoveElement"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+        <create name="Create Cell Verify">
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:lineSemantic.eContainer(uml::Package)">
+            <subModelOperations xsi:type="tool:Switch">
+              <cases conditionExpression="aql:arg0.equalsIgnoreCase('V')">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Abstraction" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="verify">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::Requirements', 'Verify')"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="var:lineSemantic"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="var:columnSemantic"/>
+                </subModelOperations>
+              </cases>
+              <default/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </create>
+      </intersection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Refine Table" titleExpression="aql:'req [package] ' + self.name + ' [RefineTable]'" domainClass="uml.Package">
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#/"/>
+      <ownedLineMappings name="RT_Requirements" domainClass="uml.Class" semanticCandidatesExpression="service:getRequirements" headerLabelExpression="aql:self.getRequirementId() + ' : ' + self.name"/>
+      <ownedColumnMappings name="RT_Behavior" headerLabelExpression="service:computeUmlLabel" domainClass="uml.Element" semanticCandidatesExpression="service:getAllBehaviors"/>
+      <intersection name="RT_Refine" label="Refine" lineMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Refine%20Table']/@ownedLineMappings[name='RT_Requirements']" columnMapping="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Refine%20Table']/@ownedColumnMappings.0" labelExpression="R" useDomainClass="true" columnFinderExpression="feature:client" lineFinderExpression="feature:supplier" semanticCandidatesExpression="service:getAllRefine" domainClass="uml.Abstraction">
+        <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0.equalsIgnoreCase('')">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element->filter(uml::Element).deleteAssociatedStereotype('standardProfileL2::Refine')">
+              <subModelOperations xsi:type="tool:RemoveElement"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+        <create name="Create Cell Refine">
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:lineSemantic.eContainer(uml::Package)">
+            <subModelOperations xsi:type="tool:Switch">
+              <cases conditionExpression="aql:arg0.equalsIgnoreCase('R')">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Abstraction" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="refine">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('StandardProfileL2', 'Refine')"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="var:lineSemantic"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="var:columnSemantic"/>
+                </subModelOperations>
+              </cases>
+              <default/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </create>
+      </intersection>
+    </ownedRepresentations>
+    <ownedRepresentationExtensions xsi:type="description_2:DiagramExtensionDescription" name="SysML Package Hierarchy" viewpointURI="viewpoint:/org.obeonetwork.dsl.uml2.design/Capture" representationName="Package Hierarchy">
+      <layers name="SysML" optional="false">
+        <toolSections name="SysML">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Block Definition Diagram">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+            </initialOperation>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </toolSections>
+      </layers>
+    </ownedRepresentationExtensions>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.api.services.ReusedDescriptionServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.api.services.ClassDiagramServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.api.services.ProfileDiagramServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.ReusedDescriptionServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.BlockDefinitionDiagramServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.RequirementTableServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.InternalBlockDiagramServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.ParametricDiagramServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.RequirementDiagramServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.DeriveRefineRequirementTableServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.SatisfyTableServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.VerifyTableServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.RefineTableServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.SysMLPackageHierarchyServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.internal.services.SysmlElementServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
+  </ownedViewpoints>
+  <userColorsPalettes name="SysML Color Palette">
+    <entries xsi:type="description:UserFixedColor" red="126" green="177" blue="254" name="BlueBlock"/>
+    <entries xsi:type="description:UserFixedColor" red="230" green="230" blue="250" name="BlueDataType"/>
+    <entries xsi:type="description:UserFixedColor" red="220" green="220" blue="240" name="BluePrimitiveType"/>
+    <entries xsi:type="description:UserFixedColor" red="230" green="230" blue="230" name="BluePortInOut"/>
+    <entries xsi:type="description:UserFixedColor" red="140" green="140" blue="232" name="PortIn"/>
+    <entries xsi:type="description:UserFixedColor" red="113" green="171" blue="203" name="PortOut"/>
+  </userColorsPalettes>
+</description:Group>

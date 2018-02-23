@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.obeonetwork.dsl.sysml.design.api.utils;
+package org.obeonetwork.dsl.sysml.core.api.utils;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;

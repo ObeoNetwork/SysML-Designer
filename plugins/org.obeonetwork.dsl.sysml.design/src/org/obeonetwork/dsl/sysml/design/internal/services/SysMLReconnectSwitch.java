@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
@@ -14,11 +14,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Package;
-import org.obeonetwork.dsl.uml2.design.api.utils.UmlReconnectSwitch;
+import org.obeonetwork.dsl.uml2.core.api.utils.UmlReconnectSwitch;
 
 /**
  * A switch that handle the edge reconnections for each SysML types.
- * 
+ *
  * @author Melanie Bats<a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class SysMLReconnectSwitch extends UmlReconnectSwitch {
@@ -43,14 +43,6 @@ public class SysMLReconnectSwitch extends UmlReconnectSwitch {
 	 */
 	private Class requirement;
 
-	public void setOldPointedClass(Class oldPointedClass) {
-		this.oldPointedClass = oldPointedClass;
-	}
-
-	public void setNewPointedClass(Class newPointedClass) {
-		this.newPointedClass = newPointedClass;
-	}
-
 	@Override
 	public Element caseClass(Class class_) {
 		if (isReconnectingSource()) {
@@ -58,7 +50,7 @@ public class SysMLReconnectSwitch extends UmlReconnectSwitch {
 			newPointedClass.getNestedClassifiers().add(requirement);
 		} else {
 			class_.getNestedClassifiers().remove(oldPointedClass);
-			EObject parent = class_.eContainer();
+			final EObject parent = class_.eContainer();
 			if (parent instanceof Package) {
 				((Package)parent).getPackagedElements().add(oldPointedClass);
 			} else if (parent instanceof Class) {
@@ -72,6 +64,14 @@ public class SysMLReconnectSwitch extends UmlReconnectSwitch {
 
 	private boolean isReconnectingSource() {
 		return isReconnectingSource;
+	}
+
+	public void setNewPointedClass(Class newPointedClass) {
+		this.newPointedClass = newPointedClass;
+	}
+
+	public void setOldPointedClass(Class oldPointedClass) {
+		this.oldPointedClass = oldPointedClass;
 	}
 
 	public void setReconnectingSource(boolean isReconnectingSource) {
