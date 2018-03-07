@@ -27,7 +27,7 @@ deploy:
     region: eu-west-1
     upload-dir: "${TRAVIS_BRANCH}"
     on:
-      branch: master
+      branch: capella-1.2
 # Deploy release on s3
   - provider: s3
     access_key_id: AKIAJJVZATSVUD3VGHXA
