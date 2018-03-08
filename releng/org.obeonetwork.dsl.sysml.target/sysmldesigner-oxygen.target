@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="SysMLDesigner-oxygen" sequenceNumber="1519983119">
+<target name="SysMLDesigner-oxygen" sequenceNumber="1520601776">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.uml2.uml.feature.group" version="5.3.0.v20170605-1616"/>
@@ -43,8 +43,9 @@
       <repository location="http://download.eclipse.org/sirius/updates/releases/5.0.2/oxygen"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.obeonetwork.dsl.uml2.core.design" version="0.0.0"/>
-      <repository location="file:///C:/github/UML-Designer/packaging/org.obeonetwork.dsl.uml2.core.update/target/repository"/>
+      <unit id="org.obeonetwork.dsl.uml2.core.runtime.feature.feature.group" version="0.0.0"/>
+      <unit id="org.obeonetwork.dsl.uml2.core.runtime.sdk.feature.feature.group" version="0.0.0"/>
+      <repository location="https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-nightly/master/core/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.papyrus.sysml14" version="0.0.0"/>
