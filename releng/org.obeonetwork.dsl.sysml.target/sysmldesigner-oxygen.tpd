@@ -1,11 +1,11 @@
 target "SysMLDesigner-oxygen"
 include "https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-nightly/master/umlcoredesigner-oxygen.tpd"
-//include "file:///C:/github/UML-Designer/releng/org.obeonetwork.dsl.uml2.core.target/umlcoredesigner-oxygen.tpd"
 with source, requirements
 
 // UML Designer core
-location "https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-nightly/master/repository/"{
-	org.obeonetwork.dsl.uml2.core.design lazy
+location "https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-nightly/master/core/repository/"{
+	org.obeonetwork.dsl.uml2.core.runtime.feature.feature.group lazy
+	org.obeonetwork.dsl.uml2.core.runtime.sdk.feature.feature.group lazy
 }
 
 // SysML
