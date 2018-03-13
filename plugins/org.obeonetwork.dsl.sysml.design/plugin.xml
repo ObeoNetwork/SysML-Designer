@@ -30,13 +30,45 @@ Contributors:
            project="true">
      </wizard>
   </extension>
-   <extension
-          point="org.eclipse.ui.perspectiveExtensions">
-       <perspectiveExtension
-             targetID="org.eclipse.sirius.ui.tools.perspective.modeling">
-          <newWizardShortcut
-                id="org.obeonetwork.dsl.sysml.design.newSysMLProject">
-          </newWizardShortcut>
-       </perspectiveExtension>
+  <extension
+        point="org.eclipse.ui.perspectiveExtensions">
+     <perspectiveExtension
+       targetID="org.eclipse.sirius.ui.tools.perspective.modeling">
+       <newWizardShortcut
+         id="org.obeonetwork.dsl.sysml.design.newSysMLProject">
+       </newWizardShortcut>
+     </perspectiveExtension>
     </extension>
+    <extension
+        id="org.obeonetwork.dsl.sysml.design.in.flow.port"
+        point="org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatableNode">
+     <image
+           bottom="/org.obeonetwork.dsl.sysml.design/images/FlowPortDown.svg"
+           id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.outFlowPort"
+           left="/org.obeonetwork.dsl.sysml.design/images/FlowPortLeft.svg"
+           right="/org.obeonetwork.dsl.sysml.design/images/FlowPortRight.svg"
+           top="/org.obeonetwork.dsl.sysml.design/images/FlowPortUp.svg">
+     </image>
+     <image
+           bottom="/org.obeonetwork.dsl.sysml.design/images/FlowPortUp.svg"
+           id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.inFlowPort"
+           left="/org.obeonetwork.dsl.sysml.design/images/FlowPortRight.svg"
+           right="/org.obeonetwork.dsl.sysml.design/images/FlowPortLeft.svg"
+           top="/org.obeonetwork.dsl.sysml.design/images/FlowPortDown.svg">
+     </image>
+     <image
+           bottom="/org.obeonetwork.dsl.sysml.design/images/OutputPortDown.svg"
+           id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.outPort"
+           left="/org.obeonetwork.dsl.sysml.design/images/OutputPortLeft.svg"
+           right="/org.obeonetwork.dsl.sysml.design/images/OutputPortRight.svg"
+           top="/org.obeonetwork.dsl.sysml.design/images/OutputPortUp.svg">
+     </image>
+     <image
+           bottom="/org.obeonetwork.dsl.sysml.design/images/InputPortDown.svg"
+           id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.inPort"
+           left="/org.obeonetwork.dsl.sysml.design/images/InputPortLeft.svg"
+           right="/org.obeonetwork.dsl.sysml.design/images/InputPortRight.svg"
+           top="/org.obeonetwork.dsl.sysml.design/images/InputPortUp.svg">
+     </image>
+  </extension>
 </plugin>

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.sysml.design.api.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -25,6 +26,7 @@ import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Actor;
@@ -113,6 +115,19 @@ public class ReusedDescriptionServices extends org.obeonetwork.dsl.uml2.core.api
 			return semanticElementMappings.size() > 0;
 		}
 		return false;
+	}
+
+	/**
+	 * Get abstract label format.
+	 *
+	 * @param object
+	 *            EObject
+	 * @return Abstract label format
+	 */
+	public List<FontFormat> getAbstractItalicLabelFormat(EObject object) {
+		final List<FontFormat> fontFormats = new ArrayList<FontFormat>();
+		fontFormats.add(FontFormat.ITALIC_LITERAL);
+		return fontFormats;
 	}
 
 	/**
