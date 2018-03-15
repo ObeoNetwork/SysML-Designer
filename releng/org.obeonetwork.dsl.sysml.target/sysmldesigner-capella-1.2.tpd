@@ -6,6 +6,7 @@ with source, requirements
 location "https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-nightly/capella-1.2/core/repository/"{
 	org.obeonetwork.dsl.uml2.core.runtime.feature.feature.group lazy
 	org.obeonetwork.dsl.uml2.core.runtime.sdk.feature.feature.group lazy
+	org.obeonetwork.gmf.runtime.diagram.ui.extension.feature.feature.group lazy
 }
 
 // SysML
