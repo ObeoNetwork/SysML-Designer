@@ -71,4 +71,10 @@ Contributors:
            top="/org.obeonetwork.dsl.sysml.design/images/InputPortUp.svg">
      </image>
   </extension>
+    <extension
+          point="org.eclipse.sirius.sessionManagerListener">
+       <listener
+             class="org.obeonetwork.dsl.sysml.design.internal.listeners.SysMLSessionManagerListener">
+       </listener>
+    </extension>
 </plugin>
