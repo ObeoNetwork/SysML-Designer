@@ -271,13 +271,8 @@ public class ReusedDescriptionServices extends org.obeonetwork.dsl.uml2.core.api
 	 *            Stereotype name to check
 	 * @return True if the UML element has the given stereotype
 	 */
-	protected boolean hasStereotype(Element element, String stereotypeName) {
-		for (final EObject stereotype : element.getStereotypeApplications()) {
-			if (stereotypeName.equals(stereotype.eClass().getName())) {
-				return true;
-			}
-		}
-		return false;
+	public boolean hasStereotype(Element element, String stereotypeName) {
+		return SysmlElementServices.INSTANCE.hasStereotype(element, stereotypeName);
 	}
 
 	private boolean isLayerActive(DDiagram diagram, String layerName) {

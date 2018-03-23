@@ -183,6 +183,24 @@ public class SysmlElementServices {
 	}
 
 	/**
+	 * Check if an UML element has a stereotype defined as parameter.
+	 *
+	 * @param element
+	 *            UML element
+	 * @param stereotype
+	 *            Stereotype name to check
+	 * @return True if the UML element has the given stereotype
+	 */
+	public boolean hasStereotype(Element element, String stereotypeName) {
+		for (final EObject stereotype : element.getStereotypeApplications()) {
+			if (stereotypeName.equals(stereotype.eClass().getName())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
 	 * Checks if element has the stereotype block.
 	 *
 	 * @param element

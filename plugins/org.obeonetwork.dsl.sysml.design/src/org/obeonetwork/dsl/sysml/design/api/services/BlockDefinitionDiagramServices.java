@@ -74,18 +74,6 @@ public class BlockDefinitionDiagramServices extends SysmlAbstractDiagramServices
 	}
 
 	/**
-	 * Delete the Associated Stereotype with the given element.
-	 *
-	 * @param e
-	 *            : the given element for which you want to delete the stereotype.
-	 * @param steQualified
-	 *            : the qualified name of the stereotype you want to delete (ex. : SysML::Blocks::Block).
-	 */
-	public void deleteAssociatedStereotype(Element e, String steQualified) {
-		SysmlElementServices.INSTANCE.deleteAssociatedStereotype(e, steQualified);
-	}
-
-	/**
 	 * Get all actors.
 	 *
 	 * @param element
