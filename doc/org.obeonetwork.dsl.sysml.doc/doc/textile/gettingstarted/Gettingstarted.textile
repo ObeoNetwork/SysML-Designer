@@ -158,6 +158,89 @@ You can navigate to the block definition diagram representation of a __Block__ e
 
 !./../../images/gettingstarted/SysML_IBD_to_PAR.png(Navigate from IBD to BDD or PAR)!
 
+
+h2. *Activity Diagram*
+
+h3. *Manage activities*
+
+It is possible to create activity elements by selecting the creation tools from the palette and then clicking on the diagram or an element.
+
+!./../../images/activityDiagram/activityDiagramPalette.png(Activity diagram palette)!
+
+SysML reuses many elements used in activity diagram of UML, see UML-Designer documentation "Manage Activities":http://www.umldesigner.org/ref-doc/define-the-application.html chapter.
+
+h3. *SysML specificities*
+
+| *Name* | *Tool* |
+| NoBuffer| !./../../images/activityDiagram/NoBufferTool.png! |
+| Overwrite | !./../../images/activityDiagram/Overwrite.png! |
+| ControlOperator | !./../../images/activityDiagram/ControlOperator.png! |
+| Probability | !./../../images/activityDiagram/Probability.png! |
+| Continuous | !./../../images/activityDiagram/Continuous.png! |
+| Discrete | !./../../images/activityDiagram/Discrete.png! |
+| Optional | !./../../images/activityDiagram/Optional.png! |
+
+h4. NoBuffer
+
+NoBuffer tool can be applied/unapplied on an already created element:
+* Activity Parameter
+* Datastore
+To convert an element as NoBuffer element select the tool and then click on the element to convert.
+NoBuffer and NoBuffer can not be applied on the same element at the same time.
+
+h4. Overwrite
+
+OverWrite tool can be applied/unapplied on an already created element:
+* Activity Parameter
+* Datastore
+To convert an element as Overwrite element select the tool and then click on the element to convert.
+NoBuffer and Overwrite can not be applied on the same element at the same time.
+
+h4. ControlOperator
+
+ControlOperator tool can be applied/unapplied on an already created element:
+* Call Behavior Action
+* Call Operation Action
+* Activity Node
+To convert an element as ControlOperator element select the tool and then click on the element to convert.
+
+Decrire comment on peut setter une ControlValue via la vue propriété
+
+
+
+
+h4. Probability
+
+Probability tool can be applied/unapplied on an already created element:
+* Control Flow (edge)
+* Object Flow (edge)
+* Interrupting edge
+To add a Probability, select the tool and then click on the element to convert. This tool can be used only if the edge source is a decision node or an object node (Datastore).
+
+Decrire comment on peut setter une ControlValue via la vue propriété
+
+
+h4. Continuous/Discrete
+
+Continous or discrete tools can be applied/unapplied on an already created element:
+* Control Flow (edge)
+* Object Flow (edge)
+* Interrupting edge
+* Activity Parameter node
+
+To add a Continous/Discrete rate select the tool and then click on the element to convert.
+A rate will be added to the element.
+
+If the tool is applied on an activity parameter node, the rate is added as attribute to the referenced parameter, on an edge the rate is added directly as attribute.
+the rate can be edited by select it in the ModelExplorer.
+
+
+h4. Optional
+
+Optional tool can be applied/unapplied on an already created element:
+* Activity Parameter node
+To set Parameter as Optional, select the tool and then click on the element to convert. The lower multiplicity of the parameter will be set to zero.
+
 h2. *Parametric Diagram (PAR) representation*
 
 Parametric diagrams include usages of constraint blocks to constrain the properties of another block. Constraint blocks provide a mechanism for integrating engineering analysis such as performance and reliability models.
