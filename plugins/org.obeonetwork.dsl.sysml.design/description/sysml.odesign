@@ -2016,7 +2016,185 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Activity Diagram" viewpointURI="viewpoint:/org.obeonetwork.dsl.uml2.core.design/Reused" representationName="Activity Diagram"/>
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Activity Diagram" viewpointURI="viewpoint:/org.obeonetwork.dsl.uml2.core.design/Reused" representationName="Activity Diagram">
+      <layers name="AD_SysmlAdditionalLayer" label="SysML" activeByDefault="true" optional="false">
+        <toolSections name="AD_Sysml_tools" label="SysML Tools">
+          <ownedTools xsi:type="tool_1:ToolGroup" name="AD_ObjectNodeStereotype">
+            <tools xsi:type="tool:ToolDescription" name="AD_NoBufferTool" label=" NoBuffer" precondition="aql:self.oclIsKindOf(uml::ObjectNode) and (not (self.hasStereotype('Overwrite')))" forceRefresh="true" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/NoBuffer.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="aql:self.hasStereotype('Overwrite')">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+                    </cases>
+                    <cases conditionExpression="aql:self.hasStereotype('NoBuffer')">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.deleteAssociatedStereotype('SysML::Activities::NoBuffer')"/>
+                    </cases>
+                    <default>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::Activities', 'NoBuffer')"/>
+                    </default>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ToolDescription" name="AD_OverwriteTool" label="Overwrite" precondition="aql:self.oclIsKindOf(uml::ObjectNode) and (not (self.hasStereotype('NoBuffer')))" forceRefresh="true" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/Overwrite.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="aql:self.hasStereotype('NoBuffer')">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+                    </cases>
+                    <cases conditionExpression="aql:self.hasStereotype('Overwrite')">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.deleteAssociatedStereotype('SysML::Activities::Overwrite')"/>
+                    </cases>
+                    <default>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::Activities', 'Overwrite')"/>
+                    </default>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="AD_ControlOperatorTool" label=" ControlOperator" precondition="aql:self.oclIsKindOf(uml::Behavior) or self.oclIsKindOf(uml::CallBehaviorAction) or self.oclIsKindOf(uml::CallOperationAction) " iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/ControlOperator.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::Behavior) ">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="aql:self.hasStereotype('ControlOperator')">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.deleteAssociatedStereotype('SysML::Activities::ControlOperator')"/>
+                    </cases>
+                    <default>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::Activities', 'ControlOperator')"/>
+                    </default>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::CallBehaviorAction) ">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.behavior">
+                    <subModelOperations xsi:type="tool:Switch">
+                      <cases conditionExpression="aql:self.hasStereotype('ControlOperator')">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.deleteAssociatedStereotype('SysML::Activities::ControlOperator')"/>
+                      </cases>
+                      <default>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::Activities', 'ControlOperator')"/>
+                      </default>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::CallOperationAction) ">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.operation">
+                    <subModelOperations xsi:type="tool:Switch">
+                      <cases conditionExpression="aql:self.hasStereotype('ControlOperator')">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.deleteAssociatedStereotype('SysML::Activities::ControlOperator')"/>
+                      </cases>
+                      <default>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::Activities', 'ControlOperator')"/>
+                      </default>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="AD_ProbabilityTool" label="Probability" precondition="aql:self.canApplyProbability()" forceRefresh="true" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/Probability.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::ActivityEdge) or self.oclIsKindOf(uml::ParameterSet)">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="aql:self.hasStereotype('Probability')">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.unsetProbabilityStereotype()"/>
+                    </cases>
+                    <default>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.setProbabilityStereotype()"/>
+                    </default>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolGroup" name="AD_RateToolsGroup">
+            <tools xsi:type="tool:ToolDescription" name="AD_ContinuousTool" label="Continuous" precondition="aql:(self.oclIsKindOf(uml::ActivityEdge) or self.oclIsKindOf(uml::ActivityParameterNode))  and (not (self.hasDiscreteStereotypeApplied()))" forceRefresh="true" inverseSelectionOrder="true" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/Continuous.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="aql:self.hasDiscreteStereotypeApplied()"/>
+                    <cases conditionExpression="aql:self.hasContinuousStereotypeApplied()">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.unsetContinuousStereotype()"/>
+                    </cases>
+                    <default>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.setContinuousStereotype()"/>
+                    </default>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ToolDescription" name="AD_DiscreteTool" label="Discrete" precondition="aql:(self.oclIsKindOf(uml::ActivityEdge) or self.oclIsKindOf(uml::ActivityParameterNode)) and (not (self.hasContinuousStereotypeApplied()))" forceRefresh="true" inverseSelectionOrder="true" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/Discrete.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="aql:self.hasContinuousStereotypeApplied()"/>
+                    <cases conditionExpression="aql:self.hasDiscreteStereotypeApplied()">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.unsetDiscreteStereotype()"/>
+                    </cases>
+                    <default>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.setDiscreteStereotype()"/>
+                    </default>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="AD_OptionalTool" label="Optional" precondition="aql:self.oclIsKindOf(uml::ActivityParameterNode)" iconPath="/org.eclipse.papyrus.sysml14.edit/icons/full/obj16/Optional.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:Let" variableName="parameter" valueExpression="aql:self.parameter">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:parameter&lt;>null">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:parameter">
+                      <subModelOperations xsi:type="tool:Switch">
+                        <cases conditionExpression="aql:self.hasStereotype('Optional')">
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.deleteAssociatedStereotype('SysML::Activities::Optional')"/>
+                        </cases>
+                        <default>
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createAssociatedStereotype('SysML::Activities', 'Optional')">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                          </subModelOperations>
+                        </default>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:self.isRedefinedLabel()">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="labelExpression" value="aql:self.computeSysmlDisplayLabel()">
+              <appliedOn href="../../org.obeonetwork.dsl.uml2.core.design/description/uml2core.odesign#//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallBehaviorAction']/@style"/>
+              <appliedOn href="../../org.obeonetwork.dsl.uml2.core.design/description/uml2core.odesign#//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_CallOperationAction']/@style"/>
+              <appliedOn href="../../org.obeonetwork.dsl.uml2.core.design/description/uml2core.odesign#//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@style"/>
+              <appliedOn href="../../org.obeonetwork.dsl.uml2.core.design/description/uml2core.odesign#//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@borderedNodeMappings[name='AD_Parameter']/@style"/>
+              <appliedOn href="../../org.obeonetwork.dsl.uml2.core.design/description/uml2core.odesign#//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow']/@conditionnalStyles.0/@style/@centerLabelStyleDescription"/>
+              <appliedOn href="../../org.obeonetwork.dsl.uml2.core.design/description/uml2core.odesign#//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow']/@style/@centerLabelStyleDescription"/>
+              <appliedOn href="../../org.obeonetwork.dsl.uml2.core.design/description/uml2core.odesign#//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ObjectFlow']/@style/@centerLabelStyleDescription"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+        </customization>
+      </layers>
+    </ownedRepresentationExtensions>
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="State Machine Diagram" viewpointURI="viewpoint:/org.obeonetwork.dsl.uml2.core.design/Reused" representationName="State Machine Diagram"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.ReusedDescriptionServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.BlockDefinitionDiagramServices"/>
@@ -2031,6 +2209,7 @@
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.SysMLPackageHierarchyServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.internal.services.SysmlElementServices"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.ActivityDiagramServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="SysML Color Palette">
     <entries xsi:type="description:UserFixedColor" red="126" green="177" blue="254" name="BlueBlock"/>

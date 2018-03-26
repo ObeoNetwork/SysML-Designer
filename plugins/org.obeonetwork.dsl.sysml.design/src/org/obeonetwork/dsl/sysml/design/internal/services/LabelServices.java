@@ -32,7 +32,19 @@ public class LabelServices {
 	}
 
 	/**
-	 * Compute the label of the given element.
+	 * Compute displayed label of the given element
+	 * 
+	 * @param element
+	 *            the {@link Element} for which to retrieve a label.
+	 * @return the computed label.
+	 */
+	public String computeSysmlDisplayLabel(NamedElement element) {
+		final DisplayLabelSwitch genLabel = new DisplayLabelSwitch();
+		return genLabel.doSwitch(element);
+	}
+
+	/**
+	 * Compute the default label of the given element.
 	 *
 	 * @param element
 	 *            the {@link Element} for which to retrieve a label.
