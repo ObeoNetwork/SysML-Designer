@@ -2109,10 +2109,10 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(uml::ActivityEdge) or self.oclIsKindOf(uml::ParameterSet)">
                   <subModelOperations xsi:type="tool:Switch">
                     <cases conditionExpression="aql:self.hasStereotype('Probability')">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.unsetProbabilityStereotype()"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:unsetProbabilityStereotype"/>
                     </cases>
                     <default>
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.setProbabilityStereotype()"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:setProbabilityStereotype"/>
                     </default>
                   </subModelOperations>
                 </subModelOperations>
@@ -2126,8 +2126,8 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
                   <subModelOperations xsi:type="tool:Switch">
-                    <cases conditionExpression="aql:self.hasDiscreteStereotypeApplied()"/>
-                    <cases conditionExpression="aql:self.hasContinuousStereotypeApplied()">
+                    <cases conditionExpression="service:hasDiscreteStereotypeApplied"/>
+                    <cases conditionExpression="service:hasContinuousStereotypeApplied">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.unsetContinuousStereotype()"/>
                     </cases>
                     <default>
@@ -2143,8 +2143,8 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
                   <subModelOperations xsi:type="tool:Switch">
-                    <cases conditionExpression="aql:self.hasContinuousStereotypeApplied()"/>
-                    <cases conditionExpression="aql:self.hasDiscreteStereotypeApplied()">
+                    <cases conditionExpression="service:hasContinuousStereotypeApplied"/>
+                    <cases conditionExpression="service:hasDiscreteStereotypeApplied">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.unsetDiscreteStereotype()"/>
                     </cases>
                     <default>
@@ -2198,18 +2198,12 @@
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="State Machine Diagram" viewpointURI="viewpoint:/org.obeonetwork.dsl.uml2.core.design/Reused" representationName="State Machine Diagram"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.ReusedDescriptionServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.BlockDefinitionDiagramServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.RequirementTableServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.InternalBlockDiagramServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.ParametricDiagramServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.RequirementDiagramServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.DeriveRefineRequirementTableServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.SatisfyTableServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.VerifyTableServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.RefineTableServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.SysMLPackageHierarchyServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.internal.services.SysmlElementServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.SysmlElementServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.sysml.design.api.services.ActivityDiagramServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.core.api.services.PropertiesViewServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="SysML Color Palette">
     <entries xsi:type="description:UserFixedColor" red="126" green="177" blue="254" name="BlueBlock"/>

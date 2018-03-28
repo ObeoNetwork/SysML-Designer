@@ -124,17 +124,4 @@ public class PortServices {
 		return isConnectableWith(source, target, true);
 	}
 
-	/**
-	 * Tests if the port cannot be connected from their direction, their types and their location. The
-	 * direction must be equal.
-	 *
-	 * @param source
-	 *            the source port
-	 * @param target
-	 *            the target port
-	 * @return true if the type are equals and the directions equivalent
-	 */
-	public boolean isNotDelegationOf(Port source, Port target) {
-		return !isDelegationOf(source, target);
-	}
 }

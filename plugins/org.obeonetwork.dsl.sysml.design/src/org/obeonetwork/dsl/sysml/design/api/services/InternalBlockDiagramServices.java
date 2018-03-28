@@ -27,16 +27,12 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.uml2.uml.Class;
-import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
-import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.EncapsulatedClassifier;
-import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Port;
-import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
@@ -200,29 +196,6 @@ public class InternalBlockDiagramServices extends SysmlAbstractDiagramServices {
 		return null;
 	}
 
-	/**
-	 * Get port types.
-	 *
-	 * @param container
-	 *            Container
-	 * @return Port types
-	 */
-	public List<Classifier> getPortTypes(EObject container) {
-		final List<Classifier> results = Lists.newArrayList();
-		for (final Iterator<EObject> iterator = SysmlElementServices.INSTANCE.getRootContainer(container)
-				.eAllContents(); iterator.hasNext();) {
-			final EObject element = iterator.next();
-			if (element instanceof Classifier
-					&& !SysmlElementServices.INSTANCE.isConstraintBlock((Classifier)element)
-					&& (SysmlElementServices.INSTANCE.isBlock((Classifier)element)
-							|| element instanceof PrimitiveType || element instanceof DataType
-							|| element instanceof Interface)) {
-				results.add((Classifier)element);
-			}
-		}
-		return results;
-	}
-
 	public boolean isDelegationOf(Port source, Port target) {
 		return PortServices.INSTANCE.isDelegationOf(source, target);
 	}
@@ -252,13 +225,6 @@ public class InternalBlockDiagramServices extends SysmlAbstractDiagramServices {
 	 */
 	public boolean isInPort(NamedElement element) {
 		return isPort(element) && ((Port)element).getRequireds().size() > 0;
-	}
-
-	/**
-	 * @see PortServices#isNotDelegationOf(Port, Port)
-	 */
-	public boolean isNotDelegationOf(Port source, Port target) {
-		return PortServices.INSTANCE.isNotDelegationOf(source, target);
 	}
 
 	public boolean isOutFlowPort(NamedElement element) {

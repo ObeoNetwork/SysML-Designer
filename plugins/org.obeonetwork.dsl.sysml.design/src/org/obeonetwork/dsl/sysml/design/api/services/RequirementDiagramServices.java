@@ -71,8 +71,7 @@ public class RequirementDiagramServices extends SysmlAbstractDiagramServices {
 	 * @return Id
 	 */
 	public String getRequirementId(Class element) {
-		final Requirement requirement = SysmlElementServices.INSTANCE.getRequirement(element);
-		return requirement.getId();
+		return SysmlElementServices.INSTANCE.getRequirementId(element);
 	}
 
 	/**

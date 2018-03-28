@@ -30,6 +30,7 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.obeonetwork.dsl.sysml.design.internal.services.SysmlElementServices;
 import org.obeonetwork.dsl.uml2.core.api.utils.UmlUtils;
@@ -115,6 +116,18 @@ public class BlockDefinitionDiagramServices extends SysmlAbstractDiagramServices
 	}
 
 	/**
+	 * Get all the stereotype applications according to the selected diagram.
+	 *
+	 * @param diagram
+	 *            Current diagram
+	 * @return Stereotype applications
+	 */
+	public Collection<Object> getAllStereotypeApplications(DDiagram diagram) {
+		return org.obeonetwork.dsl.uml2.core.internal.services.StereotypeServices.INSTANCE
+				.getAllStereotypeApplications(diagram);
+	}
+
+	/**
 	 * Get all units.
 	 *
 	 * @param container
@@ -137,6 +150,18 @@ public class BlockDefinitionDiagramServices extends SysmlAbstractDiagramServices
 	 */
 	public Collection<EObject> getAssociationInverseRefs(DDiagram diagram) {
 		return NodeInverseRefsServices.INSTANCE.getAssociationInverseRefs(diagram);
+	}
+
+	/**
+	 * Get base class associated to a stereotype application.
+	 *
+	 * @param stereotypeApplication
+	 *            Stereotype application
+	 * @return Base class
+	 */
+	public Element getBaseClass(EObject stereotypeApplication) {
+		return org.obeonetwork.dsl.uml2.core.internal.services.StereotypeServices.INSTANCE
+				.getBaseClass(stereotypeApplication);
 	}
 
 	/**
@@ -208,6 +233,42 @@ public class BlockDefinitionDiagramServices extends SysmlAbstractDiagramServices
 			}
 		}
 		return results;
+	}
+
+	/**
+	 * Return the source of an association.
+	 *
+	 * @param association
+	 *            the {@link Association} context
+	 * @return first end of the association
+	 */
+	public Property getSource(Association association) {
+		return org.obeonetwork.dsl.uml2.core.internal.services.AssociationServices.INSTANCE
+				.getSource(association);
+	}
+
+	/**
+	 * Get stereotype application label.
+	 *
+	 * @param stereotypeApplication
+	 *            Stereotype application
+	 * @return The stereotype name.
+	 */
+	public String getStereotypeApplicationLabel(EObject stereotypeApplication) {
+		return org.obeonetwork.dsl.uml2.core.internal.services.StereotypeServices.INSTANCE
+				.getStereotypeApplicationLabel(stereotypeApplication);
+	}
+
+	/**
+	 * Return the target of an association.
+	 *
+	 * @param association
+	 *            the {@link Association} context
+	 * @return second end of the association
+	 */
+	public Property getTarget(Association association) {
+		return org.obeonetwork.dsl.uml2.core.internal.services.AssociationServices.INSTANCE
+				.getTarget(association);
 	}
 
 	/**
