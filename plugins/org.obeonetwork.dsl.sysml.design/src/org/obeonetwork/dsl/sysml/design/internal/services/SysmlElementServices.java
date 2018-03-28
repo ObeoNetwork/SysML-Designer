@@ -172,6 +172,18 @@ public class SysmlElementServices {
 	}
 
 	/**
+	 * Get requirement id.
+	 *
+	 * @param element
+	 *            Requirement
+	 * @return Id
+	 */
+	public String getRequirementId(Class element) {
+		final Requirement requirement = getRequirement(element);
+		return requirement.getId();
+	}
+
+	/**
 	 * Returns the root container; it may be this object itself.
 	 *
 	 * @param eObject

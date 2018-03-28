@@ -18,14 +18,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
-import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
@@ -33,12 +28,12 @@ import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Operation;
-import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.obeonetwork.dsl.sysml.design.internal.services.ISysmlConstants;
@@ -55,7 +50,6 @@ import com.google.common.collect.Lists;
  */
 @SuppressWarnings("restriction")
 public class ReusedDescriptionServices extends org.obeonetwork.dsl.uml2.core.api.services.ReusedDescriptionServices {
-
 	/**
 	 * Get all valid attributes of a class.
 	 *
@@ -96,28 +90,6 @@ public class ReusedDescriptionServices extends org.obeonetwork.dsl.uml2.core.api
 	}
 
 	/**
-	 * Check if an element is a container.
-	 *
-	 * @param container
-	 *            Semantic container
-	 * @param containerView
-	 *            Container view
-	 * @return True if element is valid for the given container view
-	 */
-	public boolean existValidElementsForContainerView(final EObject container, final EObject containerView) {
-		if (container instanceof Element && containerView instanceof DSemanticDecorator) {
-			final Session session = SessionManager.INSTANCE.getSession(container);
-			// Get all available mappings applicable for the selected element in the
-			// current container
-			final List<DiagramElementMapping> semanticElementMappings = getMappings(
-					(DSemanticDecorator)containerView, session);
-
-			return semanticElementMappings.size() > 0;
-		}
-		return false;
-	}
-
-	/**
 	 * Get abstract label format.
 	 *
 	 * @param object
@@ -128,6 +100,44 @@ public class ReusedDescriptionServices extends org.obeonetwork.dsl.uml2.core.api
 		final List<FontFormat> fontFormats = new ArrayList<FontFormat>();
 		fontFormats.add(FontFormat.ITALIC_LITERAL);
 		return fontFormats;
+	}
+
+	// Commented because not actually used but used in "other Sysml diagrams"
+	// /**
+	// * Check if an element is a container.
+	// *
+	// * @param container
+	// * Semantic container
+	// * @param containerView
+	// * Container view
+	// * @return True if element is valid for the given container view
+	// */
+	// public boolean existValidElementsForContainerView(final EObject container, final EObject containerView)
+	// {
+	// if (container instanceof Element && containerView instanceof DSemanticDecorator) {
+	// final Session session = SessionManager.INSTANCE.getSession(container);
+	// // Get all available mappings applicable for the selected element in the
+	// // current container
+	// final List<DiagramElementMapping> semanticElementMappings = getMappings(
+	// (DSemanticDecorator)containerView, session);
+	//
+	// return semanticElementMappings.size() > 0;
+	// }
+	// return false;
+	// }
+
+	/**
+	 * Get association end qualifier for a classifier.
+	 *
+	 * @param classifier
+	 *            association end
+	 * @param diagram
+	 *            Diagram
+	 * @return List of qualifier
+	 */
+	public List<Property> getSemanticCandidatesQualifier(Classifier classifier, DDiagram diagram) {
+		return org.obeonetwork.dsl.uml2.core.internal.services.AssociationServices.INSTANCE
+				.getSemanticCandidatesQualifier(classifier, diagram);
 	}
 
 	/**
@@ -235,32 +245,33 @@ public class ReusedDescriptionServices extends org.obeonetwork.dsl.uml2.core.api
 		return allValidSessionElements(cur, validForClassDiagram);
 	}
 
-	public List<EObject> getValidsForSysmlDiagram(final Element element,
-			final DSemanticDecorator containerView) {
-		// Get representation
-		DRepresentation representation = null;
-		if (containerView instanceof DRepresentation) {
-			representation = (DRepresentation)containerView;
-		} else if (containerView instanceof DDiagramElement) {
-			representation = ((DDiagramElement)containerView).getParentDiagram();
-		}
-		List<EObject> results = null;
-		if (representation instanceof DSemanticDiagramSpec) {
-			final DiagramDescription description = ((DSemanticDiagramSpec)representation).getDescription();
-
-			if ("Block Definition Diagram".equals(description.getName())) { //$NON-NLS-1$
-				results = getValidsForBlockDefinitionDiagram(element);
-			} else if ("Internal Block Diagram".equals(description.getName())) { //$NON-NLS-1$
-				results = getValidsForInternalBlockDiagram((Class)element);
-			} else if ("Parametric Diagram".equals(description.getName())) { //$NON-NLS-1$
-				results = getValidsForParametricBlockDiagram((Class)element);
-			} else if ("Requirement Diagram".equals(description.getName())) { //$NON-NLS-1$
-				results = getValidsForRequirementDiagram(element, (DDiagram)representation);
-			}
-		}
-
-		return results;
-	}
+	// Commented because not actually used but used in "other Sysml diagrams"
+	// public List<EObject> getValidsForSysmlDiagram(final Element element,
+	// final DSemanticDecorator containerView) {
+	// // Get representation
+	// DRepresentation representation = null;
+	// if (containerView instanceof DRepresentation) {
+	// representation = (DRepresentation)containerView;
+	// } else if (containerView instanceof DDiagramElement) {
+	// representation = ((DDiagramElement)containerView).getParentDiagram();
+	// }
+	// List<EObject> results = null;
+	// if (representation instanceof DSemanticDiagramSpec) {
+	// final DiagramDescription description = ((DSemanticDiagramSpec)representation).getDescription();
+	//
+	// if ("Block Definition Diagram".equals(description.getName())) { //$NON-NLS-1$
+	// results = getValidsForBlockDefinitionDiagram(element);
+	// } else if ("Internal Block Diagram".equals(description.getName())) { //$NON-NLS-1$
+	// results = getValidsForInternalBlockDiagram((Class)element);
+	// } else if ("Parametric Diagram".equals(description.getName())) { //$NON-NLS-1$
+	// results = getValidsForParametricBlockDiagram((Class)element);
+	// } else if ("Requirement Diagram".equals(description.getName())) { //$NON-NLS-1$
+	// results = getValidsForRequirementDiagram(element, (DDiagram)representation);
+	// }
+	// }
+	//
+	// return results;
+	// }
 
 	/**
 	 * Check if an UML element has a stereotype defined as parameter.
@@ -292,11 +303,13 @@ public class ReusedDescriptionServices extends org.obeonetwork.dsl.uml2.core.api
 		return isLayerActive(diagram, "Satisfy"); //$NON-NLS-1$
 	}
 
-	public boolean isValidAttributesContainer(EObject container, EObject containerView) {
-		// [container.oclAsType(ecore::EObject).existValidElementsForContainerView(containerView.oclAsType(ecore::EObject))/]
-		return existValidElementsForContainerView(container, containerView)
-				&& !(containerView instanceof DDiagram);
-	}
+	// Commented because not actually used but used in "other Sysml diagrams"
+	// public boolean isValidAttributesContainer(EObject container, EObject containerView) {
+	// //
+	// [container.oclAsType(ecore::EObject).existValidElementsForContainerView(containerView.oclAsType(ecore::EObject))/]
+	// return existValidElementsForContainerView(container, containerView)
+	// && !(containerView instanceof DDiagram);
+	// }
 
 	/**
 	 * Check if value binding layer is active.
