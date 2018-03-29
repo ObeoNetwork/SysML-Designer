@@ -12,6 +12,8 @@ package org.obeonetwork.dsl.sysml.design.tests.plugin.manual;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -79,63 +81,62 @@ public class ServiceTestsUtils {
 			"eContainer", "toLowerFirst", "toUpperFirst", "not ", "eClass",
 			"eAllContents", "eContents", "equalsIgnoreCase");
 
-	private static Set<String> umlWhiteList = Sets
-			.newHashSet(getAllUmlOperations());
-	private static Set<String> sysmlWhiteList = Sets
-			.newHashSet(getAllSysmlOperations());
+    private static Set<String> aqlWhiteList = Sets.newHashSet("<>", "null");
 
-	private static Set<String> siriusWhiteList = Sets.newHashSet("getTarget");
+    private static Set<String> umlWhiteList = Sets
+            .newHashSet(getAllUmlOperations());
+    private static Set<String> sysmlWhiteList = Sets
+            .newHashSet(getAllSysmlOperations());
 
-	public static void collectDeclaredServicesFromDesignerViewpoints(
-			Set<Method> allDeclaredServices, String vpUri, String vpName) {
-		Set<JavaExtension> allExtensions = new HashSet<JavaExtension>();
-		collectJavaExtensionsFromDesignerViewpoints(vpUri, vpName,
-				allExtensions);
-		for (JavaExtension extension : allExtensions) {
-			try {
-				@SuppressWarnings("rawtypes")
-				Class clazz = Class.forName(extension.getQualifiedClassName());
-				for (Method method : clazz.getDeclaredMethods()) {
-					if (method.getModifiers() == Modifier.PUBLIC) {
-						allDeclaredServices.add(method);
-					}
+    private static Set<String> siriusWhiteList = Sets.newHashSet("getTarget");
 
-				}
-			} catch (ClassNotFoundException e) {
-				// Nothing to do, this is checked by the {@link
-				// JavaExtensionTests}
-			}
-		}
-	}
+    public static void collectDeclaredServicesFromDesignerViewpoints(
+            Set<Method> allDeclaredServices, String vpUri, String vpName) {
+        Set<JavaExtension> allExtensions = new HashSet<JavaExtension>();
+        collectJavaExtensionsFromDesignerViewpoints(vpUri, vpName,
+                allExtensions);
+        for (JavaExtension extension : allExtensions) {
+            try {
+                @SuppressWarnings("rawtypes")
+                Class clazz = Class.forName(extension.getQualifiedClassName());
+                for (Method method : clazz.getDeclaredMethods()) {
+                    if (method.getModifiers() == Modifier.PUBLIC) {
+                        allDeclaredServices.add(method);
+                    }
 
-	public static void collectServicesFromDesignerViewpoint(
-			Set<Method> allServices, String vpName, String vpUri) {
-		Set<JavaExtension> allExtensions = new HashSet<JavaExtension>();
-		collectJavaExtensionsFromDesignerViewpoints(vpUri, vpName,
-				allExtensions);
-		for (JavaExtension extension : allExtensions) {
-			try {
-				@SuppressWarnings("rawtypes")
-				Class clazz = Class.forName(extension.getQualifiedClassName());
-				for (Method method : clazz.getMethods()) {
-					if (method.getModifiers() == Modifier.PUBLIC) {
-						allServices.add(method);
-					}
-				}
-			} catch (ClassNotFoundException e) {
-				// Nothing to do, this is checked by the {@link
-				// JavaExtensionTests}
-			}
-		}
-	}
+                }
+            } catch (ClassNotFoundException e) {
+                // Nothing to do, this is checked by the {@link
+                // JavaExtensionTests}
+            }
+        }
+    }
+    public static void collectServicesFromDesignerViewpoint(Set<Method> allServices, String vpName, String vpUri) {
+        Set<JavaExtension> allExtensions = new HashSet<JavaExtension>();
+        collectJavaExtensionsFromDesignerViewpoints(vpUri, vpName, allExtensions);
+        for (JavaExtension extension : allExtensions) {
+            try {
+                @SuppressWarnings("rawtypes")
+                Class clazz = Class.forName(extension.getQualifiedClassName());
+                for (Method method : clazz.getMethods()) {
+                    if (method.getModifiers() == Modifier.PUBLIC) {
+                        allServices.add(method);
+                    }
+                }
+            } catch (ClassNotFoundException e) {
+                // Nothing to do, this is checked by the {@link
+                // JavaExtensionTests}
+            }
+        }
+    }
 
-	protected static void collectServiceExpressionFromDesignerViewpoints(
-			Set<InterpretedExpression> allExpressions, String vpUri,
-			String vpName) {
-		Viewpoint structural = ViewpointRegistry.getInstance().getViewpoint(
-				URI.createURI(vpUri + vpName));
-		collectServiceExpressionsFromViewpoint(structural, allExpressions);
-	}
+    protected static void collectServiceExpressionFromDesignerViewpoints(
+            Set<InterpretedExpression> allExpressions, String vpUri,
+            String vpName) {
+        Viewpoint structural = ViewpointRegistry.getInstance().getViewpoint(
+                URI.createURI(vpUri + vpName));
+        collectServiceExpressionsFromViewpoint(structural, allExpressions);
+    }
 
 	private static void collectServiceExpressionsFromViewpoint(
 			Viewpoint structural, Set<InterpretedExpression> allExpressions) {
@@ -160,15 +161,16 @@ public class ServiceTestsUtils {
 	}
 
 	private static boolean isService(String expr) {
-		if (isServiceInterpreterCall(expr) || isAcceleoServiceCall(expr)) {
+		if (isServiceInterpreterCall(expr) || isAcceleoServiceCall(expr) || isAqlServiceCall(expr)) {
 			return true;
 		}
 		return false;
 	}
 
-	private static String getAcceleoServiceCall(String expr) {
+	private static List<String> getAcceleoServiceCall(String expr) {
 		if (expr.startsWith("[") && expr.endsWith("/]")) {
-			String[] splitExpr = expr.split("\\.");
+		    List<String> result = new ArrayList<String>();
+		    String[] splitExpr = expr.split("\\.");
 			for (String exprPart : splitExpr) {
 				if (exprPart.matches("\\w+ *\\(.*")
 						&& !exprPart.startsWith("ocl")
@@ -176,8 +178,9 @@ public class ServiceTestsUtils {
 						&& !containsUmlOperations(getServiceName(exprPart))
 						&& !containsSysmlOperations(getServiceName(exprPart))
 						&& !containsSiriusOperations(exprPart)) {
-					return getServiceName(exprPart);
+				    result.add(getServiceName(exprPart));
 				}
+				return result;
 			}
 		}
 		return null;
@@ -223,8 +226,11 @@ public class ServiceTestsUtils {
 		return getServiceInterpreterCall(expr) != null;
 	}
 
-	public static String getServiceCall(String expression) {
-		if (isServiceInterpreterCall(expression)) {
+	public static List<String> getServiceCall(String expression) {
+	    if (isAqlServiceCall(expression)) {
+            return getAqlServiceCall(expression);
+        }
+        if (isServiceInterpreterCall(expression)) {
 			return getServiceInterpreterCall(expression);
 		}
 		if (isAcceleoServiceCall(expression)) {
@@ -233,7 +239,7 @@ public class ServiceTestsUtils {
 		return null;
 	}
 
-	private static String getServiceInterpreterCall(String expression) {
+	private static List<String> getServiceInterpreterCall(String expression) {
 		if (expression.startsWith("service:")) {
 			String expr = expression.substring("service:".length());
 			if (expression.contains(".")) {
@@ -244,7 +250,7 @@ public class ServiceTestsUtils {
 							&& !containsUmlOperations(service)
 							&& !containsSysmlOperations(service)
 							&& !containsSiriusOperations(service)) {
-						return service;
+						return  Arrays.asList(service);
 					}
 				}
 
@@ -252,12 +258,12 @@ public class ServiceTestsUtils {
 				if (!containsUmlOperations(service)
 						&& !containsSysmlOperations(service)
 						&& !containsSiriusOperations(service)) {
-					return getServiceName(service);
+					return  Arrays.asList(getServiceName(service));
 				}
 			} else if (!containsUmlOperations(expr)
 					&& !containsSysmlOperations(expr)
 					&& !containsSiriusOperations(expr)) {
-				return getServiceName(expr);
+				return  Arrays.asList(getServiceName(expr));
 			}
 		}
 		return null;
@@ -286,10 +292,11 @@ public class ServiceTestsUtils {
 		// Obtain a new resource set
 		ResourceSet resSet = new ResourceSetImpl();
 
-		// Create a resource
-		Resource res = resSet.getResource(
-				URI.createURI("http://www.eclipse.org/uml2/2.0.0/UML"), true);
-		EObject root = res.getContents().get(0);
+        // Create a resource
+        Resource res = resSet.getResource(
+                URI.createURI("http://www.eclipse.org/uml2/5.0.0/UML"),
+                true);
+        EObject root = res.getContents().get(0);
 
 		// Get all eOperations
 		List<EObject> umlOperations = Lists.newArrayList();
@@ -310,11 +317,11 @@ public class ServiceTestsUtils {
 		// Obtain a new resource set
 		ResourceSet resSet = new ResourceSetImpl();
 
-		// Create a resource
-		Resource res = resSet.getResource(
-				URI.createURI("http://www.eclipse.org/papyrus/0.7.0/SysML"),
-				true);
-		EObject root = res.getContents().get(0);
+        // Create a resource
+        Resource res = resSet.getResource(
+                URI.createURI("http://www.eclipse.org/papyrus/sysml/1.4/SysML"),
+                true);
+        EObject root = res.getContents().get(0);
 
 		// Get all eOperations
 		List<EObject> sysmlOperations = Lists.newArrayList();
@@ -323,11 +330,41 @@ public class ServiceTestsUtils {
 				Iterators.filter(root.eAllContents(),
 						Predicates.instanceOf(EOperation.class)));
 
-		// Get eOperation names
-		List<String> result = Lists.newArrayList();
-		for (EObject sysmlOperation : sysmlOperations) {
-			result.add(((EOperation) sysmlOperation).getName());
-		}
-		return result;
-	}
+        // Get eOperation names
+        List<String> result = Lists.newArrayList();
+        for (EObject sysmlOperation : sysmlOperations) {
+            result.add(((EOperation) sysmlOperation).getName());
+        }
+        return result;
+    }
+
+    private static List<String> getAqlServiceCall(String expr) {
+        if (expr.startsWith("aql:")) {
+            List<String> result = new ArrayList<String>();
+
+            // several call to a service can be done in an expression (for
+            // example if/then/else)
+            String[] splitExpr = expr.split("\\.");
+            for (String exprPart : splitExpr) {
+                if (exprPart.matches("\\w+ *\\(.*") && !exprPart.startsWith("ocl") && !containsAcceleoKeywords(exprPart) && !containsAqlKeywords(exprPart)
+                        && !containsUmlOperations(getServiceName(exprPart)) && !containsSysmlOperations(getServiceName(exprPart)) && !containsSiriusOperations(exprPart)) {
+                    result.add(getServiceName(exprPart));
+                }
+            }
+            return result;
+        }
+        return null;
+    }
+
+    private static boolean containsAqlKeywords(String expression) {
+        for (String keywords : aqlWhiteList) {
+            if (expression.contains(keywords))
+                return true;
+        }
+        return false;
+    }
+
+    private static boolean isAqlServiceCall(String expr) {
+        return expr.startsWith("aql:");
+    }
 }
