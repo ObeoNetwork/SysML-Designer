@@ -59,18 +59,20 @@ public class ServiceExpressionSysmlViewpointTests {
 			parameters.add(new Object[] { interpretedExpression });
 		}
 		return parameters;
-	}
+    }
 
-	@Test
-	public void isValidService() {
-		String expression = underTest.getExpression();
-		String service = ServiceTestsUtils.getServiceCall(expression);
+    @Test
+    public void isValidService() {
+        String expression = underTest.getExpression();
+        List<String> services = ServiceTestsUtils.getServiceCall(expression);
 
-		if (service != null && !allServices.contains(service)) {
-			fail("Expression : " + underTest.getExpression()
-					+ " refers to an invalid service :" + service + ". See :"
-					+ underTest.getFeature().getName() + " of object "
-					+ EcoreUtil.getURI(underTest.getDeclaration()));
-		}
-	}
+        for (String service : services) {
+            if (service != null && !allServices.contains(service)) {
+                fail("Expression : " + underTest.getExpression()
+                    + " refers to an invalid service :" + service + ". See :"
+                    + underTest.getFeature().getName() + " of object "
+                    + EcoreUtil.getURI(underTest.getDeclaration()));
+            }
+        }
+    }
 }

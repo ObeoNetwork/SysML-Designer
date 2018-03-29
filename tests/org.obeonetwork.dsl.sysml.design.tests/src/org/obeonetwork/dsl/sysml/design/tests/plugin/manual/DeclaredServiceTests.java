@@ -34,7 +34,12 @@ public class DeclaredServiceTests {
 
 	private Method underTest;
 
-	private static Set<String> allServiceCalls = new HashSet<String>();
+    private static Set<String> allServiceCalls = new HashSet<String>();
+
+    /**
+     * The plug-in ID.
+     */
+    private static final String SYSML_DESIGNER_PLUGIN_ID = "org.obeonetwork.dsl.sysml.design"; //$NON-NLS-1$
 
 	public DeclaredServiceTests(Method method) {
 		this.underTest = method;
@@ -54,7 +59,7 @@ public class DeclaredServiceTests {
 		ServiceTestsUtils
 				.collectServiceExpressionFromSysmlDesignerViewpoints(allServiceExpressions);
 		for (InterpretedExpression serviceExpression : allServiceExpressions) {
-			allServiceCalls.add(ServiceTestsUtils
+			allServiceCalls.addAll(ServiceTestsUtils
 					.getServiceCall(serviceExpression.getExpression()));
 		}
 
@@ -64,11 +69,17 @@ public class DeclaredServiceTests {
 		return parameters;
 	}
 
-	@Test
-	public void isUnusedDeclaredService() {
-		if (!allServiceCalls.contains(underTest.getName())) {
-			fail("Declared service " + underTest
-					+ " is not referenced by the odesign");
-		}
-	}
+    @Test
+    public void isUnusedDeclaredService() {
+        if (isSysmlPluginService(underTest.getDeclaringClass().getName()) && !allServiceCalls.contains(underTest.getName())) {
+            fail("Declared service " + underTest + " is not referenced by the odesign");
+        }
+    }
+
+    private static boolean isSysmlPluginService(String qualifiedName) {
+        if (qualifiedName != null && qualifiedName.startsWith(SYSML_DESIGNER_PLUGIN_ID)) {
+            return true;
+        }
+        return false;
+    }
 }
