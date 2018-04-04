@@ -21,6 +21,7 @@ import org.eclipse.papyrus.sysml14.requirements.Requirement;
 import org.eclipse.papyrus.sysml14.util.QUDVUtil;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.uml2.uml.Abstraction;
 import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.Association;
@@ -34,6 +35,7 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.obeonetwork.dsl.sysml.design.internal.services.SysmlElementServices;
 import org.obeonetwork.dsl.uml2.core.api.utils.UmlUtils;
+import org.obeonetwork.dsl.uml2.core.internal.services.AssociationServices;
 import org.obeonetwork.dsl.uml2.core.internal.services.LabelServices;
 import org.obeonetwork.dsl.uml2.core.internal.services.NodeInverseRefsServices;
 
@@ -434,6 +436,118 @@ public class BlockDefinitionDiagramServices extends SysmlAbstractDiagramServices
 				valueType.setUnit(instanceSpecification);
 			}
 		}
+	}
+
+	/**
+	 * Check is an association source is composite.
+	 *
+	 * @param association
+	 *            Association
+	 * @return True if source is composite
+	 */
+	public boolean sourceIsComposite(Association association) {
+		return AssociationServices.INSTANCE.sourceIsComposite(association);
+	}
+
+	/**
+	 * Check is an association source is navigable.
+	 *
+	 * @param association
+	 *            Association
+	 * @param element
+	 *            Edge element
+	 * @return True if source is navigable
+	 */
+	public boolean sourceIsNavigable(Association association, DDiagramElement element) {
+		return AssociationServices.INSTANCE.sourceIsNavigable(association, element);
+	}
+
+	/**
+	 * Check is an association source is navigable and composite.
+	 *
+	 * @param association
+	 *            Association
+	 * @return True if source is navigable and composite
+	 */
+	public boolean sourceIsNavigableAndTargetIsComposite(Association association) {
+		return AssociationServices.INSTANCE.sourceIsNavigableAndTargetIsComposite(association);
+	}
+
+	/**
+	 * Check is an association source is navigable and shared.
+	 *
+	 * @param association
+	 *            Association
+	 * @return True if source is navigable and shared
+	 */
+	public boolean sourceIsNavigableAndTargetIsShared(Association association) {
+		return AssociationServices.INSTANCE.sourceIsNavigableAndTargetIsShared(association);
+	}
+
+	/**
+	 * Check is an association source is shared.
+	 *
+	 * @param association
+	 *            Association
+	 * @return True if source is shared
+	 */
+	public boolean sourceIsShared(Association association) {
+		return AssociationServices.INSTANCE.sourceIsShared(association);
+	}
+
+	/**
+	 * Check is an association target is composite.
+	 *
+	 * @param association
+	 *            Association
+	 * @return True if target is composite
+	 */
+	public boolean targetIsComposite(Association association) {
+		return AssociationServices.INSTANCE.targetIsComposite(association);
+	}
+
+	/**
+	 * Check is an association target is navigable.
+	 *
+	 * @param association
+	 *            Association
+	 * @return True if target is navigable
+	 */
+	public boolean targetIsNavigable(Association association) {
+		return AssociationServices.INSTANCE.targetIsNavigable(association);
+	}
+
+	/**
+	 * Check is an association target is navigable and composite.
+	 *
+	 * @param association
+	 *            Association
+	 * @return True if target is navigable and composite
+	 */
+	public boolean targetIsNavigableAndSourceIsComposite(Association association) {
+		return AssociationServices.INSTANCE.targetIsNavigableAndSourceIsComposite(association);
+	}
+
+	/**
+	 * Check is an association target is navigable and shared.
+	 *
+	 * @param association
+	 *            Association
+	 * @return True if target is navigable and shared
+	 */
+	public boolean targetIsNavigableAndSourceIsShared(Association association) {
+		return AssociationServices.INSTANCE.targetIsNavigableAndSourceIsShared(association);
+	}
+
+	/**
+	 * Check is an association target is shared.
+	 *
+	 * @param association
+	 *            Association
+	 * @return True if target is shared
+	 */
+	public boolean targetIsShared(Association association) {
+		return AssociationServices.INSTANCE.targetIsShared(association);
 	}
 
 	public void unsetDimension(EObject valueType) {
