@@ -1765,12 +1765,95 @@
                 </style>
               </conditionnalStyles>
             </borderedNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_xAB_Function_Border_Green']" showIcon="false" labelExpression="service:computeUmlLabel" labelColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_xAB_Function_Label_Green']" tooltipExpression="aql:self.name + ' : ' + self.type.name" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_xAB_Function_Green']" foregroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_xAB_Function_Green']"/>
+            <subContainerMappings name="IBD_Part" preconditionExpression="aql:if containerView.target.oclIsKindOf(uml::StructuredClassifier) then containerView.target = self.eContainer() else containerView.target.oclIsKindOf(uml::Property) and containerView.target.oclAsType(uml::Property).type = self.eContainer() endif" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='Delete%20Part']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Part%20Name']" createElements="false" domainClass="uml.Property" dropDescriptions="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@toolSections.0/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" reusedContainerMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@subContainerMappings[name='IBD_Part']/@subContainerMappings[name='IBD_Part']">
+              <borderedNodeMappings name="IBD_PartFlowPort" preconditionExpression="service:isFlowPort" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='Delete%20FlowPort']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20FlowPort%20Name']" semanticCandidatesExpression="aql:self.type->filter(uml::EncapsulatedClassifier).ownedPort" semanticElements="aql:self->union(self.getStereotypeApplications())" domainClass="uml.Port" reusedBorderedNodeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@borderedNodeMappings[name='IBD_FlowPort']/@borderedNodeMappings[name='IBD_FlowPort_nested'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@borderedNodeMappings[name='IBD_Port']/@borderedNodeMappings[name='IBD_Port_nested']">
+                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="service:computeUmlLabel" tooltipExpression="aql:self.computeUmlLabel() + ' (inout)'" sizeComputationExpression="2" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                </style>
+                <conditionnalStyles predicateExpression="aql:(self.isOutFlowPort() and self.getNestedPorts()->isEmpty())">
+                  <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="service:computeUmlLabel()" tooltipExpression="aql:self.computeUmlLabel() + ' (out)'" sizeComputationExpression="1" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.outFlowPort">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  </style>
+                </conditionnalStyles>
+                <conditionnalStyles predicateExpression="aql:(self.isInFlowPort() and self.getNestedPorts()->isEmpty())">
+                  <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="service:computeUmlLabel()" tooltipExpression="aql:self.computeUmlLabel() + ' (in)'" sizeComputationExpression="1" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.inFlowPort">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  </style>
+                </conditionnalStyles>
+                <conditionnalStyles predicateExpression="aql:self.getNestedPorts()->isEmpty()">
+                  <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:computeUmlLabel()" tooltipExpression="aql:self.computeUmlLabel() + ' (inOut)'" sizeComputationExpression="1" workspacePath="/org.obeonetwork.dsl.sysml.design/images/FlowPort.png">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  </style>
+                </conditionnalStyles>
+                <conditionnalStyles predicateExpression="aql:(self.isOutFlowPort() and (not self.getNestedPorts()->isEmpty()))">
+                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="service:computeUmlLabel" tooltipExpression="aql:self.computeUmlLabel() + ' (out)'" sizeComputationExpression="2" resizeKind="NSEW">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                  </style>
+                </conditionnalStyles>
+                <conditionnalStyles predicateExpression="aql:(self.isInFlowPort() and (not self.getNestedPorts()->isEmpty()))">
+                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="service:computeUmlLabel" tooltipExpression="aql:self.computeUmlLabel() + ' (in)'" sizeComputationExpression="2" resizeKind="NSEW">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                  </style>
+                </conditionnalStyles>
+              </borderedNodeMappings>
+              <borderedNodeMappings name="IBD_PartPort" preconditionExpression="service:isPort" deletionDescription="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='IBD%20Delete%20Objects']/@ownedTools[name='Delete%20Port']" labelDirectEdit="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Port%20Name']" semanticCandidatesExpression="aql:self.type->filter(uml::EncapsulatedClassifier).ownedPort" domainClass="uml.Port" reusedBorderedNodeMappings="//@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@borderedNodeMappings[name='IBD_FlowPort']/@borderedNodeMappings[name='IBD_FlowPort_nested'] //@ownedViewpoints[name='SysML']/@ownedRepresentations[name='Internal%20Block%20Diagram']/@defaultLayer/@containerMappings[name='IBD_Block']/@borderedNodeMappings[name='IBD_Port']/@borderedNodeMappings[name='IBD_Port_nested']">
+                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="service:computeUmlLabel" tooltipExpression="aql:self.computeUmlLabel() " sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_StandardPort_Brown']">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+                <conditionnalStyles predicateExpression="aql:(self.isInPort() and self.getNestedPorts()->isEmpty())">
+                  <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="service:computeUmlLabel()" tooltipExpression="aql:self.computeUmlLabel() + ' (in)'" sizeComputationExpression="1" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.inPort">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  </style>
+                </conditionnalStyles>
+                <conditionnalStyles predicateExpression="aql:(self.isOutPort() and self.getNestedPorts()->isEmpty())">
+                  <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="service:computeUmlLabel()" tooltipExpression="aql:self.computeUmlLabel() + ' (out)'" sizeComputationExpression="1" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.outPort">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  </style>
+                </conditionnalStyles>
+                <conditionnalStyles predicateExpression="aql:self.getNestedPorts()->isEmpty() ">
+                  <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:computeUmlLabel" tooltipExpression="aql:self.computeUmlLabel() " sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.obeonetwork.dsl.sysml.design/images/StandardPortSmall.png">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  </style>
+                </conditionnalStyles>
+                <conditionnalStyles predicateExpression="aql:(self.isOutPort() and (not self.getNestedPorts()->isEmpty()))">
+                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="service:computeUmlLabel" tooltipExpression="aql:self.computeUmlLabel() + ' (out)'" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_StandardPort_Brown']">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  </style>
+                </conditionnalStyles>
+                <conditionnalStyles predicateExpression="aql:(self.isInPort() and (not self.getNestedPorts()->isEmpty()))">
+                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="service:computeUmlLabel" tooltipExpression="aql:sself.computeUmlLabel()  + ' (in)'" sizeComputationExpression="2" resizeKind="NSEW" color="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_StandardPort_Brown']">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  </style>
+                </conditionnalStyles>
+              </borderedNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_xAB_Function_Border_Green']" showIcon="false" labelExpression="service:computeUmlLabel" labelColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_xAB_Function_Label_Green']" tooltipExpression="aql:self.name + ' : ' + self.type.name" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_xAB_Function_Green']" foregroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_xAB_Function_Green']"/>
+              <conditionnalStyles predicateExpression="aql:self.eContainer() &lt;> container">
+                <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="service:computeUmlLabel" tooltipExpression="aql:self.name + ' : ' + self.type.name" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BlueBlock']">
+                  <borderColor xsi:type="description:UserFixedColor" href="../../org.obeonetwork.dsl.uml2.core.design/description/uml2core.odesign#//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20blue']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                </style>
+              </conditionnalStyles>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_ComponentBorder_Blue']" showIcon="false" labelExpression="service:computeUmlLabel" labelColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_Component_Label_Blue']" tooltipExpression="aql:self.name + ' : ' + self.type.name" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_Component_Blue_min']"/>
             <conditionnalStyles predicateExpression="aql:self.eContainer() &lt;> container">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="service:computeUmlLabel" tooltipExpression="aql:self.name + ' : ' + self.type.name" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='BlueBlock']">
-                <borderColor xsi:type="description:UserFixedColor" href="../../org.obeonetwork.dsl.uml2.core.design/description/uml2core.odesign#//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20blue']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="service:computeUmlLabel" labelColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_Component_Label_Blue']" tooltipExpression="aql:self.name + ' : ' + self.type.name" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='SysML%20Color%20Palette']/@entries[name='_Component_Blue_min']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
               </style>
             </conditionnalStyles>
           </subContainerMappings>
