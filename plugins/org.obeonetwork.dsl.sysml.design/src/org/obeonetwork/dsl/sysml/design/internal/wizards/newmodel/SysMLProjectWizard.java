@@ -18,6 +18,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
@@ -96,7 +97,11 @@ public class SysMLProjectWizard extends AbstractNewUmlModelWizard {
 											enableSysmlViewpoint(session);
 										}
 									});
+							if (SessionStatus.DIRTY.equals(session.getStatus())) {
+								session.save(new NullProgressMonitor());
+							}
 						}
+
 					}
 				}
 			});
