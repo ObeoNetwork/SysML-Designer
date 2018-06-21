@@ -217,6 +217,10 @@ Each party waives its rights to a jury trial in any resulting
 litigation.
    </license>
 
+   <requires>
+      <import feature="org.obeonetwork.dsl.uml2.core.runtime.feature" version="8.0.0.qualifier"/>
+   </requires>
+
    <plugin
          id="org.obeonetwork.dsl.sysml.design"
          download-size="0"
@@ -240,6 +244,13 @@ litigation.
 
    <plugin
          id="org.eclipse.papyrus.sysml14.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.obeonetwork.dsl.uml2.core.design"
          download-size="0"
          install-size="0"
          version="0.0.0"
