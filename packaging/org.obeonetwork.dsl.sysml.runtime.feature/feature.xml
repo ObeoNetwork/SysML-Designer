@@ -2,7 +2,7 @@
 <feature
       id="org.obeonetwork.dsl.sysml.runtime.feature"
       label="SysML Designer"
-      version="8.0.0.qualifier"
+      version="8.1.0.qualifier"
       provider-name="Obeo">
 
    <description url="http://docs.obeonetwork.com/sysml">
@@ -218,7 +218,7 @@ litigation.
    </license>
 
    <requires>
-      <import feature="org.obeonetwork.dsl.uml2.core.runtime.feature" version="8.0.0.qualifier"/>
+      <import feature="org.obeonetwork.dsl.uml2.core.runtime.feature" version="8.1.0.qualifier"/>
    </requires>
 
    <plugin
