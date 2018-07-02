@@ -221,7 +221,7 @@ litigation.
          version="0.0.0"/>
 
    <requires>
-      <import feature="org.obeonetwork.dsl.uml2.core.runtime.feature" version="8.1.0.qualifier"/>
+      <import feature="org.obeonetwork.dsl.uml2.core.runtime.sdk.feature"/>
    </requires>
 
 </feature>

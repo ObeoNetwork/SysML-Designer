@@ -27,7 +27,7 @@ deploy:
     region: eu-west-1
     upload-dir: "${TRAVIS_BRANCH}"
     on:
-      branch: capella-1.2
+      branch: master
 # Deploy release on s3
   - provider: s3
     access_key_id: AKIAJJVZATSVUD3VGHXA
@@ -42,4 +42,4 @@ deploy:
     on:
       tags: true
       all_branches: true
-      repo: ObeoNetwork/SysML-Designer
+      repo: ObeoNetwork/SysML-Design
