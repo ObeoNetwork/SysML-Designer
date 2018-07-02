@@ -42,4 +42,4 @@ deploy:
     on:
       tags: true
       all_branches: true
-      repo: ObeoNetwork/SysML-Design
+      repo: ObeoNetwork/SysML-Designer
