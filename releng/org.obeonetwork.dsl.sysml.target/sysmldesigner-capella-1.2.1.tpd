@@ -1,0 +1,16 @@
+target "SysMLDesigner for capella-1.2.1"
+include "https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-nightly/master/umlcoredesigner-capella-1.2.1.tpd"
+with source, requirements
+
+// UML Designer core
+location "https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-nightly/master/core/repository/"{
+	org.obeonetwork.dsl.uml2.core.runtime.feature.feature.group lazy
+	org.obeonetwork.dsl.uml2.core.runtime.sdk.feature.feature.group lazy
+	org.obeonetwork.gmf.runtime.diagram.ui.extension.feature.feature.group lazy
+}
+
+// SysML
+location "http://download.eclipse.org/modeling/mdt/papyrus/components/sysml14/" {
+	org.eclipse.papyrus.sysml14 lazy
+	org.eclipse.papyrus.sysml14.edit lazy
+}
