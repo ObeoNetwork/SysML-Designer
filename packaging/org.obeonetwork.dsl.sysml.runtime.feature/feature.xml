@@ -2,7 +2,7 @@
 <feature
       id="org.obeonetwork.dsl.sysml.runtime.feature"
       label="SysML Designer"
-      version="8.1.1.qualifier"
+      version="9.0.0.qualifier"
       provider-name="Obeo">
 
    <description url="http://docs.obeonetwork.com/sysml">

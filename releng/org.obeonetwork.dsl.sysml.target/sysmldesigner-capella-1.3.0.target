@@ -57,7 +57,7 @@
       <unit id="org.obeonetwork.dsl.uml2.core.runtime.feature.feature.group" version="0.0.0"/>
       <unit id="org.obeonetwork.dsl.uml2.core.runtime.sdk.feature.feature.group" version="0.0.0"/>
       <unit id="org.obeonetwork.gmf.runtime.diagram.ui.extension.feature.feature.group" version="0.0.0"/>
-      <repository location="file:/C:/github/UML-Designer/packaging/org.obeonetwork.dsl.uml2.core.update/target/repository/"/>
+      <repository location="https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-nightly/master/core/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.papyrus.sysml14" version="0.0.0"/>
